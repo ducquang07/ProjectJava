@@ -329,6 +329,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, -1, 120));
 
         jBtn6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn6MouseEntered(evt);
             }
@@ -590,6 +593,11 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtn7MouseClicked
+
+    private void jBtn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn6MouseClicked
+        FormXacNhanTinhTrangGiaoHang frmXNGH = new FormXacNhanTinhTrangGiaoHang();
+        frmXNGH.setVisible(true);
+    }//GEN-LAST:event_jBtn6MouseClicked
 
     
     /**
