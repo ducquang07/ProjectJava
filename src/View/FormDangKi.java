@@ -22,10 +22,14 @@ public class FormDangKi extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jPanel1.setBackground(new Color(236,236,236,50));
+        jPanel3.setBackground(new Color(0,0,0,80));
+        
         jTextField1.setBackground(new Color(236,236,236,0));
         jTextField2.setBackground(new Color(236,236,236,0));
         jPasswordField1.setBackground(new Color(236,236,236,0));
+        jPasswordField1.setEchoChar('\u0000');
         jPasswordField2.setBackground(new Color(236,236,236,0));
+        jPasswordField2.setEchoChar('\u0000');
         jPanel2.setBackground(new Color(236,236,236,150));
     }
 
@@ -60,6 +64,7 @@ public class FormDangKi extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jBtnClose = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,7 +110,6 @@ public class FormDangKi extends javax.swing.JFrame {
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setText("Password...");
         jPasswordField1.setBorder(null);
-        jPasswordField1.setEchoChar('\u0000');
         jPasswordField1.setEnabled(false);
         jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -118,7 +122,6 @@ public class FormDangKi extends javax.swing.JFrame {
         jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField2.setText("Confirm Password...");
         jPasswordField2.setBorder(null);
-        jPasswordField2.setEchoChar('\u0000');
         jPasswordField2.setEnabled(false);
         jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -219,12 +222,25 @@ public class FormDangKi extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Design, Create With Java Swing");
+        jLabel19.setText("Design, Create By Closer Group");
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, -1, 30));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/FormMain.PNG"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-374074.jpeg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, -1));
 
         pack();
@@ -334,6 +350,10 @@ public class FormDangKi extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -359,6 +379,7 @@ public class FormDangKi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JSeparator jSeparator1;
