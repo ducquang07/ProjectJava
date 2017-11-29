@@ -20,6 +20,7 @@ public class FormDangNhap extends javax.swing.JFrame {
     public FormDangNhap() {
         initComponents();
         jPanel2.setBackground(new Color(236,236,236,50));
+        jPanel3.setBackground(new Color(0,0,0,80));
         jTextField1.setBackground(new Color(236,236,236,0));
         jPasswordField1.setBackground(new Color(236,236,236,0));
         jPanel1.setBackground(new Color(236,236,236,150));
@@ -53,6 +54,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jBtnClose = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,7 +91,6 @@ public class FormDangNhap extends javax.swing.JFrame {
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setText("Password...");
         jPasswordField1.setBorder(null);
-        jPasswordField1.setEchoChar('\u0000');
         jPasswordField1.setEnabled(false);
         jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -202,7 +203,7 @@ public class FormDangNhap extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Design, Create With Java Swing");
+        jLabel19.setText("Design, Create By Closer Group");
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, -1, -1));
 
         jBtnClose.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -216,10 +217,23 @@ public class FormDangNhap extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 20, 30));
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 610));
+
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/FormMain.PNG"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-374074.jpeg"))); // NOI18N
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 630));
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -322,6 +336,8 @@ public class FormDangNhap extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -347,6 +363,7 @@ public class FormDangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
