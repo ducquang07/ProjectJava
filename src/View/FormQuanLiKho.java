@@ -21,6 +21,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
     public FormQuanLiKho() {
         initComponents();
         setLocationRelativeTo(null);
+        jPanel1.setBackground(new Color(0,0,0,80));
         jBtn6.setBackground(new Color(236,236,236,50));
         jBtn5.setBackground(new Color(236,236,236,50));  
         jBtn4.setBackground(new Color(236,236,236,50));  
@@ -76,6 +77,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -329,9 +331,6 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, -1, 120));
 
         jBtn6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtn6MouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn6MouseEntered(evt);
             }
@@ -400,11 +399,24 @@ public class FormQuanLiKho extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Design, Create With Java Swing");
+        jLabel20.setText("Design, Create By Closer Group");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 200, 10));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/FormMain.PNG"))); // NOI18N
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 630));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo.jpg"))); // NOI18N
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel1MouseDragged(evt);
@@ -594,11 +606,6 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jBtn7MouseClicked
 
-    private void jBtn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn6MouseClicked
-        FormXacNhanTinhTrangGiaoHang frmXNGH = new FormXacNhanTinhTrangGiaoHang();
-        frmXNGH.setVisible(true);
-    }//GEN-LAST:event_jBtn6MouseClicked
-
     
     /**
      * @param args the command line arguments
@@ -625,6 +632,14 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormQuanLiKho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -670,6 +685,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
