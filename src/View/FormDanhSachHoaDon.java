@@ -27,6 +27,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         
         jPanel1.setBackground(new Color(0,0,0,80));
         
+        jBtnBack.setBackground(new Color(153,153,153,180));
         jBtnTimKiem.setBackground(new Color(153,153,153,180));
         jBtnLamMoi.setBackground(new Color(153,153,153,180));
         jBtnXemPhieuIn.setBackground(new Color(153,153,153,180));
