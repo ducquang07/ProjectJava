@@ -16,13 +16,13 @@ import javax.swing.table.JTableHeader;
  *
  * @author ThaiNguyen
  */
-public class FormLapHoaDonLe1 extends javax.swing.JFrame {
+public class FormLapHoaDonSi extends javax.swing.JFrame {
 
     int xx=0,yy=0;
     /**
      * Creates new form FormLapHoaDonLe
      */
-    public FormLapHoaDonLe1() {
+    public FormLapHoaDonSi() {
         initComponents();
         this.setLocationRelativeTo(null);
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -32,10 +32,10 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         jPanel4.setBackground(new Color(236,236,236,190));       
         jPanel7.setBackground(new Color(236,236,236,190));
         jPanel5.setBackground(new Color(0,0,0,80));
-        jPanel6.setBackground(new Color(82,179,217,150));
         jPanel8.setBackground(new Color(82,179,217,150));
         jPanel9.setBackground(new Color(82,179,217,150));
         jPanel10.setBackground(new Color(82,179,217,150));
+        jPanel6.setBackground(new Color(82,179,217,150));
         jPanel11.setBackground(new Color(82,179,217,150));
         
         jbtnDuyetGioHang.setBackground(new Color(153,153,153,180));
@@ -72,16 +72,16 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jBtnTimKiem = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jBtnLamMoi = new javax.swing.JPanel();
@@ -92,7 +92,6 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -102,6 +101,7 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrDSSP = new javax.swing.JScrollPane();
         jtbDSSP = new javax.swing.JTable();
@@ -138,10 +138,6 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Thông tin hóa đơn :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 6, -1, 20));
-
         jLabel2.setText("Số hóa đơn  :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 54, -1, -1));
 
@@ -153,28 +149,36 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 51, 207, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 51, 134, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn khách hàng---" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 98, 175, -1));
 
         jLabel4.setText("Ngày lập :");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 54, -1, -1));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 51, 190, -1));
 
         jLabel5.setText("Tổng tiền :");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 101, -1, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 98, 207, -1));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 98, 190, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 101, -1, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 98, 190, -1));
 
         jPanel6.setBackground(new java.awt.Color(0, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Thông tin hóa đơn :");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 689, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(556, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
@@ -214,10 +218,10 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         );
         jBtnTimKiemLayout.setVerticalGroup(
             jBtnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1068, 124, 110, 65));
+        getContentPane().add(jBtnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1068, 120, 110, 70));
 
         jBtnLamMoi.setPreferredSize(new java.awt.Dimension(105, 50));
         jBtnLamMoi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -252,10 +256,10 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         );
         jBtnLamMoiLayout.setVerticalGroup(
             jBtnLamMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 124, 112, 65));
+        getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 120, 112, 70));
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -302,97 +306,50 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 689, 420));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setText("Tìm theo :");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên sản phẩm", "Mã sản phẩm" }));
+        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 37, 169, -1));
+
+        jLabel9.setText("Nhà cung cấp :");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 78, -1, -1));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn nhà cung cấp---" }));
+        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 75, 169, -1));
+
+        jLabel10.setText("Loại sản phẩm :");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, -1, -1));
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn loại sản phẩm---" }));
+        jPanel3.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 113, 170, -1));
+
+        jLabel11.setText("Từ tìm kiếm :");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 40, -1, -1));
+        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 37, 235, -1));
+
+        jPanel8.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Tìm kiếm sản phẩm :");
-
-        jLabel8.setText("Tìm theo :");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên sản phẩm", "Mã sản phẩm" }));
-
-        jLabel9.setText("Nhà cung cấp :");
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn nhà cung cấp---" }));
-
-        jLabel10.setText("Loại sản phẩm :");
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn loại sản phẩm---" }));
-
-        jLabel11.setText("Từ tìm kiếm :");
-
-        jPanel8.setBackground(new java.awt.Color(0, 204, 204));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(555, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(38, 38, 38)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel11)
-                                .addGap(10, 10, 10)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(14, 14, 14)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(10, 10, 10)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel11))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel9))
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel10))
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 600, 150));
 
@@ -429,14 +386,14 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 689, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
+        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 600, 310));
 
@@ -918,21 +875,23 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormLapHoaDonLe1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLapHoaDonSi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormLapHoaDonLe1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLapHoaDonSi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormLapHoaDonLe1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLapHoaDonSi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormLapHoaDonLe1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLapHoaDonSi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormLapHoaDonLe1().setVisible(true);
+                new FormLapHoaDonSi().setVisible(true);
             }
         });
     }
@@ -944,6 +903,7 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnThem;
     private javax.swing.JPanel jBtnTimKiem;
     private javax.swing.JPanel jBtnXoa;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -993,7 +953,6 @@ public class FormLapHoaDonLe1 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JPanel jbtnDuyetGioHang;
     private javax.swing.JTable jtbDSSP;
     private javax.swing.JTable jtbGioHang;
