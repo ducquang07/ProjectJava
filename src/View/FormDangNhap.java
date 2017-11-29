@@ -23,6 +23,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         jPanel3.setBackground(new Color(0,0,0,80));
         jTextField1.setBackground(new Color(236,236,236,0));
         jPasswordField1.setBackground(new Color(236,236,236,0));
+        jPasswordField1.setEchoChar('\u0000');
         jPanel1.setBackground(new Color(236,236,236,150));
         setLocationRelativeTo(null);
     }
