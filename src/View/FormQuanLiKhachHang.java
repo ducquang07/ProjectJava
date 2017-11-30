@@ -25,10 +25,11 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel1.setBackground(new Color(0,0,0,80));
         jPanel2.setBackground(new Color(236,236,236,190));
         jPanel3.setBackground(new Color(236,236,236,190));
-        jPanel4.setBackground(new Color(236,236,236,190));      
-        jPanel5.setBackground(new Color(82,179,217,150));
-        jPanel6.setBackground(new Color(82,179,217,150));
-        jPanel7.setBackground(new Color(82,179,217,150));
+        jPanel4.setBackground(new Color(236,236,236,190));  
+        
+        jPnTracuuKH.setBackground(new Color(0,204,204,150));
+        jPnDSKH.setBackground(new Color(0,204,204,150));
+        jPnThongtinKH.setBackground(new Color(0,204,204,150));
         
         jBtnBack.setBackground(new Color(153,153,153,180));
         jBtnThem.setBackground(new Color(153,153,153,180));
@@ -79,12 +80,12 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
+        jPnTracuuKH = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrDSKH = new javax.swing.JScrollPane();
         jTbDSKH = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
+        jPnDSKH = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -97,7 +98,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel7 = new javax.swing.JPanel();
+        jPnThongtinKH = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -423,18 +424,18 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 91, -1, -1));
         jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 88, 317, -1));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPnTracuuKHLayout = new javax.swing.GroupLayout(jPnTracuuKH);
+        jPnTracuuKH.setLayout(jPnTracuuKHLayout);
+        jPnTracuuKHLayout.setHorizontalGroup(
+            jPnTracuuKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 540, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnTracuuKHLayout.setVerticalGroup(
+            jPnTracuuKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 37, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 37));
+        jPanel3.add(jPnTracuuKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 37));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 540, 210));
 
@@ -468,20 +469,20 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
         jPanel4.add(jScrDSKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 37, 790, 623));
 
-        jPanel6.setPreferredSize(new java.awt.Dimension(790, 37));
+        jPnDSKH.setPreferredSize(new java.awt.Dimension(790, 37));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPnDSKHLayout = new javax.swing.GroupLayout(jPnDSKH);
+        jPnDSKH.setLayout(jPnDSKHLayout);
+        jPnDSKHLayout.setHorizontalGroup(
+            jPnDSKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 790, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnDSKHLayout.setVerticalGroup(
+            jPnDSKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 37, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, -1));
+        jPanel4.add(jPnDSKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 790, 660));
 
@@ -504,18 +505,18 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Thông tin khách hàng :");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnThongtinKHLayout = new javax.swing.GroupLayout(jPnThongtinKH);
+        jPnThongtinKH.setLayout(jPnThongtinKHLayout);
+        jPnThongtinKHLayout.setHorizontalGroup(
+            jPnThongtinKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnThongtinKHLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(387, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        jPnThongtinKHLayout.setVerticalGroup(
+            jPnThongtinKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnThongtinKHLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -525,7 +526,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPnThongtinKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,7 +554,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPnThongtinKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -861,9 +862,9 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPnDSKH;
+    private javax.swing.JPanel jPnThongtinKH;
+    private javax.swing.JPanel jPnTracuuKH;
     private javax.swing.JScrollPane jScrDSKH;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTbDSKH;
