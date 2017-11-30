@@ -26,9 +26,10 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
         jPanel4.setBackground(new Color(236,236,236,190));
         jPanel10.setBackground(new Color(236,236,236,190));
         jPanel8.setBackground(new Color(236,236,236,190));
-        jPanel1.setBackground(new Color(82,179,217,150));
-        jPanel5.setBackground(new Color(82,179,217,150));
-        jPanel2.setBackground(new Color(82,179,217,150));
+        
+        jPnTracuuNCC.setBackground(new Color(0,204,204,150));
+        jPnThongtinNCC.setBackground(new Color(0,204,204,150));
+        jPnDSNCC.setBackground(new Color(0,204,204,150));
         
         jBtnBack.setBackground(new Color(153,153,153,180));
         jBtnThem.setBackground(new Color(153,153,153,180));
@@ -85,19 +86,19 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
         jTextField11 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel5 = new javax.swing.JPanel();
+        jPnThongtinNCC = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField6 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPnTracuuNCC = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrDSNCC = new javax.swing.JScrollPane();
         jTbDSNCC = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        jPnDSNCC = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -420,23 +421,23 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        jPanel5.setBackground(new java.awt.Color(0, 204, 204));
+        jPnThongtinNCC.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel25.setText("Thông tin nhà cung cấp:");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnThongtinNCCLayout = new javax.swing.GroupLayout(jPnThongtinNCC);
+        jPnThongtinNCC.setLayout(jPnThongtinNCCLayout);
+        jPnThongtinNCCLayout.setHorizontalGroup(
+            jPnThongtinNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnThongtinNCCLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPnThongtinNCCLayout.setVerticalGroup(
+            jPnThongtinNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnThongtinNCCLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
@@ -462,12 +463,12 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
                     .addComponent(jTextField8)
                     .addComponent(jTextField9))
                 .addGap(80, 80, 80))
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPnThongtinNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPnThongtinNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -504,23 +505,23 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
 
         jLabel18.setText("Từ tìm kiếm :");
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPnTracuuNCC.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Tra cứu nhà cung cấp:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnTracuuNCCLayout = new javax.swing.GroupLayout(jPnTracuuNCC);
+        jPnTracuuNCC.setLayout(jPnTracuuNCCLayout);
+        jPnTracuuNCCLayout.setHorizontalGroup(
+            jPnTracuuNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnTracuuNCCLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPnTracuuNCCLayout.setVerticalGroup(
+            jPnTracuuNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnTracuuNCCLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
@@ -540,12 +541,12 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(149, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPnTracuuNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPnTracuuNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -576,29 +577,29 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
 
         jPanel8.add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 770, 610));
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPnDSNCC.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Danh sách nhà cung cấp:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnDSNCCLayout = new javax.swing.GroupLayout(jPnDSNCC);
+        jPnDSNCC.setLayout(jPnDSNCCLayout);
+        jPnDSNCCLayout.setHorizontalGroup(
+            jPnDSNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnDSNCCLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPnDSNCCLayout.setVerticalGroup(
+            jPnDSNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnDSNCCLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel8.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 40));
+        jPanel8.add(jPnDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 40));
 
         jPanel9.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 50, 770, 650));
 
@@ -875,13 +876,13 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPnDSNCC;
+    private javax.swing.JPanel jPnThongtinNCC;
+    private javax.swing.JPanel jPnTracuuNCC;
     private javax.swing.JScrollPane jScrDSNCC;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTbDSNCC;
