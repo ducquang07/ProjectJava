@@ -40,10 +40,10 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         });
         
         //Tab hóa đơn lẻ
-        jPanel2.setBackground(new Color(82,179,217,150));
-        jPanel3.setBackground(new Color(82,179,217,150));
-        jPanel4.setBackground(new Color(82,179,217,150));
-        jPanel5.setBackground(new Color(82,179,217,150));
+        jPnTracuuthongtinHDL.setBackground(new Color(0,204,204,150));
+        jPnThongtinHDL.setBackground(new Color(0,204,204,150));
+        jPnDanhsachHDL.setBackground(new Color(0,204,204,150));
+        jPnChitietHDL.setBackground(new Color(0,204,204,150));
         
         
         jPnHDL.setBackground(new Color(236,236,236,80));
@@ -68,10 +68,10 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         ((DefaultTableCellRenderer)jTbCTHDL.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
         
         //Tab hóa đơn sỉ
-        jPanel8.setBackground(new Color(82,179,217,150));
-        jPanel9.setBackground(new Color(82,179,217,150));
-        jPanel10.setBackground(new Color(82,179,217,150));
-        jPanel11.setBackground(new Color(82,179,217,150));
+        jPnTracuuthongtinHDS.setBackground(new Color(0,204,204,150));
+        jPnThongtinHDS.setBackground(new Color(0,204,204,150));
+        jPnDanhsachHDS.setBackground(new Color(0,204,204,150));
+        jPnChitietHDS.setBackground(new Color(0,204,204,150));
         
         jPnHDS.setBackground(new Color(236,236,236,80));
         jPnCTHDS.setBackground(new Color(236,236,236,200));
@@ -125,12 +125,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jComboBox7 = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        jPnTracuuthongtinHDL = new javax.swing.JPanel();
         jLabel56 = new javax.swing.JLabel();
         jPnDSHDL = new javax.swing.JPanel();
         jScrDSHDL = new javax.swing.JScrollPane();
         jTbDSHDL = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        jPnDanhsachHDL = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jPnThongTinHDL = new javax.swing.JPanel();
         jLabel64 = new javax.swing.JLabel();
@@ -143,12 +143,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jLabel72 = new javax.swing.JLabel();
         jDateChooser13 = new com.toedter.calendar.JDateChooser();
         jTextField19 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
+        jPnThongtinHDL = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jPnCTHDL = new javax.swing.JPanel();
         jScrCTHDL = new javax.swing.JScrollPane();
         jTbCTHDL = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
+        jPnChitietHDL = new javax.swing.JPanel();
         jLabel76 = new javax.swing.JLabel();
         jPnHDS = new javax.swing.JPanel();
         jPnTraCuuThongTinHDS = new javax.swing.JPanel();
@@ -162,12 +162,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jPanel8 = new javax.swing.JPanel();
+        jPnTracuuthongtinHDS = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
         jPnDSHDS = new javax.swing.JPanel();
         jScrDSHDS = new javax.swing.JScrollPane();
         jTbDSHDS = new javax.swing.JTable();
-        jPanel10 = new javax.swing.JPanel();
+        jPnDanhsachHDS = new javax.swing.JPanel();
         jLabel73 = new javax.swing.JLabel();
         jPnThongTinHDS = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -191,12 +191,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jDateChooser4 = new com.toedter.calendar.JDateChooser();
         jLabel24 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        jPnThongtinHDS = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
         jPnCTHDS = new javax.swing.JPanel();
         jScrCTHDS = new javax.swing.JScrollPane();
         jTbCTHDS = new javax.swing.JTable();
-        jPanel11 = new javax.swing.JPanel();
+        jPnChitietHDS = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -421,22 +421,22 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jLabel60.setText("Số hóa đơn :");
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPnTracuuthongtinHDL.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel56.setText("Tra cứu thông tin :");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnTracuuthongtinHDLLayout = new javax.swing.GroupLayout(jPnTracuuthongtinHDL);
+        jPnTracuuthongtinHDL.setLayout(jPnTracuuthongtinHDLLayout);
+        jPnTracuuthongtinHDLLayout.setHorizontalGroup(
+            jPnTracuuthongtinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnTracuuthongtinHDLLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel56)
                 .addContainerGap(373, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnTracuuthongtinHDLLayout.setVerticalGroup(
+            jPnTracuuthongtinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
@@ -444,7 +444,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jPnTraCuuThongTinHDL.setLayout(jPnTraCuuThongTinHDLLayout);
         jPnTraCuuThongTinHDLLayout.setHorizontalGroup(
             jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPnTracuuthongtinHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,7 +471,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jPnTraCuuThongTinHDLLayout.setVerticalGroup(
             jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPnTracuuthongtinHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -516,26 +516,26 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jPnDSHDL.add(jScrDSHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 500, 310));
 
-        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
+        jPnDanhsachHDL.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel62.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel62.setText("Danh sách hóa đơn :");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnDanhsachHDLLayout = new javax.swing.GroupLayout(jPnDanhsachHDL);
+        jPnDanhsachHDL.setLayout(jPnDanhsachHDLLayout);
+        jPnDanhsachHDLLayout.setHorizontalGroup(
+            jPnDanhsachHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnDanhsachHDLLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel62)
                 .addContainerGap(364, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnDanhsachHDLLayout.setVerticalGroup(
+            jPnDanhsachHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPnDSHDL.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
+        jPnDSHDL.add(jPnDanhsachHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
 
         jPnThongTinHDL.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -553,22 +553,22 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jLabel72.setText("Tổng tiền :");
 
-        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
+        jPnThongtinHDL.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel63.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel63.setText("Thông tin hóa đơn :");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnThongtinHDLLayout = new javax.swing.GroupLayout(jPnThongtinHDL);
+        jPnThongtinHDL.setLayout(jPnThongtinHDLLayout);
+        jPnThongtinHDLLayout.setHorizontalGroup(
+            jPnThongtinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnThongtinHDLLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel63)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnThongtinHDLLayout.setVerticalGroup(
+            jPnThongtinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
@@ -603,12 +603,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                         .addGap(288, 288, 288)
                         .addComponent(jLabel70)))
                 .addContainerGap(28, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPnThongtinHDL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPnThongTinHDLLayout.setVerticalGroup(
             jPnThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnThongTinHDLLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPnThongtinHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPnThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel69)
@@ -658,22 +658,22 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             jTbCTHDL.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
-        jPanel5.setBackground(new java.awt.Color(0, 204, 204));
+        jPnChitietHDL.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel76.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel76.setText("Chi tiết hóa đơn :");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnChitietHDLLayout = new javax.swing.GroupLayout(jPnChitietHDL);
+        jPnChitietHDL.setLayout(jPnChitietHDLLayout);
+        jPnChitietHDLLayout.setHorizontalGroup(
+            jPnChitietHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnChitietHDLLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel76)
                 .addContainerGap(582, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnChitietHDLLayout.setVerticalGroup(
+            jPnChitietHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel76, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
@@ -682,14 +682,14 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jPnCTHDLLayout.setHorizontalGroup(
             jPnCTHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrCTHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPnChitietHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPnCTHDLLayout.setVerticalGroup(
             jPnCTHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnCTHDLLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jScrCTHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPnChitietHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout jPnHDLLayout = new javax.swing.GroupLayout(jPnHDL);
@@ -750,26 +750,26 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả các hóa đơn", "Chỉ những hóa đơn đã giao", "Chỉ những hóa đơn chưa giao" }));
         jPnTraCuuThongTinHDS.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 99, 208, -1));
 
-        jPanel8.setBackground(new java.awt.Color(0, 204, 204));
+        jPnTracuuthongtinHDS.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel67.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel67.setText("Tra cứu thông tin :");
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnTracuuthongtinHDSLayout = new javax.swing.GroupLayout(jPnTracuuthongtinHDS);
+        jPnTracuuthongtinHDS.setLayout(jPnTracuuthongtinHDSLayout);
+        jPnTracuuthongtinHDSLayout.setHorizontalGroup(
+            jPnTracuuthongtinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnTracuuthongtinHDSLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel67)
                 .addContainerGap(373, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnTracuuthongtinHDSLayout.setVerticalGroup(
+            jPnTracuuthongtinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel67, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPnTraCuuThongTinHDS.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
+        jPnTraCuuThongTinHDS.add(jPnTracuuthongtinHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
 
         jPnDSHDS.setBackground(new java.awt.Color(204, 204, 204));
         jPnDSHDS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -794,26 +794,26 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jPnDSHDS.add(jScrDSHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 500, 310));
 
-        jPanel10.setBackground(new java.awt.Color(0, 204, 204));
+        jPnDanhsachHDS.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel73.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel73.setText("Danh sách hóa đơn :");
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnDanhsachHDSLayout = new javax.swing.GroupLayout(jPnDanhsachHDS);
+        jPnDanhsachHDS.setLayout(jPnDanhsachHDSLayout);
+        jPnDanhsachHDSLayout.setHorizontalGroup(
+            jPnDanhsachHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnDanhsachHDSLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel73)
                 .addContainerGap(364, Short.MAX_VALUE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnDanhsachHDSLayout.setVerticalGroup(
+            jPnDanhsachHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPnDSHDS.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
+        jPnDSHDS.add(jPnDanhsachHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
 
         jPnThongTinHDS.setBackground(new java.awt.Color(204, 204, 204));
         jPnThongTinHDS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -870,26 +870,26 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jLabel24.setText("jLabel24");
         jPnThongTinHDS.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, -1, -1));
 
-        jPanel9.setBackground(new java.awt.Color(0, 204, 204));
+        jPnThongtinHDS.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel68.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel68.setText("Thông tin hóa đơn :");
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnThongtinHDSLayout = new javax.swing.GroupLayout(jPnThongtinHDS);
+        jPnThongtinHDS.setLayout(jPnThongtinHDSLayout);
+        jPnThongtinHDSLayout.setHorizontalGroup(
+            jPnThongtinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnThongtinHDSLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel68)
                 .addContainerGap(635, Short.MAX_VALUE))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnThongtinHDSLayout.setVerticalGroup(
+            jPnThongtinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPnThongTinHDS.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 768, 30));
+        jPnThongTinHDS.add(jPnThongtinHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 768, 30));
 
         jPnCTHDS.setBackground(new java.awt.Color(204, 204, 204));
         jPnCTHDS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -922,26 +922,26 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jPnCTHDS.add(jScrCTHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 700, 310));
 
-        jPanel11.setBackground(new java.awt.Color(0, 204, 204));
+        jPnChitietHDS.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel25.setText("Chi tiết hóa đơn :");
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPnChitietHDSLayout = new javax.swing.GroupLayout(jPnChitietHDS);
+        jPnChitietHDS.setLayout(jPnChitietHDSLayout);
+        jPnChitietHDSLayout.setHorizontalGroup(
+            jPnChitietHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnChitietHDSLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25)
-                .addContainerGap(582, Short.MAX_VALUE))
+                .addContainerGap(579, Short.MAX_VALUE))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnChitietHDSLayout.setVerticalGroup(
+            jPnChitietHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPnCTHDS.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 30));
+        jPnCTHDS.add(jPnChitietHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 30));
 
         javax.swing.GroupLayout jPnHDSLayout = new javax.swing.GroupLayout(jPnHDS);
         jPnHDS.setLayout(jPnHDSLayout);
@@ -1312,24 +1312,24 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPnCTHDL;
     private javax.swing.JPanel jPnCTHDS;
+    private javax.swing.JPanel jPnChitietHDL;
+    private javax.swing.JPanel jPnChitietHDS;
     private javax.swing.JPanel jPnDSHDL;
     private javax.swing.JPanel jPnDSHDS;
+    private javax.swing.JPanel jPnDanhsachHDL;
+    private javax.swing.JPanel jPnDanhsachHDS;
     private javax.swing.JPanel jPnHDL;
     private javax.swing.JPanel jPnHDS;
     private javax.swing.JPanel jPnThongTinHDL;
     private javax.swing.JPanel jPnThongTinHDS;
+    private javax.swing.JPanel jPnThongtinHDL;
+    private javax.swing.JPanel jPnThongtinHDS;
     private javax.swing.JPanel jPnTraCuuThongTinHDL;
     private javax.swing.JPanel jPnTraCuuThongTinHDS;
+    private javax.swing.JPanel jPnTracuuthongtinHDL;
+    private javax.swing.JPanel jPnTracuuthongtinHDS;
     private javax.swing.JScrollPane jScrCTHDL;
     private javax.swing.JScrollPane jScrCTHDS;
     private javax.swing.JScrollPane jScrDSHDL;
