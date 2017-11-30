@@ -32,11 +32,12 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jPanel4.setBackground(new Color(236,236,236,190));       
         jPanel7.setBackground(new Color(236,236,236,190));
         jPanel5.setBackground(new Color(0,0,0,80));
-        jPanel6.setBackground(new Color(82,179,217,150));
-        jPanel8.setBackground(new Color(82,179,217,150));
-        jPanel9.setBackground(new Color(82,179,217,150));
-        jPanel10.setBackground(new Color(82,179,217,150));
-        jPanel11.setBackground(new Color(82,179,217,150));
+        
+        jPnThongtinHD.setBackground(new Color(0,204,204,150));
+        jPnTimkiemSP.setBackground(new Color(0,204,204,150));
+        jPnGioHang.setBackground(new Color(80,204,204,150));
+        jPnDSSP.setBackground(new Color(80,204,204,150));
+        jPnThongtinSP.setBackground(new Color(0,204,204,150));
         
         jbtnDuyetGioHang.setBackground(new Color(153,153,153,180));
         jBtnHuy.setBackground(new Color(153,153,153,180));
@@ -81,7 +82,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jPanel6 = new javax.swing.JPanel();
+        jPnThongtinHD = new javax.swing.JPanel();
         jBtnTimKiem = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jBtnLamMoi = new javax.swing.JPanel();
@@ -90,9 +91,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jScrGioHang = new javax.swing.JScrollPane();
         jtbGioHang = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        jPnGioHang = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -101,12 +101,13 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jPanel8 = new javax.swing.JPanel();
+        jPnTimkiemSP = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrDSSP = new javax.swing.JScrollPane();
         jtbDSSP = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
+        jPnDSSP = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -117,7 +118,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jPanel11 = new javax.swing.JPanel();
+        jPnThongtinSP = new javax.swing.JPanel();
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jbtnDuyetGioHang = new javax.swing.JPanel();
@@ -164,20 +165,20 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 98, 207, -1));
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 98, 190, -1));
 
-        jPanel6.setBackground(new java.awt.Color(0, 204, 204));
+        jPnThongtinHD.setBackground(new java.awt.Color(0, 204, 204));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPnThongtinHDLayout = new javax.swing.GroupLayout(jPnThongtinHD);
+        jPnThongtinHD.setLayout(jPnThongtinHDLayout);
+        jPnThongtinHDLayout.setHorizontalGroup(
+            jPnThongtinHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 689, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnThongtinHDLayout.setVerticalGroup(
+            jPnThongtinHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
+        jPanel1.add(jPnThongtinHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 689, 150));
 
@@ -284,27 +285,24 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel6.setText("Giỏ hàng :");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, 20));
 
-        jPanel9.setBackground(new java.awt.Color(0, 204, 204));
+        jPnGioHang.setBackground(new java.awt.Color(0, 204, 204));
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPnGioHangLayout = new javax.swing.GroupLayout(jPnGioHang);
+        jPnGioHang.setLayout(jPnGioHangLayout);
+        jPnGioHangLayout.setHorizontalGroup(
+            jPnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 689, Short.MAX_VALUE)
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnGioHangLayout.setVerticalGroup(
+            jPnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
+        jPanel2.add(jPnGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 689, 420));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Tìm kiếm sản phẩm :");
 
         jLabel8.setText("Tìm theo :");
 
@@ -320,56 +318,54 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jLabel11.setText("Từ tìm kiếm :");
 
-        jPanel8.setBackground(new java.awt.Color(0, 204, 204));
+        jPnTimkiemSP.setBackground(new java.awt.Color(0, 204, 204));
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("Tìm kiếm sản phẩm :");
+
+        javax.swing.GroupLayout jPnTimkiemSPLayout = new javax.swing.GroupLayout(jPnTimkiemSP);
+        jPnTimkiemSP.setLayout(jPnTimkiemSPLayout);
+        jPnTimkiemSPLayout.setHorizontalGroup(
+            jPnTimkiemSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnTimkiemSPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(466, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+        jPnTimkiemSPLayout.setVerticalGroup(
+            jPnTimkiemSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPnTimkiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(38, 38, 38)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel11)
-                                .addGap(10, 10, 10)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(14, 14, 14)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(10, 10, 10)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addComponent(jLabel8)
+                        .addGap(38, 38, 38)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(14, 14, 14)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(10, 10, 10)
+                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jPnTimkiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -423,20 +419,20 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel14.setText("Danh sách sản phẩm :");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 6, -1, 20));
 
-        jPanel10.setBackground(new java.awt.Color(0, 204, 204));
+        jPnDSSP.setBackground(new java.awt.Color(0, 204, 204));
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPnDSSPLayout = new javax.swing.GroupLayout(jPnDSSP);
+        jPnDSSP.setLayout(jPnDSSPLayout);
+        jPnDSSPLayout.setHorizontalGroup(
+            jPnDSSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 600, Short.MAX_VALUE)
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnDSSPLayout.setVerticalGroup(
+            jPnDSSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
+        jPanel4.add(jPnDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 600, 310));
 
@@ -463,20 +459,20 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jPanel7.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 69, -1, -1));
         jPanel7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 66, 178, -1));
 
-        jPanel11.setBackground(new java.awt.Color(0, 204, 204));
+        jPnThongtinSP.setBackground(new java.awt.Color(0, 204, 204));
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPnThongtinSPLayout = new javax.swing.GroupLayout(jPnThongtinSP);
+        jPnThongtinSP.setLayout(jPnThongtinSPLayout);
+        jPnThongtinSPLayout.setHorizontalGroup(
+            jPnThongtinSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 600, Short.MAX_VALUE)
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPnThongtinSPLayout.setVerticalGroup(
+            jPnThongtinSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel7.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
+        jPanel7.add(jPnThongtinSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 540, 600, 100));
 
@@ -974,16 +970,16 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPnDSSP;
+    private javax.swing.JPanel jPnGioHang;
+    private javax.swing.JPanel jPnThongtinHD;
+    private javax.swing.JPanel jPnThongtinSP;
+    private javax.swing.JPanel jPnTimkiemSP;
     private javax.swing.JScrollPane jScrDSSP;
     private javax.swing.JScrollPane jScrGioHang;
     private javax.swing.JSpinner jSpinner1;
