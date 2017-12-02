@@ -25,16 +25,17 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-        jPanel1.setBackground(new Color(0,0,0,80));
+        jPanel1.setBackground(new Color(0,0,0,0));
         
-        jBtnTimKiem.setBackground(new Color(153,153,153,180));
-        jBtnLamMoi.setBackground(new Color(153,153,153,180));
-        jBtnXemPhieuIn.setBackground(new Color(153,153,153,180));
-        jBtnSua.setBackground(new Color(153,153,153,180));
-        jBtnXoa.setBackground(new Color(153,153,153,180));
+        jBtnBack.setBackground(new Color(153,153,153,200));
+        jBtnTimKiem.setBackground(new Color(153,153,153,200));
+        jBtnLamMoi.setBackground(new Color(153,153,153,200));
+        jBtnXemPhieuIn.setBackground(new Color(153,153,153,200));
+        jBtnSua.setBackground(new Color(153,153,153,200));
+        jBtnXoa.setBackground(new Color(153,153,153,200));
         
         jTabbedPane1.setOpaque(false); 
-        jTabbedPane1.setBackground(new Color (236,236,236,190)); // this works well, 2 tabs semi-transparents 
+        jTabbedPane1.setBackground(new Color (0,0,0,0)); // this works well, 2 tabs semi-transparents 
         jTabbedPane1.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI(){
             protected void paintContentBorder(Graphics g,int tabPlacement,int selectedIndex){}
         });
@@ -408,6 +409,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         jPnHDL.setPreferredSize(new java.awt.Dimension(1297, 625));
+        jPnHDL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnTraCuuThongTinHDL.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -493,6 +495,8 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPnHDL.add(jPnTraCuuThongTinHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, 257));
+
         jPnDSHDL.setBackground(new java.awt.Color(204, 204, 204));
         jPnDSHDL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -514,7 +518,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         });
         jScrDSHDL.setViewportView(jTbDSHDL);
 
-        jPnDSHDL.add(jScrDSHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 500, 310));
+        jPnDSHDL.add(jScrDSHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 39, 480, 290));
 
         jPnDanhsachHDL.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -536,6 +540,8 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         );
 
         jPnDSHDL.add(jPnDanhsachHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
+
+        jPnHDL.add(jPnDSHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 279, -1, 339));
 
         jPnThongTinHDL.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -630,6 +636,8 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                     .addComponent(jDateChooser13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        jPnHDL.add(jPnThongTinHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 11, -1, 257));
+
         jPnCTHDL.setBackground(new java.awt.Color(204, 204, 204));
 
         jTbCTHDL.setModel(new javax.swing.table.DefaultTableModel(
@@ -681,47 +689,28 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jPnCTHDL.setLayout(jPnCTHDLLayout);
         jPnCTHDLLayout.setHorizontalGroup(
             jPnCTHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrCTHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPnChitietHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPnCTHDLLayout.createSequentialGroup()
+                .addComponent(jPnChitietHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnCTHDLLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrCTHDL)
+                .addContainerGap())
         );
         jPnCTHDLLayout.setVerticalGroup(
             jPnCTHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnCTHDLLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrCTHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPnChitietHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        javax.swing.GroupLayout jPnHDLLayout = new javax.swing.GroupLayout(jPnHDL);
-        jPnHDL.setLayout(jPnHDLLayout);
-        jPnHDLLayout.setHorizontalGroup(
-            jPnHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnHDLLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPnHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPnTraCuuThongTinHDL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPnDSHDL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPnHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPnCTHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPnThongTinHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPnChitietHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrCTHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPnHDLLayout.setVerticalGroup(
-            jPnHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnHDLLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPnHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPnTraCuuThongTinHDL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPnThongTinHDL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11)
-                .addGroup(jPnHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPnDSHDL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPnCTHDL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11))
-        );
+
+        jPnHDL.add(jPnCTHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(596, 279, -1, 339));
 
         jTabbedPane1.addTab("Danh sách hóa đơn lẻ     ", jPnHDL);
+
+        jPnHDS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnTraCuuThongTinHDS.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -815,8 +804,10 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLabel8))
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPnHDS.add(jPnTraCuuThongTinHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, 257));
 
         jPnDSHDS.setBackground(new java.awt.Color(204, 204, 204));
         jPnDSHDS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -839,7 +830,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         });
         jScrDSHDS.setViewportView(jTbDSHDS);
 
-        jPnDSHDS.add(jScrDSHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 500, 310));
+        jPnDSHDS.add(jScrDSHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 39, 480, 290));
 
         jPnDanhsachHDS.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -861,6 +852,8 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         );
 
         jPnDSHDS.add(jPnDanhsachHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
+
+        jPnHDS.add(jPnDSHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 279, -1, 339));
 
         jPnThongTinHDS.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -1019,11 +1012,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLabel16))
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        jPnHDS.add(jPnThongTinHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 11, -1, -1));
+
         jPnCTHDS.setBackground(new java.awt.Color(204, 204, 204));
-        jPnCTHDS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTbCTHDS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1051,8 +1045,6 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             jTbCTHDS.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
-        jPnCTHDS.add(jScrCTHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 700, 310));
-
         jPnChitietHDS.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1065,45 +1057,35 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             .addGroup(jPnChitietHDSLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25)
-                .addContainerGap(579, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
         jPnChitietHDSLayout.setVerticalGroup(
             jPnChitietHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPnCTHDS.add(jPnChitietHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 30));
-
-        javax.swing.GroupLayout jPnHDSLayout = new javax.swing.GroupLayout(jPnHDS);
-        jPnHDS.setLayout(jPnHDSLayout);
-        jPnHDSLayout.setHorizontalGroup(
-            jPnHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnHDSLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPnHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPnHDSLayout.createSequentialGroup()
-                        .addComponent(jPnTraCuuThongTinHDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPnThongTinHDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPnHDSLayout.createSequentialGroup()
-                        .addComponent(jPnDSHDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(86, 86, 86)
-                        .addComponent(jPnCTHDS, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        javax.swing.GroupLayout jPnCTHDSLayout = new javax.swing.GroupLayout(jPnCTHDS);
+        jPnCTHDS.setLayout(jPnCTHDSLayout);
+        jPnCTHDSLayout.setHorizontalGroup(
+            jPnCTHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnCTHDSLayout.createSequentialGroup()
+                .addComponent(jPnChitietHDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnCTHDSLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrCTHDS)
                 .addContainerGap())
         );
-        jPnHDSLayout.setVerticalGroup(
-            jPnHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnHDSLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPnHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPnTraCuuThongTinHDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPnThongTinHDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11)
-                .addGroup(jPnHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPnDSHDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPnCTHDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(11, 11, 11))
+        jPnCTHDSLayout.setVerticalGroup(
+            jPnCTHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnCTHDSLayout.createSequentialGroup()
+                .addComponent(jPnChitietHDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrCTHDS, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jPnHDS.add(jPnCTHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(596, 279, -1, 339));
 
         jTabbedPane1.addTab("Danh sách hóa đơn sỉ      ", jPnHDS);
 
