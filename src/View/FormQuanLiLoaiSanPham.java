@@ -14,12 +14,12 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author DucQuang
  */
-public class FromQuanLiLoaiSanPham extends javax.swing.JFrame {
+public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
     /**
      * Creates new form FromQuanLiLoaiSanPham
      */
-    public FromQuanLiLoaiSanPham() {
+    public FormQuanLiLoaiSanPham() {
         initComponents();
         setLocationRelativeTo(null);
         jPanel5.setBackground(new Color(0,0,0,80));
@@ -837,14 +837,18 @@ public class FromQuanLiLoaiSanPham extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FromQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FromQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FromQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FromQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiLoaiSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -853,7 +857,7 @@ public class FromQuanLiLoaiSanPham extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FromQuanLiLoaiSanPham().setVisible(true);
+                new FormQuanLiLoaiSanPham().setVisible(true);
             }
         });
     }

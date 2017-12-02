@@ -96,6 +96,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 20, 30));
 
         jBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn1MouseEntered(evt);
             }
@@ -124,6 +127,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 180, 120));
 
         jBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn2MouseEntered(evt);
             }
@@ -172,6 +178,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, -1, 120));
 
         jBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn3MouseEntered(evt);
             }
@@ -234,6 +243,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
         jBtn4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn4MouseEntered(evt);
             }
@@ -282,6 +294,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, 120));
 
         jBtn5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn5MouseEntered(evt);
             }
@@ -331,6 +346,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         getContentPane().add(jBtn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, -1, 120));
 
         jBtn6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn6MouseEntered(evt);
             }
@@ -605,6 +623,35 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtn7MouseClicked
+
+    private void jBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn2MouseClicked
+        FormQuanLiLoaiSanPham frmQLLSP = new FormQuanLiLoaiSanPham();
+        frmQLLSP.setVisible(true);
+    }//GEN-LAST:event_jBtn2MouseClicked
+
+    private void jBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn1MouseClicked
+        FormQuanLiSanPham frmQLSP = new FormQuanLiSanPham();
+        frmQLSP.setVisible(true);
+    }//GEN-LAST:event_jBtn1MouseClicked
+
+    private void jBtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn4MouseClicked
+        FormQuanLiDonDatHang frmQLDDH = new FormQuanLiDonDatHang();
+        frmQLDDH.setVisible(true);
+    }//GEN-LAST:event_jBtn4MouseClicked
+
+    private void jBtn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn5MouseClicked
+        
+    }//GEN-LAST:event_jBtn5MouseClicked
+
+    private void jBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn3MouseClicked
+        FormQuanLiNhaCungCap frmQLNCC = new FormQuanLiNhaCungCap();
+        frmQLNCC.setVisible(true);
+    }//GEN-LAST:event_jBtn3MouseClicked
+
+    private void jBtn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn6MouseClicked
+        FormXacNhanTinhTrangGiaoHang frmXNTTGH = new FormXacNhanTinhTrangGiaoHang();
+        frmXNTTGH.setVisible(true);
+    }//GEN-LAST:event_jBtn6MouseClicked
 
     
     /**

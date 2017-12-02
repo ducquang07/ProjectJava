@@ -81,6 +81,9 @@ public class FormQuanLiKeToan extends javax.swing.JFrame {
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 20, 30));
 
         jBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn1MouseEntered(evt);
             }
@@ -108,6 +111,9 @@ public class FormQuanLiKeToan extends javax.swing.JFrame {
         getContentPane().add(jBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 120));
 
         jBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn2MouseEntered(evt);
             }
@@ -336,6 +342,16 @@ public class FormQuanLiKeToan extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtn7MouseClicked
+
+    private void jBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn1MouseClicked
+        FormQuanLiPhieuThu frmQLPT= new FormQuanLiPhieuThu();
+        frmQLPT.setVisible(true);
+    }//GEN-LAST:event_jBtn1MouseClicked
+
+    private void jBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn2MouseClicked
+        FormQuanLiPhieuChi frmQLPC = new FormQuanLiPhieuChi();
+        frmQLPC.setVisible(true);
+    }//GEN-LAST:event_jBtn2MouseClicked
 
     
     /**

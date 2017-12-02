@@ -112,6 +112,9 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         getContentPane().add(jBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 180, 120));
 
         jBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn2MouseEntered(evt);
             }
@@ -160,6 +163,9 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         getContentPane().add(jBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, -1, 120));
 
         jBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn3MouseEntered(evt);
             }
@@ -393,21 +399,28 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseEntered
 
     private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
-        // TODO add your handling code here:
         int x= evt.getXOnScreen();
         int y= evt.getYOnScreen();
         this.setLocation(x-xx, y-yy);
     }//GEN-LAST:event_jLabel1MouseDragged
 
     private void jBtn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn7MouseClicked
-        // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtn7MouseClicked
+
+    private void jBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn2MouseClicked
+        FormDanhSachHoaDon frmDSHD = new FormDanhSachHoaDon();
+        frmDSHD.setVisible(true);
+    }//GEN-LAST:event_jBtn2MouseClicked
+
+    private void jBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn3MouseClicked
+        FormQuanLiKhachHang frmQLKH = new FormQuanLiKhachHang();
+        frmQLKH.setVisible(true);
+    }//GEN-LAST:event_jBtn3MouseClicked
 
     
     /**
