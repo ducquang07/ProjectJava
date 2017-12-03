@@ -529,7 +529,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="39" width="480" height="450"/>
+              <AbsoluteConstraints x="10" y="49" width="460" height="430"/>
             </Constraint>
           </Constraints>
 
@@ -822,7 +822,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Image/pexels-photo 1234.jpg"/>
+          <Image iconType="3" name="/Image/pexels-photo-530024.jpeg"/>
         </Property>
       </Properties>
       <Constraints>

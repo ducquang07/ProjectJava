@@ -22,7 +22,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
     public FormQuanLiKhachHang() {
         initComponents();
         setLocationRelativeTo(null);
-        jPanel1.setBackground(new Color(0,0,0,80));
+        jPanel1.setBackground(new Color(0,0,0,0));
         jPanel2.setBackground(new Color(236,236,236,190));
         jPanel3.setBackground(new Color(236,236,236,190));
         jPanel4.setBackground(new Color(236,236,236,190));  
@@ -82,10 +82,10 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jPnTracuuKH = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jScrDSKH = new javax.swing.JScrollPane();
         jTbDSKH = new javax.swing.JTable();
         jPnDSKH = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -440,11 +440,6 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 540, 210));
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Danh sách khách hàng :");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jTbDSKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -467,22 +462,48 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
             jTbDSKH.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
-        jPanel4.add(jScrDSKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 37, 790, 623));
-
         jPnDSKH.setPreferredSize(new java.awt.Dimension(790, 37));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Danh sách khách hàng :");
 
         javax.swing.GroupLayout jPnDSKHLayout = new javax.swing.GroupLayout(jPnDSKH);
         jPnDSKH.setLayout(jPnDSKHLayout);
         jPnDSKHLayout.setHorizontalGroup(
             jPnDSKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
+            .addGroup(jPnDSKHLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(634, Short.MAX_VALUE))
         );
         jPnDSKHLayout.setVerticalGroup(
             jPnDSKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
+            .addGroup(jPnDSKHLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.add(jPnDSKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, -1));
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrDSKH)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPnDSKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPnDSKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrDSKH, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
+        );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 790, 660));
 
@@ -589,7 +610,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 720));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-459654.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 720));
 
         pack();

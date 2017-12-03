@@ -31,7 +31,8 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         jPanel3.setBackground(new Color(236,236,236,190));
         jPanel4.setBackground(new Color(236,236,236,190));       
         jPanel7.setBackground(new Color(236,236,236,190));
-        jPanel5.setBackground(new Color(0,0,0,80));
+        
+        jPanel5.setBackground(new Color(0,0,0,0));
         
         jPnTimKiemSP.setBackground(new Color(0,204,204,150));
         jPnGioHang.setBackground(new Color(0,204,204,150));
@@ -283,7 +284,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         });
         jScrGioHang.setViewportView(jtbGioHang);
 
-        jPanel2.add(jScrGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 689, 390));
+        jPanel2.add(jScrGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 35, 676, 380));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Giỏ hàng :");
@@ -375,7 +376,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         });
         jScrDSSP.setViewportView(jtbDSSP);
 
-        jPanel4.add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 600, 280));
+        jPanel4.add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 590, 270));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setText("Danh sách sản phẩm :");
@@ -427,16 +428,16 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         jPnThongtinSP.setLayout(jPnThongtinSPLayout);
         jPnThongtinSPLayout.setHorizontalGroup(
             jPnThongtinSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
         jPnThongtinSPLayout.setVerticalGroup(
             jPnThongtinSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel7.add(jPnThongtinSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
+        jPanel7.add(jPnThongtinSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 30));
 
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 540, 600, 100));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 540, 610, 100));
 
         jBtnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -656,7 +657,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 730));
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-459654.jpeg"))); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 730));
 
         pack();

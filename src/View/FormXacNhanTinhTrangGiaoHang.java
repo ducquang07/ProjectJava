@@ -23,7 +23,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        jPanel10.setBackground(new Color(0,0,0,80));
+        jPanel10.setBackground((new Color(0,0,0,0)));
         
         jPnTracuuHDchuagiao.setBackground(new Color(0,204,204,150));
         jPnDSHDchuagiao.setBackground(new Color(0,204,204,150));
@@ -37,13 +37,13 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         jPanel9.setBackground(new Color(236,236,236,190));
         jPanel3.setBackground(new Color(236,236,236,190));
         
-        jBtnBack.setBackground(new Color(153,153,153,180));
-        jBtnTimKiemHDchuagiao.setBackground(new Color(153,153,153,180));
-        jBtnLamMoichuagiao.setBackground(new Color(153,153,153,180));
-        jBtnTimKiemHDdagiao.setBackground(new Color(153,153,153,180));
-        jBtnLamMoidagiao.setBackground(new Color(153,153,153,180));
-        jBtnXemchitiet.setBackground(new Color(153,153,153,180));
-        jBtnXacnhangiao.setBackground(new Color(153,153,153,180));
+        jBtnBack.setBackground(new Color(153,153,153,200));
+        jBtnTimKiemHDchuagiao.setBackground(new Color(153,153,153,200));
+        jBtnLamMoichuagiao.setBackground(new Color(153,153,153,200));
+        jBtnTimKiemHDdagiao.setBackground(new Color(153,153,153,200));
+        jBtnLamMoidagiao.setBackground(new Color(153,153,153,200));
+        jBtnXemchitiet.setBackground(new Color(153,153,153,200));
+        jBtnXacnhangiao.setBackground(new Color(153,153,153,200));
         
         
         jScrDSHDchuagiao.setOpaque(false);
@@ -475,15 +475,21 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPnDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPnDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPnDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPnDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 280, 430, 427));
@@ -523,15 +529,21 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPnDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPnDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPnDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPnDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrDSHDdagiao, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(876, 280, 430, 427));
@@ -807,7 +819,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 720));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo 1234.jpg"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         jLabel14.setText("jLabel14");
         jLabel14.setPreferredSize(new java.awt.Dimension(1320, 720));
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

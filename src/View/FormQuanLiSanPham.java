@@ -23,7 +23,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        jPanel9.setBackground((new Color(0,0,0,80)));
+        jPanel9.setBackground((new Color(0,0,0,0)));
         jPanel3.setBackground(new Color(236,236,236,190));
         jPanel5.setBackground(new Color(236,236,236,190));
         jPanel8.setBackground(new Color(236,236,236,190));
@@ -32,14 +32,14 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         jPnThongtinSP.setBackground(new Color(0,204,204,150));
         jPnTracuuSP.setBackground(new Color(0,204,204,150));
         
-        jBtnBack.setBackground(new Color(153,153,153,180));
-        jBtnThem.setBackground(new Color(153,153,153,180));
-        jBtnXoa.setBackground(new Color(153,153,153,180));
-        jBtnSua.setBackground(new Color(153,153,153,180));
-        jBtnLuu.setBackground(new Color(153,153,153,180));
-        jBtnHuy.setBackground(new Color(153,153,153,180));
-        jBtnTimKiem.setBackground(new Color(153,153,153,180));
-        jBtnLamMoi.setBackground(new Color(153,153,153,180));
+        jBtnBack.setBackground(new Color(153,153,153,200));
+        jBtnThem.setBackground(new Color(153,153,153,200));
+        jBtnXoa.setBackground(new Color(153,153,153,200));
+        jBtnSua.setBackground(new Color(153,153,153,200));
+        jBtnLuu.setBackground(new Color(153,153,153,200));
+        jBtnHuy.setBackground(new Color(153,153,153,200));
+        jBtnTimKiem.setBackground(new Color(153,153,153,200));
+        jBtnLamMoi.setBackground(new Color(153,153,153,200));
         
         jScrDSSP.setOpaque(false);
         jScrDSSP.getViewport().setOpaque(false);
@@ -584,7 +584,6 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 50, 540, 590));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -595,8 +594,6 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             }
         ));
         jScrDSSP.setViewportView(jTbDSSP);
-
-        jPanel8.add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 780, 430));
 
         jPnDSSP.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -620,7 +617,26 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPnDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 40));
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jPnDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrDSSP)
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jPnDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 780, 470));
 
@@ -717,7 +733,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo 1234.jpg"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
 
         pack();

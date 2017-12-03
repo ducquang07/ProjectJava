@@ -22,7 +22,8 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
     public FormQuanLiNhaCungCap() {
         initComponents();
         setLocationRelativeTo(null);
-        jPanel9.setBackground(new Color(0,0,0,80));
+        jPanel9.setBackground((new Color(0,0,0,0)));
+        
         jPanel4.setBackground(new Color(236,236,236,190));
         jPanel10.setBackground(new Color(236,236,236,190));
         jPanel8.setBackground(new Color(236,236,236,190));
@@ -31,14 +32,14 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
         jPnThongtinNCC.setBackground(new Color(0,204,204,150));
         jPnDSNCC.setBackground(new Color(0,204,204,150));
         
-        jBtnBack.setBackground(new Color(153,153,153,180));
-        jBtnThem.setBackground(new Color(153,153,153,180));
-        jBtnXoa.setBackground(new Color(153,153,153,180));
-        jBtnSua.setBackground(new Color(153,153,153,180));
-        jBtnLuu.setBackground(new Color(153,153,153,180));
-        jBtnHuy.setBackground(new Color(153,153,153,180));
-        jBtnTimKiem.setBackground(new Color(153,153,153,180));
-        jBtnLamMoi.setBackground(new Color(153,153,153,180));
+        jBtnBack.setBackground(new Color(153,153,153,200));
+        jBtnThem.setBackground(new Color(153,153,153,200));
+        jBtnXoa.setBackground(new Color(153,153,153,200));
+        jBtnSua.setBackground(new Color(153,153,153,200));
+        jBtnLuu.setBackground(new Color(153,153,153,200));
+        jBtnHuy.setBackground(new Color(153,153,153,200));
+        jBtnTimKiem.setBackground(new Color(153,153,153,200));
+        jBtnLamMoi.setBackground(new Color(153,153,153,200));
         
         jScrDSNCC.setOpaque(false);
         jScrDSNCC.getViewport().setOpaque(false);
@@ -447,7 +448,7 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
             .addComponent(jPnTracuuNCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
@@ -467,7 +468,7 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 540, 200));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 550, 200));
 
         jPanel10.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -558,7 +559,7 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 540, 360));
+        getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 550, 360));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -573,7 +574,7 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
         ));
         jScrDSNCC.setViewportView(jTbDSNCC);
 
-        jPanel8.add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 770, 610));
+        jPanel8.add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 760, 590));
 
         jPnDSNCC.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -597,15 +598,15 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel8.add(jPnDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 40));
+        jPanel8.add(jPnDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 40));
 
-        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 50, 770, 650));
+        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 50, 780, 650));
 
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 710));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo 1234.jpg"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 710));
 
         pack();

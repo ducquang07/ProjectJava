@@ -22,7 +22,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     public FormQuanLiLoaiSanPham() {
         initComponents();
         setLocationRelativeTo(null);
-        jPanel5.setBackground(new Color(0,0,0,80));
+        jPanel5.setBackground((new Color(0,0,0,0)));
         
         jPanel6.setBackground(new Color(236,236,236,190));
         jPanel1.setBackground(new Color(236,236,236,190));
@@ -32,14 +32,14 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jPnThongtinLSP.setBackground(new Color(0,204,204,150));
         jPnTracuuLSP.setBackground(new Color(0,204,204,150));
         
-        jBtnBack.setBackground(new Color(153,153,153,180));
-        jBtnThem.setBackground(new Color(153,153,153,180));
-        jBtnXoa.setBackground(new Color(153,153,153,180));
-        jBtnSua.setBackground(new Color(153,153,153,180));
-        jBtnLuu.setBackground(new Color(153,153,153,180));
-        jBtnHuy.setBackground(new Color(153,153,153,180));
-        jBtnTimKiem.setBackground(new Color(153,153,153,180));
-        jBtnLamMoi.setBackground(new Color(153,153,153,180));
+        jBtnBack.setBackground(new Color(153,153,153,200));
+        jBtnThem.setBackground(new Color(153,153,153,200));
+        jBtnXoa.setBackground(new Color(153,153,153,200));
+        jBtnSua.setBackground(new Color(153,153,153,200));
+        jBtnLuu.setBackground(new Color(153,153,153,200));
+        jBtnHuy.setBackground(new Color(153,153,153,200));
+        jBtnTimKiem.setBackground(new Color(153,153,153,200));
+        jBtnLamMoi.setBackground(new Color(153,153,153,200));
         
         jScrDSLSP.setOpaque(false);
         jScrDSLSP.getViewport().setOpaque(false);
@@ -479,7 +479,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jTbDSLSP.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrDSLSP.setViewportView(jTbDSLSP);
 
-        jPanel2.add(jScrDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 39, 480, 450));
+        jPanel2.add(jScrDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 49, 460, 430));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 480, 489));
 
@@ -616,7 +616,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 560));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo 1234.jpg"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 560));
 
         pack();
