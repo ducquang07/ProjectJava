@@ -895,7 +895,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         });
         jScrDSNCC.setViewportView(jTbDSNCC);
 
-        jPanel1.add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 480, 220));
+        jPanel1.add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 155, 490, 210));
 
         jPnDSNCC.setBackground(new java.awt.Color(0, 204, 204));
         jPnDSNCC.setPreferredSize(new java.awt.Dimension(500, 34));
@@ -920,7 +920,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
         jPanel1.add(jPnDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 60, 500, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 60, 500, 370));
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -943,7 +943,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         });
         jScrDSPC.setViewportView(jTbDSPC);
 
-        jPanel8.add(jScrDSPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 390, 530));
+        jPanel8.add(jScrDSPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 40, 400, 535));
 
         jPnDSPC.setBackground(new java.awt.Color(0, 204, 204));
 

@@ -426,7 +426,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jPnTracuuthongtinHDL.setBackground(new java.awt.Color(0, 204, 204));
 
-        jLabel56.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel56.setText("Tra cứu thông tin :");
 
         javax.swing.GroupLayout jPnTracuuthongtinHDLLayout = new javax.swing.GroupLayout(jPnTracuuthongtinHDL);
