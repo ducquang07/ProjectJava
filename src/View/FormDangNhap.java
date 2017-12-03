@@ -76,10 +76,10 @@ public class FormDangNhap extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("Username...");
+        jTextField1.setText("Tên đăng nhập...");
         jTextField1.setToolTipText("");
         jTextField1.setBorder(null);
-        jTextField1.setEnabled(false);
+        jTextField1.setFocusable(false);
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextField1MousePressed(evt);
@@ -90,9 +90,10 @@ public class FormDangNhap extends javax.swing.JFrame {
         jPasswordField1.setBackground(new java.awt.Color(153, 153, 153));
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setText("Password...");
+        jPasswordField1.setText("Mật khẩu...");
         jPasswordField1.setBorder(null);
-        jPasswordField1.setEnabled(false);
+        jPasswordField1.setEchoChar('\u0000');
+        jPasswordField1.setFocusable(false);
         jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPasswordField1MousePressed(evt);
@@ -109,19 +110,16 @@ public class FormDangNhap extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Login");
+        jLabel6.setText("Đăng nhập");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,8 +266,8 @@ public class FormDangNhap extends javax.swing.JFrame {
 
     private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
         // TODO add your handling code here:
-        if(!jTextField1.isEnabled()){
-        jTextField1.setEnabled(true);
+        if(!jTextField1.isFocusable()){
+        jTextField1.setFocusable(true);
         jTextField1.setText("");
         jTextField1.requestFocus();
         }
@@ -277,8 +275,8 @@ public class FormDangNhap extends javax.swing.JFrame {
 
     private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
         // TODO add your handling code here:
-        if(!jPasswordField1.isEnabled()){
-        jPasswordField1.setEnabled(true);
+        if(!jPasswordField1.isFocusable()){
+        jPasswordField1.setFocusable(true);
         jPasswordField1.setText("");
         jPasswordField1.requestFocus();
         jPasswordField1.setEchoChar('\u2022');}

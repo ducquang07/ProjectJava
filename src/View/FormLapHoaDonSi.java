@@ -320,12 +320,14 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 78, -1, -1));
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn nhà cung cấp---" }));
+        jComboBox3.setFocusable(false);
         jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 75, 169, -1));
 
         jLabel10.setText("Loại sản phẩm :");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, -1, -1));
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn loại sản phẩm---" }));
+        jComboBox4.setFocusable(false);
         jPanel3.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 113, 170, -1));
 
         jLabel11.setText("Từ tìm kiếm :");
@@ -437,7 +439,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
 
         jPanel7.add(jPnThongtinSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 30));
 
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 540, 610, 100));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 540, 600, 100));
 
         jBtnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -643,6 +645,8 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         );
 
         getContentPane().add(jBtnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 650, 190, 60));
+
+        jPanel5.setFocusable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

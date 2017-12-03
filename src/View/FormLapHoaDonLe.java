@@ -31,6 +31,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jPanel3.setBackground(new Color(236,236,236,190));
         jPanel4.setBackground(new Color(236,236,236,190));       
         jPanel7.setBackground(new Color(236,236,236,190));
+        
         jPanel5.setBackground(new Color(0,0,0,0));
         
         jPnThongtinHD.setBackground(new Color(0,204,204,150));
@@ -133,6 +134,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -311,10 +313,12 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel9.setText("Nhà cung cấp :");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn nhà cung cấp---" }));
+        jComboBox3.setFocusable(false);
 
         jLabel10.setText("Loại sản phẩm :");
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn loại sản phẩm---" }));
+        jComboBox4.setFocusable(false);
 
         jLabel11.setText("Từ tìm kiếm :");
 

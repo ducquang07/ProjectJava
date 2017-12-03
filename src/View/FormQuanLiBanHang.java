@@ -23,6 +23,13 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         jPanel1.setBackground(new Color(0,0,0,80));
         
+        jPnHome.setVisible(false);
+        
+        jPnHome.setBackground(new Color(236,236,236,50));
+        
+        jBtnLapHDL.setBackground(new Color(236,236,236,50));
+        jBtnLapHDS.setBackground(new Color(236,236,236,50));
+        
         jBtn1.setBackground(new Color(236,236,236,50));  
         jBtn2.setBackground(new Color(236,236,236,50));  
         jBtn3.setBackground(new Color(236,236,236,50));  
@@ -66,6 +73,11 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jPnHome = new javax.swing.JPanel();
+        jBtnLapHDL = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jBtnLapHDS = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -84,7 +96,11 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 20, 30));
 
+        jBtn1.setBackground(new java.awt.Color(153, 153, 153));
         jBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn1MouseEntered(evt);
             }
@@ -111,6 +127,7 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
 
         getContentPane().add(jBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 180, 120));
 
+        jBtn2.setBackground(new java.awt.Color(153, 153, 153));
         jBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn2MouseClicked(evt);
@@ -162,6 +179,7 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
 
         getContentPane().add(jBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, -1, 120));
 
+        jBtn3.setBackground(new java.awt.Color(153, 153, 153));
         jBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn3MouseClicked(evt);
@@ -272,17 +290,97 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 200, 10));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+        jPnHome.setBackground(new java.awt.Color(204, 204, 204));
+        jPnHome.setOpaque(false);
+        jPnHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jBtnLapHDL.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnLapHDL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnLapHDLMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnLapHDLMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnLapHDLMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnLapHDLMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnLapHDLMouseReleased(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Lập hóa đơn lẻ");
+
+        javax.swing.GroupLayout jBtnLapHDLLayout = new javax.swing.GroupLayout(jBtnLapHDL);
+        jBtnLapHDL.setLayout(jBtnLapHDLLayout);
+        jBtnLapHDLLayout.setHorizontalGroup(
+            jBtnLapHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnLapHDLLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+        jBtnLapHDLLayout.setVerticalGroup(
+            jBtnLapHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBtnLapHDLLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(11, 11, 11))
         );
 
+        jPnHome.add(jBtnLapHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 38));
+
+        jBtnLapHDS.setBackground(new java.awt.Color(102, 102, 102));
+        jBtnLapHDS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnLapHDSMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnLapHDSMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnLapHDSMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnLapHDSMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnLapHDSMouseReleased(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Lập hóa đơn sỉ");
+
+        javax.swing.GroupLayout jBtnLapHDSLayout = new javax.swing.GroupLayout(jBtnLapHDS);
+        jBtnLapHDS.setLayout(jBtnLapHDSLayout);
+        jBtnLapHDSLayout.setHorizontalGroup(
+            jBtnLapHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnLapHDSLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        jBtnLapHDSLayout.setVerticalGroup(
+            jBtnLapHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnLapHDSLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jPnHome.add(jBtnLapHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, 190, 38));
+
+        getContentPane().add(jPnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 439, 190, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 630));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo.jpg"))); // NOI18N
@@ -422,6 +520,65 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         frmQLKH.setVisible(true);
     }//GEN-LAST:event_jBtn3MouseClicked
 
+    private void jBtnLapHDSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDSMouseExited
+        // TODO add your handling code here:
+        resetColor(jBtnLapHDS);
+    }//GEN-LAST:event_jBtnLapHDSMouseExited
+
+    private void jBtnLapHDSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDSMouseEntered
+        // TODO add your handling code here:
+        setColor(jBtnLapHDS);
+    }//GEN-LAST:event_jBtnLapHDSMouseEntered
+
+    private void jBtnLapHDLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDLMouseExited
+        // TODO add your handling code here:
+        resetColor(jBtnLapHDL);
+    }//GEN-LAST:event_jBtnLapHDLMouseExited
+
+    private void jBtnLapHDLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDLMouseEntered
+        // TODO add your handling code here:
+        setColor(jBtnLapHDL);
+    }//GEN-LAST:event_jBtnLapHDLMouseEntered
+
+    private void jBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn1MouseClicked
+        // TODO add your handling code here:
+        if(jPnHome.isVisible())
+            jPnHome.setVisible(false);
+        else jPnHome.setVisible(true);
+    }//GEN-LAST:event_jBtn1MouseClicked
+
+    private void jBtnLapHDLMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDLMousePressed
+        // TODO add your handling code here:
+        resetColor(jBtnLapHDL);
+    }//GEN-LAST:event_jBtnLapHDLMousePressed
+
+    private void jBtnLapHDLMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDLMouseReleased
+        // TODO add your handling code here:
+        setColor(jBtnLapHDL);
+    }//GEN-LAST:event_jBtnLapHDLMouseReleased
+
+    private void jBtnLapHDSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDSMousePressed
+        // TODO add your handling code here:
+        resetColor(jBtnLapHDS);
+    }//GEN-LAST:event_jBtnLapHDSMousePressed
+
+    private void jBtnLapHDSMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDSMouseReleased
+        // TODO add your handling code here:
+        setColor(jBtnLapHDS);
+    }//GEN-LAST:event_jBtnLapHDSMouseReleased
+
+    private void jBtnLapHDLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDLMouseClicked
+        // TODO add your handling code here:
+        FormLapHoaDonLe frmLHDL = new FormLapHoaDonLe();
+        frmLHDL.setVisible(true);
+    }//GEN-LAST:event_jBtnLapHDLMouseClicked
+
+    private void jBtnLapHDSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLapHDSMouseClicked
+        // TODO add your handling code here:
+        FormLapHoaDonSi frmLHDS = new FormLapHoaDonSi();
+        frmLHDS.setVisible(true);
+    }//GEN-LAST:event_jBtnLapHDSMouseClicked
+
     
     /**
      * @param args the command line arguments
@@ -456,6 +613,14 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -471,7 +636,10 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
     private javax.swing.JPanel jBtn3;
     private javax.swing.JPanel jBtn7;
     private javax.swing.JLabel jBtnClose;
+    private javax.swing.JPanel jBtnLapHDL;
+    private javax.swing.JPanel jBtnLapHDS;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -483,8 +651,10 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPnHome;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
