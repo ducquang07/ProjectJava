@@ -426,7 +426,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jPnTracuuthongtinHDL.setBackground(new java.awt.Color(0, 204, 204));
 
-        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel56.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jLabel56.setText("Tra cứu thông tin :");
 
         javax.swing.GroupLayout jPnTracuuthongtinHDLLayout = new javax.swing.GroupLayout(jPnTracuuthongtinHDL);
@@ -1112,7 +1112,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             .addGap(0, 720, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 1330, 720));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 720));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 720));
