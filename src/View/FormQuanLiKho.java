@@ -95,6 +95,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 20, 30));
 
+        jBtn1.setBackground(new java.awt.Color(153, 153, 153));
         jBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn1MouseClicked(evt);
@@ -126,6 +127,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
 
         getContentPane().add(jBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 180, 120));
 
+        jBtn2.setBackground(new java.awt.Color(153, 153, 153));
         jBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn2MouseClicked(evt);
@@ -177,6 +179,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
 
         getContentPane().add(jBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, -1, 120));
 
+        jBtn3.setBackground(new java.awt.Color(153, 153, 153));
         jBtn3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn3MouseClicked(evt);
@@ -242,6 +245,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
 
         getContentPane().add(jBtn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
+        jBtn4.setBackground(new java.awt.Color(153, 153, 153));
         jBtn4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn4MouseClicked(evt);
@@ -293,6 +297,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
 
         getContentPane().add(jBtn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, 120));
 
+        jBtn5.setBackground(new java.awt.Color(153, 153, 153));
         jBtn5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn5MouseClicked(evt);
@@ -345,6 +350,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
 
         getContentPane().add(jBtn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, -1, 120));
 
+        jBtn6.setBackground(new java.awt.Color(153, 153, 153));
         jBtn6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn6MouseClicked(evt);
@@ -420,6 +426,8 @@ public class FormQuanLiKho extends javax.swing.JFrame {
         jLabel20.setText("Design, Create By Closer Group");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 200, 10));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -640,7 +648,8 @@ public class FormQuanLiKho extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtn4MouseClicked
 
     private void jBtn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn5MouseClicked
-        
+        FormNhapHang frmQLNH=new FormNhapHang();
+        frmQLNH.setVisible(true);
     }//GEN-LAST:event_jBtn5MouseClicked
 
     private void jBtn3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn3MouseClicked
