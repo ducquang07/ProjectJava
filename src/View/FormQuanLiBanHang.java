@@ -378,7 +378,7 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
 
         jPnHome.add(jBtnLapHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, 190, 38));
 
-        getContentPane().add(jPnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 439, 190, -1));
+        getContentPane().add(jPnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 439, 190, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 630));
