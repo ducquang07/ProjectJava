@@ -27,6 +27,11 @@ public class Connect {
     private final String username="closer";
     private final String password="Bo4quyennang";
     private String url="";
+
+    public Connection getConDB() {
+        return conDB;
+    }
+    
     
     public boolean Connected(){
         try{
