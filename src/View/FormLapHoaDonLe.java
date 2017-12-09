@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package View;
-
+import Edit.Edit;
+import Model.ModSanPham;
 import java.awt.Color;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,51 +19,31 @@ import javax.swing.table.JTableHeader;
 public class FormLapHoaDonLe extends javax.swing.JFrame {
 
     int xx=0,yy=0;
+    Edit editFrm= new Edit();
     /**
      * Creates new form FormLapHoaDonLe
      */
-    public FormLapHoaDonLe() {
+    public FormLapHoaDonLe(){
         initComponents();
         this.setLocationRelativeTo(null);
-        //this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        jPanel1.setBackground(new Color(236,236,236,190));
-        jPanel2.setBackground(new Color(236,236,236,190));
-        jPanel3.setBackground(new Color(236,236,236,190));
-        jPanel4.setBackground(new Color(236,236,236,190));       
-        jPanel7.setBackground(new Color(236,236,236,190));
+        
+        JPanel ListPn[]=new JPanel[]{jPanel1,jPanel2,jPanel3,jPanel4,jPanel7};
+        editFrm.MakeTransparentPane(ListPn);
+        
+        JPanel ListTitle[]=new JPanel[]{jPnDSSP,jPnGioHang,jPnThongtinHD,jPnThongtinSP,jPnTimkiemSP};
+        editFrm.MakeTransparentTitle(ListTitle);
+        
+        JPanel ListButton[]=new JPanel[]{jbtnDuyetGioHang,jBtnBack,jBtnHuy,jBtnLamMoi,jBtnThem,jBtnTimKiem,jBtnXoa};
+        editFrm.MakeTransparentButton(ListButton);
         
         jPanel5.setBackground(new Color(0,0,0,0));
         
-        jPnThongtinHD.setBackground(new Color(0,204,204,150));
-        jPnTimkiemSP.setBackground(new Color(0,204,204,150));
-        jPnGioHang.setBackground(new Color(80,204,204,150));
-        jPnDSSP.setBackground(new Color(80,204,204,150));
-        jPnThongtinSP.setBackground(new Color(0,204,204,150));
-        
-        jbtnDuyetGioHang.setBackground(new Color(153,153,153,180));
-        jBtnHuy.setBackground(new Color(153,153,153,180));
-        jBtnThem.setBackground(new Color(153,153,153,180));
-        jBtnXoa.setBackground(new Color(153,153,153,180));
-        jBtnTimKiem.setBackground(new Color(153,153,153,180));
-        jBtnLamMoi.setBackground(new Color(153,153,153,180));
-        jBtnBack.setBackground(new Color(153,153,153,180));
-        
-        jScrGioHang.setOpaque(false);
-        jScrGioHang.getViewport().setOpaque(false);
-        jtbGioHang.setShowGrid(true);
-        ((DefaultTableCellRenderer)jtbGioHang.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jtbGioHang.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jtbGioHang.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        
-        jScrDSSP.setOpaque(false);
-        jScrDSSP.getViewport().setOpaque(false);
-        jtbDSSP.setShowGrid(true);
-        ((DefaultTableCellRenderer)jtbDSSP.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jtbDSSP.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jtbDSSP.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        
+        editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
+        editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
+        load_Data();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,9 +84,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jPnTimkiemSP = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         jScrDSSP = new javax.swing.JScrollPane();
         jtbDSSP = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jPnDSSP = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -396,28 +376,49 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 600, 150));
 
-        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        jtbDSSP.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jtbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã sản phẩm", "Tên sản phẩm", "ĐVT", "Loại", "Giá lẻ", "Giá sỉ", "Số lượng"
+                "Mã sản phẩm", "Tên sản phẩm", "Số lượng"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Byte.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        jScrDSSP.setViewportView(jtbDSSP);
 
-        jPanel4.add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 590, 270));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtbDSSP.setFocusable(false);
+        jtbDSSP.setRowHeight(25);
+        jtbDSSP.setSelectionBackground(new java.awt.Color(218, 223, 225));
+        jtbDSSP.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jtbDSSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jtbDSSP.setShowHorizontalLines(false);
+        jtbDSSP.setShowVerticalLines(false);
+        jtbDSSP.getTableHeader().setReorderingAllowed(false);
+        jScrDSSP.setViewportView(jtbDSSP);
+        if (jtbDSSP.getColumnModel().getColumnCount() > 0) {
+            jtbDSSP.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jtbDSSP.getColumnModel().getColumn(1).setPreferredWidth(500);
+            jtbDSSP.getColumnModel().getColumn(2).setPreferredWidth(100);
+        }
+
+        getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 255, 590, 270));
+
+        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setText("Danh sách sản phẩm :");
@@ -704,6 +705,28 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void load_Data() {
+        try{
+                ModSanPham ModSP = new ModSanPham();
+                ResultSet rs=ModSP.GetALL();
+                while(jtbDSSP.getRowCount()>0)
+                    ((DefaultTableModel)jtbDSSP.getModel()).removeRow(0);
+                int col=rs.getMetaData().getColumnCount();
+                while(rs.next()){
+                    Object[] rows = new Object[col];
+                    for(int i=1;i<=col;i++)
+                        rows[i-1]=rs.getObject(i);
+                    ((DefaultTableModel)jtbDSSP.getModel()).insertRow(rs.getRow()-1, rows);
+                }
+                rs.close();
+            
+        }
+        catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormLaoHoaDonLe.load_Data(): "+ex.getMessage());
+        }
+        
+    }
+    
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
         // TODO add your handling code here:
 //        try {
@@ -932,7 +955,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormLapHoaDonLe().setVisible(true);
+               new FormLapHoaDonLe().setVisible(true);
             }
         });
     }

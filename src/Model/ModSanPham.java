@@ -25,7 +25,7 @@ public class ModSanPham extends Model{
     
     public ModSanPham() {
         DB=new Connect();
-        Table="SanPham";
+        Table="SANPHAM";
         ID="MaSP";
     }
 

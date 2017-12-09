@@ -71,9 +71,6 @@ public class Connect {
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại Connect.GetData: "+ex.getMessage());
         }
-        finally{
-            CloseDB();
-        }
         return rs;
     }
     
