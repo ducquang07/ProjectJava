@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import Edit.Edit;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
+    Edit editFrm=new Edit();
     /**
      * Creates new form FormXacNhanTinhTrangGiaoHang
      */
@@ -25,40 +26,17 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         
         jPanel10.setBackground((new Color(0,0,0,0)));
         
-        jPnTracuuHDchuagiao.setBackground(new Color(0,204,204,150));
-        jPnDSHDchuagiao.setBackground(new Color(0,204,204,150));
-        jPnTracuuHDdagiao.setBackground(new Color(0,204,204,150));
-        jPnDSHDdagiao.setBackground(new Color(0,204,204,150));
-        jPnThongtinHD.setBackground(new Color(0,204,204,150));
+        JPanel ListTitle[]=new JPanel[]{jPnDSHDchuagiao,jPnDSHDdagiao,jPnThongtinHD,jPnTracuuHDchuagiao,jPnTracuuHDdagiao};
+        editFrm.MakeTransparentTitle(ListTitle);
         
-        jPanel1.setBackground(new Color(236,236,236,190));
-        jPanel2.setBackground(new Color(236,236,236,190));
-        jPanel4.setBackground(new Color(236,236,236,190));
-        jPanel9.setBackground(new Color(236,236,236,190));
-        jPanel3.setBackground(new Color(236,236,236,190));
+        JPanel ListPanel[]=new JPanel[]{jPanel1,jPanel2,jPanel4,jPanel9,jPanel3};
+        editFrm.MakeTransparentPanel(ListPanel);
         
-        jBtnBack.setBackground(new Color(153,153,153,200));
-        jBtnTimKiemHDchuagiao.setBackground(new Color(153,153,153,200));
-        jBtnLamMoichuagiao.setBackground(new Color(153,153,153,200));
-        jBtnTimKiemHDdagiao.setBackground(new Color(153,153,153,200));
-        jBtnLamMoidagiao.setBackground(new Color(153,153,153,200));
-        jBtnXemchitiet.setBackground(new Color(153,153,153,200));
-        jBtnXacnhangiao.setBackground(new Color(153,153,153,200));
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnLamMoichuagiao,jBtnLamMoidagiao,jBtnTimKiemHDchuagiao,jBtnTimKiemHDdagiao,jBtnXacnhangiao,jBtnXemchitiet};
+        editFrm.MakeTransparentButton(ListButton);   
         
-        
-        jScrDSHDchuagiao.setOpaque(false);
-        jScrDSHDchuagiao.getViewport().setOpaque(false);
-        jTbDSHDchuagiao.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbDSHDchuagiao.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbDSHDchuagiao.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbDSHDchuagiao.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        
-        jScrDSHDdagiao.setOpaque(false);
-        jScrDSHDdagiao.getViewport().setOpaque(false);
-        jTbDSHDdagiao.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbDSHDdagiao.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbDSHDdagiao.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbDSHDdagiao.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        editFrm.MakeTransparentTable(jScrDSHDchuagiao, jTbDSHDchuagiao);
+        editFrm.MakeTransparentTable(jScrDSHDdagiao, jTbDSHDdagiao);
         
     }
 
