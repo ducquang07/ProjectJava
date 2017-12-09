@@ -39,6 +39,18 @@ public class ObjSanPham {
         this.MoTa = MoTa;
     }
 
+    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, int GiaLe, String DVT, int SoLuong, String MaNCC) {
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.MaLoaiSP = MaLoaiSP;
+        this.GiaLe = GiaLe;
+        this.DVT = DVT;
+        this.SoLuong = SoLuong;
+        this.MaNCC = MaNCC;
+    }
+    
+
+    
     //////Get
     public String getMaSP() {
         return MaSP;

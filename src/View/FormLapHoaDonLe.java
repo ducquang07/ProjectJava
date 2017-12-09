@@ -5,13 +5,19 @@
  */
 package View;
 import Edit.Edit;
+import Control.CtrlLapHoaDonLe;
 import Model.ModSanPham;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
+import Object.ObjSanPham;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.TableModel;
 /**
  *
  * @author ThaiNguyen
@@ -20,6 +26,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
     int xx=0,yy=0;
     Edit editFrm= new Edit();
+    ArrayList<ObjSanPham> listSP = new ArrayList<>();
+    CtrlLapHoaDonLe CtrlHDL = new CtrlLapHoaDonLe();
+    
     /**
      * Creates new form FormLapHoaDonLe
      */
@@ -40,7 +49,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
-        load_Data();
+        
+        HienThiDanhSachSanPham();
+        Binding();
     }
 
     
@@ -90,16 +101,24 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jPnDSSP = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel18 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jtxtDVT = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jtxtDonGia = new javax.swing.JTextField();
         jPnThongtinSP = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxtTenSP = new javax.swing.JTextArea();
+        jLabel27 = new javax.swing.JLabel();
+        jtxtTenLoaiSP = new javax.swing.JTextField();
+        jtxtThanhTien = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtxtTenNCC = new javax.swing.JTextArea();
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jbtnDuyetGioHang = new javax.swing.JPanel();
@@ -261,7 +280,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         });
         jScrGioHang.setViewportView(jtbGioHang);
 
-        jPanel2.add(jScrGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 679, 380));
+        jPanel2.add(jScrGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 679, 400));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Giỏ hàng :");
@@ -282,7 +301,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jPanel2.add(jPnGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 689, 420));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 689, 440));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -408,14 +427,18 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jtbDSSP.setShowHorizontalLines(false);
         jtbDSSP.setShowVerticalLines(false);
         jtbDSSP.getTableHeader().setReorderingAllowed(false);
+        jtbDSSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jtbDSSPMousePressed(evt);
+            }
+        });
         jScrDSSP.setViewportView(jtbDSSP);
         if (jtbDSSP.getColumnModel().getColumnCount() > 0) {
             jtbDSSP.getColumnModel().getColumn(0).setPreferredWidth(100);
             jtbDSSP.getColumnModel().getColumn(1).setPreferredWidth(500);
-            jtbDSSP.getColumnModel().getColumn(2).setPreferredWidth(100);
         }
 
-        getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 255, 590, 270));
+        getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 255, 590, 230));
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -439,47 +462,79 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jPanel4.add(jPnDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 600, 310));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 600, 270));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel15.setText("Thông tin sản phẩm : ");
-        jPanel7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, 20));
-
         jLabel16.setText("Tên sản phẩm :");
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel17.setText("Số lượng :");
-        jPanel7.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-        jPanel7.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 40, 195, -1));
-        jPanel7.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 70, 195, -1));
+        jPanel7.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
+        jPanel7.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 130, 190, -1));
 
         jLabel18.setText("Đơn giá :");
-        jPanel7.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 39, -1, -1));
-        jPanel7.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 36, 178, -1));
+        jPanel7.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, 20));
+        jPanel7.add(jtxtDVT, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 73, 178, 20));
 
         jLabel19.setText("Thành tiền :");
-        jPanel7.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 69, -1, -1));
-        jPanel7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 66, 178, -1));
+        jPanel7.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        jPanel7.add(jtxtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 178, -1));
 
         jPnThongtinSP.setBackground(new java.awt.Color(0, 204, 204));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel15.setText("Thông tin sản phẩm : ");
 
         javax.swing.GroupLayout jPnThongtinSPLayout = new javax.swing.GroupLayout(jPnThongtinSP);
         jPnThongtinSP.setLayout(jPnThongtinSPLayout);
         jPnThongtinSPLayout.setHorizontalGroup(
             jPnThongtinSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPnThongtinSPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPnThongtinSPLayout.setVerticalGroup(
             jPnThongtinSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
         jPanel7.add(jPnThongtinSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
 
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 540, 600, 100));
+        jLabel25.setText("Nhà cung cấp :");
+        jPanel7.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setFocusable(false);
+
+        jtxtTenSP.setColumns(1);
+        jtxtTenSP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jtxtTenSP.setRows(5);
+        jScrollPane1.setViewportView(jtxtTenSP);
+
+        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 88, 194, 30));
+
+        jLabel27.setText("Loại :");
+        jPanel7.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+        jPanel7.add(jtxtTenLoaiSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 47, 178, -1));
+        jPanel7.add(jtxtThanhTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 127, 178, -1));
+
+        jLabel28.setText("ĐVT :");
+        jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 76, -1, -1));
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jtxtTenNCC.setColumns(20);
+        jtxtTenNCC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jtxtTenNCC.setRows(5);
+        jScrollPane2.setViewportView(jtxtTenNCC);
+
+        jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 38, 194, 40));
+
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 500, 600, 161));
 
         jBtnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -552,13 +607,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         );
         jbtnDuyetGioHangLayout.setVerticalGroup(
             jbtnDuyetGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jbtnDuyetGioHangLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jbtnDuyetGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 650, 190, 60));
+        getContentPane().add(jbtnDuyetGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 670, 190, 50));
 
         jBtnHuy.setBackground(new java.awt.Color(204, 204, 204));
         jBtnHuy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -593,13 +645,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         );
         jBtnHuyLayout.setVerticalGroup(
             jBtnHuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBtnHuyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel23)
-                .addGap(22, 22, 22))
+            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 650, 190, 60));
+        getContentPane().add(jBtnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 670, 190, 50));
 
         jBtnThem.setBackground(new java.awt.Color(204, 204, 204));
         jBtnThem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -634,13 +683,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         );
         jBtnThemLayout.setVerticalGroup(
             jBtnThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnThemLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 650, 190, 60));
+        getContentPane().add(jBtnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 670, 190, 50));
 
         jBtnXoa.setBackground(new java.awt.Color(204, 204, 204));
         jBtnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -678,13 +724,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         );
         jBtnXoaLayout.setVerticalGroup(
             jBtnXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnXoaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 650, 190, 60));
+        getContentPane().add(jBtnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 670, 190, 50));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -705,6 +748,45 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void HienThiDanhSachSanPham(){
+        ResultSet rs=CtrlHDL.LayDanhSachSanPham();        
+        listSP.clear();
+        DefaultTableModel model;
+        model=(DefaultTableModel) jtbDSSP.getModel();
+        try{
+            while(rs.next()){
+                ObjSanPham item;
+                item=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"), (int) Double.parseDouble(rs.getString("GiaLe")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"));
+                listSP.add(item);
+                Vector v = new Vector();
+                v.add(item.getMaSP());
+                v.add(item.getTenSP());
+                v.add(item.getSoLuong());
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormLapHoaDonLe.HienThiDanhSachSanPham: "+ex.getMessage());
+        }
+    }
+    
+    public void Binding(){
+        TableModel model =jtbDSSP.getModel();
+        try{
+            int viewRow = jtbDSSP.getSelectedRow();
+            int modelRow= jtbDSSP.convertRowIndexToModel(viewRow);
+             if(viewRow>-1){
+                  jtxtTenSP.setText(listSP.get(modelRow).getTenSP());
+                  jtxtDVT.setText(listSP.get(modelRow).getDVT());
+                  jtxtDonGia.setText(Integer.toString(listSP.get(modelRow).getGiaLe()));
+                  jtxtTenSP.setText(listSP.get(modelRow).getTenSP());
+                  jtxtTenLoaiSP.setText(listSP.get(modelRow).getMaLoaiSP());
+                  jtxtTenNCC.setText(listSP.get(modelRow).getMaNCC());
+             }
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormLapHoaDonLe.Binding: "+ex.getMessage());
+        }
+    }
      private void load_Data() {
         try{
                 ModSanPham ModSP = new ModSanPham();
@@ -912,6 +994,11 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         setColor(jBtnXoa);
     }//GEN-LAST:event_jBtnXoaMouseReleased
 
+    private void jtbDSSPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbDSSPMousePressed
+        // TODO add your handling code here:
+        Binding();
+    }//GEN-LAST:event_jtbDSSPMousePressed
+
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
@@ -988,7 +1075,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1009,16 +1099,21 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private javax.swing.JPanel jPnTimkiemSP;
     private javax.swing.JScrollPane jScrDSSP;
     private javax.swing.JScrollPane jScrGioHang;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JPanel jbtnDuyetGioHang;
     private javax.swing.JTable jtbDSSP;
     private javax.swing.JTable jtbGioHang;
+    private javax.swing.JTextField jtxtDVT;
+    private javax.swing.JTextField jtxtDonGia;
+    private javax.swing.JTextField jtxtTenLoaiSP;
+    private javax.swing.JTextArea jtxtTenNCC;
+    private javax.swing.JTextArea jtxtTenSP;
+    private javax.swing.JTextField jtxtThanhTien;
     // End of variables declaration//GEN-END:variables
 }
