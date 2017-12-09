@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import Edit.Edit;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
 
+    Edit editFrm=new Edit();
     /**
      * Creates new form FormQuanLiNhaCungCap
      */
@@ -24,29 +25,16 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         jPanel9.setBackground((new Color(0,0,0,0)));
         
-        jPanel4.setBackground(new Color(236,236,236,190));
-        jPanel10.setBackground(new Color(236,236,236,190));
-        jPanel8.setBackground(new Color(236,236,236,190));
+        JPanel ListPanel[]=new JPanel[]{jPanel4,jPanel10,jPanel8};
+        editFrm.MakeTransparentPanel(ListPanel);
         
-        jPnTracuuNCC.setBackground(new Color(0,204,204,150));
-        jPnThongtinNCC.setBackground(new Color(0,204,204,150));
-        jPnDSNCC.setBackground(new Color(0,204,204,150));
+        JPanel ListTitle[]=new JPanel[]{jPnDSNCC,jPnThongtinNCC,jPnTracuuNCC};
+        editFrm.MakeTransparentTitle(ListTitle);
         
-        jBtnBack.setBackground(new Color(153,153,153,200));
-        jBtnThem.setBackground(new Color(153,153,153,200));
-        jBtnXoa.setBackground(new Color(153,153,153,200));
-        jBtnSua.setBackground(new Color(153,153,153,200));
-        jBtnLuu.setBackground(new Color(153,153,153,200));
-        jBtnHuy.setBackground(new Color(153,153,153,200));
-        jBtnTimKiem.setBackground(new Color(153,153,153,200));
-        jBtnLamMoi.setBackground(new Color(153,153,153,200));
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXoa};
+        editFrm.MakeTransparentButton(ListButton);
         
-        jScrDSNCC.setOpaque(false);
-        jScrDSNCC.getViewport().setOpaque(false);
-        jTbDSNCC.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbDSNCC.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbDSNCC.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbDSNCC.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        editFrm.MakeTransparentTable(jScrDSNCC, jTbDSNCC);
     }
 
     /**

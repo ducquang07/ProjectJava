@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import Edit.Edit;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JLabel;
@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
+    Edit editFrm = new Edit();
     /**
      * Creates new form FormDanhSachHoaDon
      */
@@ -27,73 +28,38 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         
         jPanel1.setBackground(new Color(0,0,0,0));
         
-        jBtnBack.setBackground(new Color(153,153,153,190));
-        jBtnTimKiem.setBackground(new Color(153,153,153,190));
-        jBtnLamMoi.setBackground(new Color(153,153,153,190));
-        jBtnXemPhieuIn.setBackground(new Color(153,153,153,190));
-        jBtnSua.setBackground(new Color(153,153,153,190));
-        jBtnXoa.setBackground(new Color(153,153,153,190));
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnLamMoi,jBtnSua,jBtnTimKiem,jBtnXemPhieuIn,jBtnXoa};
+        editFrm.MakeTransparentButton(ListButton);
         
-        jTabbedPane1.setOpaque(false); 
-        jTabbedPane1.setBackground(new Color (0,0,0,0)); // this works well, 2 tabs semi-transparents 
-        jTabbedPane1.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI(){
-            protected void paintContentBorder(Graphics g,int tabPlacement,int selectedIndex){}
-        });
+        editFrm.MakeTransparentTabbledPane(jTabbedPane1);
         
         //Tab hóa đơn lẻ
-        jPnTracuuthongtinHDL.setBackground(new Color(0,204,204,150));
-        jPnThongtinHDL.setBackground(new Color(0,204,204,150));
-        jPnDanhsachHDL.setBackground(new Color(0,204,204,150));
-        jPnChitietHDL.setBackground(new Color(0,204,204,150));
         
+        JPanel ListTitleHDL[] =new JPanel[]{jPnTracuuthongtinHDL,jPnThongtinHDL,jPnDanhsachHDL,jPnChitietHDL};
+        editFrm.MakeTransparentTitle(ListTitleHDL);
+
         
         jPnHDL.setBackground(new Color(236,236,236,80));
-        jPnCTHDL.setBackground(new Color(236,236,236,200));
-        jPnTraCuuThongTinHDL.setBackground(new Color(236,236,236,200));
-        jPnThongTinHDL.setBackground(new Color(236,236,236,200));
-        jPnDSHDL.setBackground(new Color(236,236,236,200));
         
-
-        jScrDSHDL.setOpaque(false);
-        jScrDSHDL.getViewport().setOpaque(false);
-        jTbDSHDL.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbDSHDL.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbDSHDL.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbDSHDL.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        JPanel ListPanelHDL[]=new JPanel[]{jPnCTHDL,jPnTraCuuThongTinHDL,jPnThongTinHDL,jPnDSHDL};
+        editFrm.MakeTransparentPanel(ListPanelHDL);
         
-        jScrCTHDL.setOpaque(false);
-        jScrCTHDL.getViewport().setOpaque(false);
-        jTbCTHDL.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbCTHDL.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbCTHDL.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbCTHDL.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        editFrm.MakeTransparentTable(jScrDSHDL, jTbDSHDL);
+        editFrm.MakeTransparentTable(jScrCTHDL, jTbCTHDL);
         
         //Tab hóa đơn sỉ
-        jPnTracuuthongtinHDS.setBackground(new Color(0,204,204,150));
-        jPnThongtinHDS.setBackground(new Color(0,204,204,150));
-        jPnDanhsachHDS.setBackground(new Color(0,204,204,150));
-        jPnChitietHDS.setBackground(new Color(0,204,204,150));
+        JPanel ListTitleHDS[]=new JPanel[]{jPnTracuuthongtinHDS,jPnThongtinHDS,jPnDanhsachHDS,jPnChitietHDS};
+        editFrm.MakeTransparentTitle(ListTitleHDS);
         
         jPnHDS.setBackground(new Color(236,236,236,80));
-        jPnCTHDS.setBackground(new Color(236,236,236,200));
-        jPnTraCuuThongTinHDS.setBackground(new Color(236,236,236,200));
-        jPnThongTinHDS.setBackground(new Color(236,236,236,200));
-        jPnDSHDS.setBackground(new Color(236,236,236,200));
+        
+        JPanel ListPanelHDS[]=new JPanel[]{jPnCTHDS,jPnTraCuuThongTinHDS,jPnThongTinHDS,jPnDSHDS};
+        editFrm.MakeTransparentPanel(ListPanelHDS);
         
 
-        jScrDSHDS.setOpaque(false);
-        jScrDSHDS.getViewport().setOpaque(false);
-        jTbDSHDS.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbDSHDS.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbDSHDS.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbDSHDS.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        
-        jScrCTHDS.setOpaque(false);
-        jScrCTHDS.getViewport().setOpaque(false);
-        jTbCTHDS.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbCTHDS.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbCTHDS.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbCTHDS.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        editFrm.MakeTransparentTable(jScrCTHDS, jTbCTHDS);
+        editFrm.MakeTransparentTable(jScrDSHDS, jTbDSHDS);
+      
     }
 
     /**
@@ -468,8 +434,8 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                                 .addComponent(jLabel60)
                                 .addGap(5, 5, 5)))
                         .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField14)
-                            .addComponent(jComboBox7, 0, 209, Short.MAX_VALUE)))))
+                            .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(jComboBox7, 0, 265, Short.MAX_VALUE)))))
         );
         jPnTraCuuThongTinHDLLayout.setVerticalGroup(
             jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

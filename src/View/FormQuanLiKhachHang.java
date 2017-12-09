@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import Edit.Edit;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
+    Edit editFrm = new Edit();
     /**
      * Creates new form FormQuanLiKhachHang
      */
@@ -23,30 +24,17 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jPanel1.setBackground(new Color(0,0,0,0));
-        jPanel2.setBackground(new Color(236,236,236,190));
-        jPanel3.setBackground(new Color(236,236,236,190));
-        jPanel4.setBackground(new Color(236,236,236,190));  
         
-        jPnTracuuKH.setBackground(new Color(0,204,204,150));
-        jPnDSKH.setBackground(new Color(0,204,204,150));
-        jPnThongtinKH.setBackground(new Color(0,204,204,150));
+        JPanel ListPanel[]=new JPanel[]{jPanel2,jPanel3,jPanel4};
+        editFrm.MakeTransparentPanel(ListPanel);
         
-        jBtnBack.setBackground(new Color(153,153,153,180));
-        jBtnThem.setBackground(new Color(153,153,153,180));
-        jBtnXoa.setBackground(new Color(153,153,153,180));
-        jBtnSua.setBackground(new Color(153,153,153,180));
-        jBtnLuu.setBackground(new Color(153,153,153,180));
-        jBtnHuy.setBackground(new Color(153,153,153,180));
-        jBtnTimKiem.setBackground(new Color(153,153,153,180));
-        jBtnLamMoi.setBackground(new Color(153,153,153,180));
+        JPanel ListTitle[]=new JPanel[]{jPnDSKH,jPnThongtinKH,jPnTracuuKH};
+        editFrm.MakeTransparentTitle(ListTitle);
         
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXoa};
+        editFrm.MakeTransparentButton(ListButton);
         
-        jScrDSKH.setOpaque(false);
-        jScrDSKH.getViewport().setOpaque(false);
-        jTbDSKH.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbDSKH.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbDSKH.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbDSKH.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        editFrm.MakeTransparentTable(jScrDSKH, jTbDSKH);
     }
 
     /**
@@ -424,6 +412,8 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 91, -1, -1));
         jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 88, 317, -1));
 
+        jPnTracuuKH.setBackground(new java.awt.Color(0, 204, 255));
+
         javax.swing.GroupLayout jPnTracuuKHLayout = new javax.swing.GroupLayout(jPnTracuuKH);
         jPnTracuuKH.setLayout(jPnTracuuKHLayout);
         jPnTracuuKHLayout.setHorizontalGroup(
@@ -462,6 +452,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
             jTbDSKH.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
+        jPnDSKH.setBackground(new java.awt.Color(0, 204, 255));
         jPnDSKH.setPreferredSize(new java.awt.Dimension(790, 37));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -522,6 +513,8 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jPnThongtinKH.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Thông tin khách hàng :");

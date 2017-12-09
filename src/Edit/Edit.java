@@ -6,9 +6,11 @@
 package Edit;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -21,7 +23,7 @@ public class Edit {
     private final Color PanelColor = new Color(236,236,236,190);
     private final Color ButtonColor = new Color(153,153,153,180);
     
-    public void MakeTransparentPane(JPanel[] listPn){
+    public void MakeTransparentPanel(JPanel[] listPn){
         for(int i=0;i<listPn.length;i++)
             listPn[i].setBackground(PanelColor);
     }
@@ -50,5 +52,11 @@ public class Edit {
         ((DefaultTableCellRenderer)jtb.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
     
-    
+    public void MakeTransparentTabbledPane(JTabbedPane jTabPn){
+        jTabPn.setOpaque(false); 
+        jTabPn.setBackground(new Color (0,0,0,0)); // this works well, 2 tabs semi-transparents 
+        jTabPn.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI(){
+            protected void paintContentBorder(Graphics g,int tabPlacement,int selectedIndex){}
+        });
+    }
 }

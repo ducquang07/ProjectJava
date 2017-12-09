@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import Edit.Edit;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class FormChiTietHoaDonSi extends javax.swing.JFrame {
 
+    Edit editFrm = new Edit();
     /**
      * Creates new form FormChiTietHoaDonSi
      */
@@ -25,18 +26,17 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
         
         jPanel3.setBackground(new Color(0,0,0,0));
         
-        jPanel1.setBackground(new Color(236,236,236,190));
+        JPanel ListPn[] = new JPanel[]{jPanel1};
+        editFrm.MakeTransparentPanel(ListPn);
         
-        jBtnBack.setBackground(new Color(153,153,153,200));
+        JPanel ListTitle[]=new JPanel[]{jPanel2};
+        editFrm.MakeTransparentTitle(ListTitle);
         
-        jPanel2.setBackground(new Color(0,204,204,150));
+        JPanel ListButton[]= new JPanel[]{jBtnBack};
+        editFrm.MakeTransparentButton(ListButton);
         
-        jScrCTHD.setOpaque(false);
-        jScrCTHD.getViewport().setOpaque(false);
-        jTbCTHD.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbCTHD.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbCTHD.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbCTHD.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        editFrm.MakeTransparentTable(jScrCTHD, jTbCTHD);
+       
     }
 
     /**

@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package View;
-
+import Edit.Edit;
 import java.awt.Color;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -16,6 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class FormQuanLiSanPham extends javax.swing.JFrame {
 
+    Edit editFrm=new Edit();
     /**
      * Creates new form FormQuanLiSanPham
      */
@@ -24,31 +23,17 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         jPanel9.setBackground((new Color(0,0,0,0)));
-        jPanel3.setBackground(new Color(236,236,236,190));
-        jPanel5.setBackground(new Color(236,236,236,190));
-        jPanel8.setBackground(new Color(236,236,236,190));
+        JPanel ListPanel[]=new JPanel[]{jPanel3,jPanel5,jPanel8};
+        editFrm.MakeTransparentPanel(ListPanel);
         
-        jPnDSSP.setBackground(new Color(0,204,204,150));
-        jPnThongtinSP.setBackground(new Color(0,204,204,150));
-        jPnTracuuSP.setBackground(new Color(0,204,204,150));
+        JPanel ListTitle[]=new JPanel[]{jPnDSSP,jPnThongtinSP,jPnTracuuSP};
+        editFrm.MakeTransparentTitle(ListTitle);
         
-        jBtnBack.setBackground(new Color(153,153,153,200));
-        jBtnThem.setBackground(new Color(153,153,153,200));
-        jBtnXoa.setBackground(new Color(153,153,153,200));
-        jBtnSua.setBackground(new Color(153,153,153,200));
-        jBtnLuu.setBackground(new Color(153,153,153,200));
-        jBtnHuy.setBackground(new Color(153,153,153,200));
-        jBtnTimKiem.setBackground(new Color(153,153,153,200));
-        jBtnLamMoi.setBackground(new Color(153,153,153,200));
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXoa};
+        editFrm.MakeTransparentButton(ListButton);
         
-        jScrDSSP.setOpaque(false);
-        jScrDSSP.getViewport().setOpaque(false);
-        jTbDSSP.setShowGrid(true);
-        ((DefaultTableCellRenderer)jTbDSSP.getDefaultRenderer(Object.class)).setBackground(new Color(236,236,236,190));
-        ((DefaultTableCellRenderer)jTbDSSP.getDefaultRenderer(Object.class)).setOpaque(false);
-        ((DefaultTableCellRenderer)jTbDSSP.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

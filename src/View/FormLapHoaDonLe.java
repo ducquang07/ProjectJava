@@ -28,7 +28,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         JPanel ListPn[]=new JPanel[]{jPanel1,jPanel2,jPanel3,jPanel4,jPanel7};
-        editFrm.MakeTransparentPane(ListPn);
+        editFrm.MakeTransparentPanel(ListPn);
         
         JPanel ListTitle[]=new JPanel[]{jPnDSSP,jPnGioHang,jPnThongtinHD,jPnThongtinSP,jPnTimkiemSP};
         editFrm.MakeTransparentTitle(ListTitle);
