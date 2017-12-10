@@ -28,6 +28,10 @@ public class ObjNhaCungCap {
         this.DiaChi = DiaChi;
         this.Email = Email;
     }
+
+    public ObjNhaCungCap(String TenNCC) {
+        this.TenNCC = TenNCC;
+    }
     
     //////////Get
 

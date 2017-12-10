@@ -39,7 +39,7 @@ public class ObjSanPham {
         this.MoTa = MoTa;
     }
 
-    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, int GiaLe, String DVT, int SoLuong, String MaNCC) {
+    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, int GiaLe, String DVT, int SoLuong, String MaNCC ) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.MaLoaiSP = MaLoaiSP;
@@ -48,7 +48,6 @@ public class ObjSanPham {
         this.SoLuong = SoLuong;
         this.MaNCC = MaNCC;
     }
-    
 
     
     //////Get

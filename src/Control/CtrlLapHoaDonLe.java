@@ -6,7 +6,8 @@
 package Control;
 import Connect.Connect;
 import java.sql.ResultSet;
-
+import Model.ModLoaiSanPham;
+import Model.ModNhaCungCap;
 
 /**
  *
@@ -15,8 +16,23 @@ import java.sql.ResultSet;
 public class CtrlLapHoaDonLe {
     Connect DB=new Connect();
     public ResultSet LayDanhSachSanPham(){
-        String SQL="Select MaSP,TenSP,DVT,GiaLe,SoLuong,MaLoaiSP,MaNCC from SANPHAM";
+        String SQL="Select SP.MaSP,SP.TenSP,SP.DVT,SP.GiaLe,SP.SoLuong,SP.MaLoaiSP,SP.MaNCC,LSP.TenLoaiSP,NCC.TenNCC "
+                + "from SANPHAM SP,LOAISANPHAM LSP,NHACUNGCAP NCC where SP.MaLoaiSP=LSP.MaLoaiSP and SP.MaNCC=NCC.MaNCC";
         return DB.GetData(SQL);
     }
     
+    public ResultSet LayDanhSachLoaiSanPham(){
+        ModLoaiSanPham modLSP = new ModLoaiSanPham();
+        return modLSP.GetALL();
+    } 
+    
+    public ResultSet LayDanhSachNhaCungCap(){
+        ModNhaCungCap modNCC=new ModNhaCungCap();
+        return modNCC.GetALL();
+    }
+    
+    public boolean CloseConnection(){
+        return DB.CloseDB();
+    }
+
 }

@@ -20,6 +20,10 @@ public class ObjLoaiSanPham {
         this.TenLoaiSP=TenLoaiSP;
     }
 
+    public ObjLoaiSanPham(String TenLoaiSP) {
+        this.TenLoaiSP = TenLoaiSP;
+    }
+    
     public String getMaLoaiSP() {
         return MaLoaiSP;
     }

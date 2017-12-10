@@ -24,6 +24,7 @@ public class ModLoaiSanPham extends Model{
         DB=new Connect();
         Table="LOAISANPHAM";
         ID="MaLoaiSP";
+        Name="TenLoaiSP";
     }
 
     public ResultSet GetALL(){
@@ -36,6 +37,10 @@ public class ModLoaiSanPham extends Model{
     
     public ResultSet SearchByID(String ID){
         return super.SearchByID(ID);
+    }
+    
+    public ResultSet GetNameByID(String ID){
+        return super.GetNameByID(ID);
     }
 
     @Override

@@ -19,6 +19,7 @@ public abstract class Model {
     protected Connect DB;
     protected String SQL;
     protected String Table;
+    protected String Name;
     protected String ID;
     protected Statement  stmDB;
     
@@ -53,6 +54,13 @@ public abstract class Model {
     public ResultSet SearchByID(String id){
         SQL="Select * from "+Table+" where "+ID+" like '%"+id+"%'";
         ResultSet rs = DB.GetData(SQL);
+        return rs;
+    }
+    
+    //Get name by Object's ID
+    public ResultSet GetNameByID(String id){
+        SQL="Select "+Name+" from "+Table+" where "+ID+"='"+id+"'";
+        ResultSet rs=DB.GetData(SQL);
         return rs;
     }
     

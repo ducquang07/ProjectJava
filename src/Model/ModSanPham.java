@@ -61,6 +61,9 @@ public class ModSanPham extends Model{
             System.out.println("Ngoại lệ tại ModSanPham.Insert: "+ex.getMessage());
             return false;
         }
+        finally{
+            DB.CloseDB();
+        }
         return true;
     }
 
@@ -83,7 +86,10 @@ public class ModSanPham extends Model{
            }
        } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModSamPham.Update: "+ex.getMessage());
-        }
+       }
+       finally{
+           DB.CloseDB();
+       }
         return false;
     }
     
