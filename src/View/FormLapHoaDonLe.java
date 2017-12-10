@@ -6,7 +6,6 @@
 package View;
 import Edit.Edit;
 import Control.CtrlLapHoaDonLe;
-import Model.ModSanPham;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,13 +15,9 @@ import javax.swing.table.DefaultTableModel;
 import Object.ObjSanPham;
 import Object.ObjLoaiSanPham;
 import Object.ObjNhaCungCap;
+import Object.ObjChiTietHDL;
 import java.util.Date;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.TableModel;
 /**
@@ -34,11 +29,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     int xx=0,yy=0;
     Edit editFrm= new Edit();
     ArrayList<ObjSanPham> listSP = new ArrayList<>();
-    ArrayList<ObjNhaCungCap>listNCC = new ArrayList<>();
-    ArrayList<ObjLoaiSanPham> listLSP = new ArrayList<>();
     ArrayList<String>listComboboxLSP = new ArrayList<>();
     ArrayList<String>listComboboxNCC=new ArrayList<>();
-    
+    ArrayList<ObjChiTietHDL>ListGioHang = new ArrayList<>();
     CtrlLapHoaDonLe CtrlHDL = new CtrlLapHoaDonLe();
     
     /**
@@ -831,12 +824,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                 ObjSanPham itemSP;
                 ObjLoaiSanPham itemLSP;
                 ObjNhaCungCap itemNCC;
-                itemSP=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"), (int) Double.parseDouble(rs.getString("GiaLe")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"));
-                itemLSP=new ObjLoaiSanPham(rs.getString("TenLoaiSP"));
-                itemNCC=new ObjNhaCungCap(rs.getString("TenNCC"));
+                itemSP=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"),rs.getString("TenLoaiSP"),(int) Double.parseDouble(rs.getString("GiaLe")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"));
                 listSP.add(itemSP);
-                listLSP.add(itemLSP);
-                listNCC.add(itemNCC);
                 Vector v = new Vector();
                 v.add(itemSP.getMaSP());
                 v.add(itemSP.getTenSP());
@@ -902,8 +891,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                   jtxtDVT.setText(listSP.get(modelRow).getDVT());
                   jtxtDonGia.setText(Integer.toString(listSP.get(modelRow).getGiaLe()));
                   jtxtTenSP.setText(listSP.get(modelRow).getTenSP());
-                  jtxtTenLoaiSP.setText(listLSP.get(modelRow).getTenLoaiSP());
-                  jtxtTenNCC.setText(listNCC.get(modelRow).getTenNCC());
+                  jtxtTenLoaiSP.setText(listSP.get(modelRow).getTenLoaiSP());
+                  jtxtTenNCC.setText(listSP.get(modelRow).getTenNCC());
                   int dongia = Integer.parseInt(jtxtDonGia.getText());
                   int soluong = Integer.parseInt(jSpSoLuong.getValue()+"");
                   jtxtThanhTien.setText(String.valueOf(dongia*soluong));
@@ -1107,20 +1096,32 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
         // TODO add your handling code here:
+        boolean exist=false;
         TableModel model =jtbDSSP.getModel();
         DefaultTableModel Model;
         try{
             int viewRow = jtbDSSP.getSelectedRow();
             int modelRow= jtbDSSP.convertRowIndexToModel(viewRow);
-            if(viewRow>-1){
+            Model =(DefaultTableModel) jtbGioHang.getModel();
+            ObjChiTietHDL itemGioHang=new ObjChiTietHDL(listSP.get(modelRow).getMaSP(),listSP.get(modelRow).getTenSP(),listSP.get(modelRow).getDVT(),Integer.parseInt(jSpSoLuong.getValue()+""),Integer.parseInt(jtxtDonGia.getText()),Integer.parseInt(jtxtThanhTien.getText()));
+            for(int i = 0 ;i<Model.getRowCount();i++){
+                if(Model.getValueAt(i,0).toString().equals(itemGioHang.getMaSP())){
+                    exist=true;
+                    int SL =itemGioHang.getSoLuong()+Integer.parseInt(Model.getValueAt(i,3).toString());
+                    int ThanhTien = SL*Integer.parseInt(Model.getValueAt(i,5).toString());
+                    Model.setValueAt(SL,i,3);
+                    Model.setValueAt(ThanhTien,i,5);
+                }
+            }
+            if(!exist){
                 Vector v = new Vector();
-                v.add(listSP.get(modelRow).getMaSP());
-                v.add(listSP.get(modelRow).getTenSP());
-                v.add(listSP.get(modelRow).getDVT());
-                v.add(jSpSoLuong.getValue());
-                v.add(jtxtDonGia.getText());
-                v.add(jtxtThanhTien.getText());
-                Model =(DefaultTableModel) jtbGioHang.getModel();
+                v.add(itemGioHang.getMaSP());
+                v.add(itemGioHang.getTenSP());
+                v.add(itemGioHang.getDVT());
+                v.add(itemGioHang.getSoLuong());
+                v.add(itemGioHang.getDonGia());
+                v.add(itemGioHang.getThanhTien());
+                
                 Model.addRow(v);
             }
         }

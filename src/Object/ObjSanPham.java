@@ -13,11 +13,13 @@ public class ObjSanPham {
     private String MaSP;
     private String TenSP;
     private String MaLoaiSP;
+    private String TenLoaiSP;
     private int GiaLe;
     private int GiaSi;
     private String DVT;
     private int SoLuong;
     private String MaNCC;
+    private String TenNCC;
     private double LoiNhuanBien;
     private String MoTa;
     
@@ -39,15 +41,19 @@ public class ObjSanPham {
         this.MoTa = MoTa;
     }
 
-    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, int GiaLe, String DVT, int SoLuong, String MaNCC ) {
+    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, String TenLoaiSP, int GiaLe, String DVT, int SoLuong, String MaNCC, String TenNCC) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.MaLoaiSP = MaLoaiSP;
+        this.TenLoaiSP = TenLoaiSP;
         this.GiaLe = GiaLe;
         this.DVT = DVT;
         this.SoLuong = SoLuong;
         this.MaNCC = MaNCC;
+        this.TenNCC = TenNCC;
     }
+
+    
 
     
     //////Get
@@ -89,6 +95,14 @@ public class ObjSanPham {
 
     public String getMoTa() {
         return MoTa;
+    }
+
+    public String getTenLoaiSP() {
+        return TenLoaiSP;
+    }
+
+    public String getTenNCC() {
+        return TenNCC;
     }
 
     ////////Set

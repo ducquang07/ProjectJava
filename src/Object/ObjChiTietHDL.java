@@ -12,8 +12,10 @@ package Object;
 public class ObjChiTietHDL {
     private String SoHDL;
     private String MaSP;
+    private String TenSP;
     private int SoLuong;
     private int DonGia;
+    private String DVT;
     private int ThanhTien;
     
     //Constructor
@@ -28,6 +30,16 @@ public class ObjChiTietHDL {
         this.DonGia = DonGia;
         this.ThanhTien = ThanhTien;
     }
+
+    public ObjChiTietHDL( String MaSP, String TenSP,String DVT, int SoLuong, int DonGia, int ThanhTien) {
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.DVT=DVT;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
+        this.ThanhTien = ThanhTien;
+    }
+    
     
     //Get
 
@@ -49,6 +61,14 @@ public class ObjChiTietHDL {
 
     public int getThanhTien() {
         return ThanhTien;
+    }
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public String getDVT() {
+        return DVT;
     }
     
     //Set
