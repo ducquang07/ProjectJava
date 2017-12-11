@@ -64,11 +64,13 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             }
         });
         
-        HienThiDanhSachSanPham();
+        HienThiDanhSachSanPham(CtrlHDL.LayDanhSachSanPham());
         LoadComboboxLoaiSP();
         LoadComboboxNhaCungCap();
         Binding();
         jDateNgayLap.setDate(new Date());
+        jSpSoLuong.setValue(1);
+        jtxtSoHDL.setText(CtrlHDL.LaySoHDL());
     }
 
     
@@ -85,12 +87,12 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtxtSoHDL = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jDateNgayLap = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        jtxtTenKH = new javax.swing.JTextField();
+        jtxtTongTien = new javax.swing.JTextField();
         jPnThongtinHD = new javax.swing.JPanel();
         jBtnTimKiem = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -103,13 +105,13 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jPnGioHang = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jCbbTimTheo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jCbbTenNCC = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jCbbLoaiSP = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtxtTimKiem = new javax.swing.JTextField();
         jPnTimkiemSP = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrDSSP = new javax.swing.JScrollPane();
@@ -167,12 +169,13 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel3.setText("Khách hàng :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 101, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtxtSoHDL.setEditable(false);
+        jtxtSoHDL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtxtSoHDLActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 51, 207, -1));
+        jPanel1.add(jtxtSoHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 51, 207, -1));
 
         jLabel4.setText("Ngày lập :");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 54, -1, -1));
@@ -182,8 +185,11 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jLabel5.setText("Tổng tiền :");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 101, -1, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 98, 207, -1));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 98, 190, -1));
+        jPanel1.add(jtxtTenKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 98, 207, -1));
+
+        jtxtTongTien.setEditable(false);
+        jtxtTongTien.setText("0");
+        jPanel1.add(jtxtTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 98, 190, -1));
 
         jPnThongtinHD.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -341,8 +347,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jLabel8.setText("Tìm theo :");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên sản phẩm", "Mã sản phẩm" }));
-        jComboBox2.setFocusable(false);
+        jCbbTimTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên sản phẩm", "Mã sản phẩm" }));
+        jCbbTimTheo.setFocusable(false);
 
         jLabel9.setText("Nhà cung cấp :");
 
@@ -388,11 +394,11 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(38, 38, 38)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCbbTimTheo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addGap(10, 10, 10)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel10)
@@ -409,8 +415,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                 .addComponent(jPnTimkiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCbbTimTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,6 +518,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel17.setText("Số lượng :");
         jPanel7.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
 
+        jSpSoLuong.setName(""); // NOI18N
         jSpSoLuong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jSpSoLuongMouseClicked(evt);
@@ -814,11 +821,11 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void HienThiDanhSachSanPham(){
-        ResultSet rs=CtrlHDL.LayDanhSachSanPham();        
+    public void HienThiDanhSachSanPham(ResultSet rs){
         listSP.clear();
         DefaultTableModel model;
         model=(DefaultTableModel) jtbDSSP.getModel();
+        model.getDataVector().removeAllElements();
         try{
             while(rs.next()){
                 ObjSanPham itemSP;
@@ -845,7 +852,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         listComboboxLSP.clear();
         jCbbLoaiSP.removeAllItems();
         jCbbLoaiSP.addItem("---Chọn loại sản phẩm---");
-
+        listComboboxLSP.add("");
         ResultSet rs=CtrlHDL.LayDanhSachLoaiSanPham();
         try{
             while(rs.next()){
@@ -865,7 +872,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         listComboboxNCC.clear();
         jCbbTenNCC.removeAllItems();
         jCbbTenNCC.addItem("---Chọn loại sản phẩm---");
-
+        listComboboxNCC.add("");
         ResultSet rs=CtrlHDL.LayDanhSachNhaCungCap();
         try{
             while(rs.next()){
@@ -903,20 +910,20 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         }
     }
 
-    
+    public int TinhTongTienGioHang(){
+        int Tong=0;
+        for(int i = 0 ;i<ListGioHang.size();i++){
+            Tong+=ListGioHang.get(i).getThanhTien();
+        }
+        return Tong;
+    }
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
         // TODO add your handling code here:
-//        try {
-//            // TODO add your handling code here:
-//            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-//            if(rs.getRow()==0){
-//                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-//            }
-//            displayData(rs);
-//            Binding();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        if(jCbbTimTheo.getSelectedIndex()==0)
+            HienThiDanhSachSanPham(CtrlHDL.SearchSanPhamByName(jtxtTimKiem.getText(),listComboboxLSP.get(jCbbLoaiSP.getSelectedIndex()).toString(),listComboboxNCC.get(jCbbTenNCC.getSelectedIndex()).toString()));   
+        else
+            HienThiDanhSachSanPham(CtrlHDL.SearchSanPhamByID(jtxtTimKiem.getText(),listComboboxLSP.get(jCbbLoaiSP.getSelectedIndex()).toString(),listComboboxNCC.get(jCbbTenNCC.getSelectedIndex()).toString()));   
+        Binding();
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -974,13 +981,24 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         setColor(jBtnLamMoi);
     }//GEN-LAST:event_jBtnLamMoiMouseReleased
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtxtSoHDLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtSoHDLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtxtSoHDLActionPerformed
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
-        // TODO add your handling code here:
-
+        // TODO add your handling code here
+        TableModel model =jtbGioHang.getModel();
+        DefaultTableModel Model=(DefaultTableModel) jtbGioHang.getModel() ;
+        try{
+        int viewRow = jtbGioHang.getSelectedRow();
+        int modelRow= jtbGioHang.convertRowIndexToModel(viewRow);
+        ListGioHang.remove(modelRow);
+        Model.removeRow(modelRow);
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormLapHoaDonLe.jBtnXoaMouseClicked: "+ex.getMessage());
+        }
+        jtxtTongTien.setText(Integer.toString(TinhTongTienGioHang()));
     }//GEN-LAST:event_jBtnXoaMouseClicked
 
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
@@ -1094,26 +1112,32 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         Binding();
     }//GEN-LAST:event_jtbDSSPMousePressed
 
+    
+    
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
         // TODO add your handling code here:
         boolean exist=false;
         TableModel model =jtbDSSP.getModel();
         DefaultTableModel Model;
-        try{
-            int viewRow = jtbDSSP.getSelectedRow();
-            int modelRow= jtbDSSP.convertRowIndexToModel(viewRow);
-            Model =(DefaultTableModel) jtbGioHang.getModel();
-            ObjChiTietHDL itemGioHang=new ObjChiTietHDL(listSP.get(modelRow).getMaSP(),listSP.get(modelRow).getTenSP(),listSP.get(modelRow).getDVT(),Integer.parseInt(jSpSoLuong.getValue()+""),Integer.parseInt(jtxtDonGia.getText()),Integer.parseInt(jtxtThanhTien.getText()));
+        int viewRow = jtbDSSP.getSelectedRow();
+        int modelRow= jtbDSSP.convertRowIndexToModel(viewRow);
+        Model =(DefaultTableModel) jtbGioHang.getModel();
+        ObjChiTietHDL itemGioHang=new ObjChiTietHDL(listSP.get(modelRow).getMaSP(),listSP.get(modelRow).getTenSP(),listSP.get(modelRow).getDVT(),Integer.parseInt(jSpSoLuong.getValue()+""),Integer.parseInt(jtxtDonGia.getText()),Integer.parseInt(jtxtThanhTien.getText()));
+        try{ 
             for(int i = 0 ;i<Model.getRowCount();i++){
                 if(Model.getValueAt(i,0).toString().equals(itemGioHang.getMaSP())){
                     exist=true;
                     int SL =itemGioHang.getSoLuong()+Integer.parseInt(Model.getValueAt(i,3).toString());
-                    int ThanhTien = SL*Integer.parseInt(Model.getValueAt(i,5).toString());
+                    int ThanhTien = SL*Integer.parseInt(Model.getValueAt(i,4).toString());
                     Model.setValueAt(SL,i,3);
                     Model.setValueAt(ThanhTien,i,5);
+                    ListGioHang.get(i).setSoLuong(SL);
+                    ListGioHang.get(i).setThanhTien(ThanhTien);
+                    break;
                 }
             }
             if(!exist){
+                ListGioHang.add(itemGioHang);
                 Vector v = new Vector();
                 v.add(itemGioHang.getMaSP());
                 v.add(itemGioHang.getTenSP());
@@ -1121,9 +1145,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                 v.add(itemGioHang.getSoLuong());
                 v.add(itemGioHang.getDonGia());
                 v.add(itemGioHang.getThanhTien());
-                
                 Model.addRow(v);
             }
+            jtxtTongTien.setText(Integer.toString(TinhTongTienGioHang()));
         }
         catch(Exception ex){
             System.out.println("Ngoại lệ tại FormLapHoaDonLe.Binding: "+ex.getMessage());
@@ -1196,7 +1220,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnXoa;
     private javax.swing.JComboBox<String> jCbbLoaiSP;
     private javax.swing.JComboBox<String> jCbbTenNCC;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jCbbTimTheo;
     private com.toedter.calendar.JDateChooser jDateNgayLap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1242,18 +1266,18 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpSoLuong;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JPanel jbtnDuyetGioHang;
     private javax.swing.JTable jtbDSSP;
     private javax.swing.JTable jtbGioHang;
     private javax.swing.JTextField jtxtDVT;
     private javax.swing.JTextField jtxtDonGia;
+    private javax.swing.JTextField jtxtSoHDL;
+    private javax.swing.JTextField jtxtTenKH;
     private javax.swing.JTextField jtxtTenLoaiSP;
     private javax.swing.JTextArea jtxtTenNCC;
     private javax.swing.JTextArea jtxtTenSP;
     private javax.swing.JTextField jtxtThanhTien;
+    private javax.swing.JTextField jtxtTimKiem;
+    private javax.swing.JTextField jtxtTongTien;
     // End of variables declaration//GEN-END:variables
 }

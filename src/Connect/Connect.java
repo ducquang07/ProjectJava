@@ -36,7 +36,7 @@ public class Connect {
     public boolean Connected(){
         try{
             if((conDB!=null)&&(!conDB.isClosed())){
-                return true;
+                CloseDB();
             }
             url="jdbc:mysql://"+servername+"/"+databasename+"?characterEncoding=utf8";
             conDB=DriverManager.getConnection(url,username,password);
