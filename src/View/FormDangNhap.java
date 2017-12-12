@@ -80,6 +80,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         jTextField1.setToolTipText("");
         jTextField1.setBorder(null);
         jTextField1.setFocusable(false);
+        jTextField1.setOpaque(false);
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextField1MousePressed(evt);
@@ -94,6 +95,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         jPasswordField1.setBorder(null);
         jPasswordField1.setEchoChar('\u0000');
         jPasswordField1.setFocusable(false);
+        jPasswordField1.setOpaque(false);
         jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPasswordField1MousePressed(evt);

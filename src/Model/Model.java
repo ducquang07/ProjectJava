@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author ThaiNguyen
  */
-public abstract class Model {
+public class Model {
     protected Connect DB;
     protected String SQL;
     protected String Table;
@@ -64,9 +64,9 @@ public abstract class Model {
         return rs;
     }
     
-    public abstract boolean Insert();
+    public boolean Insert(){return true;};
     
-    public abstract boolean Update();
+    public boolean Update(){return true;};
     
     public boolean Delete(String id){
         SQL="Delete from "+Table+" where "+ID+" ='"+id+"'";
