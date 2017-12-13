@@ -30,6 +30,7 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
     ModHoaDonLe modHDL = new ModHoaDonLe();
     ModChiTietHDL modCTHDL = new ModChiTietHDL();
     Edit editFrm =new Edit();
+    boolean LuuThanhCong =false;
     /**
      * Creates new form FormDuyetHoaDon
      */
@@ -121,6 +122,11 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setSize(new java.awt.Dimension(1200, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBtnBack.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -529,7 +535,8 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
                        if(check)
                        {
                            EnableComponent(false);
-                           JOptionPane.showMessageDialog(this,"Hóa đơn "+ObjHDL.getSoHDL()+" lưu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);                   
+                           JOptionPane.showMessageDialog(this,"Hóa đơn "+ObjHDL.getSoHDL()+" lưu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);     
+                           LuuThanhCong=true;
                        }
                        else {
                            JOptionPane.showMessageDialog(this,"Hóa đơn "+ObjHDL.getSoHDL()+" lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -590,6 +597,11 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
     private void jBtnXemPhieuIn1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuIn1MouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnXemPhieuIn1MouseReleased
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosing
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){

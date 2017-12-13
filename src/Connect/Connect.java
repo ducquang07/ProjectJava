@@ -22,9 +22,9 @@ public class Connect {
     private Statement stmDB=null;
     private ResultSet rsDB=null;
     
-    private final String servername="localhost";//"closer.heliohost.org:3306";
+    private final String servername="localhost";//"closer2.heliohost.org:3306";
     private final String databasename="closer_quanlicuahangson";
-    private final String username="root";//"closer";
+    private final String username="root";//"closer2";
     private final String password="";//"Bo4quyennang";
     private String url="";
 

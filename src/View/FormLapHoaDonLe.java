@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.TableModel;
 /**
@@ -36,7 +37,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     ArrayList<String>listComboboxNCC=new ArrayList<>();
     ArrayList<ObjChiTietHDL>ListGioHang = new ArrayList<>();
     CtrlLapHoaDonLe CtrlHDL = new CtrlLapHoaDonLe();
-    
+    FormDuyetHoaDonLe frmDuyetHDL;
     /**
      * Creates new form FormLapHoaDonLe
      */
@@ -696,6 +697,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jBtnHuy.setBackground(new java.awt.Color(204, 204, 204));
         jBtnHuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnHuyMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnHuyMouseEntered(evt);
             }
@@ -900,6 +904,22 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         }
     }
     
+    public void ReloadForm(){
+        HienThiDanhSachSanPham(CtrlHDL.LayDanhSachSanPham());
+        ListGioHang.clear();
+        LoadComboboxLoaiSP();
+        LoadComboboxNhaCungCap();
+        jtxtTimKiem.setText("");
+        jtxtTongTien.setText("0");
+        jtxtTenKH.setText("");
+        jtbGioHang.removeAll();
+        jtxtSoHDL.setText(CtrlHDL.LaySoHDL());
+        jDateNgayLap.setDate(new Date());
+        DefaultTableModel model;
+        model=(DefaultTableModel) jtbGioHang.getModel();
+        model.getDataVector().removeAllElements(); 
+    }
+    
     public void Binding(){
         TableModel model =jtbDSSP.getModel();
         try{
@@ -929,6 +949,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         }
         return Tong;
     }
+    
+    
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
         // TODO add your handling code here:
         if(jCbbTimTheo.getSelectedIndex()==0)
@@ -1183,7 +1205,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             if(ListGioHang.size()>0){
-                FormDuyetHoaDonLe frmDuyetHDL = new FormDuyetHoaDonLe(jtxtSoHDL.getText(),jtxtTenKH.getText(), jDateNgayLap.getDate(),jtxtTongTien.getText(),ListGioHang);
+                frmDuyetHDL = new FormDuyetHoaDonLe(jtxtSoHDL.getText(),jtxtTenKH.getText(), jDateNgayLap.getDate(),jtxtTongTien.getText(),ListGioHang);
                 frmDuyetHDL.setVisible(true);
             }
             else
@@ -1199,6 +1221,11 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
             jBtnTimKiemMouseClicked(null);
     }//GEN-LAST:event_jtxtTimKiemKeyPressed
+
+    private void jBtnHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnHuyMouseClicked
+        // TODO add your handling code here:
+        ReloadForm();
+    }//GEN-LAST:event_jBtnHuyMouseClicked
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
