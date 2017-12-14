@@ -41,12 +41,13 @@ public class ObjSanPham {
         this.MoTa = MoTa;
     }
 
-    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, String TenLoaiSP, int GiaLe, String DVT, int SoLuong, String MaNCC, String TenNCC) {
+    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, String TenLoaiSP, int GiaLe, int GiaSi, String DVT, int SoLuong, String MaNCC, String TenNCC) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.MaLoaiSP = MaLoaiSP;
         this.TenLoaiSP = TenLoaiSP;
         this.GiaLe = GiaLe;
+        this.GiaSi=GiaSi;
         this.DVT = DVT;
         this.SoLuong = SoLuong;
         this.MaNCC = MaNCC;

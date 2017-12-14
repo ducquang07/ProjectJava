@@ -22,10 +22,17 @@ public class Connect {
     private Statement stmDB=null;
     private ResultSet rsDB=null;
     
+<<<<<<< HEAD
     private final String servername="closer2.heliohost.org:3306";//"closer2.heliohost.org:3306";
     private final String databasename="closer2_quanlicuahangson";
     private final String username="closer2";//"closer2";
     private final String password="Bo4quyennang";//"Bo4quyennang";
+=======
+    private final String servername="localhost";//"closer2.heliohost.org:3306";//
+    private final String databasename="closer_quanlicuahangson";//"closer2_quanlicuahangson";//
+    private final String username="root";//"closer2";//
+    private final String password="";//"Bo4quyennang";//
+>>>>>>> origin/master
     private String url="";
 
     public Connection getConDB() {
@@ -35,15 +42,16 @@ public class Connect {
     
     public boolean Connected(){
         try{
-            if((conDB!=null)&&(!conDB.isClosed())){
-                return true;
-            }
+
             url="jdbc:mysql://"+servername+"/"+databasename+"?characterEncoding=utf8";
             conDB=DriverManager.getConnection(url,username,password);
         }
         catch(SQLException ex){
             System.out.println("Ngoại lệ tại Connect.Connected :"+ex.getMessage());
             return false;
+        }
+        finally{
+
         }
         return true;
     }
@@ -67,9 +75,11 @@ public class Connect {
             if(Connected()){
                 stmDB =(Statement) conDB.createStatement();
                 rs=stmDB.executeQuery(SQL);
+                
             }
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại Connect.GetData: "+ex.getMessage());
+            return null;
         }
         return rs;
     }
