@@ -79,9 +79,9 @@ public class FormNhapHang extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPnTracuuPN = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         jScrPnDSPN = new javax.swing.JScrollPane();
         jTbDSPN = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
         jPnDSPN = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -98,9 +98,9 @@ public class FormNhapHang extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jPnThongtinPN = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jScrPnCTPN = new javax.swing.JScrollPane();
         jTbCTPN = new javax.swing.JTable();
+        jPanel8 = new javax.swing.JPanel();
         jPnCTPN = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -540,9 +540,6 @@ public class FormNhapHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 550, 280));
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTbDSPN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -553,7 +550,10 @@ public class FormNhapHang extends javax.swing.JFrame {
         ));
         jScrPnDSPN.setViewportView(jTbDSPN);
 
-        jPanel4.add(jScrPnDSPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 540, 325));
+        getContentPane().add(jScrPnDSPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 385, 540, 325));
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnDSPN.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -629,9 +629,6 @@ public class FormNhapHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 770, 170));
 
-        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTbCTPN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -642,7 +639,10 @@ public class FormNhapHang extends javax.swing.JFrame {
         ));
         jScrPnCTPN.setViewportView(jTbCTPN);
 
-        jPanel8.add(jScrPnCTPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 760, 355));
+        getContentPane().add(jScrPnCTPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 275, 760, 355));
+
+        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnCTPN.setBackground(new java.awt.Color(0, 204, 204));
 

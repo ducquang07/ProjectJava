@@ -81,9 +81,9 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jPnTracuuDDH = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
         jScrDSDDH = new javax.swing.JScrollPane();
         jTbDSDDH = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
         jPnDSDDH = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -99,10 +99,10 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jPnThongtinDDH = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
         jScrCTDDH = new javax.swing.JScrollPane();
         jTbCTDDH = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jPnCTDDH = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -553,10 +553,6 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 54, 560, 310));
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel5.setPreferredSize(new java.awt.Dimension(500, 348));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTbDSDDH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -567,7 +563,11 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         ));
         jScrDSDDH.setViewportView(jTbDSDDH);
 
-        jPanel5.add(jScrDSDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 550, 300));
+        getContentPane().add(jScrDSDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 408, 550, 300));
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setPreferredSize(new java.awt.Dimension(500, 348));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnDSDDH.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -692,11 +692,6 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 54, 770, 190));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel9.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTbCTDDH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -707,7 +702,12 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         ));
         jScrCTDDH.setViewportView(jTbCTDDH);
 
-        jPanel9.add(jScrCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 760, 340));
+        getContentPane().add(jScrCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 290, 760, 340));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel9.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnCTDDH.setBackground(new java.awt.Color(0, 204, 204));
         jPnCTDDH.setPreferredSize(new java.awt.Dimension(172, 37));

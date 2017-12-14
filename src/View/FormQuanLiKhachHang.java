@@ -69,9 +69,9 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jPnTracuuKH = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jScrDSKH = new javax.swing.JScrollPane();
         jTbDSKH = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
         jPnDSKH = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -429,8 +429,6 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 540, 210));
 
-        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
-
         jTbDSKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -451,6 +449,10 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         if (jTbDSKH.getColumnModel().getColumnCount() > 0) {
             jTbDSKH.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
+
+        getContentPane().add(jScrDSKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 92, 780, 613));
+
+        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
         jPnDSKH.setBackground(new java.awt.Color(0, 204, 255));
         jPnDSKH.setPreferredSize(new java.awt.Dimension(790, 37));
@@ -480,10 +482,6 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrDSKH)
-                .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPnDSKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -491,9 +489,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPnDSKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrDSKH, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+                .addContainerGap(623, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 790, 660));

@@ -68,11 +68,11 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jBtnHuy = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        jScrDSLSP = new javax.swing.JScrollPane();
+        jTbDSLSP = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPnDSLSP = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jScrDSLSP = new javax.swing.JScrollPane();
-        jTbDSLSP = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jPnTracuuLSP = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -432,6 +432,19 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
         getContentPane().add(jBtnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 479, -1, -1));
 
+        jTbDSLSP.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2"
+            }
+        ));
+        jTbDSLSP.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrDSLSP.setViewportView(jTbDSLSP);
+
+        getContentPane().add(jScrDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 105, 470, 439));
+
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -455,19 +468,6 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPnDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 40));
-
-        jTbDSLSP.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2"
-            }
-        ));
-        jTbDSLSP.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrDSLSP.setViewportView(jTbDSLSP);
-
-        jPanel2.add(jScrDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 49, 460, 430));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 480, 489));
 
