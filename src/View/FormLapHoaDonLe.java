@@ -62,21 +62,63 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jSpSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                  int dongia = Integer.parseInt(jtxtDonGia.getText());
+                  int dongia = Integer.parseInt(jtxtDonGia.getText().replace(",",""));
+                  int soluong = Integer.parseInt(jSpSoLuong.getValue()+"");
+                  jtxtThanhTien.setText(String.valueOf(dongia*soluong));
+            }
+        });
+        LoadForm();
+    }
+
+    public FormLapHoaDonLe(String TenKH,ArrayList<ObjChiTietHDL> ListCT,Date NgayLap){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        
+        JPanel ListPn[]=new JPanel[]{jPanel1,jPanel2,jPanel3,jPanel4,jPanel7};
+        editFrm.MakeTransparentPanel(ListPn);
+        
+        JPanel ListTitle[]=new JPanel[]{jPnDSSP,jPnGioHang,jPnThongtinHD,jPnThongtinSP,jPnTimkiemSP};
+        editFrm.MakeTransparentTitle(ListTitle);
+        
+        JPanel ListButton[]=new JPanel[]{jbtnDuyetGioHang,jBtnBack,jBtnHuy,jBtnLamMoi,jBtnThem,jBtnTimKiem,jBtnXoa};
+        editFrm.MakeTransparentButton(ListButton);
+        
+        jPanel5.setBackground(new Color(0,0,0,0));
+        
+        editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
+        editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
+        
+        jSpSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                  int dongia = Integer.parseInt(jtxtDonGia.getText().replace(",",""));
                   int soluong = Integer.parseInt(jSpSoLuong.getValue()+"");
                   jtxtThanhTien.setText(String.valueOf(dongia*soluong));
             }
         });
         
-        HienThiDanhSachSanPham(CtrlHDL.LayDanhSachSanPham());
-        LoadComboboxLoaiSP();
-        LoadComboboxNhaCungCap();
-        Binding();
-        jDateNgayLap.setDate(new Date());
-        jSpSoLuong.setValue(1);
-        jtxtSoHDL.setText(CtrlHDL.LaySoHDL());
+       LoadForm();
+       jtxtTenKH.setText(TenKH);
+       jDateNgayLap.setDate(NgayLap);
+       try{        
+            DefaultTableModel Model = (DefaultTableModel) jtbGioHang.getModel();
+            for(int i = 0;i<ListCT.size();i++){
+                 this.ListGioHang.add(ListCT.get(i));
+                 Vector v = new Vector();
+                 v.add(ListCT.get(i).getMaSP());
+                 v.add(ListCT.get(i).getTenSP());
+                 v.add(ListCT.get(i).getDVT());
+                 v.add(ListCT.get(i).getSoLuong());
+                 v.add(String.format("%,d",ListCT.get(i).getDonGia()));
+                 v.add(String.format("%,d",ListCT.get(i).getThanhTien()));
+                 Model.addRow(v);    
+            }
+            jtxtTongTien.setText(String.format("%,d",TinhTongTienGioHang()));
+       }
+       catch(Exception ex){
+           System.out.println("Ngoại lệ tại FormLapHoaDonSi():"+ex.getMessage());
+       }
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -837,6 +879,15 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void LoadForm(){
+        HienThiDanhSachSanPham(CtrlHDL.LayDanhSachSanPham());
+        LoadComboboxLoaiSP();
+        LoadComboboxNhaCungCap();
+        Binding();
+        jDateNgayLap.setDate(new Date());
+        jSpSoLuong.setValue(1);
+        jtxtSoHDL.setText(CtrlHDL.LaySoHDL());
+    }
     public void HienThiDanhSachSanPham(ResultSet rs){
         listSP.clear();
         DefaultTableModel model;
@@ -847,7 +898,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                 ObjSanPham itemSP;
                 ObjLoaiSanPham itemLSP;
                 ObjNhaCungCap itemNCC;
-                itemSP=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"),rs.getString("TenLoaiSP"),(int) Double.parseDouble(rs.getString("GiaLe")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"));
+                itemSP=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"),rs.getString("TenLoaiSP"),(int) Double.parseDouble(rs.getString("GiaLe")),(int) Double.parseDouble(rs.getString("GiaSi")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"));
                 listSP.add(itemSP);
                 Vector v = new Vector();
                 v.add(itemSP.getMaSP());
@@ -1150,7 +1201,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         int modelRow= jtbDSSP.convertRowIndexToModel(viewRow);
         Model =(DefaultTableModel) jtbGioHang.getModel();
         if(Integer.parseInt(jSpSoLuong.getValue()+"")<=listSP.get(modelRow).getSoLuong()){
-            ObjChiTietHDL itemGioHang=new ObjChiTietHDL(listSP.get(modelRow).getMaSP(),listSP.get(modelRow).getTenSP(),listSP.get(modelRow).getDVT(),Integer.parseInt(jSpSoLuong.getValue()+""),listSP.get(modelRow).getGiaLe(),Integer.parseInt(jtxtThanhTien.getText().replace(",","")));
+            ObjChiTietHDL itemGioHang=new ObjChiTietHDL(jtxtSoHDL.getText(),listSP.get(modelRow).getMaSP(),listSP.get(modelRow).getTenSP(),listSP.get(modelRow).getDVT(),Integer.parseInt(jSpSoLuong.getValue()+""),listSP.get(modelRow).getGiaLe(),Integer.parseInt(jtxtThanhTien.getText().replace(",","")));
             try{ 
             for(int i = 0 ;i<Model.getRowCount();i++){
                 if(Model.getValueAt(i,0).toString().equals(itemGioHang.getMaSP())){
@@ -1207,6 +1258,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             if(ListGioHang.size()>0){
                 frmDuyetHDL = new FormDuyetHoaDonLe(jtxtSoHDL.getText(),jtxtTenKH.getText(), jDateNgayLap.getDate(),jtxtTongTien.getText(),ListGioHang);
                 frmDuyetHDL.setVisible(true);
+                this.setVisible(false);
+                this.dispose();
             }
             else
                 JOptionPane.showMessageDialog(this, "Giỏ hàng trống.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);

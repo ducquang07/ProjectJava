@@ -17,7 +17,7 @@ import java.sql.SQLException;
  * @author ThaiNguyen
  */
 public class ModNhaCungCap extends Model{
-       private ObjNhaCungCap TbNhaCungCap;
+    private ObjNhaCungCap TbNhaCungCap;
     private PreparedStatement pstmt;
     
     public ModNhaCungCap() {

@@ -16,7 +16,7 @@ import java.sql.SQLException;
  * @author ThaiNguyen
  */
 public class ModChiTietHDL extends Model{
-     private PreparedStatement pstmt;
+    private PreparedStatement pstmt;
     
     public ModChiTietHDL() {
         DB=new Connect();

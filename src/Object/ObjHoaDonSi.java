@@ -5,7 +5,7 @@
  */
 package Object;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.sql.Date;
 public class ObjHoaDonSi {
     private String SoHDS;
     private String MaKH;
-    private Date NgayDat;
+    private Date NgayLap;
     private Date NgayGiaoDuKien;
     private int TongTien;
     private String TinhTrangGiaoHang;
@@ -24,10 +24,10 @@ public class ObjHoaDonSi {
     public ObjHoaDonSi() {
     }
 
-    public ObjHoaDonSi(String SoHDS, String MaKH, Date NgayDat, Date NgayGiaoDuKien, int TongTien, String TinhTrangGiaoHang) {
+    public ObjHoaDonSi(String SoHDS, String MaKH, Date NgayLap, Date NgayGiaoDuKien, int TongTien, String TinhTrangGiaoHang) {
         this.SoHDS = SoHDS;
         this.MaKH = MaKH;
-        this.NgayDat = NgayDat;
+        this.NgayLap = NgayLap;
         this.NgayGiaoDuKien = NgayGiaoDuKien;
         this.TongTien = TongTien;
         this.TinhTrangGiaoHang = TinhTrangGiaoHang;
@@ -43,8 +43,8 @@ public class ObjHoaDonSi {
         return MaKH;
     }
 
-    public Date getNgayDat() {
-        return NgayDat;
+    public Date getNgayLap() {
+        return NgayLap;
     }
 
     public Date getNgayGiaoDuKien() {
@@ -69,8 +69,8 @@ public class ObjHoaDonSi {
         this.MaKH = MaKH;
     }
 
-    public void setNgayDat(Date NgayDat) {
-        this.NgayDat = NgayDat;
+    public void setNgayDat(Date NgayLap) {
+        this.NgayLap = NgayLap;
     }
 
     public void setNgayGiaoDuKien(Date NgayGiaoDuKien) {
