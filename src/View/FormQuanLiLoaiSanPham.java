@@ -6,6 +6,7 @@
 package View;
 import Control.CtrlQuanLiLoaiSanPham;
 import Edit.Edit;
+import Model.ModLoaiSanPham;
 import Object.ObjLoaiSanPham;
 import java.awt.Color;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +28,9 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
     ArrayList<ObjLoaiSanPham> listLSP = new ArrayList<>();
+    ObjLoaiSanPham ObjLSP = new ObjLoaiSanPham();
     CtrlQuanLiLoaiSanPham CtrlQLLSP = new CtrlQuanLiLoaiSanPham();
+    ModLoaiSanPham ModLSP = new ModLoaiSanPham();
     /**
      * Creates new form FromQuanLiLoaiSanPham
      */
@@ -50,6 +54,25 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         Binding();
     }
 
+    public void EnableComponent(boolean Active){
+        jBtnLuu.setBackground(new Color(153,153,153,180));
+        jBtnHuy.setBackground(new Color(153,153,153,180));
+        jBtnXoa.setBackground(new Color(153,153,153,180));
+        jBtnSua.setBackground(new Color(153,153,153,180));
+        jBtnThem.setBackground(new Color(153,153,153,180));
+        jBtnLuu.setEnabled(Active);
+        jlblLuu.setEnabled(Active);
+        jBtnHuy.setEnabled(Active);
+        jlblHuy.setEnabled(Active);
+        jtxtMaLoaiSanPham.setEnabled(Active);
+        jtxtTenLoaiSanPham.setEnabled(Active);
+        jBtnThem.setEnabled(!Active);
+        jlblThem.setEnabled(!Active);
+        jBtnXoa.setEnabled(!Active);
+        jlblXoa.setEnabled(!Active);
+        jBtnSua.setEnabled(!Active);
+        jlblSua.setEnabled(!Active);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,19 +91,19 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jBtnSua = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
+        jlblSua = new javax.swing.JLabel();
         jBtnXoa = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
+        jlblXoa = new javax.swing.JLabel();
         jBtnLuu = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
+        jlblLuu = new javax.swing.JLabel();
         jBtnThem = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        jlblThem = new javax.swing.JLabel();
         jBtnHuy = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
+        jlblHuy = new javax.swing.JLabel();
         jBtnTimKiem = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
+        jlblTimKiem = new javax.swing.JLabel();
         jBtnLamMoi = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
+        jlblLamMoi = new javax.swing.JLabel();
         jScrDSLSP = new javax.swing.JScrollPane();
         jTbDSLSP = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -186,6 +209,9 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
         jBtnSua.setBackground(new java.awt.Color(153, 153, 153));
         jBtnSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnSuaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnSuaMouseEntered(evt);
             }
@@ -200,8 +226,8 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         });
 
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Edit_48px_1.png"))); // NOI18N
+        jlblSua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Edit_48px_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnSuaLayout = new javax.swing.GroupLayout(jBtnSua);
         jBtnSua.setLayout(jBtnSuaLayout);
@@ -209,13 +235,13 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             jBtnSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnSuaLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblSua, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jBtnSuaLayout.setVerticalGroup(
             jBtnSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnSuaLayout.createSequentialGroup()
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblSua, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -223,6 +249,9 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
         jBtnXoa.setBackground(new java.awt.Color(153, 153, 153));
         jBtnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXoaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnXoaMouseEntered(evt);
             }
@@ -237,8 +266,8 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         });
 
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Subtract_55px.png"))); // NOI18N
+        jlblXoa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Subtract_55px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnXoaLayout = new javax.swing.GroupLayout(jBtnXoa);
         jBtnXoa.setLayout(jBtnXoaLayout);
@@ -246,13 +275,13 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             jBtnXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnXoaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel20)
+                .addComponent(jlblXoa)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jBtnXoaLayout.setVerticalGroup(
             jBtnXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnXoaLayout.createSequentialGroup()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -260,6 +289,9 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
         jBtnLuu.setBackground(new java.awt.Color(153, 153, 153));
         jBtnLuu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnLuuMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnLuuMouseEntered(evt);
             }
@@ -274,8 +306,8 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         });
 
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Save_55px.png"))); // NOI18N
+        jlblLuu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Save_55px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnLuuLayout = new javax.swing.GroupLayout(jBtnLuu);
         jBtnLuu.setLayout(jBtnLuuLayout);
@@ -283,13 +315,13 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             jBtnLuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnLuuLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel23)
+                .addComponent(jlblLuu)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jBtnLuuLayout.setVerticalGroup(
             jBtnLuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnLuuLayout.createSequentialGroup()
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -297,6 +329,9 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
         jBtnThem.setBackground(new java.awt.Color(153, 153, 153));
         jBtnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThemMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThemMouseEntered(evt);
             }
@@ -311,8 +346,8 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Plus_Math_55px.png"))); // NOI18N
+        jlblThem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Plus_Math_55px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnThemLayout = new javax.swing.GroupLayout(jBtnThem);
         jBtnThem.setLayout(jBtnThemLayout);
@@ -320,18 +355,21 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             jBtnThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnThemLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel19)
+                .addComponent(jlblThem)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jBtnThemLayout.setVerticalGroup(
             jBtnThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addComponent(jlblThem, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
         getContentPane().add(jBtnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 479, -1, -1));
 
         jBtnHuy.setBackground(new java.awt.Color(153, 153, 153));
         jBtnHuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnHuyMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnHuyMouseEntered(evt);
             }
@@ -346,8 +384,8 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         });
 
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Reply_Arrow_64px_1.png"))); // NOI18N
+        jlblHuy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Reply_Arrow_64px_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnHuyLayout = new javax.swing.GroupLayout(jBtnHuy);
         jBtnHuy.setLayout(jBtnHuyLayout);
@@ -355,13 +393,13 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             jBtnHuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnHuyLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jBtnHuyLayout.setVerticalGroup(
             jBtnHuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnHuyLayout.createSequentialGroup()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -371,16 +409,25 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jBtnTimKiem.setMinimumSize(new java.awt.Dimension(0, 0));
         jBtnTimKiem.setPreferredSize(new java.awt.Dimension(105, 50));
         jBtnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnTimKiemMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jBtnTimKiemMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemMouseReleased(evt);
+            }
         });
 
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Search_45px.png"))); // NOI18N
+        jlblTimKiem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Search_45px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnTimKiemLayout = new javax.swing.GroupLayout(jBtnTimKiem);
         jBtnTimKiem.setLayout(jBtnTimKiemLayout);
@@ -388,12 +435,12 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             jBtnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnTimKiemLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jBtnTimKiemLayout.setVerticalGroup(
             jBtnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlblTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jBtnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 380, 120, 65));
@@ -418,8 +465,8 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         });
 
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Refresh_45px.png"))); // NOI18N
+        jlblLamMoi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Refresh_45px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnLamMoiLayout = new javax.swing.GroupLayout(jBtnLamMoi);
         jBtnLamMoi.setLayout(jBtnLamMoiLayout);
@@ -427,12 +474,12 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             jBtnLamMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBtnLamMoiLayout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(jLabel16)
+                .addComponent(jlblLamMoi)
                 .addGap(37, 37, 37))
         );
         jBtnLamMoiLayout.setVerticalGroup(
             jBtnLamMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+            .addComponent(jlblLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 380, 120, 65));
@@ -722,18 +769,9 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnHuyMouseReleased
 
     private void jBtnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseClicked
-        // TODO add your handling code here:
-        //        try {
-            //            // TODO add your handling code here:
-            //            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-            //            if(rs.getRow()==0){
-                //                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-                //            }
-            //            displayData(rs);
-            //            Binding();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
+        jtxtTimKiem.setText("");
+        jcbbTimTheo.setSelectedIndex(0);
+        HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
     private void jBtnLamMoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseEntered
@@ -767,9 +805,107 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnTimKiemMouseExited
 
     private void jTbDSLSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSLSPMouseClicked
-        // TODO add your handling code here:
         Binding();
     }//GEN-LAST:event_jTbDSLSPMouseClicked
+
+    private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
+        jtxtMaLoaiSanPham.setText(CtrlQLLSP.LayMaLSP());
+        jtxtTenLoaiSanPham.setText("");
+        EnableComponent(true);
+    }//GEN-LAST:event_jBtnThemMouseClicked
+
+    private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
+        ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
+        if(!ObjLSP.getMaLoaiSP().equals("")){
+            if(!ObjLSP.getTenLoaiSP().equals("")){
+                try{
+                    if(ModLSP.Insert(ObjLSP))
+                    {
+                        EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+                    }
+                    
+                }catch(Exception e){
+                    
+                    JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBtnLuuMouseClicked
+
+    private void jBtnHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnHuyMouseClicked
+        jtxtMaLoaiSanPham.setText("");
+        jtxtTenLoaiSanPham.setText("");
+        EnableComponent(false);
+    }//GEN-LAST:event_jBtnHuyMouseClicked
+
+    private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
+        ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
+        int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\"", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(i==0){
+            try{
+            if(ModLSP.Delete(ObjLSP))
+                {
+                    EnableComponent(false);
+                    JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+                }
+                    
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jBtnXoaMouseClicked
+
+    private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
+        ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
+        if(!ObjLSP.getMaLoaiSP().equals("")){
+            if(!ObjLSP.getTenLoaiSP().equals("")){
+                try{
+                    if(ModLSP.Update(ObjLSP))
+                    {
+                        EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+                    }
+                    
+                }catch(Exception e){
+                    
+                    JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBtnSuaMouseClicked
+
+    private void jBtnTimKiemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMousePressed
+        resetColor(jBtnTimKiem);
+    }//GEN-LAST:event_jBtnTimKiemMousePressed
+
+    private void jBtnTimKiemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseReleased
+        setColor(jBtnTimKiem);
+    }//GEN-LAST:event_jBtnTimKiemMouseReleased
+
+    private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
+        if(!jtxtTimKiem.equals("")){
+            if(jcbbTimTheo.getSelectedItem().toString().equals("Mã sản phẩm"))
+        {
+            HienThiDSLoaiSanPham(CtrlQLLSP.SearchLoaiSPByID(jtxtTimKiem.getText()));
+        } else{
+            HienThiDSLoaiSanPham(CtrlQLLSP.SearchLoaiSPByName(jtxtTimKiem.getText()));
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá trị bạn muốn tìm kiếm", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
@@ -808,7 +944,6 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     }
     
     public void Binding(){
-        //TableModel model =jTbDSLSP.getModel();
         try{
             int viewRow = jTbDSLSP.getSelectedRow();
             int modelRow= jTbDSLSP.convertRowIndexToModel(viewRow);
@@ -878,15 +1013,8 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -904,6 +1032,13 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrDSLSP;
     private javax.swing.JTable jTbDSLSP;
     private javax.swing.JComboBox<String> jcbbTimTheo;
+    private javax.swing.JLabel jlblHuy;
+    private javax.swing.JLabel jlblLamMoi;
+    private javax.swing.JLabel jlblLuu;
+    private javax.swing.JLabel jlblSua;
+    private javax.swing.JLabel jlblThem;
+    private javax.swing.JLabel jlblTimKiem;
+    private javax.swing.JLabel jlblXoa;
     private javax.swing.JTextField jtxtMaLoaiSanPham;
     private javax.swing.JTextField jtxtTenLoaiSanPham;
     private javax.swing.JTextField jtxtTimKiem;
