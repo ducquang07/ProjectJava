@@ -70,18 +70,19 @@ public class Model {
     
     public boolean Delete(String id){
         SQL="Delete from "+Table+" where "+ID+" ='"+id+"'";
-        if(DB.Connected()){
             try {
+                if(DB.Connected()){
                 Statement  stmDB =(Statement)  DB.getConDB().createStatement();
                 stmDB.executeUpdate(SQL);
+                }
             } catch (SQLException ex) {
                 System.out.println("Ngoại lệ tại Model.Delete: "+ex.getMessage());
+                DB.CloseDB();
                 return false;
-            }
-            finally{
+            }finally{
                 DB.CloseDB();
             }
+            return true;
         }
-        return true;
+        
     }
-}
