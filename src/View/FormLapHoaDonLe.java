@@ -56,6 +56,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         
         jPanel5.setBackground(new Color(0,0,0,0));
         
+        jtxtTenSP.setLineWrap(true);
+        jtxtTenNCC.setLineWrap(true);
+        
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
         
@@ -84,6 +87,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         editFrm.MakeTransparentButton(ListButton);
         
         jPanel5.setBackground(new Color(0,0,0,0));
+        
+        jtxtTenSP.setLineWrap(true);
+        jtxtTenNCC.setLineWrap(true);
         
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
@@ -352,7 +358,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jtbGioHang.setRowHeight(25);
         jtbGioHang.setSelectionBackground(new java.awt.Color(218, 223, 225));
         jtbGioHang.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jtbGioHang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jtbGioHang.setShowHorizontalLines(false);
+        jtbGioHang.getTableHeader().setReorderingAllowed(false);
         jScrGioHang.setViewportView(jtbGioHang);
         if (jtbGioHang.getColumnModel().getColumnCount() > 0) {
             jtbGioHang.getColumnModel().getColumn(0).setPreferredWidth(80);
@@ -888,16 +896,15 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jSpSoLuong.setValue(1);
         jtxtSoHDL.setText(CtrlHDL.LaySoHDL());
     }
+    
     public void HienThiDanhSachSanPham(ResultSet rs){
         listSP.clear();
         DefaultTableModel model;
         model=(DefaultTableModel) jtbDSSP.getModel();
-        model.getDataVector().removeAllElements();
+        model.getDataVector().removeAllElements(); // remove data in table
         try{
             while(rs.next()){
                 ObjSanPham itemSP;
-                ObjLoaiSanPham itemLSP;
-                ObjNhaCungCap itemNCC;
                 itemSP=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"),rs.getString("TenLoaiSP"),(int) Double.parseDouble(rs.getString("GiaLe")),(int) Double.parseDouble(rs.getString("GiaSi")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"));
                 listSP.add(itemSP);
                 Vector v = new Vector();

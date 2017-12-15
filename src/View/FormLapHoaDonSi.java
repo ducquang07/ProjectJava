@@ -62,6 +62,9 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         
         jPanel5.setBackground(new Color(0,0,0,0));
         
+        jtxtTenSP.setLineWrap(true);
+        jtxtTenNCC.setLineWrap(true);
+        
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
         
@@ -91,6 +94,9 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         editFrm.MakeTransparentButton(ListButton);
         
         jPanel5.setBackground(new Color(0,0,0,0));
+        
+        jtxtTenSP.setLineWrap(true);
+        jtxtTenNCC.setLineWrap(true);
         
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 

@@ -61,6 +61,8 @@ public class FormDuyetHoaDonSi extends javax.swing.JFrame {
         jRadBtnChuaGiao.setBackground(new Color(0,0,0,0));
         jRadBtnDaGiao.setBackground(new Color(0,0,0,0));
         
+        jtxtDiaChi.setLineWrap(true);
+        
         EnableComponent(true);
         jtxtSoHDS.setText(SoHDS);
         jtxtTenKH.setText(ObjKH.getTenKH());
@@ -370,9 +372,11 @@ public class FormDuyetHoaDonSi extends javax.swing.JFrame {
         jLabel12.setText("Tình trạng giao hàng :");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         jtxtDiaChi.setEditable(false);
         jtxtDiaChi.setColumns(20);
+        jtxtDiaChi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtDiaChi.setRows(5);
         jtxtDiaChi.setBorder(null);
         jScrollPane1.setViewportView(jtxtDiaChi);
