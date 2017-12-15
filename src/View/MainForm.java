@@ -619,7 +619,8 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jBtnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCloseMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jBtnCloseMouseClicked
 
     private void jBtn7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn7MouseEntered

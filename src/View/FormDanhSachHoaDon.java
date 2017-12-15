@@ -8,6 +8,8 @@ import Control.CtrlDanhSachHoaDon;
 import Edit.Edit;
 import Object.ObjHoaDonLe;
 import Object.ObjHoaDonSi;
+import Object.ObjChiTietHDL;
+import Object.ObjChiTietHDS;
 import java.awt.Color;
 import java.util.Date;
 import java.sql.ResultSet;
@@ -35,6 +37,8 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     Edit editFrm = new Edit();
     ArrayList<ObjHoaDonLe> ListHDL = new ArrayList<>();
     ArrayList<ObjHoaDonSi> ListHDS = new ArrayList<>();
+    ArrayList<ObjChiTietHDL> ListCTHDL = new ArrayList<>();
+    ArrayList<ObjChiTietHDS> ListCTHDS = new ArrayList<>();
     CtrlDanhSachHoaDon CtrlDSHD = new CtrlDanhSachHoaDon();
     SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy      hh:mm:ss a");
     /**
@@ -96,7 +100,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         model.getDataVector().removeAllElements();
         
             while(rs.next()){
-                ObjHoaDonLe itemHDL = new ObjHoaDonLe(rs.getString("SoHDL"),rs.getString("TenKH"),rs.getTimestamp("NgayLap"),(int) Double.parseDouble(rs.getString("TongTien")));
+                ObjHoaDonLe itemHDL = new ObjHoaDonLe(rs.getString("SoHDL"),rs.getString("TenKH"),rs.getTimestamp("NgayLap"), (int) Double.parseDouble(rs.getString("TongTien")));
                 ListHDL.add(itemHDL);
                 Vector v =new Vector();
                 v.add(itemHDL.getSoHDL());
@@ -105,8 +109,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             }       
             jTbDSHDL.changeSelection(0,0,false,false);
             BindingHDL();
+            HienThiThongTinChiTietHDL(jtxtSoHDL.getText());
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormDanhSachHoaDon.HienThiDanhSachHoaDonLe: "+ex.getMessage());
+        }
+        finally{
+            CtrlDSHD.CloseConnection();
         }
         
     }
@@ -127,10 +135,72 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             }
             jTbDSHDS.changeSelection(0,0,false,false);
             BindingHDS();
+            HienThiThongTinChiTietHDS(jtxtSoHDS.getText());
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormDanhSachHoaDon.HienThiDanhSachHoaDonSi: "+ex.getMessage());
         }
+        finally{
+            CtrlDSHD.CloseConnection();
+        }
         
+    }
+    
+    public void HienThiThongTinChiTietHDL(String SoHDL){
+        try{
+            ResultSet rs=null;
+            rs=CtrlDSHD.LayThongTinChiTietHoaDonLe(SoHDL);
+            if(rs!=null){
+                ListCTHDL.clear();
+                DefaultTableModel model = (DefaultTableModel) jTbCTHDL.getModel();
+                model.getDataVector().removeAllElements();
+                while(rs.next()){
+                    ObjChiTietHDL itemCTHDL = new ObjChiTietHDL(rs.getString("SoHDL"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("DVT"),(int)Double.parseDouble(rs.getString("SoLuong")),(int)Double.parseDouble(rs.getString("DonGia")),(int)Double.parseDouble(rs.getString("ThanhTien")));
+                    ListCTHDL.add(itemCTHDL);
+                    Vector v =new Vector();
+                    v.add(itemCTHDL.getMaSP());
+                    v.add(itemCTHDL.getTenSP());
+                    v.add(itemCTHDL.getDVT());
+                    v.add(itemCTHDL.getSoLuong());
+                    v.add(String.format("%,d",itemCTHDL.getDonGia()));
+                    v.add(String.format("%,d",itemCTHDL.getThanhTien()));
+                    model.addRow(v);
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormDanhSachHoaDon.HienThiThongTinChiTietHDL: "+ex.getMessage());
+        }
+        finally{
+            CtrlDSHD.CloseConnection();
+        }
+    }
+    
+     public void HienThiThongTinChiTietHDS(String SoHDS){
+        try{
+            ResultSet rs=null;
+            rs=CtrlDSHD.LayThongTinChiTietHoaDonSi(SoHDS);
+            if(rs!=null){
+                ListCTHDS.clear();
+                DefaultTableModel model = (DefaultTableModel) jTbCTHDS.getModel();
+                model.getDataVector().removeAllElements();
+                while(rs.next()){
+                    ObjChiTietHDS itemCTHDS = new ObjChiTietHDS(rs.getString("SoHDS"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("DVT"),(int)Double.parseDouble(rs.getString("SoLuong")),(int)Double.parseDouble(rs.getString("DonGia")),(int)Double.parseDouble(rs.getString("ThanhTien")));
+                    ListCTHDS.add(itemCTHDS);
+                    Vector v =new Vector();
+                    v.add(itemCTHDS.getMaSP());
+                    v.add(itemCTHDS.getTenSP());
+                    v.add(itemCTHDS.getDVT());
+                    v.add(itemCTHDS.getSoLuong());
+                    v.add(String.format("%,d",itemCTHDS.getDonGia()));
+                    v.add(String.format("%,d",itemCTHDS.getThanhTien()));
+                    model.addRow(v);
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormDanhSachHoaDon.HienThiThongTinChiTietHDS: "+ex.getMessage());
+        }
+        finally{
+            CtrlDSHD.CloseConnection();
+        }
     }
     
     public void BindingHDL(){
@@ -147,6 +217,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             System.out.println("Ngoại lệ tại FormDanhSachHoaDon.Binding: "+ex.getMessage());
         }
     }
+    
     public void BindingHDS(){
         try{
             DefaultTableModel Model = (DefaultTableModel) jTbDSHDS.getModel();
@@ -751,14 +822,13 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTbCTHDL.setColumnSelectionAllowed(true);
         jTbCTHDL.setFocusable(false);
         jTbCTHDL.setRowHeight(25);
         jTbCTHDL.setSelectionBackground(new java.awt.Color(218, 223, 225));
@@ -766,10 +836,9 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jTbCTHDL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbCTHDL.getTableHeader().setReorderingAllowed(false);
         jScrCTHDL.setViewportView(jTbCTHDL);
-        jTbCTHDL.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (jTbCTHDL.getColumnModel().getColumnCount() > 0) {
             jTbCTHDL.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTbCTHDL.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jTbCTHDL.getColumnModel().getColumn(1).setPreferredWidth(300);
             jTbCTHDL.getColumnModel().getColumn(2).setPreferredWidth(50);
             jTbCTHDL.getColumnModel().getColumn(3).setPreferredWidth(50);
             jTbCTHDL.getColumnModel().getColumn(4).setPreferredWidth(100);
@@ -1186,7 +1255,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jScrCTHDS.setViewportView(jTbCTHDS);
         if (jTbCTHDS.getColumnModel().getColumnCount() > 0) {
             jTbCTHDS.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTbCTHDS.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jTbCTHDS.getColumnModel().getColumn(1).setPreferredWidth(300);
             jTbCTHDS.getColumnModel().getColumn(2).setPreferredWidth(50);
             jTbCTHDS.getColumnModel().getColumn(3).setPreferredWidth(50);
             jTbCTHDS.getColumnModel().getColumn(4).setPreferredWidth(100);
@@ -1455,6 +1524,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(jTbDSHDL.getSelectedRow()!=-1){
             BindingHDL();
+            HienThiThongTinChiTietHDL(jtxtSoHDL.getText());
         }
     }//GEN-LAST:event_jTbDSHDLMouseClicked
 
@@ -1462,6 +1532,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         // TODO add your handling code here:
          if(jTbDSHDS.getSelectedRow()!=-1){
             BindingHDS();
+            HienThiThongTinChiTietHDS(jtxtSoHDS.getText());
         }
     }//GEN-LAST:event_jTbDSHDSMouseClicked
 
