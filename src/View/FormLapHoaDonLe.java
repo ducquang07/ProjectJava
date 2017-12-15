@@ -349,6 +349,11 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jCbbTimTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên sản phẩm", "Mã sản phẩm" }));
         jCbbTimTheo.setFocusable(false);
+        jCbbTimTheo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbbTimTheoActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Nhà cung cấp :");
 
@@ -1162,6 +1167,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private void jSpSoLuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpSoLuongMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jSpSoLuongMouseClicked
+
+    private void jCbbTimTheoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbbTimTheoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCbbTimTheoActionPerformed
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){

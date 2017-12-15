@@ -4,19 +4,31 @@
  * and open the template in the editor.
  */
 package View;
+import Control.CtrlKhachHang;
 import Edit.Edit;
+import Object.ObjKhachHang;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ThaiNguyen
+ * @author Thanh
  */
 public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
+    ArrayList<ObjKhachHang> listKH=new ArrayList<>();
+    CtrlKhachHang CtrlKH=new CtrlKhachHang();
+    
     /**
      * Creates new form FormQuanLiKhachHang
      */
@@ -34,7 +46,11 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXoa};
         editFrm.MakeTransparentButton(ListButton);
         
-        editFrm.MakeTransparentTable(jScrDSKH, jTbDSKH);
+        editFrm.MakeTransparentTable(jScrDSKH, jtbDSKH);
+        
+        HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
+       // Bingding();
+        jtxtMaKH.setText(CtrlKH.TaoMaKH());
     }
 
     /**
@@ -65,13 +81,13 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCbbTimTheo = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jtxtTimKiem = new javax.swing.JTextField();
         jPnTracuuKH = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrDSKH = new javax.swing.JScrollPane();
-        jTbDSKH = new javax.swing.JTable();
+        jtbDSKH = new javax.swing.JTable();
         jPnDSKH = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -80,12 +96,12 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jtxtSDT = new javax.swing.JTextField();
+        jtxtTenKH = new javax.swing.JTextField();
+        jtxtMaKH = new javax.swing.JTextField();
+        jtxtEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtxtDiaChi = new javax.swing.JTextArea();
         jPnThongtinKH = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -126,7 +142,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         );
         jBtnBackLayout.setVerticalGroup(
             jBtnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
@@ -404,13 +420,13 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jLabel10.setText("Tìm theo :");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 53, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên khách hàng", "Mã khách hàng", "Địa chỉ", "Số điện thoại", "Email" }));
-        jComboBox1.setFocusable(false);
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 50, 184, -1));
+        jCbbTimTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên khách hàng", "Mã khách hàng", "Địa chỉ", "Số điện thoại", "Email" }));
+        jCbbTimTheo.setFocusable(false);
+        jPanel3.add(jCbbTimTheo, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 50, 184, -1));
 
         jLabel11.setText("Từ tìm kiếm :");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 91, -1, -1));
-        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 88, 317, -1));
+        jPanel3.add(jtxtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 88, 317, -1));
 
         jPnTracuuKH.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -431,7 +447,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
-        jTbDSKH.setModel(new javax.swing.table.DefaultTableModel(
+        jtbDSKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -447,9 +463,9 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrDSKH.setViewportView(jTbDSKH);
-        if (jTbDSKH.getColumnModel().getColumnCount() > 0) {
-            jTbDSKH.getColumnModel().getColumn(4).setPreferredWidth(100);
+        jScrDSKH.setViewportView(jtbDSKH);
+        if (jtbDSKH.getColumnModel().getColumnCount() > 0) {
+            jtbDSKH.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
         jPnDSKH.setBackground(new java.awt.Color(0, 204, 255));
@@ -510,9 +526,9 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
         jLabel9.setText("Email :");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jtxtDiaChi.setColumns(20);
+        jtxtDiaChi.setRows(5);
+        jScrollPane1.setViewportView(jtxtDiaChi);
 
         jPnThongtinKH.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -547,15 +563,15 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(8, 8, 8)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(4, 4, 4)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(48, 48, 48)
@@ -563,7 +579,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(56, 56, 56)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jtxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,19 +588,19 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel6))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel7))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -594,7 +610,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel9))
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -609,6 +625,26 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void HienThiDanhSachKhachHang(ResultSet rs){
+        listKH.clear();
+        DefaultTableModel model;
+        model=(DefaultTableModel) jtbDSKH.getModel();
+        model.getDataVector().removeAllElements();
+        try{
+            while(rs.next()){
+                ObjKhachHang itemKH;
+                itemKH=new ObjKhachHang(rs.getString("MaKH"),rs.getString("TenKH"),rs.getString("SDT"),rs.getString("DiaChi"),rs.getString("Email"));
+            
+            }
+        } catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormQuanLiKhachHang.HienThiDanhSachKhachHang: "+ex.getMessage());
+        }
+        finally{
+            CtrlKH.CloseConnection();
+        }
+        jtbDSKH.changeSelection(0, 0, false, false);
+    }
+    
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
@@ -671,7 +707,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnLamMoiMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-
+   //     if(jCbbTimTheo.getSelectedIndex()=)
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -852,7 +888,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnThem;
     private javax.swing.JPanel jBtnTimKiem;
     private javax.swing.JPanel jBtnXoa;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCbbTimTheo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -881,12 +917,13 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPnTracuuKH;
     private javax.swing.JScrollPane jScrDSKH;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTbDSKH;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable jtbDSKH;
+    private javax.swing.JTextArea jtxtDiaChi;
+    private javax.swing.JTextField jtxtEmail;
+    private javax.swing.JTextField jtxtMaKH;
+    private javax.swing.JTextField jtxtSDT;
+    private javax.swing.JTextField jtxtTenKH;
+    private javax.swing.JTextField jtxtTimKiem;
     // End of variables declaration//GEN-END:variables
 }
+  
