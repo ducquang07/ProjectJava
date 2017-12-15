@@ -90,10 +90,11 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     }
     
     public void HienThiDanhSachHoaDonLe(ResultSet rs){
+        try{
         ListHDL.clear();
         DefaultTableModel model =(DefaultTableModel) jTbDSHDL.getModel();
         model.getDataVector().removeAllElements();
-        try{
+        
             while(rs.next()){
                 ObjHoaDonLe itemHDL = new ObjHoaDonLe(rs.getString("SoHDL"),rs.getString("TenKH"),rs.getTimestamp("NgayLap"),(int) Double.parseDouble(rs.getString("TongTien")));
                 ListHDL.add(itemHDL);
@@ -111,10 +112,11 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     }
     
     public void HienThiDanhSachHoaDonSi(ResultSet rs){
+        try{
         ListHDS.clear();
         DefaultTableModel model =(DefaultTableModel) jTbDSHDS.getModel();
         model.getDataVector().removeAllElements();
-        try{
+        
             while(rs.next()){
                 ObjHoaDonSi itemHDS = new ObjHoaDonSi(rs.getString("SoHDS"),rs.getString("MaKH"),rs.getString("TenKH"),rs.getString("DiaChi"),rs.getString("SDT"),rs.getTimestamp("NgayLap"),rs.getTimestamp("NgayGiaoDuKien"),(int) Double.parseDouble(rs.getString("TongTien")),rs.getString("TinhTrangGiaoHang"));
                 ListHDS.add(itemHDS);
@@ -132,36 +134,37 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     }
     
     public void BindingHDL(){
+        try{
             DefaultTableModel Model = (DefaultTableModel) jTbDSHDL.getModel();
             int viewRow = jTbDSHDL.getSelectedRow();
             int modelRow= jTbDSHDL.convertRowIndexToModel(viewRow);
-            try{
-                jtxtSoHDL.setText(ListHDL.get(modelRow).getSoHDL());
-                jtxtTenKHHDL.setText(ListHDL.get(modelRow).getTenKH());
-                jDateNgayLapHDL.setDate(ListHDL.get(modelRow).getNgayLap());
-                jtxtTongTienHDL.setText(String.format("%,d", ListHDL.get(modelRow).getTongTien()));
-            }
-            catch(Exception ex){
-                System.out.println("Ngoại lệ tại FormDanhSachHoaDon.Binding: "+ex.getMessage());
-            }
+            jtxtSoHDL.setText(ListHDL.get(modelRow).getSoHDL());
+            jtxtTenKHHDL.setText(ListHDL.get(modelRow).getTenKH());
+            jDateNgayLapHDL.setDate(ListHDL.get(modelRow).getNgayLap());
+            jtxtTongTienHDL.setText(String.format("%,d", ListHDL.get(modelRow).getTongTien()));
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormDanhSachHoaDon.Binding: "+ex.getMessage());
+        }
     }
     public void BindingHDS(){
+        try{
             DefaultTableModel Model = (DefaultTableModel) jTbDSHDS.getModel();
             int viewRow = jTbDSHDS.getSelectedRow();
             int modelRow= jTbDSHDS.convertRowIndexToModel(viewRow);
-            try{
-                jtxtSoHDS.setText(ListHDS.get(modelRow).getSoHDS());
-                jtxtTenKHHDS.setText(ListHDS.get(modelRow).getTenKH());
-                jtxtMaKH.setText(ListHDS.get(modelRow).getMaKH());
-                jtxtDiaChi.setText(ListHDS.get(modelRow).getDiaChi());
-                jtxtSDT.setText(ListHDS.get(modelRow).getSDT());
-                jDateNgayLapHDS.setDate(ListHDS.get(modelRow).getNgayLap());
-                jDateNgayGiao.setDate(ListHDS.get(modelRow).getNgayGiaoDuKien());
-                jtxtTongTienHDS.setText(String.format("%,d", ListHDS.get(modelRow).getTongTien()));
-            }
-            catch(Exception ex){
-                System.out.println("Ngoại lệ tại FormDanhSachHoaDon.Binding: "+ex.getMessage());
-            }
+            
+            jtxtSoHDS.setText(ListHDS.get(modelRow).getSoHDS());
+            jtxtTenKHHDS.setText(ListHDS.get(modelRow).getTenKH());
+            jtxtMaKH.setText(ListHDS.get(modelRow).getMaKH());
+            jtxtDiaChi.setText(ListHDS.get(modelRow).getDiaChi());
+            jtxtSDT.setText(ListHDS.get(modelRow).getSDT());
+            jDateNgayLapHDS.setDate(ListHDS.get(modelRow).getNgayLap());
+            jDateNgayGiao.setDate(ListHDS.get(modelRow).getNgayGiaoDuKien());
+            jtxtTongTienHDS.setText(String.format("%,d", ListHDS.get(modelRow).getTongTien()));
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormDanhSachHoaDon.Binding: "+ex.getMessage());
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.

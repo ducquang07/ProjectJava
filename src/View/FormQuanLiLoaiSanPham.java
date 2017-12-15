@@ -49,6 +49,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         editFrm.MakeTransparentButton(ListButton);
         
         editFrm.MakeTransparentTable(jScrDSLSP, jTbDSLSP);
+        ((DefaultTableCellRenderer) jTbDSLSP.getDefaultRenderer(Object.class)).setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         
         HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
         Binding();
@@ -103,22 +104,13 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jBtnTimKiem = new javax.swing.JPanel();
         jlblTimKiem = new javax.swing.JLabel();
         jBtnLamMoi = new javax.swing.JPanel();
-<<<<<<< HEAD
-        jLabel16 = new javax.swing.JLabel();
-        jBtnHuy = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-=======
         jlblLamMoi = new javax.swing.JLabel();
->>>>>>> origin/master
         jScrDSLSP = new javax.swing.JScrollPane();
         jTbDSLSP = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPnDSLSP = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-<<<<<<< HEAD
-=======
         jPanel5 = new javax.swing.JPanel();
->>>>>>> origin/master
         jPanel6 = new javax.swing.JPanel();
         jPnTracuuLSP = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -443,16 +435,16 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jBtnTimKiemLayout.setHorizontalGroup(
             jBtnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnTimKiemLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(42, 42, 42)
                 .addComponent(jlblTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jBtnTimKiemLayout.setVerticalGroup(
             jBtnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlblTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 380, 120, 65));
+        getContentPane().add(jBtnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 380, 140, 65));
 
         jBtnLamMoi.setBackground(new java.awt.Color(153, 153, 153));
         jBtnLamMoi.setPreferredSize(new java.awt.Dimension(105, 50));
@@ -482,18 +474,18 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jBtnLamMoiLayout.setHorizontalGroup(
             jBtnLamMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBtnLamMoiLayout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(jlblLamMoi)
-                .addGap(37, 37, 37))
+                .addGap(45, 45, 45))
         );
         jBtnLamMoiLayout.setVerticalGroup(
             jBtnLamMoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlblLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 380, 120, 65));
+        getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 380, 140, 65));
 
-        jTbDSLSP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTbDSLSP.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jTbDSLSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -503,7 +495,10 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         ));
         jTbDSLSP.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTbDSLSP.setSelectionForeground(new java.awt.Color(0, 0, 255));
+        jTbDSLSP.setFocusable(false);
+        jTbDSLSP.setRowHeight(25);
+        jTbDSLSP.setSelectionBackground(new java.awt.Color(218, 223, 225));
+        jTbDSLSP.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jTbDSLSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSLSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -512,20 +507,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         });
         jScrDSLSP.setViewportView(jTbDSLSP);
 
-        getContentPane().add(jScrDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 460, 430));
-
-        jTbDSLSP.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2"
-            }
-        ));
-        jTbDSLSP.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrDSLSP.setViewportView(jTbDSLSP);
-
-        getContentPane().add(jScrDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 105, 470, 439));
+        getContentPane().add(jScrDSLSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 105, 470, 440));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -593,7 +575,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jLabel7.setText("Từ tìm kiếm:");
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 109, -1, -1));
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 540, 220));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 540, 230));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -632,7 +614,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtxtMaLoaiSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(jtxtMaLoaiSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                     .addComponent(jtxtTenLoaiSanPham))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -644,7 +626,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jtxtMaLoaiSanPham)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 30, Short.MAX_VALUE)
+                .addGap(18, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jtxtTenLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -653,7 +635,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jtxtMaLoaiSanPham, jtxtTenLoaiSanPham});
 
-        jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 170));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 560));
 
