@@ -9,47 +9,54 @@ package Object;
  *
  * @author ThaiNguyen
  */
-public class ObjChiTietHDL {
-    private String SoHDL;
+public class ObjChiTietHDS {
+    private String SoHDS;
     private String MaSP;
     private String TenSP;
+    private String DVT;
     private int SoLuong;
     private int DonGia;
-    private String DVT;
     private int ThanhTien;
-    
-    //Constructor
 
-    public ObjChiTietHDL() {
+    ////Constructor
+    public ObjChiTietHDS() {
     }
 
-    public ObjChiTietHDL(String SoHDL, String MaSP, int SoLuong, int DonGia, int ThanhTien) {
-        this.SoHDL = SoHDL;
+    
+    public ObjChiTietHDS(String SoHDS, String MaSP, int SoLuong, int DonGia, int ThanhTien) {
+        this.SoHDS = SoHDS;
         this.MaSP = MaSP;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
         this.ThanhTien = ThanhTien;
     }
 
-    public ObjChiTietHDL( String SoHDL,String MaSP, String TenSP,String DVT, int SoLuong, int DonGia, int ThanhTien) {
-        this.SoHDL=SoHDL;
+    public ObjChiTietHDS(String SoHDS,String MaSP, String TenSP, String DVT, int SoLuong, int DonGia, int ThanhTien) {
+        this.SoHDS=SoHDS;
         this.MaSP = MaSP;
         this.TenSP = TenSP;
-        this.DVT=DVT;
+        this.DVT = DVT;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
         this.ThanhTien = ThanhTien;
     }
-    
     
     //Get
 
-    public String getSoHDL() {
-        return SoHDL;
+    public String getSoHDS() {
+        return SoHDS;
     }
 
     public String getMaSP() {
         return MaSP;
+    }
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public String getDVT() {
+        return DVT;
     }
 
     public int getSoLuong() {
@@ -63,23 +70,23 @@ public class ObjChiTietHDL {
     public int getThanhTien() {
         return ThanhTien;
     }
-
-    public String getTenSP() {
-        return TenSP;
-    }
-
-    public String getDVT() {
-        return DVT;
-    }
     
     //Set
 
-    public void setSoHDL(String SoHDL) {
-        this.SoHDL = SoHDL;
+    public void setSoHDS(String SoHDS) {
+        this.SoHDS = SoHDS;
     }
 
     public void setMaSP(String MaSP) {
         this.MaSP = MaSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
+
+    public void setDVT(String DVT) {
+        this.DVT = DVT;
     }
 
     public void setSoLuong(int SoLuong) {

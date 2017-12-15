@@ -79,9 +79,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jPnTracuuPT = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
         jScrDSPT = new javax.swing.JScrollPane();
         jTbDSPT = new javax.swing.JTable();
+        jPanel10 = new javax.swing.JPanel();
         jPnDSPT = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -551,9 +551,6 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 820, 180));
 
-        jPanel10.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTbDSPT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -564,7 +561,10 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         ));
         jScrDSPT.setViewportView(jTbDSPT);
 
-        jPanel10.add(jScrDSPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 35, 810, 340));
+        getContentPane().add(jScrDSPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 285, 810, 340));
+
+        jPanel10.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnDSPT.setBackground(new java.awt.Color(0, 204, 204));
 

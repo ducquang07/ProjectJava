@@ -112,18 +112,18 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         jTextArea4 = new javax.swing.JTextArea();
         jPnThongtinNCC = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
+        jScrDSNCC = new javax.swing.JScrollPane();
+        jTbDSNCC = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jScrDSNCC = new javax.swing.JScrollPane();
-        jTbDSNCC = new javax.swing.JTable();
         jPnDSNCC = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jScrDSPC = new javax.swing.JScrollPane();
         jTbDSPC = new javax.swing.JTable();
+        jPanel8 = new javax.swing.JPanel();
         jPnDSPC = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -837,21 +837,6 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 440, 500, -1));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 77, 291, -1));
-
-        jLabel18.setText("Từ khóa :");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 80, 49, -1));
-
-        jLabel19.setText("Tìm theo:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 49, -1, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setFocusable(false);
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 46, 291, -1));
-
         jTbDSNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -870,7 +855,22 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         });
         jScrDSNCC.setViewportView(jTbDSNCC);
 
-        jPanel1.add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 155, 490, 210));
+        getContentPane().add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 215, 490, 210));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 77, 290, -1));
+
+        jLabel18.setText("Từ khóa :");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 80, 49, -1));
+
+        jLabel19.setText("Tìm theo:");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 49, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setFocusable(false);
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 46, 291, -1));
 
         jPnDSNCC.setBackground(new java.awt.Color(0, 204, 204));
         jPnDSNCC.setPreferredSize(new java.awt.Dimension(500, 34));
@@ -897,9 +897,6 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 60, 500, 370));
 
-        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTbDSPC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -918,7 +915,10 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         });
         jScrDSPC.setViewportView(jTbDSPC);
 
-        jPanel8.add(jScrDSPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 40, 400, 535));
+        getContentPane().add(jScrDSPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 100, 400, 535));
+
+        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPnDSPC.setBackground(new java.awt.Color(0, 204, 204));
 

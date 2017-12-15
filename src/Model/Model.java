@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author ThaiNguyen
  */
-public abstract class Model {
+public class Model {
     protected Connect DB;
     protected String SQL;
     protected String Table;
@@ -64,24 +64,25 @@ public abstract class Model {
         return rs;
     }
     
-    public abstract boolean Insert();
+    public boolean Insert(){return true;};
     
-    public abstract boolean Update();
+    public boolean Update(){return true;};
     
     public boolean Delete(String id){
         SQL="Delete from "+Table+" where "+ID+" ='"+id+"'";
-        if(DB.Connected()){
             try {
+                if(DB.Connected()){
                 Statement  stmDB =(Statement)  DB.getConDB().createStatement();
                 stmDB.executeUpdate(SQL);
+                }
             } catch (SQLException ex) {
                 System.out.println("Ngoại lệ tại Model.Delete: "+ex.getMessage());
+                DB.CloseDB();
                 return false;
-            }
-            finally{
+            }finally{
                 DB.CloseDB();
             }
+            return true;
         }
-        return true;
+        
     }
-}

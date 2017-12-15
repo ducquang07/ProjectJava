@@ -84,9 +84,9 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jScrDSSP = new javax.swing.JScrollPane();
         jTbDSSP = new javax.swing.JTable();
+        jPanel8 = new javax.swing.JPanel();
         jPnDSSP = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -568,8 +568,6 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 50, 540, 590));
 
-        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
-
         jTbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -579,6 +577,10 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             }
         ));
         jScrDSSP.setViewportView(jTbDSSP);
+
+        getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 295, 770, 420));
+
+        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
 
         jPnDSSP.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -609,18 +611,12 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPnDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrDSSP)
-                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPnDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(434, 434, 434))
         );
 
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 780, 470));

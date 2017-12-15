@@ -65,16 +65,16 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jBtnXacnhangiao = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         jScrDSHDchuagiao = new javax.swing.JScrollPane();
         jTbDSHDchuagiao = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jPnDSHDchuagiao = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jScrDSHDdagiao = new javax.swing.JScrollPane();
+        jTbDSHDdagiao = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPnDSHDdagiao = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jScrDSHDdagiao = new javax.swing.JScrollPane();
-        jTbDSHDdagiao = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -215,7 +215,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnLamMoichuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 120, 65));
+        getContentPane().add(jBtnLamMoichuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 190, 120, 65));
 
         jBtnTimKiemHDchuagiao.setBackground(new java.awt.Color(153, 153, 153));
         jBtnTimKiemHDchuagiao.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -254,7 +254,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnTimKiemHDchuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 120, 65));
+        getContentPane().add(jBtnTimKiemHDchuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 190, 120, 65));
 
         jBtnLamMoidagiao.setBackground(new java.awt.Color(153, 153, 153));
         jBtnLamMoidagiao.setPreferredSize(new java.awt.Dimension(105, 50));
@@ -293,7 +293,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnLamMoidagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 190, 120, 65));
+        getContentPane().add(jBtnLamMoidagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 190, 120, 65));
 
         jBtnTimKiemHDdagiao.setBackground(new java.awt.Color(153, 153, 153));
         jBtnTimKiemHDdagiao.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -332,7 +332,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnTimKiemHDdagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 190, 120, 65));
+        getContentPane().add(jBtnTimKiemHDdagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 190, 120, 65));
 
         jBtnXemchitiet.setBackground(new java.awt.Color(153, 153, 153));
         jBtnXemchitiet.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -418,7 +418,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
         getContentPane().add(jBtnXacnhangiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 642, 190, 65));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jScrDSHDchuagiao.setWheelScrollingEnabled(false);
 
         jTbDSHDchuagiao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -429,6 +429,10 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             }
         ));
         jScrDSHDchuagiao.setViewportView(jTbDSHDchuagiao);
+
+        getContentPane().add(jScrDSHDchuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 313, 420, 388));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jPnDSHDchuagiao.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -456,21 +460,27 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPnDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPnDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrDSHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap(399, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 280, 430, 427));
+
+        jTbDSHDdagiao.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrDSHDdagiao.setViewportView(jTbDSHDdagiao);
+
+        getContentPane().add(jScrDSHDdagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(881, 313, 420, 389));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -493,16 +503,6 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
         );
 
-        jTbDSHDdagiao.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrDSHDdagiao.setViewportView(jTbDSHDdagiao);
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -510,18 +510,12 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPnDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPnDSHDdagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrDSHDdagiao, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(399, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(876, 280, 430, 427));
@@ -693,15 +687,16 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel16)))
-                .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel16)
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel15)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField11)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(jTextField10))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPnTracuuHDdagiao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -713,11 +708,11 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addGap(10, 10, 10)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addContainerGap(103, Short.MAX_VALUE))
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(876, 50, 430, 220));
@@ -764,14 +759,14 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPnTracuuHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

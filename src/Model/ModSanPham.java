@@ -17,7 +17,6 @@ import java.sql.SQLException;
  */
 public class ModSanPham extends Model{
 
-    private ObjSanPham TbSanPham;
     private PreparedStatement pstmt;
     
     public ModSanPham() {
@@ -39,8 +38,8 @@ public class ModSanPham extends Model{
     }
     
     
-    @Override
-    public boolean Insert() {
+    
+    public boolean Insert(ObjSanPham TbSanPham) {
         String SQL="INSERT INTO SANPHAM (MaSP,TenSP,MaLoaiSP,Giale,GiaSi,DVT,SoLuong,MaNCC,LoiNhuanBien,MoTa) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try{
             if(DB.Connected()){
@@ -67,8 +66,8 @@ public class ModSanPham extends Model{
         return true;
     }
 
-    @Override
-    public boolean Update() {
+    
+    public boolean Update(ObjSanPham TbSanPham) {
         String SQL="Update SANPHAM set TenSP=N'" + TbSanPham.getTenSP()+ 
                                     "',Giale='" + TbSanPham.getGiaLe() +
                                     "',GiaSi='" + TbSanPham.getGiaSi() + 
@@ -93,4 +92,7 @@ public class ModSanPham extends Model{
         return false;
     }
     
+    public boolean Delete(ObjSanPham TbSanPham){
+        return super.Delete(TbSanPham.getMaSP());
+    }
 }

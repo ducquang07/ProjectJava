@@ -50,9 +50,9 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
 
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         jScrCTHD = new javax.swing.JScrollPane();
         jTbCTHD = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -60,7 +60,6 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(780, 415));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBtnBack.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,9 +100,6 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
 
         getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTbCTHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -114,7 +110,10 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
         ));
         jScrCTHD.setViewportView(jTbCTHD);
 
-        jPanel1.add(jScrCTHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 30, 750, 305));
+        getContentPane().add(jScrCTHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 97, 750, 305));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
