@@ -1264,11 +1264,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jSpSoLuongMouseClicked
 
-<<<<<<< HEAD
     private void jCbbTimTheoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbbTimTheoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCbbTimTheoActionPerformed
-=======
+
     private void jbtnDuyetGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnDuyetGioHangMouseClicked
         // TODO add your handling code here:
         try{
@@ -1296,7 +1295,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         // TODO add your handling code here:
         ReloadForm();
     }//GEN-LAST:event_jBtnHuyMouseClicked
->>>>>>> 4d489bd7c6ee4df0aca466532d9e978ac8cf2bfb
+
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){

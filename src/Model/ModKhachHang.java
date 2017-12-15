@@ -9,7 +9,6 @@ import Connect.Connect;
 import Object.ObjKhachHang;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -21,27 +20,20 @@ import java.sql.Statement;
 /**
  *
  * @author ThaiNguyen
->>>>>>> 4d489bd7c6ee4df0aca466532d9e978ac8cf2bfb
+
  */
 public class ModKhachHang extends Model{
     private ObjKhachHang TbKhachHang;
     private PreparedStatement pstmt;
-<<<<<<< HEAD
+
     public ModKhachHang(){
         DB=new Connect();
         Table="KHACHHANG";
         ID="MaKH";
         
     }
-=======
-    
-    public ModKhachHang() {
-        DB=new Connect();
-        Table="KHACHHANG";
-        ID="MaKH";
-    }
 
->>>>>>> 4d489bd7c6ee4df0aca466532d9e978ac8cf2bfb
+
     public ResultSet GetALL(){
         return super.GetALL();
     }
@@ -54,7 +46,6 @@ public class ModKhachHang extends Model{
         return super.SearchByID(ID);
     }
     
-<<<<<<< HEAD
     @Override
     public boolean Insert() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -104,8 +95,6 @@ public class ModKhachHang extends Model{
         }
         return false;
     }
-    
-=======
->>>>>>> 4d489bd7c6ee4df0aca466532d9e978ac8cf2bfb
+
     
 }

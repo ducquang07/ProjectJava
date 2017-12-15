@@ -40,7 +40,7 @@ public class ModHoaDonSi extends Model{
 
     public boolean Insert(ObjHoaDonSi TbHDS) {
         String SQL="INSERT INTO HOADONSI (SoHDS,MaKH,NgayLap,NgayGiaoDuKien,TongTien,TinhTrangGiaoHang) VALUES (?, ?, ?, ?, ?, ?);";
-        System.out.println("INSERT INTO closer2_quanlicuahangson.HOADONSI (SoHDS,MaKH,NgayLap,NgayGiaoDuKien,TongTien,TinhTrangGiaoHang) VALUES ('"+TbHDS.getSoHDS()+"','"+TbHDS.getMaKH()+"','"+TbHDS.getNgayLap()+"','"+TbHDS.getNgayGiaoDuKien()+"','"+TbHDS.getTongTien()+"','"+TbHDS.getTinhTrangGiaoHang()+"')");
+        //System.out.println("INSERT INTO closer2_quanlicuahangson.HOADONSI (SoHDS,MaKH,NgayLap,NgayGiaoDuKien,TongTien,TinhTrangGiaoHang) VALUES ('"+TbHDS.getSoHDS()+"','"+TbHDS.getMaKH()+"','"+TbHDS.getNgayLap()+"','"+TbHDS.getNgayGiaoDuKien()+"','"+TbHDS.getTongTien()+"','"+TbHDS.getTinhTrangGiaoHang()+"')");
         try{
             if(DB.Connected()){
                 pstmt=DB.getConDB().prepareStatement(SQL);

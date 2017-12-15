@@ -26,5 +26,7 @@ public class CtrlDanhSachHoaDon {
         return DB.GetData(SQL);
     }
     
-    
+    public ResultSet LayThongTinChiTietHoaDonLe(){
+        return null;    
+    }
 }
