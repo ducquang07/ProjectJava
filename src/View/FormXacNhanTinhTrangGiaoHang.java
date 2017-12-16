@@ -50,7 +50,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         
         editFrm.MakeTransparentTable(jScrDSHDchuagiao, jTbDSHDchuagiao);
         editFrm.MakeTransparentTable(jScrDSHDdagiao, jTbDSHDdagiao);
-        
+        FormLoad();
     }
 
     /**

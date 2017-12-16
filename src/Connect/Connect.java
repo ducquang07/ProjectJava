@@ -22,10 +22,10 @@ public class Connect {
     private Statement stmDB=null;
     private ResultSet rsDB=null;
     
-    private final String servername="localhost";//"closer2.heliohost.org:3306";//
-    private final String databasename="closer_quanlicuahangson";//"closer2_quanlicuahangson";//
-    private final String username="root";//"closer2";//
-    private final String password="";//"Bo4quyennang";//
+    private final String servername="closer2.heliohost.org:3306";// "localhost";//
+    private final String databasename="closer2_quanlicuahangson";//"closer_quanlicuahangson";//
+    private final String username="closer2";//"root";//
+    private final String password="Bo4quyennang";//"";//
     private String url="";
 
     public Connection getConDB() {
