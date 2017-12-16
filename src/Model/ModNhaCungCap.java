@@ -56,7 +56,6 @@ public class ModNhaCungCap extends Model{
             }
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModNhaCungCap.Insert: "+ex.getMessage());
-            DB.CloseDB();
             return false;
         }finally{
             DB.CloseDB();
@@ -78,7 +77,6 @@ public class ModNhaCungCap extends Model{
            }
        } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModNhaCungCap.Update: "+ex.getMessage());
-            DB.CloseDB();
             return false;
         }finally{
            DB.CloseDB();

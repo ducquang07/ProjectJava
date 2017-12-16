@@ -27,4 +27,24 @@ public class CtrlXacNhanTinhTrangGiaoHang {
     public boolean CloseConnection(){
         return DB.CloseDB();
     }
+    
+    public ResultSet SearchHDSCGByID(String SoHDS){
+        String mySQL="Select HDS.SoHDS, HDS.MaKH, HDS.NgayLap, HDS.NgayGiaoDuKien, HDS.TongTien,HDS.TinhTrangGiaoHang, KH.TenKH, KH.DiaChi, KH.SDT from HOADONSI HDS, KHACHHANG KH where HDS.MaKH=KH.MaKH and HDS.TinhTrangGiaoHang=N'Chưa giao' and HDS.SoHDS like '%"+SoHDS+"%'";
+        return DB.GetData(mySQL);
+    }
+    
+    public ResultSet SearchHDSDGByID(String SoHDS){
+        String mySQL="Select HDS.SoHDS, HDS.MaKH, HDS.NgayLap, HDS.NgayGiaoDuKien, HDS.TongTien,HDS.TinhTrangGiaoHang, KH.TenKH, KH.DiaChi, KH.SDT from HOADONSI HDS, KHACHHANG KH where HDS.MaKH=KH.MaKH and HDS.TinhTrangGiaoHang=N'Đã giao' and HDS.SoHDS like '%"+SoHDS+"%'";
+        return DB.GetData(mySQL);
+    }
+    
+    public ResultSet SearchHDSCGByName(String TenKH){
+        String mySQL="Select HDS.SoHDS, HDS.MaKH, HDS.NgayLap, HDS.NgayGiaoDuKien, HDS.TongTien,HDS.TinhTrangGiaoHang, KH.TenKH, KH.DiaChi, KH.SDT from HOADONSI HDS, KHACHHANG KH where HDS.MaKH=KH.MaKH and HDS.TinhTrangGiaoHang=N'Chưa giao' and KH.TenKH like '%"+TenKH+"%'";
+        return DB.GetData(mySQL);
+    }
+    
+    public ResultSet SearchHDSDGByName(String TenKH){
+        String mySQL="Select HDS.SoHDS, HDS.MaKH, HDS.NgayLap, HDS.NgayGiaoDuKien, HDS.TongTien,HDS.TinhTrangGiaoHang, KH.TenKH, KH.DiaChi, KH.SDT from HOADONSI HDS, KHACHHANG KH where HDS.MaKH=KH.MaKH and HDS.TinhTrangGiaoHang=N'Đã giao' and KH.TenKH like '%"+TenKH+"%'";
+        return DB.GetData(mySQL);
+    }
 }

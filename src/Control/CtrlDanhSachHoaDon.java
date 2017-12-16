@@ -88,7 +88,7 @@ public class CtrlDanhSachHoaDon {
         return null;
     }
     
-    public ResultSet TimKiemHDL(String MaKH,)
+    //public ResultSet TimKiemHDL(String MaKH,)
     public boolean CloseConnection(){
         return DB.CloseDB();
     }
