@@ -31,6 +31,13 @@ public class ObjKhachHang {
         this.LoaiKH = LoaiKH;
     }
 
+    public ObjKhachHang(String MaKH, String TenKH, String SDT, String DiaChi, String Email) {
+        this.MaKH = MaKH;
+        this.TenKH = TenKH;
+        this.SDT = SDT;
+        this.DiaChi = DiaChi;
+        this.Email = Email;
+    }
   
     
     //Get

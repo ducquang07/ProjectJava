@@ -46,8 +46,7 @@ public class ModKhachHang extends Model{
         return super.SearchByID(ID);
     }
     
-    @Override
-    public boolean Insert() {
+    public boolean Insert(ObjKhachHang TbKhachHang) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String SQL="INSERT INTO KHACHHANG (MaKH, TenKH, SDT,DiaChi,Email,LoaiKH) VALUES (?, ?, ?, ?, ?, ?);";
         try{
@@ -94,6 +93,11 @@ public class ModKhachHang extends Model{
             DB.CloseDB();
         }
         return false;
+    }
+
+    public boolean Delete(String ObjKH) {
+                 return super.Delete(ObjKH);
+
     }
 
     

@@ -17,36 +17,36 @@ import java.sql.SQLException;
 public class CtrlKhachHang {
     Connect DB=new Connect();
     public ResultSet LayDanhSachKhachHang(){
-        String SQL = "Select * "+"from KHACHHANG";
+        String SQL = "Select * from KHACHHANG";
         return DB.GetData(SQL);
     }
     
     public ResultSet SearchKhachHangByID(String MaKH){
-        String SQL="Select * "+ "from KHACHHANG"+" and MaKH like '%"+MaKH+"%'";
+        String SQL="Select * from KHACHHANG where MaKH like '%"+MaKH+"%'";
         return DB.GetData(SQL);
     }
     
     public ResultSet SearchKhachHangByName(String TenKH){
-        String SQL="Select *"+" from KHACHHANG"+" and TenKH like '%"+TenKH+"%'";
+        String SQL="Select * from KHACHHANG where TenKH like '%"+TenKH+"%'";
         return DB.GetData(SQL);
     }
     
     public ResultSet SearchKhachHangBySDT(String SDT){
-        String SQL="Select *"+" from KHACHHANG"+" and SDT like '%"+SDT+"%'";
+        String SQL="Select * from KHACHHANG where SDT like '%"+SDT+"%'";
         return DB.GetData(SQL);
     }
     public ResultSet SearchKhachHangByDiaChi(String DiaChi){
-        String SQL="Select *"+" from KHACHHANG"+" and DiaChi like '%"+DiaChi+"%'";
+        String SQL="Select * from KHACHHANG where DiaChi like '%"+DiaChi+"%'";
         return DB.GetData(SQL);
     }
     
     public ResultSet SearchKhachHangByEmail(String Email){
-        String SQL="Select *"+" from KHACHHANG"+" and Email like '%"+Email+"%'";
+        String SQL="Select * from KHACHHANG where Email like '%"+Email+"%'";
         return DB.GetData(SQL);
     }
     
     public String TaoMaKH(){
-        String ID="KH001";
+        String ID="KH000";
         ResultSet rs=null;
         String SQL="Select * from KHACHHANG order by MaKH DESC limit 1";
         try{
