@@ -10,6 +10,7 @@ import Object.ObjHoaDonLe;
 import Object.ObjHoaDonSi;
 import Object.ObjChiTietHDL;
 import Object.ObjChiTietHDS;
+import Object.ObjKhachHang;
 import java.awt.Color;
 import java.util.Date;
 import java.sql.ResultSet;
@@ -39,8 +40,11 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     ArrayList<ObjHoaDonSi> ListHDS = new ArrayList<>();
     ArrayList<ObjChiTietHDL> ListCTHDL = new ArrayList<>();
     ArrayList<ObjChiTietHDS> ListCTHDS = new ArrayList<>();
+    ArrayList<String> ListKH = new ArrayList<>();
+    
     CtrlDanhSachHoaDon CtrlDSHD = new CtrlDanhSachHoaDon();
     SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy      hh:mm:ss a");
+    
     /**
      * Creates new form FormDanhSachHoaDon
      */
@@ -89,34 +93,39 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     }
 
     public void LoadForm(){
+        jDateTuNgayHDL.setDate(new Date());
+        jDateDenNgayHDL.setDate(new Date());
+        jDateTuNgayHDS.setDate(new Date());
+        jDateDenNgayHDS.setDate(new Date());
         HienThiDanhSachHoaDonLe(CtrlDSHD.LayDanhSachHoaDonLe());
         HienThiDanhSachHoaDonSi(CtrlDSHD.LayDanhSachHoaDonSi());
+        LoadComboboxKhachHang();
     }
     
     public void HienThiDanhSachHoaDonLe(ResultSet rs){
-        try{
         ListHDL.clear();
         DefaultTableModel model =(DefaultTableModel) jTbDSHDL.getModel();
         model.getDataVector().removeAllElements();
-        
-            while(rs.next()){
-                ObjHoaDonLe itemHDL = new ObjHoaDonLe(rs.getString("SoHDL"),rs.getString("TenKH"),rs.getTimestamp("NgayLap"), (int) Double.parseDouble(rs.getString("TongTien")));
-                ListHDL.add(itemHDL);
-                Vector v =new Vector();
-                v.add(itemHDL.getSoHDL());
-                v.add(dt.format(itemHDL.getNgayLap()));
-                model.addRow(v);
-            }       
-            jTbDSHDL.changeSelection(0,0,false,false);
-            BindingHDL();
-            HienThiThongTinChiTietHDL(jtxtSoHDL.getText());
+        model.fireTableDataChanged();
+        try{
+
+              while(rs.next()){
+                   ObjHoaDonLe itemHDL = new ObjHoaDonLe(rs.getString("SoHDL"),rs.getString("TenKH"),rs.getTimestamp("NgayLap"), (int) Double.parseDouble(rs.getString("TongTien")));
+                   ListHDL.add(itemHDL);
+                   Vector v =new Vector();
+                   v.add(itemHDL.getSoHDL());
+                   v.add(dt.format(itemHDL.getNgayLap()));
+                   model.addRow(v);
+                   jTbDSHDL.changeSelection(0,0,false,false);
+                   BindingHDL();
+               }       
+              HienThiThongTinChiTietHDL(jtxtSoHDL.getText());
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormDanhSachHoaDon.HienThiDanhSachHoaDonLe: "+ex.getMessage());
         }
         finally{
             CtrlDSHD.CloseConnection();
         }
-        
     }
     
     public void HienThiDanhSachHoaDonSi(ResultSet rs){
@@ -134,15 +143,15 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                 model.addRow(v);
             }
             jTbDSHDS.changeSelection(0,0,false,false);
-            BindingHDS();
-            HienThiThongTinChiTietHDS(jtxtSoHDS.getText());
+            
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormDanhSachHoaDon.HienThiDanhSachHoaDonSi: "+ex.getMessage());
         }
         finally{
             CtrlDSHD.CloseConnection();
         }
-        
+        BindingHDS();
+        HienThiThongTinChiTietHDS(jtxtSoHDS.getText());
     }
     
     public void HienThiThongTinChiTietHDL(String SoHDL){
@@ -237,6 +246,25 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             System.out.println("Ngoại lệ tại FormDanhSachHoaDon.Binding: "+ex.getMessage());
         }
     }
+    
+    public void LoadComboboxKhachHang(){
+        ListKH.clear();
+        jcbbKhachHang.removeAllItems();
+        jcbbKhachHang.addItem("---Chọn khách hàng---");
+        ListKH.add("");
+        try{
+            ResultSet rs= CtrlDSHD.LayDanhSachKhachHang();
+            while(rs.next()){
+                ListKH.add(rs.getString("MaKH"));
+                jcbbKhachHang.addItem(rs.getString("TenKH"));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormDanhSachHoaDon.LoadComboboxKhachHang:"+ex.getMessage());
+        }
+        finally{
+            CtrlDSHD.CloseConnection();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -261,14 +289,14 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jPnTraCuuThongTinHDL = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
-        jDateChooser11 = new com.toedter.calendar.JDateChooser();
-        jDateChooser12 = new com.toedter.calendar.JDateChooser();
+        jDateTuNgayHDL = new com.toedter.calendar.JDateChooser();
+        jDateDenNgayHDL = new com.toedter.calendar.JDateChooser();
         jLabel59 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        jtxtTimKiemKhachHang = new javax.swing.JTextField();
         jPnTracuuthongtinHDL = new javax.swing.JPanel();
         jLabel56 = new javax.swing.JLabel();
+        jtxtTimKiemSoHDL = new javax.swing.JTextField();
         jScrDSHDL = new javax.swing.JScrollPane();
         jTbDSHDL = new javax.swing.JTable();
         jPnDSHDL = new javax.swing.JPanel();
@@ -296,12 +324,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jPnTraCuuThongTinHDS = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateTuNgayHDS = new com.toedter.calendar.JDateChooser();
+        jDateDenNgayHDS = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbbKhachHang = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtxtTimKiem = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jPnTracuuthongtinHDS = new javax.swing.JPanel();
@@ -564,10 +592,13 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jLabel58.setText("Đến ngày :");
 
-        jLabel59.setText("Khách hàng :");
+        jDateTuNgayHDL.setDateFormatString("dd/MM/yyyy");
+        jDateTuNgayHDL.setFocusable(false);
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn khách hàng---" }));
-        jComboBox7.setFocusable(false);
+        jDateDenNgayHDL.setDateFormatString("dd/MM/yyyy");
+        jDateDenNgayHDL.setFocusable(false);
+
+        jLabel59.setText("Khách hàng :");
 
         jLabel60.setText("Số hóa đơn :");
 
@@ -598,26 +629,22 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnTraCuuThongTinHDLLayout.createSequentialGroup()
-                            .addComponent(jLabel59)
-                            .addGap(4, 4, 4))
-                        .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
-                            .addComponent(jLabel60)
-                            .addGap(5, 5, 5)))
                     .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
                         .addComponent(jLabel57)
-                        .addGap(20, 20, 20)))
-                .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
-                        .addComponent(jDateChooser11, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jDateTuNgayHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jLabel58)
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser12, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                        .addComponent(jComboBox7, 0, 265, Short.MAX_VALUE))))
+                        .addComponent(jDateDenNgayHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
+                        .addComponent(jLabel59)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtTimKiemKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
+                        .addComponent(jLabel60)
+                        .addGap(6, 6, 6)
+                        .addComponent(jtxtTimKiemSoHDL, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPnTraCuuThongTinHDLLayout.setVerticalGroup(
             jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -626,22 +653,19 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateTuNgayHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateDenNgayHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel59))
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel59)
+                    .addComponent(jtxtTimKiemKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(jPnTraCuuThongTinHDLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPnTraCuuThongTinHDLLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel60))
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jtxtTimKiemSoHDL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPnHDL.add(jPnTraCuuThongTinHDL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, 257));
@@ -884,10 +908,16 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jLabel6.setText("Đến ngày :");
 
+        jDateTuNgayHDS.setDateFormatString("dd/MM/yyyy");
+        jDateTuNgayHDS.setFocusable(false);
+
+        jDateDenNgayHDS.setDateFormatString("dd/MM/yyyy");
+        jDateDenNgayHDS.setFocusable(false);
+
         jLabel7.setText("Khách hàng :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn khách hàng---" }));
-        jComboBox1.setFocusable(false);
+        jcbbKhachHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn khách hàng---" }));
+        jcbbKhachHang.setFocusable(false);
 
         jLabel8.setText("Số hóa đơn :");
 
@@ -926,16 +956,16 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                     .addGroup(jPnTraCuuThongTinHDSLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(20, 20, 20)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDateTuNgayHDS, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDateDenNgayHDS, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPnTraCuuThongTinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPnTraCuuThongTinHDSLayout.createSequentialGroup()
                             .addComponent(jLabel8)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField1))
+                            .addComponent(jtxtTimKiem))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPnTraCuuThongTinHDSLayout.createSequentialGroup()
                             .addComponent(jLabel9)
                             .addGap(18, 18, 18)
@@ -943,7 +973,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPnTraCuuThongTinHDSLayout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jcbbKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         jPnTraCuuThongTinHDSLayout.setVerticalGroup(
             jPnTraCuuThongTinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -952,15 +982,15 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPnTraCuuThongTinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateTuNgayHDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateDenNgayHDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(jPnTraCuuThongTinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPnTraCuuThongTinHDSLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel7))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbbKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(jPnTraCuuThongTinHDSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPnTraCuuThongTinHDSLayout.createSequentialGroup()
@@ -972,7 +1002,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
                     .addGroup(jPnTraCuuThongTinHDSLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel8))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1379,17 +1409,12 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
         // TODO add your handling code here:
-        //        try {
-            //            // TODO add your handling code here:
-            //            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-            //            if(rs.getRow()==0){
-                //                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-                //            }
-            //            displayData(rs);
-            //            Binding();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
+        try{
+            HienThiDanhSachHoaDonLe(CtrlDSHD.TimKiemHDL(jtxtTimKiemKhachHang.getText(),jtxtTimKiemSoHDL.getText(),jDateTuNgayHDL.getDate(),jDateDenNgayHDL.getDate()));
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormDanhSachHoaDon.jBtnTimKiemMouseClicked: "+ex.getMessage());
+        }
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -1596,16 +1621,14 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnTimKiem;
     private javax.swing.JPanel jBtnXemPhieuIn;
     private javax.swing.JPanel jBtnXoa;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser11;
-    private com.toedter.calendar.JDateChooser jDateChooser12;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateDenNgayHDL;
+    private com.toedter.calendar.JDateChooser jDateDenNgayHDS;
     private com.toedter.calendar.JDateChooser jDateNgayGiao;
     private com.toedter.calendar.JDateChooser jDateNgayLapHDL;
     private com.toedter.calendar.JDateChooser jDateNgayLapHDS;
+    private com.toedter.calendar.JDateChooser jDateTuNgayHDL;
+    private com.toedter.calendar.JDateChooser jDateTuNgayHDS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1677,8 +1700,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     private javax.swing.JTable jTbCTHDS;
     private javax.swing.JTable jTbDSHDL;
     private javax.swing.JTable jTbDSHDS;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField14;
+    private javax.swing.JComboBox<String> jcbbKhachHang;
     private javax.swing.JTextArea jtxtDiaChi;
     private javax.swing.JTextField jtxtMaKH;
     private javax.swing.JTextField jtxtSDT;
@@ -1686,6 +1708,9 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtSoHDS;
     private javax.swing.JTextField jtxtTenKHHDL;
     private javax.swing.JTextField jtxtTenKHHDS;
+    private javax.swing.JTextField jtxtTimKiem;
+    private javax.swing.JTextField jtxtTimKiemKhachHang;
+    private javax.swing.JTextField jtxtTimKiemSoHDL;
     private javax.swing.JTextField jtxtTongTienHDL;
     private javax.swing.JTextField jtxtTongTienHDS;
     // End of variables declaration//GEN-END:variables

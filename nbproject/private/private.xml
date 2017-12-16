@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/ProjectJava/src/View/FormLapHoaDonLe.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/ProjectJava/src/View/FormQuanLiKhachHang.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/ProjectJava/src/Model/ModHoaDonSi.java</file>
             <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/ProjectJava/src/View/FormDanhSachHoaDon.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/ProjectJava/src/Model/ModKhachHang.java</file>
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/ProjectJava/src/Control/CtrlDanhSachHoaDon.java</file>
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/ProjectJava/src/View/FormLapHoaDonSi.java</file>
         </group>
     </open-files>
 </project-private>

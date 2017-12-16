@@ -9,8 +9,11 @@ import Connect.Connect;
 import Model.ModChiTietHDL;
 import Model.ModHoaDonLe;
 import Model.ModHoaDonSi;
+import Model.ModKhachHang;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -18,6 +21,7 @@ import java.sql.SQLException;
  */
 public class CtrlDanhSachHoaDon {
     Connect DB = new Connect();
+    SimpleDateFormat dt1 = new SimpleDateFormat("yyyy/MM/dd");
     public ResultSet LayDanhSachHoaDonLe(){
         try{
         ModHoaDonLe modHDL = new ModHoaDonLe();
@@ -62,6 +66,29 @@ public class CtrlDanhSachHoaDon {
         return null;
     }
     
+    public ResultSet LayDanhSachKhachHang(){
+        try{
+            String SQL="Select MaKH,TenKH from KHACHHANG where LoaiKH='KHS'";
+            return DB.GetData(SQL);
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại CtrlDanhSachHoaDon.LayDanhSachKhachHang:"+ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet TimKiemHDL(String TenKH,String SoHDL,Date tungay,Date denngay){
+        try{
+           String SQL="Select * from HOADONLE where TenKH like '%"+TenKH+"%' and SoHDL like '%"+SoHDL+"%' and NgayLap between ('"+dt1.format(tungay)+"') and ('"+dt1.format(denngay)+"  23:59:59')";
+           return DB.GetData(SQL);
+        }
+        catch(Exception ex){
+           System.out.println("Ngoại lệ tại CtrlDanhSachHoaDon.LayDanhSachKhachHang:"+ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet TimKiemHDL(String MaKH,)
     public boolean CloseConnection(){
         return DB.CloseDB();
     }
