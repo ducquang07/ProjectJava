@@ -980,7 +980,6 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormQuanLiNhaCungCap.HienThiDSNhaCungCap: "+ex.getMessage());
-            CtrlQLNCC.CloseConnection();
         }
         finally{
             CtrlQLNCC.CloseConnection();
