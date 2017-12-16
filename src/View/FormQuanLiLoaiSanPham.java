@@ -31,6 +31,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     ObjLoaiSanPham ObjLSP = new ObjLoaiSanPham();
     CtrlQuanLiLoaiSanPham CtrlQLLSP = new CtrlQuanLiLoaiSanPham();
     ModLoaiSanPham ModLSP = new ModLoaiSanPham();
+    private int flag=0;//1: Add LSP; 2: Update LSP
     /**
      * Creates new form FromQuanLiLoaiSanPham
      */
@@ -73,6 +74,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
         jlblXoa.setEnabled(!Active);
         jBtnSua.setEnabled(!Active);
         jlblSua.setEnabled(!Active);
+        jTbDSLSP.setEnabled(!Active);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -809,84 +811,105 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnTimKiemMouseExited
 
     private void jTbDSLSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSLSPMouseClicked
-        Binding();
+        if(jTbDSLSP.isEnabled()){
+            Binding();
+        }
     }//GEN-LAST:event_jTbDSLSPMouseClicked
 
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
-        jtxtMaLoaiSanPham.setText(CtrlQLLSP.LayMaLSP());
-        jtxtTenLoaiSanPham.setText("");
-        EnableComponent(true);
+        if(jBtnThem.isEnabled()){
+            jtxtMaLoaiSanPham.setText(CtrlQLLSP.LayMaLSP());
+            jtxtTenLoaiSanPham.setText("");
+            EnableComponent(true);
+            flag=1;
+        }
     }//GEN-LAST:event_jBtnThemMouseClicked
 
     private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
-        ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
-        if(!ObjLSP.getMaLoaiSP().equals("")){
-            if(!ObjLSP.getTenLoaiSP().equals("")){
-                try{
-                    if(ModLSP.Insert(ObjLSP))
-                    {
-                        EnableComponent(false);
-                        JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                        HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+        if(jBtnLuu.isEnabled()){
+            if(flag==1){
+                ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
+                if(!ObjLSP.getMaLoaiSP().equals("")){
+                    if(!ObjLSP.getTenLoaiSP().equals("")){
+                        try{
+                            if(ModLSP.Insert(ObjLSP))
+                            {
+                                EnableComponent(false);
+                                JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+                            }
+
+                        }catch(Exception e){
+
+                            JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
                     }
-                    
-                }catch(Exception e){
-                    
-                    JOptionPane.showMessageDialog(this, "Thêm loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập mã loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
                 }
-            }else{
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                flag=0;
+            }else if(flag==2){
+                ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
+                if(!ObjLSP.getMaLoaiSP().equals("")){
+                    if(!ObjLSP.getTenLoaiSP().equals("")){
+                        try{
+                            if(ModLSP.Update(ObjLSP))
+                            {
+                                EnableComponent(false);
+                                JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+                            }
+
+                        }catch(Exception e){
+
+                            JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập mã loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }
+                flag=0;
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtnLuuMouseClicked
 
     private void jBtnHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnHuyMouseClicked
-        jtxtMaLoaiSanPham.setText("");
-        jtxtTenLoaiSanPham.setText("");
-        EnableComponent(false);
+        if(jBtnHuy.isEnabled()){
+            jtxtMaLoaiSanPham.setText("");
+            jtxtTenLoaiSanPham.setText("");
+            EnableComponent(false);
+            flag=0;
+        }
     }//GEN-LAST:event_jBtnHuyMouseClicked
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
-        ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
-        int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\"", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(i==0){
-            try{
-            if(ModLSP.Delete(ObjLSP))
-                {
-                    EnableComponent(false);
-                    JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                    HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+        if(jBtnXoa.isEnabled()){
+            ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
+            int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\"", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(i==0){
+                try{
+                if(ModLSP.Delete(ObjLSP))
+                    {
+                        EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
+                    }
+
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                 }
-                    
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jBtnXoaMouseClicked
 
     private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
-        ObjLSP = new ObjLoaiSanPham(jtxtMaLoaiSanPham.getText(),jtxtTenLoaiSanPham.getText());
-        if(!ObjLSP.getMaLoaiSP().equals("")){
-            if(!ObjLSP.getTenLoaiSP().equals("")){
-                try{
-                    if(ModLSP.Update(ObjLSP))
-                    {
-                        EnableComponent(false);
-                        JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                        HienThiDSLoaiSanPham(CtrlQLLSP.LayDSLoaiSanPham());
-                    }
-                    
-                }catch(Exception e){
-                    
-                    JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
-                }
-            }else{
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã loại sản phẩm", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        if(jBtnSua.isEnabled()){
+            EnableComponent(true);
+            flag=2;
         }
     }//GEN-LAST:event_jBtnSuaMouseClicked
 
@@ -940,6 +963,7 @@ public class FormQuanLiLoaiSanPham extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormQuanLiLoaiSanPham.HienThiDSLoaiSanPham: "+ex.getMessage());
+            CtrlQLLSP.CloseConnection();
         }
         finally{
             CtrlQLLSP.CloseConnection();

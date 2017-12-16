@@ -23,6 +23,10 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 /**
  *
@@ -62,6 +66,16 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
         
+        jtbGioHang.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int dongia = Integer.parseInt(jtxtDonGia.getText().replace(",",""));
+                int soluong = Integer.parseInt(jSpSoLuong.getValue()+"");
+                jtxtThanhTien.setText(String.valueOf(dongia*soluong));
+                jtxtTongTien.setText(String.format("%,d",TinhTongTienGioHang()));
+            }
+        });
+        
         jSpSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -70,6 +84,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                   jtxtThanhTien.setText(String.valueOf(dongia*soluong));
             }
         });
+        
         LoadForm();
     }
 
@@ -93,6 +108,13 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
+        
+//        jtbGioHang.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                jtxtTongTien.setText(String.format("%,d",TinhTongTienGioHang()));
+//            }
+//        });
         
         jSpSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
             @Override

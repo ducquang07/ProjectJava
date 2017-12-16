@@ -57,12 +57,14 @@ public class ModLoaiSanPham extends Model{
                 pstmt.executeUpdate();
                 DB.CloseDB();
             }
-            return true;
+            
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModLoaiSanPham.Insert: "+ex.getMessage());
-            DB.CloseDB();
             return false;
-        }        
+        }finally{
+            DB.CloseDB();
+        }
+        return true;        
     }
 
     public boolean Update(ObjLoaiSanPham TbLoaiSanPham) {
@@ -74,12 +76,13 @@ public class ModLoaiSanPham extends Model{
                stmDB.executeUpdate(mySQL);
                DB.CloseDB();
            }
-           return true;
        } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModLoaiSamPham.Update: "+ex.getMessage());
-            DB.CloseDB();
             return false;
+        }finally{
+            DB.CloseDB();
         }
+        return true;
        
     }
     public boolean Delete(ObjLoaiSanPham TbLoaiSanPham) {

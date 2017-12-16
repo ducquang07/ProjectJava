@@ -4,11 +4,19 @@
  * and open the template in the editor.
  */
 package View;
+import Control.CtrlLapHoaDonSi;
 import Edit.Edit;
+import Model.ModHoaDonSi;
+import Object.ObjChiTietHDS;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +25,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class FormChiTietHoaDonSi extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
+    ArrayList<ObjChiTietHDS> listCTHD = new ArrayList<>();
+    public String SoHDS;
+    ObjChiTietHDS ObjHDS = new ObjChiTietHDS();
+    ModHoaDonSi ModHDS = new ModHoaDonSi();
+    CtrlLapHoaDonSi CtrlHDS = new CtrlLapHoaDonSi();
     /**
      * Creates new form FormChiTietHoaDonSi
      */
@@ -173,6 +186,34 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
         setColor(jBtnBack);
     }//GEN-LAST:event_jBtnBackMouseReleased
 
+    public void HienThiCTHD(ResultSet rs){
+        listCTHD.clear();
+        DefaultTableModel model = (DefaultTableModel) jTbCTHD.getModel();
+        model.getDataVector().removeAllElements();
+        try{
+            while(rs.next()){
+                ObjChiTietHDS itemHDS;
+                itemHDS=new ObjChiTietHDS(rs.getString("SoHDS"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("DVT"),rs.getInt("SoLuong"),rs.getInt("DonGia"),rs.getInt("ThanhTien"));
+                listCTHD.add(itemHDS);
+                Vector v = new Vector();
+                v.add(itemHDS.getSoHDS());
+                v.add(itemHDS.getMaSP());
+                v.add(itemHDS.getTenSP());
+                v.add(itemHDS.getDVT());
+                v.add(itemHDS.getSoLuong());
+                v.add(itemHDS.getDonGia());
+                v.add(itemHDS.getThanhTien());
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormCHiTietHoaDonSi.HienThiCTHD: "+ex.getMessage());
+        }
+        finally{
+            CtrlHDS.CloseConnection();
+        }
+        jTbCTHD.changeSelection(0,0,false,false);
+    }
+    
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);

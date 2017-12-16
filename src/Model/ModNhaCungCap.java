@@ -26,24 +26,26 @@ public class ModNhaCungCap extends Model{
         ID="MaNCC";
     }
 
+    @Override
     public ResultSet GetALL(){
         return super.GetALL();
     }
     
+    @Override
     public ResultSet GetByID(String ID){
         return super.GetByID(ID);
     }
     
+    @Override
     public ResultSet SearchByID(String ID){
         return super.SearchByID(ID);
     }
 
-    @Override
-    public boolean Insert() {
-         String SQL="INSERT INTO NHACUNGCAP (MaNCC, TenNCC, SDT, DiaChi, Email, NoCuaDaiLy) VALUES (?, ?, ?, ?, ?, ?);";
+    public boolean Insert(ObjNhaCungCap TbNhaCungCap) {
+         String mySQL="INSERT INTO NHACUNGCAP (MaNCC, TenNCC, SDT, DiaChi, Email, NoCuaDaiLy) VALUES (?, ?, ?, ?, ?, ?);";
         try{
             if(DB.Connected()){
-                pstmt=DB.getConDB().prepareStatement(SQL);
+                pstmt=DB.getConDB().prepareStatement(mySQL);
                 pstmt.setString(1,TbNhaCungCap.getMaNCC());
                 pstmt.setString(2,TbNhaCungCap.getTenNCC());
                 pstmt.setString(3,TbNhaCungCap.getSDT());
@@ -55,13 +57,14 @@ public class ModNhaCungCap extends Model{
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModNhaCungCap.Insert: "+ex.getMessage());
             return false;
+        }finally{
+            DB.CloseDB();
         }
         return true;
     }
 
-    @Override
-    public boolean Update() {
-           String SQL="Update NHACUNGCAP set TenNCC=N'" + TbNhaCungCap.getTenNCC()+ 
+    public boolean Update(ObjNhaCungCap TbNhaCungCap) {
+           String mySQL="Update NHACUNGCAP set TenNCC=N'" + TbNhaCungCap.getTenNCC()+ 
                                     "',SDT='" + TbNhaCungCap.getSDT()+
                                     "',DiaChi='" + TbNhaCungCap.getDiaChi() + 
                                     "',Email='" + TbNhaCungCap.getEmail() + 
@@ -70,11 +73,18 @@ public class ModNhaCungCap extends Model{
        try{
            if(DB.Connected()){
                stmDB=(Statement) DB.getConDB().createStatement();
-               stmDB.executeUpdate(SQL);
+               stmDB.executeUpdate(mySQL);
            }
        } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModNhaCungCap.Update: "+ex.getMessage());
-        }
-        return false;
+            return false;
+        }finally{
+           DB.CloseDB();
+       }
+        return true;
+    }
+    
+    public boolean Delete(ObjNhaCungCap TbNhaCungCap){
+        return super.Delete(TbNhaCungCap.getMaNCC());
     }
 }
