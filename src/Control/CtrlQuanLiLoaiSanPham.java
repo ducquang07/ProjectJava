@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class CtrlQuanLiLoaiSanPham {
     Connect DB=new Connect();
     public ResultSet LayDSLoaiSanPham(){
-        String SQL="Select MaloaiSP, TenLoaiSP " + "from LOAISANPHAM";
+        String SQL="Select MaloaiSP, TenLoaiSP from LOAISANPHAM";
         return DB.GetData(SQL);
     }
     public boolean CloseConnection(){
