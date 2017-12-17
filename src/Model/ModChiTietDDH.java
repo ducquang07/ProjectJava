@@ -37,7 +37,7 @@ public class ModChiTietDDH extends Model {
     }
     
      public boolean Insert(ObjChiTietDDH TbCTDDH) {
-        String SQL="INSERT INTO CTDDH (MaDDh,MaSP,SoLuong) VALUES (?, ?, ?);";
+        String SQL="INSERT INTO CTDDH (MaDDH,MaSP,SoLuong) VALUES (?, ?, ?);";
         try{
             if(DB.Connected()){
                 pstmt=DB.getConDB().prepareStatement(SQL);

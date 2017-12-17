@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Control.CtrlLapDonDatHang;
 import Edit.Edit;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -14,9 +15,12 @@ import Model.ModDonDatHang;
 import Object.ObjChiTietDDH;
 import java.util.ArrayList;
 import Control.CtrlQuanLiDonDatHang;
+import Model.ModChiTietDDH;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -27,10 +31,15 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
     Edit editFrm=new Edit();
         ArrayList<ObjDonDatHang> listDDH = new ArrayList<>();
+        ObjDonDatHang ObjDDH = new ObjDonDatHang();
+        ModDonDatHang ModDDH = new ModDonDatHang();
+        CtrlQuanLiDonDatHang CtrlDDH = new CtrlQuanLiDonDatHang();
+        ObjChiTietDDH ObjCTDDH = new ObjChiTietDDH();
+        ModChiTietDDH ModCTDDH = new ModChiTietDDH();
+        CtrlLapDonDatHang CtrlLapDDH = new CtrlLapDonDatHang();
         ArrayList<String> ListComboboxNCC = new ArrayList<>();
         ArrayList<ObjChiTietDDH> listCTDDH = new ArrayList<>();
-        CtrlQuanLiDonDatHang CtrlDDH = new CtrlQuanLiDonDatHang();
-        
+        private int flag=0;
         
     public FormQuanLiDonDatHang() {
         initComponents();
@@ -49,6 +58,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         
         editFrm.MakeTransparentTable(jScrCTDDH, jTbCTDDH);
         editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
+        LoadForm();
     }
     public void LoadComboboxNhaCungCap(){
         ListComboboxNCC.clear();
@@ -68,6 +78,31 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         finally{
             CtrlDDH.CloseConnection();
         }
+    }
+    public void HienThiDanhSachDonDatHang(ResultSet rs){
+        listDDH.clear();
+        DefaultTableModel model;
+        model=(DefaultTableModel) jTbDSDDH.getModel();
+        model.getDataVector().removeAllElements(); 
+        try{
+            while(rs.next()){
+                ObjDonDatHang itemDDH;
+                itemDDH =new ObjDonDatHang(rs.getString("MaDDH"),rs.getString("MaNCC"),rs.getDate("NgayDatHang"),rs.getString("TrangThai"));
+                listDDH.add(itemDDH);
+                Vector v = new Vector();
+                v.add(itemDDH.getMaDDH());
+                v.add(itemDDH.getMaNCC());
+                v.add(itemDDH.getNgayDatHang());
+                v.add(itemDDH.getTrangThai());   
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.HienThiDanhSachDonDatHang: "+ex.getMessage());
+        }
+        finally{
+            CtrlDDH.CloseConnection();
+        }
+        jTbDSDDH.changeSelection(0,0,false,false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -575,9 +610,17 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã đơn đặt hàng", "Mã nhà cung cấp", "Ngày đặt hàng", "Trạng thái"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrDSDDH.setViewportView(jTbDSDDH);
 
         getContentPane().add(jScrDSDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 408, 550, 300));
@@ -714,9 +757,17 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã đơn đặt hàng", "Mã sản phẩm", "Số lượng"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrCTDDH.setViewportView(jTbCTDDH);
 
         getContentPane().add(jScrCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 290, 760, 340));
@@ -760,9 +811,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     public void LoadForm(){
-      
-        LoadComboboxNhaCungCap();
-       
+        HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
+        //LoadComboboxNhaCungCap();   
     }
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
