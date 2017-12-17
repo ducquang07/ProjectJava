@@ -5,10 +5,17 @@
  */
 package View;
 import Edit.Edit;
+import Object.ObjChiTietPNH;
+import Object.ObjPhieuNhapHang;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +24,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class FormNhapHang extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
+    ArrayList<ObjPhieuNhapHang> listPNH = new ArrayList<>();
+    ArrayList<ObjChiTietPNH> listCTPNH = new ArrayList<>();
+    ObjChiTietPNH ObjCTPNH = new ObjChiTietPNH();
+    ObjPhieuNhapHang ObjPNH = new ObjPhieuNhapHang();
     /**
      * Creates new form FormNhapHang
      */
@@ -69,14 +80,12 @@ public class FormNhapHang extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jdtcTuNgay = new com.toedter.calendar.JDateChooser();
+        jdtcDenNgay = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        jcbbTimTheoNhaCungCap = new javax.swing.JComboBox<>();
+        jtxtTimTheoMaPhieuNhap = new javax.swing.JTextField();
         jPnTracuuPN = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrPnDSPN = new javax.swing.JScrollPane();
@@ -183,7 +192,7 @@ public class FormNhapHang extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 260, 120, 65));
+        getContentPane().add(jBtnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 220, 120, 65));
 
         jBtnLamMoi.setBackground(new java.awt.Color(153, 153, 153));
         jBtnLamMoi.setPreferredSize(new java.awt.Dimension(105, 50));
@@ -222,7 +231,7 @@ public class FormNhapHang extends javax.swing.JFrame {
             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 260, 120, 65));
+        getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 220, 120, 65));
 
         jBtnLuu.setBackground(new java.awt.Color(204, 204, 204));
         jBtnLuu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -454,15 +463,9 @@ public class FormNhapHang extends javax.swing.JFrame {
 
         jLabel4.setText("Nhà cung cấp :");
 
-        jLabel5.setText("Tìm theo :");
+        jLabel6.setText("Mã phiếu nhập:");
 
-        jLabel6.setText("Từ tìm kiếm :");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setFocusable(false);
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setFocusable(false);
+        jcbbTimTheoNhaCungCap.setFocusable(false);
 
         jPnTracuuPN.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -492,26 +495,22 @@ public class FormNhapHang extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jdtcTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                        .addComponent(jdtcDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtTimTheoMaPhieuNhap)
+                            .addComponent(jcbbTimTheoNhaCungCap, 0, 325, Short.MAX_VALUE))))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,38 +518,37 @@ public class FormNhapHang extends javax.swing.JFrame {
                 .addComponent(jPnTracuuPN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jdtcDenNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jdtcTuNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbbTimTheoNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                    .addComponent(jtxtTimTheoMaPhieuNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 550, 280));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 550, 240));
 
+        jTbDSPN.setFont(new java.awt.Font("Palatino Linotype", 0, 11)); // NOI18N
         jTbDSPN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "Mã phiếu nhập", "Ngày nhập hàng"
             }
         ));
+        jTbDSPN.setSelectionBackground(new java.awt.Color(218, 223, 225));
+        jTbDSPN.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jScrPnDSPN.setViewportView(jTbDSPN);
 
-        getContentPane().add(jScrPnDSPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 385, 540, 325));
+        getContentPane().add(jScrPnDSPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 340, 540, 370));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -576,7 +574,7 @@ public class FormNhapHang extends javax.swing.JFrame {
 
         jPanel4.add(jPnDSPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 550, 365));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 305, 550, 410));
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 204));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -637,6 +635,8 @@ public class FormNhapHang extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTbCTPN.setSelectionBackground(new java.awt.Color(218, 223, 225));
+        jTbCTPN.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jScrPnCTPN.setViewportView(jTbCTPN);
 
         getContentPane().add(jScrPnCTPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 275, 760, 355));
@@ -886,6 +886,34 @@ public class FormNhapHang extends javax.swing.JFrame {
         setColor(jBtnHuy);
     }//GEN-LAST:event_jBtnHuyMouseReleased
 
+//    public void HienThiCTHD(ResultSet rs){
+//        listCTHD.clear();
+//        DefaultTableModel model = (DefaultTableModel) jTbCTHD.getModel();
+//        model.getDataVector().removeAllElements();
+//        try{
+//            while(rs.next()){
+//                ObjChiTietHDS itemHDS;
+//                itemHDS=new ObjChiTietHDS(rs.getString("SoHDS"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("DVT"),rs.getInt("SoLuong"),rs.getInt("DonGia"),rs.getInt("ThanhTien"));
+//                listCTHD.add(itemHDS);
+//                Vector v = new Vector();
+//                //v.add(itemHDS.getSoHDS());
+//                v.add(itemHDS.getMaSP());
+//                v.add(itemHDS.getTenSP());
+//                v.add(itemHDS.getDVT());
+//                v.add(itemHDS.getSoLuong());
+//                v.add(itemHDS.getDonGia());
+//                v.add(itemHDS.getThanhTien());
+//                model.addRow(v);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println("Ngoại lệ tại FormChiTietHoaDonSi.HienThiCTHD: "+ex.getMessage());
+//        }
+//        finally{
+//            CtrlCTHDS.CloseConnection();
+//        }
+//        jTbCTHD.changeSelection(0,0,false,false);
+//    }
+    
         public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
@@ -943,10 +971,6 @@ public class FormNhapHang extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnTimKiem;
     private javax.swing.JPanel jBtnXemPhieuIn;
     private javax.swing.JPanel jBtnXoa;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -967,7 +991,6 @@ public class FormNhapHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -987,9 +1010,12 @@ public class FormNhapHang extends javax.swing.JFrame {
     private javax.swing.JTable jTbCTPN;
     private javax.swing.JTable jTbDSPN;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JComboBox<String> jcbbTimTheoNhaCungCap;
+    private com.toedter.calendar.JDateChooser jdtcDenNgay;
+    private com.toedter.calendar.JDateChooser jdtcTuNgay;
+    private javax.swing.JTextField jtxtTimTheoMaPhieuNhap;
     // End of variables declaration//GEN-END:variables
 }
