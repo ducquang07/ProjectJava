@@ -88,11 +88,6 @@ public class CtrlDanhSachHoaDon {
         return null;
     }
     
-<<<<<<< HEAD
-    //public ResultSet TimKiemHDL(String MaKH,)
-=======
-
->>>>>>> origin/master
     public boolean CloseConnection(){
         return DB.CloseDB();
     }
