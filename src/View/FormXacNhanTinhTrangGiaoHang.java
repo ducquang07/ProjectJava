@@ -434,8 +434,6 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jlblXacNhanChuaGiao.getAccessibleContext().setAccessibleName("Xác nhận chưa giao");
-
         getContentPane().add(jBtnXacNhanChuaGiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 642, 190, 65));
 
         jBtnXacNhanDaGiao.setBackground(new java.awt.Color(153, 153, 153));
@@ -482,6 +480,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
         jScrDSHDchuagiao.setWheelScrollingEnabled(false);
 
+        jTbDSHDchuagiao.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
         jTbDSHDchuagiao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -539,6 +538,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 280, 430, 427));
 
+        jTbDSHDdagiao.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
         jTbDSHDdagiao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -578,8 +578,6 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             jPnDSHDdagiaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
         );
-
-        jLabel17.getAccessibleContext().setAccessibleName("Danh sách hóa đơn đã giao:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1029,8 +1027,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
     private void jBtnXemchitietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemchitietMouseClicked
         // TODO add your handling code here:
-        FormChiTietHoaDonSi frmCTHDS = new FormChiTietHoaDonSi();
-        frmCTHDS.SoHDS=jtxtSoHD.getText();
+        FormChiTietHoaDonSi frmCTHDS = new FormChiTietHoaDonSi(jtxtSoHD.getText());
         frmCTHDS.setVisible(true);
     }//GEN-LAST:event_jBtnXemchitietMouseClicked
 
