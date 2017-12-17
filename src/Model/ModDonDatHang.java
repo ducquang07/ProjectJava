@@ -58,10 +58,10 @@ public class ModDonDatHang extends Model{
     }
 
     public boolean Update(ObjDonDatHang TbDDH) {
-        String SQL="Update DONDATHANG set MaNNC='"+TbDDH.getMaNCC()+
-                                              "',NgayDatHang='"+dt.format(TbDDH.getNgayDatHang())+
-                                              "',TrangThai='"+TbDDH.getTrangThai()+
-                                              "' where MaDDH='"+TbDDH.getMaDDH()+"'";
+        String SQL="Update DONDATHANG set NgayDatHang='"+dt.format(TbDDH.getNgayDatHang())+
+                                                        "',MaNCC='"+TbDDH.getMaNCC()+
+                                                        "',TrangThai='"+TbDDH.getTrangThai()+
+                                                        "' where MaDDH='"+TbDDH.getMaDDH()+"'";
         try{
             if(DB.Connected()){
                 pstmt=DB.getConDB().prepareStatement(SQL);
