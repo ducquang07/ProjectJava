@@ -1519,8 +1519,11 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
             FrmLapHDL.ChinhSua=true;
             FrmLapHDL.setVisible(true);
         }
-        else
-            new FormLapHoaDonSi(jtxtTenKHHDS.getText(), ListCTHDS,jDateNgayLapHDS.getDate()).setVisible(true);
+        else{
+            FormLapHoaDonSi FrmLapHDS = new FormLapHoaDonSi(jtxtSoHDS.getText(),jtxtTenKHHDS.getText(), ListCTHDS,jDateNgayLapHDS.getDate());
+            FrmLapHDS.ChinhSua=true;
+            FrmLapHDS.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnSuaMouseClicked
 
     private void jBtnSuaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseEntered
