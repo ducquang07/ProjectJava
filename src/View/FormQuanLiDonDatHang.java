@@ -17,11 +17,13 @@ import Object.ObjChiTietDDH;
 import java.util.ArrayList;
 import Control.CtrlQuanLiDonDatHang;
 import Model.ModChiTietDDH;
+import Object.ObjSanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 
 /**
@@ -32,6 +34,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
     Edit editFrm=new Edit();
         ArrayList<ObjDonDatHang> listDDH = new ArrayList<>();
+        ArrayList<ObjSanPham> listSP = new ArrayList<>();
         ObjDonDatHang ObjDDH = new ObjDonDatHang();
         ModDonDatHang ModDDH = new ModDonDatHang();
         CtrlQuanLiDonDatHang CtrlDDH = new CtrlQuanLiDonDatHang();
@@ -62,6 +65,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
         LoadForm();
     }
+    
     public void LoadComboboxNhaCungCap(){
         ListComboboxNCC.clear();
         jComboBox2.removeAllItems();
@@ -114,7 +118,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         try{
             while(rs.next()){
                 ObjChiTietDDH itemCTDDH;
-                itemCTDDH =new ObjChiTietDDH(rs.getString("MaDDH"),rs.getString("MaSP"),(int)Double.parseDouble("SoLuong"));
+                itemCTDDH =new ObjChiTietDDH(rs.getString("MaDDH"),rs.getString("MaSP"),(int)Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"),rs.getDate("NgayDatHang"),rs.getString("TrangThai"));
                 listCTDDH.add(itemCTDDH);
                 Vector v = new Vector();
                 v.add(itemCTDDH.getMaDDH());
@@ -129,6 +133,22 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
             CtrlCTDDH.CloseConnection();
         }
         jTbCTDDH.changeSelection(0,0,false,false);
+    }
+    public void Binding(){
+        TableModel model =jTbCTDDH.getModel();
+        try{
+            int viewRow = jTbCTDDH.getSelectedRow();
+            int modelRow= jTbCTDDH.convertRowIndexToModel(viewRow);
+             if(viewRow>-1){
+                jTextField2.setText(listCTDDH.get(modelRow).getMaDDH());
+                jTextField3.setText(listCTDDH.get(modelRow).getMaNCC());
+                jDateChooser3.setDate(listCTDDH.get(modelRow).getNgayDatHang());
+                jTextField5.setText(listCTDDH.get(modelRow).getTenNCC());   
+             }
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.Binding: "+ex.getMessage());
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -785,15 +805,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
             new String [] {
                 "Mã đơn đặt hàng", "Mã sản phẩm", "Số lượng"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jScrCTDDH.setViewportView(jTbCTDDH);
 
         getContentPane().add(jScrCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 290, 760, 340));
@@ -839,8 +851,12 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     public void LoadForm(){
         HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
         HienThiDanhSachChiTietDDH(CtrlCTDDH.LayDSCTDDH());
-        //LoadComboboxNhaCungCap();   
+        LoadComboboxNhaCungCap();   
+        Binding();
     }
+    private void jTbCTDDHMouseClicked(java.awt.event.MouseEvent evt) {                                     
+            Binding();
+    }     
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
@@ -868,18 +884,12 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnBackMouseReleased
 
     private void jBtnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseClicked
-        // TODO add your handling code here:
-        //        try {
-            //            // TODO add your handling code here:
-            //            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-            //            if(rs.getRow()==0){
-                //                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-                //            }
-            //            displayData(rs);
-            //            Binding();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
+        HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
+        LoadComboboxNhaCungCap();
+        jTextField1.setText("");
+        jDateChooser1.setDate(new Date());
+        jDateChooser2.setDate(new Date());
+        
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
     private void jBtnLamMoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseEntered
@@ -903,7 +913,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnLamMoiMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-        
+       
+         HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByNhaCC(ListComboboxNCC.get(jComboBox2.getSelectedIndex()).toString()));
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -925,7 +936,14 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnTimKiem);
     }//GEN-LAST:event_jBtnTimKiemMouseReleased
-
+    private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {
+        if(jBtnThem.isEnabled()){
+            jTextField2.setText(CtrlLapDDH.LayMaDDH());
+            jTextField3.setText("");
+            jTextField5.setText("");
+            jDateChooser3.setDate(new Date());
+        }
+    }           
     private void jBtnThemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseEntered
         // TODO add your handling code here:
         setColor(jBtnThem);
