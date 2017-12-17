@@ -1388,18 +1388,28 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             DefaultTableModel Model = (DefaultTableModel) jtbGioHang.getModel();
             int viewRow = jtbGioHang.getSelectedRow();
             int modelRow = jtbGioHang.convertRowIndexToModel(viewRow);
+            int soluongcu = Integer.parseInt(Model.getValueAt(modelRow, 3).toString());
             int dongia = Integer.parseInt(Model.getValueAt(modelRow, 4).toString().replace(",", ""));
             String inputdialog = JOptionPane.showInputDialog(this, "Nhập số lượng:", "");
-            int soluongtonkho = ListSoLuongTon.get(modelRow);
+            int soluongtonkho = CtrlHDL.LaySoLuongSanPham(Model.getValueAt(modelRow, 0).toString());
             if (inputdialog != null) {
                 try {
                     int SL = Integer.parseInt(inputdialog);
                     if (!inputdialog.equals("0")) {
-                        if (SL <= soluongtonkho) {
-                            Model.setValueAt(SL, modelRow, 3);
-                            Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
+                        if (!ChinhSua) {
+                            if (SL <= soluongtonkho) {
+                                Model.setValueAt(SL, modelRow, 3);
+                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + soluongtonkho + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(this, "Số lượng không đủ.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            if (SL <= soluongtonkho + soluongcu) {
+                                Model.setValueAt(SL, modelRow, 3);
+                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + (soluongtonkho + soluongcu) + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         }
                     } else {
                         jBtnXoaMouseClicked(null);
