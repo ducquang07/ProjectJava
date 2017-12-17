@@ -34,6 +34,7 @@ import javax.swing.table.TableModel;
  */
 public class FormLapHoaDonLe extends javax.swing.JFrame {
 
+    boolean ChinhSua=false;
     int xx=0,yy=0;
     Edit editFrm= new Edit();
     ArrayList<ObjSanPham> listSP = new ArrayList<>();
@@ -84,11 +85,11 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                   jtxtThanhTien.setText(String.valueOf(dongia*soluong));
             }
         });
-        
+        jtxtSoHDL.setText(CtrlHDL.LaySoHDL());
         LoadForm();
     }
 
-    public FormLapHoaDonLe(String TenKH,ArrayList<ObjChiTietHDL> ListCT,Date NgayLap){
+    public FormLapHoaDonLe(String SoHDL,String TenKH,ArrayList<ObjChiTietHDL> ListCT,Date NgayLap){
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -105,6 +106,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         
         jtxtTenSP.setLineWrap(true);
         jtxtTenNCC.setLineWrap(true);
+        jtxtSoHDL.setText(SoHDL);
         
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
@@ -921,7 +923,6 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         Binding();
         jDateNgayLap.setDate(new Date());
         jSpSoLuong.setValue(1);
-        jtxtSoHDL.setText(CtrlHDL.LaySoHDL());
     }
     
     public void HienThiDanhSachSanPham(ResultSet rs){
@@ -1295,6 +1296,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         try{
             if(ListGioHang.size()>0){
                 frmDuyetHDL = new FormDuyetHoaDonLe(jtxtSoHDL.getText(),jtxtTenKH.getText(), jDateNgayLap.getDate(),jtxtTongTien.getText(),ListGioHang);
+                if(ChinhSua) frmDuyetHDL.ChinhSua=true;
                 frmDuyetHDL.setVisible(true);
                 this.setVisible(false);
                 this.dispose();
@@ -1356,6 +1358,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormLapHoaDonLe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

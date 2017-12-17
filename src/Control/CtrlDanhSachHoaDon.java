@@ -83,11 +83,25 @@ public class CtrlDanhSachHoaDon {
            return DB.GetData(SQL);
         }
         catch(Exception ex){
-           System.out.println("Ngoại lệ tại CtrlDanhSachHoaDon.LayDanhSachKhachHang:"+ex.getMessage());
+           System.out.println("Ngoại lệ tại CtrlDanhSachHoaDon.TimKiemHDL:"+ex.getMessage());
         }
         return null;
     }
-    
+
+
+    public ResultSet TimKiemHDS(String MaKH,String SoHDS,String TinhTrang,Date tungay,Date denngay){
+        try{
+            String SQL="Select HDS.*,KH.TenKH,KH.DiaChi,KH.SDT from KHACHHANG KH,HOADONSI HDS where KH.MaKH=HDS.MaKH and "+
+                        "HDS.MaKH like '%"+MaKH+"%' and HDS.SoHDS like '%"+SoHDS+"%' and HDS.TinhTrangGiaoHang like '%"+TinhTrang+"%'"+
+                        " and HDS.NgayLap between ('"+dt1.format(tungay)+"') and ('"+dt1.format(denngay)+" 23:59:59')";
+            return DB.GetData(SQL);
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại CtrlDanhSachHoaDon.TimKiemHDS: "+ex.getMessage());
+        }
+        return null;
+    }
+
     public boolean CloseConnection(){
         return DB.CloseDB();
     }
