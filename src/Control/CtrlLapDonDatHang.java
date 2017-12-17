@@ -6,6 +6,7 @@
 package Control;
 
 import Connect.Connect;
+import Model.ModNhaCungCap;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -34,5 +35,9 @@ public class CtrlLapDonDatHang {
             System.out.println("Ngoại lệ tại CtrlQuanLiDonDatHang.LayMaDDH:"+ex.getMessage());
         }
         return ID;
+    }
+     public ResultSet LayDanhSachNhaCungCap(){
+        ModNhaCungCap modNCC=new ModNhaCungCap();
+        return modNCC.GetALL();
     }
 }

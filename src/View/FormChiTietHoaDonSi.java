@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Control.CtrlChiTietHoaDonSi;
 import Control.CtrlLapHoaDonSi;
 import Edit.Edit;
 import Model.ModHoaDonSi;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -29,14 +31,15 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
     public String SoHDS;
     ObjChiTietHDS ObjHDS = new ObjChiTietHDS();
     ModHoaDonSi ModHDS = new ModHoaDonSi();
-    CtrlLapHoaDonSi CtrlHDS = new CtrlLapHoaDonSi();
+    CtrlChiTietHoaDonSi CtrlCTHDS = new CtrlChiTietHoaDonSi();
+
     /**
      * Creates new form FormChiTietHoaDonSi
      */
-    public FormChiTietHoaDonSi() {
+    public FormChiTietHoaDonSi(String SoHD) {
         initComponents();
         setLocationRelativeTo(null);
-        
+        SoHDS=SoHD;
         jPanel3.setBackground(new Color(0,0,0,0));
         
         JPanel ListPn[] = new JPanel[]{jPanel1};
@@ -49,9 +52,26 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
         editFrm.MakeTransparentButton(ListButton);
         
         editFrm.MakeTransparentTable(jScrCTHD, jTbCTHD);
-       
+        FormLoad();
     }
 
+    public FormChiTietHoaDonSi() {
+        initComponents();
+        setLocationRelativeTo(null);
+        jPanel3.setBackground(new Color(0,0,0,0));
+        
+        JPanel ListPn[] = new JPanel[]{jPanel1};
+        editFrm.MakeTransparentPanel(ListPn);
+        
+        JPanel ListTitle[]=new JPanel[]{jPanel2};
+        editFrm.MakeTransparentTitle(ListTitle);
+        
+        JPanel ListButton[]= new JPanel[]{jBtnBack};
+        editFrm.MakeTransparentButton(ListButton);
+        
+        editFrm.MakeTransparentTable(jScrCTHD, jTbCTHD);
+        FormLoad();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,6 +88,7 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jlblSoHD = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -113,14 +134,17 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
 
         getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
+        jTbCTHD.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
         jTbCTHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã sản phẩm", "Tên sản phẩm", "Đơn vị tính", "Số lượng", "Đơn giá", "Thành tiền"
             }
         ));
+        jTbCTHD.setSelectionBackground(new java.awt.Color(218, 223, 225));
+        jTbCTHD.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jScrCTHD.setViewportView(jTbCTHD);
 
         getContentPane().add(jScrCTHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 97, 750, 305));
@@ -129,9 +153,12 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Chi tiết hóa đơn:");
+        jLabel1.setText("Chi tiết hóa đơn số:");
+
+        jlblSoHD.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -140,11 +167,15 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jlblSoHD)
+                .addContainerGap(610, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(jlblSoHD))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, -1));
@@ -196,7 +227,7 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
                 itemHDS=new ObjChiTietHDS(rs.getString("SoHDS"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("DVT"),rs.getInt("SoLuong"),rs.getInt("DonGia"),rs.getInt("ThanhTien"));
                 listCTHD.add(itemHDS);
                 Vector v = new Vector();
-                v.add(itemHDS.getSoHDS());
+                //v.add(itemHDS.getSoHDS());
                 v.add(itemHDS.getMaSP());
                 v.add(itemHDS.getTenSP());
                 v.add(itemHDS.getDVT());
@@ -206,12 +237,17 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
                 model.addRow(v);
             }
         } catch (SQLException ex) {
-            System.out.println("Ngoại lệ tại FormCHiTietHoaDonSi.HienThiCTHD: "+ex.getMessage());
+            System.out.println("Ngoại lệ tại FormChiTietHoaDonSi.HienThiCTHD: "+ex.getMessage());
         }
         finally{
-            CtrlHDS.CloseConnection();
+            CtrlCTHDS.CloseConnection();
         }
         jTbCTHD.changeSelection(0,0,false,false);
+    }
+    
+    public void FormLoad(){
+        jlblSoHD.setText(SoHDS);
+        HienThiCTHD(CtrlCTHDS.LayDSCTHD(SoHDS));
     }
     
     public void setColor(JPanel pn){
@@ -271,5 +307,6 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrCTHD;
     private javax.swing.JTable jTbCTHD;
+    private javax.swing.JLabel jlblSoHD;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
 import Object.ObjDonDatHang;
 import Model.ModDonDatHang;
+import Object.ObjChiTietDDH;
+import java.util.ArrayList;
+import Control.CtrlQuanLiDonDatHang;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
 
 
 /**
@@ -20,9 +26,12 @@ import Model.ModDonDatHang;
 public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
     Edit editFrm=new Edit();
-    /**
-     * Creates new form FormQuanLiDonDatHang
-     */
+        ArrayList<ObjDonDatHang> listDDH = new ArrayList<>();
+        ArrayList<String> ListComboboxNCC = new ArrayList<>();
+        ArrayList<ObjChiTietDDH> listCTDDH = new ArrayList<>();
+        CtrlQuanLiDonDatHang CtrlDDH = new CtrlQuanLiDonDatHang();
+        
+        
     public FormQuanLiDonDatHang() {
         initComponents();
         setLocationRelativeTo(null);
@@ -41,7 +50,25 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         editFrm.MakeTransparentTable(jScrCTDDH, jTbCTDDH);
         editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
     }
-
+    public void LoadComboboxNhaCungCap(){
+        ListComboboxNCC.clear();
+        jComboBox2.removeAllItems();
+        jComboBox2.addItem("---Chọn nhà cung cấp---");
+        ListComboboxNCC.add("");
+        ResultSet rs=CtrlDDH.LayDanhSachNhaCungCap();
+        try{
+            while(rs.next()){
+                jComboBox2.addItem(rs.getString("TenNCC"));
+                ListComboboxNCC.add(rs.getString("MaNCC"));
+            }
+        }
+        catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.LoadComboboxNhaCungCap: "+ex.getMessage());
+        }
+        finally{
+            CtrlDDH.CloseConnection();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -732,7 +759,11 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void LoadForm(){
+      
+        LoadComboboxNhaCungCap();
+       
+    }
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
