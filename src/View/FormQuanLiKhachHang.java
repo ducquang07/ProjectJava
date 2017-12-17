@@ -31,6 +31,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
     CtrlKhachHang CtrlKH=new CtrlKhachHang();
     ObjKhachHang ObjKH=new ObjKhachHang();
     ModKhachHang ModKH= new ModKhachHang();
+    private int flag=0;
     /**
      * Creates new form FormQuanLiKhachHang
      */
@@ -307,6 +308,9 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
         jBtnSua.setBackground(new java.awt.Color(204, 204, 204));
         jBtnSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnSuaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnSuaMouseEntered(evt);
             }
@@ -847,65 +851,119 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
 
     private void jtbDSKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbDSKHMouseClicked
         // TODO add your handling code here:
-        Binding();
+        if(jtbDSKH.isEnabled()){
+            Binding();
+        }
     }//GEN-LAST:event_jtbDSKHMouseClicked
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
         // TODO add your handling code here:
-        ObjKH=new ObjKhachHang(jtxtMaKH.getText(),jtxtTenKH.getText(),jtxtSDT.getText(),jtxtDiaChi.getText(),jtxtEmail.getText());
-        int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa khách hàng \""+ ObjKH.getTenKH()+ "\"", "Xác nhận", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-        if(i==0){
-            try{
-                if(ModKH.Delete(ObjKH.getMaKH()))
-                {
-                    EnableComponent(false);
-                    JOptionPane.showMessageDialog(this, "Xóa khách hàng \"" + ObjKH.getTenKH()+ "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE );
-                    HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
+        if(jBtnXoa.isEnabled()){
+            ObjKH=new ObjKhachHang(jtxtMaKH.getText(),jtxtTenKH.getText(),jtxtSDT.getText(),jtxtDiaChi.getText(),jtxtEmail.getText());
+            int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa khách hàng \""+ ObjKH.getTenKH()+ "\"", "Xác nhận", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(i==0){
+                try{
+                    if(ModKH.Delete(ObjKH.getMaKH()))
+                    {
+                        EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Xóa khách hàng \"" + ObjKH.getTenKH()+ "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE );
+                        HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
+                    }
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(this, "Xóa khách hàng \"" + ObjKH.getTenKH()+ "\" thất bại. Mã lỗi: " + ex.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 }
-            }catch(Exception ex){
-                JOptionPane.showMessageDialog(this, "Xóa khách hàng \"" + ObjKH.getTenKH()+ "\" thất bại. Mã lỗi: " + ex.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_jBtnXoaMouseClicked
 
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
         // TODO add your handling code here:
-        jtxtMaKH.setText(CtrlKH.TaoMaKH());
-        jtxtTenKH.setText("");
-        jtxtSDT.setText("");
-        jtxtDiaChi.setText("");
-        jtxtEmail.setText("");
-        EnableComponent(true);
+        if(jBtnThem.isEnabled()){
+            jtxtMaKH.setText(CtrlKH.TaoMaKH());
+            jtxtTenKH.setText("");
+            jtxtSDT.setText("");
+            jtxtDiaChi.setText("");
+            jtxtEmail.setText("");
+            EnableComponent(true);
+            flag=1;
+        }
     }//GEN-LAST:event_jBtnThemMouseClicked
 
     private void jBtnHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnHuyMouseClicked
         // TODO add your handling code here:
-        jtxtMaKH.setText("");
-        jtxtTenKH.setText("");
-        jtxtSDT.setText("");
-        jtxtDiaChi.setText("");
-        jtxtEmail.setText("");
-        EnableComponent(false);
+            if(jBtnHuy.isEnabled()){
+            jtxtMaKH.setText("");
+            jtxtTenKH.setText("");
+            jtxtSDT.setText("");
+            jtxtDiaChi.setText("");
+            jtxtEmail.setText("");
+            EnableComponent(false);
+            flag=0;
+        }
     }//GEN-LAST:event_jBtnHuyMouseClicked
 
     private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
         // TODO add your handling code here:
-        ObjKH=new ObjKhachHang(jtxtMaKH.getText(),jtxtTenKH.getText(),jtxtSDT.getText(),jtxtDiaChi.getText(),jtxtEmail.getText());
-        if(!ObjKH.getMaKH().equals("")){
-            if(!ObjKH.getTenKH().equals("")){
-                try{
-                    if(ModKH.Insert(ObjKH))
-                    {
-                        EnableComponent(false);
-                        JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH() + "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                        HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
+        if(jBtnLuu.isEnabled()){
+            if(flag==1){ 
+                ObjKH = new ObjKhachHang(jtxtMaKH.getText(), jtxtTenKH.getText(), jtxtSDT.getText(), jtxtDiaChi.getText(), jtxtEmail.getText());
+                if (!ObjKH.getMaKH().equals("")) {
+                    if (!ObjKH.getTenKH().equals("")) {
+                        if(!ObjKH.getSDT().equals("")||!ObjKH.getDiaChi().equals("")||!ObjKH.getEmail().equals("")) {
+                            try {
+                                if (ModKH.Insert(ObjKH)) {
+                                    EnableComponent(false);
+                                    JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH() + "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                    HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
+                                }
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập một trong ba thông tin liên lạc" , "Thông báo", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên khách hàng", "Thông báo", JOptionPane.ERROR_MESSAGE);
                     }
-                }catch(Exception e){
-                    JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH()+ "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
-                }
+                } else{
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập mã khách hàng", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }   
+                flag=0;
+            }else if(flag==2){
+                ObjKH = new ObjKhachHang(jtxtMaKH.getText(), jtxtTenKH.getText(), jtxtSDT.getText(), jtxtDiaChi.getText(), jtxtEmail.getText());
+                if (!ObjKH.getMaKH().equals("")) {
+                    if (!ObjKH.getTenKH().equals("")) {
+                        if(!ObjKH.getSDT().equals("")||!ObjKH.getDiaChi().equals("")||!ObjKH.getEmail().equals("")) {
+                            try {
+                                if (ModKH.Update(ObjKH)) {
+                                    EnableComponent(false);
+                                    JOptionPane.showMessageDialog(this, "Cập nhật khách hàng \"" + ObjKH.getTenKH() + "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                    HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
+                                }
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "Cập nhật khách hàng \"" + ObjKH.getTenKH() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Vui lòng nhập một trong ba thông tin liên lạc" , "Thông báo", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên khách hàng", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else{
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập mã khách hàng", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }   
+                flag=0;
             }
         }
     }//GEN-LAST:event_jBtnLuuMouseClicked
+       
+    private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
+        // TODO add your handling code here:
+        if(jBtnSua.isEnabled()){
+            EnableComponent(true);
+            flag=2;
+        }
+    }//GEN-LAST:event_jBtnSuaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1035,6 +1093,7 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jtbDSKH.changeSelection(0, 0, false, false);
     }
     public void Binding(){
+        EnableComponent(false);
         TableModel model=jtbDSKH.getModel();
         try{
             int viewRow= jtbDSKH.getSelectedRow();
@@ -1058,6 +1117,9 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jlblHuy.setEnabled(Active);
         jtxtMaKH.setEnabled(Active);
         jtxtTenKH.setEnabled(Active);
+        jtxtSDT.setEnabled(Active);
+        jtxtDiaChi.setEnabled(Active);
+        jtxtEmail.setEnabled(Active);
         jBtnThem.setEnabled(!Active);
         jlblThem.setEnabled(!Active);
         jBtnXoa.setEnabled(!Active);
