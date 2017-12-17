@@ -963,6 +963,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         DefaultTableModel model;
         model=(DefaultTableModel) jtbDSSP.getModel();
         model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
         try{
             while(rs.next()){
                 ObjSanPham itemSP;
@@ -1053,13 +1054,13 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         LoadComboboxNhaCungCap();
         jtxtTimKiem.setText("");
         jtxtTongTien.setText("0");
-        
         jtbGioHang.removeAll();
         jtxtSoHDS.setText(CtrlHDS.LaySoHDS());
         jDateNgayLap.setDate(new Date());
         DefaultTableModel model;
         model=(DefaultTableModel) jtbGioHang.getModel();
         model.getDataVector().removeAllElements(); 
+        model.fireTableDataChanged();
     }
     
     public void Binding(){
