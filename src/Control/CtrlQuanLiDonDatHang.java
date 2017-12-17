@@ -6,6 +6,7 @@
 package Control;
 
 import Connect.Connect;
+import Model.ModNhaCungCap;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -39,6 +40,10 @@ public class CtrlQuanLiDonDatHang {
     {
         String mySQL="Select * from DONDATHANG where NgayDH between ('"+dt1.format(tungay)+"') and ('"+dt1.format(denngay)+" 23:59:59')";
         return DB.GetData(mySQL);
+    }
+    public ResultSet LayDanhSachNhaCungCap(){
+        ModNhaCungCap modNCC=new ModNhaCungCap();
+        return modNCC.GetALL();
     }
 }
 
