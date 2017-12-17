@@ -6,6 +6,7 @@
 package Model;
 
 import Connect.Connect;
+import Object.ObjChiTietPNH;
 import Object.ObjPhieuNhapHang;
 import com.mysql.jdbc.Statement;
 import java.sql.Date;
@@ -67,6 +68,10 @@ public class ModPhieuNhapHang extends Model{
     }
     public boolean Delete(ObjPhieuNhapHang TbPhieuNhapHang) {
          return super.Delete(TbPhieuNhapHang.getMaPN());
+    }
+    
+    public boolean Delete(ObjChiTietPNH TbCTPN) {
+         return super.Delete(TbCTPN.getMaPN());
     }
     
 }

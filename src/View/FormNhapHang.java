@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package View;
+import Control.CtrlLapPhieuNhapHang;
 import Edit.Edit;
+import Model.ModChiTietPNH;
+import Model.ModPhieuNhapHang;
 import Object.ObjChiTietPNH;
 import Object.ObjPhieuNhapHang;
 import java.awt.Color;
@@ -13,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +32,9 @@ public class FormNhapHang extends javax.swing.JFrame {
     ArrayList<ObjChiTietPNH> listCTPNH = new ArrayList<>();
     ObjChiTietPNH ObjCTPNH = new ObjChiTietPNH();
     ObjPhieuNhapHang ObjPNH = new ObjPhieuNhapHang();
+    ModPhieuNhapHang ModPN = new ModPhieuNhapHang();
+    ModChiTietPNH ModCTPN = new ModChiTietPNH();
+    CtrlLapPhieuNhapHang CtrlLPNH = new CtrlLapPhieuNhapHang();
     /**
      * Creates new form FormNhapHang
      */
@@ -97,14 +104,14 @@ public class FormNhapHang extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        jTextField3 = new javax.swing.JTextField();
+        jtxtMaPN = new javax.swing.JTextField();
+        jdtcNgayNhap = new com.toedter.calendar.JDateChooser();
+        jtxtMaDDH = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jtxtMaNCC = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtxtTenNCC = new javax.swing.JTextArea();
         jPnThongtinPN = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jScrPnCTPN = new javax.swing.JScrollPane();
@@ -309,6 +316,9 @@ public class FormNhapHang extends javax.swing.JFrame {
 
         jBtnXoa.setBackground(new java.awt.Color(204, 204, 204));
         jBtnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXoaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnXoaMouseEntered(evt);
             }
@@ -546,6 +556,11 @@ public class FormNhapHang extends javax.swing.JFrame {
         ));
         jTbDSPN.setSelectionBackground(new java.awt.Color(218, 223, 225));
         jTbDSPN.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSPN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbDSPNMouseClicked(evt);
+            }
+        });
         jScrPnDSPN.setViewportView(jTbDSPN);
 
         getContentPane().add(jScrPnDSPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 340, 540, 370));
@@ -587,20 +602,20 @@ public class FormNhapHang extends javax.swing.JFrame {
 
         jLabel10.setText("Mã đơn đặt hàng :");
         jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 122, -1, -1));
-        jPanel7.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 43, 165, -1));
-        jPanel7.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 81, 164, -1));
-        jPanel7.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 119, 162, -1));
+        jPanel7.add(jtxtMaPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 43, 165, -1));
+        jPanel7.add(jdtcNgayNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 81, 164, -1));
+        jPanel7.add(jtxtMaDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 119, 162, -1));
 
         jLabel11.setText("Mã nhà cung cấp : ");
         jPanel7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 46, -1, -1));
-        jPanel7.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 43, 270, -1));
+        jPanel7.add(jtxtMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 43, 270, -1));
 
         jLabel12.setText("Tên nhà cung cấp :");
         jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 81, -1, 20));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jtxtTenNCC.setColumns(20);
+        jtxtTenNCC.setRows(5);
+        jScrollPane2.setViewportView(jtxtTenNCC);
 
         jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 81, 270, 43));
 
@@ -632,7 +647,7 @@ public class FormNhapHang extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Title 4"
             }
         ));
         jTbCTPN.setSelectionBackground(new java.awt.Color(218, 223, 225));
@@ -886,35 +901,103 @@ public class FormNhapHang extends javax.swing.JFrame {
         setColor(jBtnHuy);
     }//GEN-LAST:event_jBtnHuyMouseReleased
 
-//    public void HienThiCTHD(ResultSet rs){
-//        listCTHD.clear();
-//        DefaultTableModel model = (DefaultTableModel) jTbCTHD.getModel();
-//        model.getDataVector().removeAllElements();
-//        try{
-//            while(rs.next()){
-//                ObjChiTietHDS itemHDS;
-//                itemHDS=new ObjChiTietHDS(rs.getString("SoHDS"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("DVT"),rs.getInt("SoLuong"),rs.getInt("DonGia"),rs.getInt("ThanhTien"));
-//                listCTHD.add(itemHDS);
-//                Vector v = new Vector();
-//                //v.add(itemHDS.getSoHDS());
-//                v.add(itemHDS.getMaSP());
-//                v.add(itemHDS.getTenSP());
-//                v.add(itemHDS.getDVT());
-//                v.add(itemHDS.getSoLuong());
-//                v.add(itemHDS.getDonGia());
-//                v.add(itemHDS.getThanhTien());
-//                model.addRow(v);
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println("Ngoại lệ tại FormChiTietHoaDonSi.HienThiCTHD: "+ex.getMessage());
-//        }
-//        finally{
-//            CtrlCTHDS.CloseConnection();
-//        }
-//        jTbCTHD.changeSelection(0,0,false,false);
-//    }
+    private void jTbDSPNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSPNMouseClicked
+        // TODO add your handling code here:
+        Binding();
+        HienThiCTPN(CtrlLPNH.LayCTPN(jtxtMaPN.getText()));
+    }//GEN-LAST:event_jTbDSPNMouseClicked
+
+    private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
+        // TODO add your handling code here:
+        ObjPhieuNhapHang ObjPN = new ObjPhieuNhapHang(jtxtMaPN.getText(),jdtcNgayNhap.getDate(),jtxtMaDDH.getText());
+            int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa phiếu nhập hàng \"" + ObjPN.getMaPN() + "\"", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(i==0){
+                try{
+                if(ModPN.Delete(ObjPN))
+                    {
+                        //EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Xóa phiếu nhập hàng \"" + ObjPN.getTenNCC() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        FormLoad();
+                    }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(this, "Xóa phiếu nhập hàng \"" + ObjPN.getTenNCC() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+    }//GEN-LAST:event_jBtnXoaMouseClicked
+
+    public void HienThiPN(ResultSet rs){
+        listPNH.clear();
+        DefaultTableModel model = (DefaultTableModel) jTbDSPN.getModel();
+        model.getDataVector().removeAllElements();
+        try{
+            while(rs.next()){
+                ObjPhieuNhapHang itemPNH;
+                itemPNH=new ObjPhieuNhapHang(rs.getString("MaPN"),rs.getDate("NgayNhap"),rs.getString("MaDDH"),rs.getString("MaNCC"),rs.getString("TenNCC"));
+                listPNH.add(itemPNH);
+                Vector v = new Vector();
+                v.add(itemPNH.getMaPN());
+                v.add(itemPNH.getNgayNhap());
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormNhapHang.HienThiPN: "+ex.getMessage());
+        }
+        finally{
+            CtrlLPNH.CloseConnection();
+        }
+        jTbDSPN.changeSelection(0,0,false,false);
+    }
     
-        public void setColor(JPanel pn){
+    public void HienThiCTPN(ResultSet rs){
+        listCTPNH.clear();
+        DefaultTableModel model = (DefaultTableModel) jTbCTPN.getModel();
+        model.getDataVector().removeAllElements();
+        try{
+            while(rs.next()){
+                ObjChiTietPNH itemCTPN;
+                itemCTPN=new ObjChiTietPNH(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaPN"),rs.getInt("SoLuong"),rs.getInt("DonGia"));
+                listCTPNH.add(itemCTPN);
+                Vector v = new Vector();
+                v.add(itemCTPN.getMaSP());
+                v.add(itemCTPN.getTenSP());
+                v.add(itemCTPN.getSoLuong());
+                v.add(itemCTPN.getDonGia());
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormNhapHang.HienThiCTPN: "+ex.getMessage());
+        }
+        finally{
+            CtrlLPNH.CloseConnection();
+        }
+        jTbDSPN.changeSelection(0,0,false,false);
+    }
+    
+    public void Binding(){
+        try{
+            int viewRow = jTbDSPN.getSelectedRow();
+            int modelRow= jTbDSPN.convertRowIndexToModel(viewRow);
+             if(viewRow>-1){
+                  jtxtMaPN.setText(listPNH.get(modelRow).getMaPN());
+                  jdtcNgayNhap.setDate(listPNH.get(modelRow).getNgayNhap());
+                  jtxtMaDDH.setText(listPNH.get(modelRow).getMaDDH());
+                  jtxtMaNCC.setText(listPNH.get(modelRow).getMaNCC());
+                  jtxtTenNCC.setText(listPNH.get(modelRow).getTenNCC());
+             }
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormQuanLiNhaCungCap.Binding: "+ex.getMessage());
+        }
+    }
+    
+    public void FormLoad(){
+        HienThiPN(CtrlLPNH.LayDSPhieuNhap());
+        Binding();
+        HienThiCTPN(CtrlLPNH.LayCTPN(jtxtMaPN.getText()));
+        
+    }
+    
+    public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
         pn.setBackground(new Color(60,209,127,50));
@@ -971,7 +1054,6 @@ public class FormNhapHang extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnTimKiem;
     private javax.swing.JPanel jBtnXemPhieuIn;
     private javax.swing.JPanel jBtnXoa;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1009,13 +1091,14 @@ public class FormNhapHang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTbCTPN;
     private javax.swing.JTable jTbDSPN;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JComboBox<String> jcbbTimTheoNhaCungCap;
     private com.toedter.calendar.JDateChooser jdtcDenNgay;
+    private com.toedter.calendar.JDateChooser jdtcNgayNhap;
     private com.toedter.calendar.JDateChooser jdtcTuNgay;
+    private javax.swing.JTextField jtxtMaDDH;
+    private javax.swing.JTextField jtxtMaNCC;
+    private javax.swing.JTextField jtxtMaPN;
+    private javax.swing.JTextArea jtxtTenNCC;
     private javax.swing.JTextField jtxtTimTheoMaPhieuNhap;
     // End of variables declaration//GEN-END:variables
 }

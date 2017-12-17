@@ -12,6 +12,7 @@ package Object;
 public class ObjChiTietPNH {
     private String MaPN;
     private String MaSP;
+    private String TenSP;
     private int SoLuong;
     private int DonGia;
 
@@ -24,6 +25,23 @@ public class ObjChiTietPNH {
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
     }
+
+    public ObjChiTietPNH(String MaPN, String MaSP, String TenSP, int SoLuong, int DonGia) {
+        this.MaPN = MaPN;
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
+    }
+
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
+    
 
     public String getMaPN() {
         return MaPN;
