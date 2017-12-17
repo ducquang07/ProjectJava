@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Control.CtrlChiTietDonDatHang;
 import Control.CtrlLapDonDatHang;
 import Edit.Edit;
 import java.awt.Color;
@@ -37,6 +38,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         ObjChiTietDDH ObjCTDDH = new ObjChiTietDDH();
         ModChiTietDDH ModCTDDH = new ModChiTietDDH();
         CtrlLapDonDatHang CtrlLapDDH = new CtrlLapDonDatHang();
+        CtrlChiTietDonDatHang CtrlCTDDH = new CtrlChiTietDonDatHang();
         ArrayList<String> ListComboboxNCC = new ArrayList<>();
         ArrayList<ObjChiTietDDH> listCTDDH = new ArrayList<>();
         private int flag=0;
@@ -103,6 +105,30 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
             CtrlDDH.CloseConnection();
         }
         jTbDSDDH.changeSelection(0,0,false,false);
+    }
+    public void HienThiDanhSachChiTietDDH(ResultSet rs){
+        listCTDDH.clear();
+        DefaultTableModel model;
+        model=(DefaultTableModel) jTbCTDDH.getModel();
+        model.getDataVector().removeAllElements(); 
+        try{
+            while(rs.next()){
+                ObjChiTietDDH itemCTDDH;
+                itemCTDDH =new ObjChiTietDDH(rs.getString("MaDDH"),rs.getString("MaSP"),(int)Double.parseDouble("SoLuong"));
+                listCTDDH.add(itemCTDDH);
+                Vector v = new Vector();
+                v.add(itemCTDDH.getMaDDH());
+                v.add(itemCTDDH.getMaSP());
+                v.add(itemCTDDH.getSoLuong());
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.HienThiDanhSachChiTietDDH: "+ex.getMessage());
+        }
+        finally{
+            CtrlCTDDH.CloseConnection();
+        }
+        jTbCTDDH.changeSelection(0,0,false,false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -812,6 +838,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public void LoadForm(){
         HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
+        HienThiDanhSachChiTietDDH(CtrlCTDDH.LayDSCTDDH());
         //LoadComboboxNhaCungCap();   
     }
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked

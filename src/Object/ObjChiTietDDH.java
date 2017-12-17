@@ -36,7 +36,7 @@ public class ObjChiTietDDH {
     {
         return SoLuong;
     }
-    
+ 
     public void setMaDDH(String MaDDH)
     {
         this.MaDDH = MaDDH;
