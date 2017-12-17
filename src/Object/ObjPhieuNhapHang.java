@@ -15,6 +15,8 @@ public class ObjPhieuNhapHang {
     private String MaPN;
     private Date NgayNhap;
     private String MaDDH;
+    private String MaNCC;
+    private String TenNCC;
 
     public ObjPhieuNhapHang() {
     }
@@ -25,6 +27,30 @@ public class ObjPhieuNhapHang {
         this.MaDDH = MaDDH;
     }
 
+    public ObjPhieuNhapHang(String MaPN, Date NgayNhap, String MaDDH, String MaNCC, String TenNCC) {
+        this.MaPN = MaPN;
+        this.NgayNhap = NgayNhap;
+        this.MaDDH = MaDDH;
+        this.MaNCC = MaNCC;
+        this.TenNCC = TenNCC;
+    }
+
+    public String getMaNCC() {
+        return MaNCC;
+    }
+
+    public String getTenNCC() {
+        return TenNCC;
+    }
+
+    public void setMaNCC(String MaNCC) {
+        this.MaNCC = MaNCC;
+    }
+
+    public void setTenNCC(String TenNCC) {
+        this.TenNCC = TenNCC;
+    }
+    
     public String getMaDDH() {
         return MaDDH;
     }

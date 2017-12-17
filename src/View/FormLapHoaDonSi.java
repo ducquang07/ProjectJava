@@ -42,6 +42,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
     ArrayList<ObjKhachHang>listComboboxKH=new ArrayList<>();
     ArrayList<ObjChiTietHDS>ListGioHang = new ArrayList<>();
     CtrlLapHoaDonSi CtrlHDS = new CtrlLapHoaDonSi();
+    ArrayList<Integer> ListSoLuongTon = new ArrayList<>();
     FormDuyetHoaDonSi frmDuyetHDS;
     /**
      * Creates new form FormLapHoaDonLe
@@ -145,6 +146,17 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jBtnTimKiem = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jBtnLamMoi = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jBtnChinhSua = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jScrGioHang = new javax.swing.JScrollPane();
+        jtbGioHang = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jPnGioHang = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -156,15 +168,6 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         jPnThongtinHD = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcbbKhachHang = new javax.swing.JComboBox<>();
-        jBtnTimKiem = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jBtnLamMoi = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jScrGioHang = new javax.swing.JScrollPane();
-        jtbGioHang = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jPnGioHang = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jCbbTimTheo = new javax.swing.JComboBox<>();
@@ -217,110 +220,6 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         setFocusable(false);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-
-        jLabel2.setText("Số hóa đơn  :");
-
-        jLabel3.setText("Khách hàng :");
-
-        jtxtSoHDS.setEditable(false);
-        jtxtSoHDS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtSoHDSActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("Ngày lập :");
-
-        jDateNgayLap.setDateFormatString("dd/MM/yyyy");
-
-        jLabel5.setText("Tổng tiền :");
-
-        jtxtTongTien.setEditable(false);
-        jtxtTongTien.setText("0");
-        jtxtTongTien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtTongTienActionPerformed(evt);
-            }
-        });
-
-        jPnThongtinHD.setBackground(new java.awt.Color(0, 204, 204));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Thông tin hóa đơn :");
-
-        javax.swing.GroupLayout jPnThongtinHDLayout = new javax.swing.GroupLayout(jPnThongtinHD);
-        jPnThongtinHD.setLayout(jPnThongtinHDLayout);
-        jPnThongtinHDLayout.setHorizontalGroup(
-            jPnThongtinHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnThongtinHDLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(605, Short.MAX_VALUE))
-        );
-        jPnThongtinHDLayout.setVerticalGroup(
-            jPnThongtinHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-        );
-
-        jcbbKhachHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn khách hàng---" }));
-        jcbbKhachHang.setAutoscrolls(true);
-        jcbbKhachHang.setFocusable(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel2)
-                                .addGap(10, 10, 10)
-                                .addComponent(jtxtSoHDS, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jcbbKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtxtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jDateNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jPnThongtinHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPnThongtinHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtxtSoHDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4))
-                    .addComponent(jDateNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbbKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jtxtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 689, 150));
 
         jBtnTimKiem.setPreferredSize(new java.awt.Dimension(102, 50));
         jBtnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -398,6 +297,44 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
 
         getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 124, 112, 65));
 
+        jBtnChinhSua.setBackground(new java.awt.Color(204, 204, 204));
+        jBtnChinhSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseReleased(evt);
+            }
+        });
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Edit_20px_1.png"))); // NOI18N
+
+        javax.swing.GroupLayout jBtnChinhSuaLayout = new javax.swing.GroupLayout(jBtnChinhSua);
+        jBtnChinhSua.setLayout(jBtnChinhSuaLayout);
+        jBtnChinhSuaLayout.setHorizontalGroup(
+            jBtnChinhSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnChinhSuaLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jBtnChinhSuaLayout.setVerticalGroup(
+            jBtnChinhSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jBtnChinhSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 69, 30));
+
         jtbGioHang.setAutoCreateRowSorter(true);
         jtbGioHang.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jtbGioHang.setModel(new javax.swing.table.DefaultTableModel(
@@ -436,26 +373,92 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPnGioHang.setBackground(new java.awt.Color(0, 204, 204));
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Giỏ hàng :");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, 20));
-
-        jPnGioHang.setBackground(new java.awt.Color(0, 204, 204));
 
         javax.swing.GroupLayout jPnGioHangLayout = new javax.swing.GroupLayout(jPnGioHang);
         jPnGioHang.setLayout(jPnGioHangLayout);
         jPnGioHangLayout.setHorizontalGroup(
             jPnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 689, Short.MAX_VALUE)
+            .addGroup(jPnGioHangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(548, Short.MAX_VALUE))
         );
         jPnGioHangLayout.setVerticalGroup(
             jPnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPnGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
+        jPanel2.add(jPnGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 689, 440));
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Số hóa đơn  :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 55, -1, -1));
+
+        jLabel3.setText("Khách hàng :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 102, -1, 20));
+
+        jtxtSoHDS.setEditable(false);
+        jtxtSoHDS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtSoHDSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtxtSoHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 52, 207, -1));
+
+        jLabel4.setText("Ngày lập :");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 55, -1, -1));
+
+        jDateNgayLap.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(jDateNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 52, 190, -1));
+
+        jLabel5.setText("Tổng tiền :");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 105, -1, -1));
+
+        jtxtTongTien.setEditable(false);
+        jtxtTongTien.setText("0");
+        jtxtTongTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtTongTienActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtxtTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 102, 190, -1));
+
+        jPnThongtinHD.setBackground(new java.awt.Color(0, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Thông tin hóa đơn :");
+
+        javax.swing.GroupLayout jPnThongtinHDLayout = new javax.swing.GroupLayout(jPnThongtinHD);
+        jPnThongtinHD.setLayout(jPnThongtinHDLayout);
+        jPnThongtinHDLayout.setHorizontalGroup(
+            jPnThongtinHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnThongtinHDLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(605, Short.MAX_VALUE))
+        );
+        jPnThongtinHDLayout.setVerticalGroup(
+            jPnThongtinHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPnThongtinHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jcbbKhachHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn khách hàng---" }));
+        jcbbKhachHang.setAutoscrolls(true);
+        jcbbKhachHang.setFocusable(false);
+        jcbbKhachHang.setOpaque(false);
+        jPanel1.add(jcbbKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 102, 260, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 689, 150));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -657,10 +660,10 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
 
         jtxtDonGia.setEditable(false);
         jtxtDonGia.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jtxtDonGiaInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jPanel7.add(jtxtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 178, -1));
@@ -963,6 +966,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         DefaultTableModel model;
         model=(DefaultTableModel) jtbDSSP.getModel();
         model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
         try{
             while(rs.next()){
                 ObjSanPham itemSP;
@@ -1049,17 +1053,18 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
     public void ReloadForm(){
         HienThiDanhSachSanPham(CtrlHDS.LayDanhSachSanPham());
         ListGioHang.clear();
+        ListSoLuongTon.clear();
         LoadComboboxLoaiSP();
         LoadComboboxNhaCungCap();
         jtxtTimKiem.setText("");
         jtxtTongTien.setText("0");
-        
         jtbGioHang.removeAll();
         jtxtSoHDS.setText(CtrlHDS.LaySoHDS());
         jDateNgayLap.setDate(new Date());
         DefaultTableModel model;
         model=(DefaultTableModel) jtbGioHang.getModel();
         model.getDataVector().removeAllElements(); 
+        model.fireTableDataChanged();
     }
     
     public void Binding(){
@@ -1314,6 +1319,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
             }
             if(!exist){
                 ListGioHang.add(itemGioHang);
+                ListSoLuongTon.add(listSP.get(modelRow).getSoLuong());
                 Vector v = new Vector();
                 v.add(itemGioHang.getMaSP());
                 v.add(itemGioHang.getTenSP());
@@ -1376,6 +1382,66 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtTongTienActionPerformed
 
+    private void jBtnChinhSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseClicked
+        // TODO add your handling code here:
+        if (jtbGioHang.getSelectedRow() >= 0) {
+            DefaultTableModel Model = (DefaultTableModel) jtbGioHang.getModel();
+            int viewRow = jtbGioHang.getSelectedRow();
+            int modelRow = jtbGioHang.convertRowIndexToModel(viewRow);
+            int soluongcu = Integer.parseInt(Model.getValueAt(modelRow, 3).toString());
+            int dongia = Integer.parseInt(Model.getValueAt(modelRow, 4).toString().replace(",", ""));
+            String inputdialog = JOptionPane.showInputDialog(this, "Nhập số lượng:", "");
+            int soluongtonkho = CtrlHDS.LaySoLuongSanPham(Model.getValueAt(modelRow, 0).toString());
+            if (inputdialog != null) {
+                try {
+                    int SL = Integer.parseInt(inputdialog);
+                    if (!inputdialog.equals("0")) {
+                        if (!ChinhSua) {
+                            if (SL <= soluongtonkho) {
+                                Model.setValueAt(SL, modelRow, 3);
+                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + soluongtonkho + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        } else {
+                            if (SL <= soluongtonkho + soluongcu) {
+                                Model.setValueAt(SL, modelRow, 3);
+                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + (soluongtonkho + soluongcu) + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }
+                    } else {
+                        jBtnXoaMouseClicked(null);
+                    }
+                    jtxtTongTien.setText(String.format("%,d", TinhTongTienGioHang()));
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Số lượng nhập không hợp lệ", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jBtnChinhSuaMouseClicked
+
+    private void jBtnChinhSuaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseEntered
+        // TODO add your handling code here:
+        setColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMouseEntered
+
+    private void jBtnChinhSuaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseExited
+        // TODO add your handling code here:
+        resetColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMouseExited
+
+    private void jBtnChinhSuaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMousePressed
+        // TODO add your handling code here:
+        resetColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMousePressed
+
+    private void jBtnChinhSuaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseReleased
+        // TODO add your handling code here:
+        setColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMouseReleased
+
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
@@ -1432,6 +1498,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jBtnBack;
+    private javax.swing.JPanel jBtnChinhSua;
     private javax.swing.JPanel jBtnHuy;
     private javax.swing.JPanel jBtnLamMoi;
     private javax.swing.JPanel jBtnThem;
@@ -1462,6 +1529,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

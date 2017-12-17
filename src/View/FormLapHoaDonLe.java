@@ -41,6 +41,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     ArrayList<String>listComboboxLSP = new ArrayList<>();
     ArrayList<String>listComboboxNCC=new ArrayList<>();
     ArrayList<ObjChiTietHDL>ListGioHang = new ArrayList<>();
+    ArrayList<Integer> ListSoLuongTon = new ArrayList<>();
     CtrlLapHoaDonLe CtrlHDL = new CtrlLapHoaDonLe();
     FormDuyetHoaDonLe frmDuyetHDL;
     /**
@@ -56,7 +57,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         JPanel ListTitle[]=new JPanel[]{jPnDSSP,jPnGioHang,jPnThongtinHD,jPnThongtinSP,jPnTimkiemSP};
         editFrm.MakeTransparentTitle(ListTitle);
         
-        JPanel ListButton[]=new JPanel[]{jbtnDuyetGioHang,jBtnBack,jBtnHuy,jBtnLamMoi,jBtnThem,jBtnTimKiem,jBtnXoa};
+        JPanel ListButton[]=new JPanel[]{jbtnDuyetGioHang,jBtnBack,jBtnHuy,jBtnLamMoi,jBtnThem,jBtnTimKiem,jBtnXoa,jBtnChinhSua};
         editFrm.MakeTransparentButton(ListButton);
         
         jPanel5.setBackground(new Color(0,0,0,0));
@@ -65,17 +66,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jtxtTenNCC.setLineWrap(true);
         
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
-        editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
-        
-        jtbGioHang.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                int dongia = Integer.parseInt(jtxtDonGia.getText().replace(",",""));
-                int soluong = Integer.parseInt(jSpSoLuong.getValue()+"");
-                jtxtThanhTien.setText(String.valueOf(dongia*soluong));
-                jtxtTongTien.setText(String.format("%,d",TinhTongTienGioHang()));
-            }
-        });
+        editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP);       
         
         jSpSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
             @Override
@@ -174,6 +165,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jBtnLamMoi = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        jBtnChinhSua = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
         jScrGioHang = new javax.swing.JScrollPane();
         jtbGioHang = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -360,6 +353,44 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 124, 112, 65));
 
+        jBtnChinhSua.setBackground(new java.awt.Color(204, 204, 204));
+        jBtnChinhSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnChinhSuaMouseReleased(evt);
+            }
+        });
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Edit_20px_1.png"))); // NOI18N
+
+        javax.swing.GroupLayout jBtnChinhSuaLayout = new javax.swing.GroupLayout(jBtnChinhSua);
+        jBtnChinhSua.setLayout(jBtnChinhSuaLayout);
+        jBtnChinhSuaLayout.setHorizontalGroup(
+            jBtnChinhSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnChinhSuaLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jBtnChinhSuaLayout.setVerticalGroup(
+            jBtnChinhSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jBtnChinhSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 69, 30));
+
         jtbGioHang.setAutoCreateRowSorter(true);
         jtbGioHang.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jtbGioHang.setModel(new javax.swing.table.DefaultTableModel(
@@ -373,9 +404,16 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jtbGioHang.setFocusable(false);
@@ -410,14 +448,14 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         jPnGioHang.setLayout(jPnGioHangLayout);
         jPnGioHangLayout.setHorizontalGroup(
             jPnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 689, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
         jPnGioHangLayout.setVerticalGroup(
             jPnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPnGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 689, 30));
+        jPanel2.add(jPnGioHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 689, 440));
 
@@ -930,6 +968,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         DefaultTableModel model;
         model=(DefaultTableModel) jtbDSSP.getModel();
         model.getDataVector().removeAllElements(); // remove data in table
+        model.fireTableDataChanged();
         try{
             while(rs.next()){
                 ObjSanPham itemSP;
@@ -993,6 +1032,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     public void ReloadForm(){
         HienThiDanhSachSanPham(CtrlHDL.LayDanhSachSanPham());
         ListGioHang.clear();
+        ListSoLuongTon.clear();
         LoadComboboxLoaiSP();
         LoadComboboxNhaCungCap();
         jtxtTimKiem.setText("");
@@ -1004,6 +1044,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         DefaultTableModel model;
         model=(DefaultTableModel) jtbGioHang.getModel();
         model.getDataVector().removeAllElements(); 
+        model.fireTableDataChanged();
     }
     
     public void Binding(){
@@ -1230,7 +1271,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
         // TODO add your handling code here:
         boolean exist=false;
-        TableModel model =jtbDSSP.getModel();
+        
         DefaultTableModel Model;
         int viewRow = jtbDSSP.getSelectedRow();
         int modelRow= jtbDSSP.convertRowIndexToModel(viewRow);
@@ -1258,6 +1299,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             }
             if(!exist){
                 ListGioHang.add(itemGioHang);
+                ListSoLuongTon.add(listSP.get(modelRow).getSoLuong());
                 Vector v = new Vector();
                 v.add(itemGioHang.getMaSP());
                 v.add(itemGioHang.getTenSP());
@@ -1320,6 +1362,66 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         ReloadForm();
     }//GEN-LAST:event_jBtnHuyMouseClicked
 
+    private void jBtnChinhSuaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseEntered
+        // TODO add your handling code here:
+        setColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMouseEntered
+
+    private void jBtnChinhSuaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseExited
+        // TODO add your handling code here:
+        resetColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMouseExited
+
+    private void jBtnChinhSuaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMousePressed
+        // TODO add your handling code here:
+        resetColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMousePressed
+
+    private void jBtnChinhSuaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseReleased
+        // TODO add your handling code here:
+        setColor(jBtnChinhSua);
+    }//GEN-LAST:event_jBtnChinhSuaMouseReleased
+
+    private void jBtnChinhSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnChinhSuaMouseClicked
+        // TODO add your handling code here:
+        if (jtbGioHang.getSelectedRow() >= 0) {
+            DefaultTableModel Model = (DefaultTableModel) jtbGioHang.getModel();
+            int viewRow = jtbGioHang.getSelectedRow();
+            int modelRow = jtbGioHang.convertRowIndexToModel(viewRow);
+            int soluongcu = Integer.parseInt(Model.getValueAt(modelRow, 3).toString());
+            int dongia = Integer.parseInt(Model.getValueAt(modelRow, 4).toString().replace(",", ""));
+            String inputdialog = JOptionPane.showInputDialog(this, "Nhập số lượng:", "");
+            int soluongtonkho = CtrlHDL.LaySoLuongSanPham(Model.getValueAt(modelRow, 0).toString());
+            if (inputdialog != null) {
+                try {
+                    int SL = Integer.parseInt(inputdialog);
+                    if (!inputdialog.equals("0")) {
+                        if (!ChinhSua) {
+                            if (SL <= soluongtonkho) {
+                                Model.setValueAt(SL, modelRow, 3);
+                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + soluongtonkho + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        } else {
+                            if (SL <= soluongtonkho + soluongcu) {
+                                Model.setValueAt(SL, modelRow, 3);
+                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + (soluongtonkho + soluongcu) + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }
+                    } else {
+                        jBtnXoaMouseClicked(null);
+                    }
+                    jtxtTongTien.setText(String.format("%,d", TinhTongTienGioHang()));
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Số lượng nhập không hợp lệ", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jBtnChinhSuaMouseClicked
+
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
@@ -1373,6 +1475,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jBtnBack;
+    private javax.swing.JPanel jBtnChinhSua;
     private javax.swing.JPanel jBtnHuy;
     private javax.swing.JPanel jBtnLamMoi;
     private javax.swing.JPanel jBtnThem;
@@ -1403,6 +1506,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

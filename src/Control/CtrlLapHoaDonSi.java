@@ -18,7 +18,6 @@ import java.sql.SQLException;
  */
 public class CtrlLapHoaDonSi {
     Connect DB=new Connect();
-    
     public ResultSet LayDanhSachSanPham(){
         String SQL="Select SP.MaSP,SP.TenSP,SP.DVT,SP.GiaLe,SP.GiaSi,SP.SoLuong,SP.MaLoaiSP,SP.MaNCC,LSP.TenLoaiSP,NCC.TenNCC "
                 + "from SANPHAM SP,LOAISANPHAM LSP,NHACUNGCAP NCC where SP.MaLoaiSP=LSP.MaLoaiSP and SP.MaNCC=NCC.MaNCC";
@@ -26,8 +25,8 @@ public class CtrlLapHoaDonSi {
     }
      
     public ResultSet LayDanhSachKhachHang(){
-        ModKhachHang modKH = new ModKhachHang();
-        return modKH.GetALL();
+        String SQL="Select * from KHACHHANG where LoaiKH='KHS'";
+        return DB.GetData(SQL);
     } 
     
     public ResultSet LayDanhSachLoaiSanPham(){
@@ -77,7 +76,18 @@ public class CtrlLapHoaDonSi {
         }
         return ID;
     }
-     
+    
+    public int LaySoLuongSanPham(String MaSP){
+        String SQL="Select SoLuong from SanPham where MaSP='"+MaSP+"'";
+        ResultSet rs=DB.GetData(SQL);
+        try {
+            if(rs.next()) return Integer.parseInt(rs.getString("SoLuong"));
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại CtrlLapHoaDonLe.LaySoLuongSanPham:"+ex.getMessage());
+        }
+        return 0;
+    }
+    
     public boolean  CloseConnection(){
         return DB.CloseDB();
     }

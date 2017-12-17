@@ -73,6 +73,16 @@ public class CtrlLapHoaDonLe {
         return ID;
     }
     
+    public int LaySoLuongSanPham(String MaSP){
+        String SQL="Select SoLuong from SanPham where MaSP='"+MaSP+"'";
+        ResultSet rs=DB.GetData(SQL);
+        try {
+            if(rs.next()) return Integer.parseInt(rs.getString("SoLuong"));
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại CtrlLapHoaDonLe.LaySoLuongSanPham:"+ex.getMessage());
+        }
+        return 0;
+    }
     public boolean CloseConnection(){
         return DB.CloseDB();
     }

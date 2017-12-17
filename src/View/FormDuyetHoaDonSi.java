@@ -671,7 +671,7 @@ public class FormDuyetHoaDonSi extends javax.swing.JFrame {
                             }
                         }
                         EnableComponent(false);
-                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDS.getSoHDS() + " cập nhật thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDS.getSoHDS() + " lưu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                         LuuThanhCong = true;
                     } else {
                         JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDS.getSoHDS() + " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
