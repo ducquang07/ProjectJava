@@ -5,6 +5,8 @@
  */
 package Object;
 
+import java.util.Date;
+
 /**
  *
  * @author Coldblood
@@ -13,6 +15,10 @@ public class ObjChiTietDDH {
     private String MaDDH;
     private String MaSP;
     private int SoLuong;
+    private String MaNCC;
+    private String TenNCC;
+    private Date NgayDatHang;
+    private String TrangThai;
     
     public ObjChiTietDDH()
     {
@@ -23,7 +29,16 @@ public class ObjChiTietDDH {
         this.MaSP = MaSP;
         this.SoLuong = SoLuong;
     }
-    
+    public ObjChiTietDDH(String MaDDH, String MaSP, int SoLuong, String MaNCC, String TenNCC, Date NgayDatHang, String TrangThai)
+    {
+        this.MaDDH = MaDDH;
+        this.MaSP = MaSP;
+        this.SoLuong = SoLuong;
+        this.MaNCC = MaNCC;
+        this.TenNCC = TenNCC;
+        this.NgayDatHang = NgayDatHang;
+        this.TrangThai = TrangThai;
+    }
     public String getMaDDH()
     {
         return MaDDH;
@@ -36,7 +51,23 @@ public class ObjChiTietDDH {
     {
         return SoLuong;
     }
- 
+    public String getMaNCC()
+    {
+        return MaNCC;
+    }
+    public String getTenNCC()
+    {
+        return TenNCC;
+    }
+    public String getTrangThai()
+    {
+        return TrangThai;
+    }
+    public Date getNgayDatHang()
+    {
+        return NgayDatHang;
+    }
+            
     public void setMaDDH(String MaDDH)
     {
         this.MaDDH = MaDDH;

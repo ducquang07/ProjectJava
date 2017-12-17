@@ -18,7 +18,7 @@ public class CtrlChiTietDonDatHang {
         return DB.CloseDB();
     }
     public ResultSet LayDSCTDDH(){
-        String SQL="Select MaDDH,MaSP,SoLuong from CTDDH";
+        String SQL="Select CTDH.MaDDH, CTDH.MaSP,CTDH.SoLuong, DDH.NgayDatHang, DDH.TrangThai, DDH.MaNCC, NCC.TenNCC from CTDDH CTDH, DONDATHANG DDH, NHACUNGCAP NCC WHERE CTDH.MaDDH = DDH.MaDDH and NCC.MaNCC = DDH.MaNCC";
         return DB.GetData(SQL);
     }
 }
