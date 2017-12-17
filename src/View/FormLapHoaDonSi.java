@@ -33,6 +33,7 @@ import javax.swing.table.TableModel;
  */
 public class FormLapHoaDonSi extends javax.swing.JFrame {
 
+    boolean ChinhSua=false;
     int xx=0,yy=0;
     Edit editFrm= new Edit();
     ArrayList<ObjSanPham> listSP = new ArrayList<>();
@@ -76,11 +77,11 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
                   jtxtThanhTien.setText(String.valueOf(dongia*soluong));
             }
         });
-        
+       jtxtSoHDS.setText(CtrlHDS.LaySoHDS());
        LoadForm();
     }
 
-    public FormLapHoaDonSi(String TenKH,ArrayList<ObjChiTietHDS> ListCT,Date NgayLap){
+    public FormLapHoaDonSi(String SoHDS,String TenKH,ArrayList<ObjChiTietHDS> ListCT,Date NgayLap){
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -110,6 +111,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
             }
         });
         
+       jtxtSoHDS.setText(SoHDS);
        LoadForm();
        jcbbKhachHang.setSelectedItem(TenKH);
        jDateNgayLap.setDate(NgayLap);
@@ -953,7 +955,6 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         Binding();
         jDateNgayLap.setDate(new Date());
         jSpSoLuong.setValue(1);
-        jtxtSoHDS.setText(CtrlHDS.LaySoHDS());
         CtrlHDS.CloseConnection();
     }
     
@@ -1347,6 +1348,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         try{
             if(ListGioHang.size()>0){
                 frmDuyetHDS= new FormDuyetHoaDonSi(jtxtSoHDS.getText(), jDateNgayLap.getDate(),jtxtTongTien.getText(),listComboboxKH.get(jcbbKhachHang.getSelectedIndex()),ListGioHang);
+                if(ChinhSua) frmDuyetHDS.ChinhSua=true;
                 frmDuyetHDS.setVisible(true);
                 this.setVisible(false);
                 this.dispose();
