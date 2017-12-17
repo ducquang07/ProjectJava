@@ -60,6 +60,7 @@ public class ModKhachHang extends Model{
                 pstmt.setString(5, TbKhachHang.getEmail());
                 pstmt.setString(6, TbKhachHang.getLoaiKH());
                 pstmt.executeUpdate();
+                DB.CloseDB();
                 
             }
         } catch(SQLException ex){
@@ -72,8 +73,7 @@ public class ModKhachHang extends Model{
         return true;
     }
 
-    @Override
-    public boolean Update() {
+    public boolean Update(ObjKhachHang TbKhachHang) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String SQL="Update KHACHHANG set TenKH=N'" + TbKhachHang.getTenKH()+
                                         "',SDT='" + TbKhachHang.getSDT()+
@@ -85,9 +85,11 @@ public class ModKhachHang extends Model{
             if(DB.Connected()){
                 stmDB=(com.mysql.jdbc.Statement) (Statement) DB.getConDB().createStatement();
                 stmDB.executeUpdate(SQL);
+                DB.CloseDB();
             }
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModKhachHang.Update: "+ex.getMessage());
+            return false;
         }
         finally{
             DB.CloseDB();

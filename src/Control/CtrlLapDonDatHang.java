@@ -36,7 +36,7 @@ public class CtrlLapDonDatHang {
         }
         return ID;
     }
-     public ResultSet LayDanhSachNhaCungCap(){
+    public ResultSet LayDanhSachNhaCungCap(){
         ModNhaCungCap modNCC=new ModNhaCungCap();
         return modNCC.GetALL();
     }
