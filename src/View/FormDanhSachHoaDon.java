@@ -1120,19 +1120,15 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jPnThongTinHDS.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 48, -1, -1));
 
         jtxtSoHDS.setEditable(false);
-        jtxtSoHDS.setBorder(null);
         jPnThongTinHDS.add(jtxtSoHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 71, 240, -1));
 
         jtxtMaKH.setEditable(false);
-        jtxtMaKH.setBorder(null);
         jPnThongTinHDS.add(jtxtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 102, 240, -1));
 
         jtxtTenKHHDS.setEditable(false);
-        jtxtTenKHHDS.setBorder(null);
         jPnThongTinHDS.add(jtxtTenKHHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 133, 240, -1));
 
         jtxtSDT.setEditable(false);
-        jtxtSDT.setBorder(null);
         jPnThongTinHDS.add(jtxtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 211, 240, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
