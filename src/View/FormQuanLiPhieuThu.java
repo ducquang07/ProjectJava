@@ -156,13 +156,13 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jCbbTenKH = new javax.swing.JComboBox<>();
         jtxtMaKH = new javax.swing.JTextField();
         jtxtSDT = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jtxtDiaChi = new javax.swing.JTextArea();
         jPnThongtinKH = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jCbbTenKH = new javax.swing.JComboBox<>();
         jPanel9 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
 
@@ -513,17 +513,14 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jTbDSPT.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jTbDSPT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Mã phiếu thu", "Tên khách hàng", "Tổng tiền thu", "Ngày thu"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -534,11 +531,12 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jTbDSPT.setRowHeight(25);
         jTbDSPT.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jTbDSPT.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTbDSPT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbDSPTMouseClicked(evt);
+            }
+        });
         jScrDSPT.setViewportView(jTbDSPT);
-        if (jTbDSPT.getColumnModel().getColumnCount() > 0) {
-            jTbDSPT.getColumnModel().getColumn(0).setPreferredWidth(100);
-            jTbDSPT.getColumnModel().getColumn(1).setPreferredWidth(200);
-        }
 
         getContentPane().add(jScrDSPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 285, 810, 340));
 
@@ -641,37 +639,6 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 820, 180));
 
-<<<<<<< HEAD
-=======
-        jTbDSPT.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã phiếu thu", "Tên khách hàng", "Tổng tiền thu", "Ngày thu"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTbDSPT.getTableHeader().setReorderingAllowed(false);
-        jScrDSPT.setViewportView(jTbDSPT);
-
-        getContentPane().add(jScrDSPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 285, 810, 340));
-
->>>>>>> origin/master
         jPanel10.setBackground(new java.awt.Color(204, 204, 204));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -786,14 +753,6 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jLabel5.setText("Số điện thoại :");
 
-        jCbbTenKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbbTenKH.setFocusable(false);
-        jCbbTenKH.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCbbTenKHMouseClicked(evt);
-            }
-        });
-
         jtxtDiaChi.setColumns(20);
         jtxtDiaChi.setRows(5);
         jScrollPane4.setViewportView(jtxtDiaChi);
@@ -816,6 +775,19 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jPnThongtinKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
+
+        jCbbTenKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbbTenKH.setFocusable(false);
+        jCbbTenKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCbbTenKHMouseClicked(evt);
+            }
+        });
+        jCbbTenKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbbTenKHActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -881,6 +853,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jDCTuNgay.setDate(new Date());
         jDCDenNgay.setDate(new Date());
         CtrlPT.CloseConnection();
+        EnableComponent(true);
     }
     
     public void HienThiDanhSachPhieuThu(ResultSet rs){
@@ -917,14 +890,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         listCbbKH.add(new ObjKhachHang());
         ResultSet rs= CtrlPT.LayDanhSachKhachHang();
         try{
-            while(rs.next()){
-                ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"),rs.getString("SDT"));
-                jCbbTenKH.addItem(itemKH.getTenKH());
-                listCbbKH.add(itemKH);
-                jtxtMaKH.setText(itemKH.getMaKH());
-                jtxtDiaChi.setText(itemKH.getDiaChi());
-                jtxtSDT.setText(itemKH.getSDT());
-                
+            while(rs.next()){    
+                jCbbTenKH.addItem(rs.getString("TenKH"));
+                listCbbKH.add(new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"), rs.getString("SDT")));  
             }
         }catch(SQLException ex){
             System.out.println("Ngoại lệ tại FormPhieuThu.LoadCbbKH: "+ex.getMessage());
@@ -951,42 +919,38 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     }
     
     public void Binding(){
-        EnableComponent(false);
-        TableModel model =jTbDSPT.getModel();
-        try{
+        TableModel model = jTbDSPT.getModel();
+        try {
             int viewRow = jTbDSPT.getSelectedRow();
-            int modelRow= jTbDSPT.convertRowIndexToModel(viewRow);
-            if(viewRow>-1){
-                jtxtMaPT.setText(listPT.get(modelRow).getMaPT());
-                jDCNgayLap.setDate(listPT.get(modelRow).getNgayThu());
-                jtxtSoTienThu.setText(String.format("%,d",listPT.get(modelRow).getTongTienThu()));
-                jCbbTenKH.addItem(listPT.get(modelRow).getTenKH());
-                jtxtLyDoThu.setText(listPT.get(modelRow).getLyDoThu());
-                jtxtMaKH.setText(listPT.get(modelRow).getMaKH());
-                jtxtDiaChi.setText(listPT.get(modelRow).getDiaChi());
-                jtxtSDT.setText(listPT.get(modelRow).getSDT());
-           }
-        }
-        catch(Exception ex){
-            System.out.println("Ngoại lệ tại FormPhieuThu.Binding: "+ex.getMessage());
+            int modelRow = jTbDSPT.convertRowIndexToModel(viewRow);
+            jtxtMaPT.setText(listPT.get(modelRow).getMaPT());
+            jDCNgayLap.setDate(listPT.get(modelRow).getNgayThu());
+            jtxtSoTienThu.setText(String.format("%,d", listPT.get(modelRow).getTongTienThu()));
+            jCbbTenKH.setSelectedItem(listPT.get(modelRow).getTenKH());
+            jtxtLyDoThu.setText(listPT.get(modelRow).getLyDoThu());
+            jtxtMaKH.setText(listPT.get(modelRow).getMaKH());
+            jtxtDiaChi.setText(listPT.get(modelRow).getDiaChi());
+            jtxtSDT.setText(listPT.get(modelRow).getSDT());
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormPhieuThu.Binding: " + ex.getMessage());
         }
     }
     
     private void EnableComponent(boolean Active) {
-        jBtnLuu.setEnabled(Active);
-        jlblLuu.setEnabled(Active);
-        jBtnHuy.setEnabled(Active);
-        jlblHuy.setEnabled(Active);
-        jtxtMaKH.setEnabled(Active);
+        jBtnLuu.setEnabled(!Active);
+        jlblLuu.setEnabled(!Active);
+        jBtnHuy.setEnabled(!Active);
+        jlblHuy.setEnabled(!Active);
+        jtxtMaKH.setEnabled(!Active);
         jCbbTenKH.setEnabled(!Active);
-        jtxtSDT.setEnabled(Active);
-        jtxtDiaChi.setEnabled(Active);
-        jBtnThem.setEnabled(!Active);
-        jlblThem.setEnabled(!Active);
-        jBtnXoa.setEnabled(!Active);
-        jlblXoa.setEnabled(!Active);
-        jBtnSua.setEnabled(!Active);
-        jlblSua.setEnabled(!Active);
+        jtxtSDT.setEnabled(!Active);
+        jtxtDiaChi.setEnabled(!Active);
+        jBtnThem.setEnabled(Active);
+        jlblThem.setEnabled(Active);
+        jBtnXoa.setEnabled(Active);
+        jlblXoa.setEnabled(Active);
+        jBtnSua.setEnabled(Active);
+        jlblSua.setEnabled(Active);
     }
     
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
@@ -1201,31 +1165,34 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
         // TODO add your handling code here:
         if(jBtnThem.isEnabled()){
-           // jtxt
+            EnableComponent(false);
+            jCbbTenKH.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jBtnThemMouseClicked
 
+    private void jTbDSPTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSPTMouseClicked
+        // TODO add your handling code here:
+        if(jTbDSPT.getSelectedRow()>=0)
+            Binding();
+    }//GEN-LAST:event_jTbDSPTMouseClicked
+
     private void jCbbTenKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCbbTenKHMouseClicked
         // TODO add your handling code here:
-        listCbbKH.add(new ObjKhachHang());
-        ResultSet rs= CtrlPT.LayDanhSachKhachHang();
-        try{
-            while(rs.next()){
-                ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"),rs.getString("SDT"));
-                jCbbTenKH.addItem(itemKH.getTenKH());
-                listCbbKH.add(itemKH);
-                jtxtMaKH.setText(itemKH.getMaKH());
-                jtxtDiaChi.setText(itemKH.getDiaChi());
-                jtxtSDT.setText(itemKH.getSDT());
-                
-            }
-        }catch(SQLException ex){
-            System.out.println("Ngoại lệ tại FormPhieuThu.LoadCbbKH: "+ex.getMessage());
-        }    
-        finally{
-            CtrlPT.CloseConnection();
-        }
+      
     }//GEN-LAST:event_jCbbTenKHMouseClicked
+
+    private void jCbbTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbbTenKHActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (jCbbTenKH.isEnabled()) {
+                jtxtDiaChi.setText(listCbbKH.get(jCbbTenKH.getSelectedIndex()).getDiaChi());
+                jtxtMaKH.setText(listCbbKH.get(jCbbTenKH.getSelectedIndex()).getMaKH());
+                jtxtSDT.setText(listCbbKH.get(jCbbTenKH.getSelectedIndex()).getSDT());
+            }
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormQuanLiPhieuThu.jCbbTenKHMouseClicked:" + ex.getMessage());
+        }
+    }//GEN-LAST:event_jCbbTenKHActionPerformed
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
