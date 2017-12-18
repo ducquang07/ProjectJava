@@ -1071,7 +1071,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
         if(jBtnXoa.isEnabled()){
-            //ObjSP = new ObjSanPham(jTextField2.getText(),jTextField1.getText(),jTextField3.toString(),(int)Double.parseDouble(jTextField4.getText()),(int)Double.parseDouble(jTextField5.getText()),jTextField6.getText(),jComboBox1.toString(),jComboBox2.toString(),jTextField8.getText(),(double)Double.parseDouble(jTextField7.getText()));
+            ObjSP = new ObjSanPham(jTextField2.getText(),jTextField1.getText());
             int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa sản phẩm \"" + ObjSP.getTenSP() + "\"", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(i==0){
                 try{
@@ -1083,7 +1083,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
                     }
 
                 }catch(Exception e){
-                    JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjSP.getTenLoaiSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Xóa sản phẩm \"" + ObjSP.getTenSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
