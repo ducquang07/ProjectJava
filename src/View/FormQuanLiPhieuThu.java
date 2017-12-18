@@ -1,9 +1,19 @@
 package View;
+import Control.CtrlPhieuThu;
 import Edit.Edit;
+import Object.ObjKhachHang;
+import Object.ObjPhieuThu;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,6 +28,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
+    ArrayList<ObjPhieuThu> listPT = new ArrayList<>();
+    ArrayList<ObjKhachHang> listCbbKH= new ArrayList<>();
+    CtrlPhieuThu CtrlPT = new CtrlPhieuThu();
+    ObjKhachHang objKH=new ObjKhachHang();
     /**
      * Creates new form frmQuanLiPhieuThu
      */
@@ -37,8 +51,47 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         editFrm.MakeTransparentButton(ListButton);
         
         editFrm.MakeTransparentTable(jScrDSPT, jTbDSPT);
+        
+        jtxtMaPT.setText(CtrlPT.TaoMaPT());
+        LoadForm();
     }
-
+    
+    public FormQuanLiPhieuThu(String MaPT, String TenKH, String TongTienThu, Date NgayThu){
+        initComponents();
+        setLocationRelativeTo(null);
+        
+        jPanel9.setBackground(new Color(0,0,0,0));
+        
+        JPanel ListPanel[]=new JPanel[]{jPanel3,jPanel4,jPanel5,jPanel10};
+        editFrm.MakeTransparentPanel(ListPanel);
+        
+        JPanel ListTitle[]=new JPanel[]{jPnDSPT,jPnThongtinKH,jPnThongtinPT,jPnTracuuPT};
+        editFrm.MakeTransparentTitle(ListTitle);
+        
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXemPhieuIn,jBtnXoa};
+        editFrm.MakeTransparentButton(ListButton);
+        
+        editFrm.MakeTransparentTable(jScrDSPT, jTbDSPT);
+        
+        jtxtMaPT.setText(MaPT);
+        LoadForm();
+        jCbbTenKH.setSelectedItem(TenKH);
+        jDCNgayLap.setDate(NgayThu);
+        try{
+            DefaultTableModel Model = (DefaultTableModel) jTbDSPT.getModel();
+            for(int i =0; i<listPT.size();i++){
+                this.listPT.add(listPT.get(i));
+                Vector v = new Vector();
+                v.add(listPT.get(i).getMaPT());
+                v.add(listPT.get(i).getTenKH());
+                v.add(listPT.get(i).getTongTienThu());
+                v.add(listPT.get(i).getNgayThu());
+                Model.addRow(v);
+            }           
+        }catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormPhieuThu():"+ex.getMessage());
+        }       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,16 +120,16 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jBtnHuy = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDCTuNgay = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDCDenNgay = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jtxtTimtheoMaPT = new javax.swing.JTextField();
+        jtxtTimtheoLyDoThu = new javax.swing.JTextField();
+        jtxtTimtheoKH = new javax.swing.JTextField();
         jPnTracuuPT = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrDSPT = new javax.swing.JScrollPane();
@@ -89,11 +142,11 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jtxtMaPT = new javax.swing.JTextField();
+        jtxtSoTienThu = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jtxtLyDoThu = new javax.swing.JTextArea();
+        jDCNgayLap = new com.toedter.calendar.JDateChooser();
         jPnThongtinPT = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -101,11 +154,11 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jCbbTenKH = new javax.swing.JComboBox<>();
+        jtxtMaKH = new javax.swing.JTextField();
+        jtxtSDT = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jtxtDiaChi = new javax.swing.JTextArea();
         jPnThongtinKH = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -495,25 +548,25 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(24, 24, 24)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxtTimtheoKH, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtxtTimtheoMaPT, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(11, 11, 11)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDCTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDCDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jtxtTimtheoLyDoThu, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -524,25 +577,25 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel13))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtTimtheoKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDCTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jDCDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtxtTimtheoMaPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel15)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxtTimtheoLyDoThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel14)))
@@ -599,9 +652,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jLabel9.setText("Lý do thu :");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        jtxtLyDoThu.setColumns(20);
+        jtxtLyDoThu.setRows(5);
+        jScrollPane3.setViewportView(jtxtLyDoThu);
 
         jPnThongtinPT.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -634,12 +687,11 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField4)
-                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtxtMaPT)
+                    .addComponent(jDCNgayLap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(jtxtSoTienThu, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(54, Short.MAX_VALUE))
             .addComponent(jPnThongtinPT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -647,18 +699,18 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addComponent(jPnThongtinPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtMaPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDCNgayLap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtSoTienThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -678,12 +730,12 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jLabel5.setText("Số điện thoại :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setFocusable(false);
+        jCbbTenKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbbTenKH.setFocusable(false);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
+        jtxtDiaChi.setColumns(20);
+        jtxtDiaChi.setRows(5);
+        jScrollPane4.setViewportView(jtxtDiaChi);
 
         jPnThongtinKH.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -718,10 +770,10 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtMaKH, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtSDT, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCbbTenKH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -731,11 +783,11 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbbTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -743,7 +795,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
@@ -760,6 +812,99 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void LoadForm(){
+        HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
+        LoadCbbKH();
+        Binding();
+        jDCNgayLap.setDate(new Date());
+        jDCTuNgay.setDate(new Date());
+        jDCDenNgay.setDate(new Date());
+        CtrlPT.CloseConnection();
+    }
+    
+    public void HienThiDanhSachPhieuThu(ResultSet rs){
+        listPT.clear();
+        DefaultTableModel model;
+        model=(DefaultTableModel) jTbDSPT.getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        try{
+            while(rs.next()){
+                ObjPhieuThu itemPT;
+                itemPT=new ObjPhieuThu(rs.getString("MaPT"), rs.getInt("TongTienThu"),rs.getDate("NgayThu"),rs.getString("TenKH"), rs.getString("MaKH"),rs.getString("DiaChi"),rs.getString("SDT"));
+                listPT.add(itemPT);
+                Vector v =new Vector();
+                v.add(itemPT.getMaPT());
+                v.add(itemPT.getTenKH());
+                v.add(itemPT.getTongTienThu());
+                v.add(itemPT.getNgayThu());
+                model.addRow(v);
+            }            
+        }catch (SQLException ex){
+            System.out.println("Ngoại lệ tại FormPhieuThu.HienThiDanhSachPhieuThu: "+ex.getMessage());
+        }
+        finally{
+            CtrlPT.CloseConnection();
+        }
+        jTbDSPT.changeSelection(0, 0, false, false);
+    }
+    
+    public void LoadCbbKH(){
+        listCbbKH.clear();
+        jCbbTenKH.removeAllItems();
+        jCbbTenKH.addItem("---Chọn khách hàng---");
+        listCbbKH.add(new ObjKhachHang());
+        ResultSet rs= CtrlPT.LayDanhSachKhachHang();
+        try{
+            while(rs.next()){
+                ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"));
+                jCbbTenKH.addItem(itemKH.getTenKH());
+                listCbbKH.add(itemKH);
+            }
+        }catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormPhieuThu.LoadCbbKH: "+ex.getMessage());
+        }
+        finally{
+            CtrlPT.CloseConnection();
+        }
+    }
+    
+    public void ReloadForm(){
+        HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
+        listPT.clear();
+        LoadCbbKH();
+        jtxtTimtheoKH.setText("");
+        jtxtTimtheoLyDoThu.setText("");
+        jtxtTimtheoMaPT.setText("");
+        jTbDSPT.removeAll();
+        jtxtMaPT.setText(CtrlPT.TaoMaPT());
+        jDCNgayLap.setDate(new Date());
+        DefaultTableModel model;
+        model=(DefaultTableModel) jTbDSPT.getModel();
+        model.getDataVector().removeAllElements(); 
+        model.fireTableDataChanged();
+    }
+    
+    public void Binding(){
+        TableModel model =jTbDSPT.getModel();
+        try{
+            int viewRow = jTbDSPT.getSelectedRow();
+            int modelRow= jTbDSPT.convertRowIndexToModel(viewRow);
+            if(viewRow>-1){
+                jtxtMaPT.setText(listPT.get(modelRow).getMaPT());
+                jDCNgayLap.setDate(listPT.get(modelRow).getNgayThu());
+                jtxtSoTienThu.setText(String.format("%,d",listPT.get(modelRow).getTongTienThu()));
+                jtxtLyDoThu.setText(listPT.get(modelRow).getLyDoThu());
+                jtxtMaKH.setText(listPT.get(modelRow).getMaKH());
+                jtxtDiaChi.setText(listPT.get(modelRow).getDiaChi());
+                jtxtSDT.setText(listPT.get(modelRow).getSDT());
+           }
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormPhieuThu.Binding: "+ex.getMessage());
+        }
+    }
+    
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
@@ -1027,10 +1172,10 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnTimKiem;
     private javax.swing.JPanel jBtnXemPhieuIn;
     private javax.swing.JPanel jBtnXoa;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private javax.swing.JComboBox<String> jCbbTenKH;
+    private com.toedter.calendar.JDateChooser jDCDenNgay;
+    private com.toedter.calendar.JDateChooser jDCNgayLap;
+    private com.toedter.calendar.JDateChooser jDCTuNgay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1071,14 +1216,14 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTbDSPT;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextArea jtxtDiaChi;
+    private javax.swing.JTextArea jtxtLyDoThu;
+    private javax.swing.JTextField jtxtMaKH;
+    private javax.swing.JTextField jtxtMaPT;
+    private javax.swing.JTextField jtxtSDT;
+    private javax.swing.JTextField jtxtSoTienThu;
+    private javax.swing.JTextField jtxtTimtheoKH;
+    private javax.swing.JTextField jtxtTimtheoLyDoThu;
+    private javax.swing.JTextField jtxtTimtheoMaPT;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,7 +21,9 @@ public class ObjKhachHang {
 
     public ObjKhachHang() {
     }
-
+    public ObjKhachHang(String TenKH){
+        this.TenKH=TenKH;
+    }
     public ObjKhachHang(String MaKH, String TenKH, String SDT, String DiaChi, String Email, String LoaiKH) {
         this.MaKH = MaKH;
         this.TenKH = TenKH;
