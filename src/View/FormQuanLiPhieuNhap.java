@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-import Control.CtrlLapPhieuNhapHang;
+import Control.CtrlQuanLiPhieuNhap;
 import Edit.Edit;
 import Model.ModChiTietPNH;
 import Model.ModPhieuNhapHang;
@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Thanh
  */
-public class FormNhapHang extends javax.swing.JFrame {
+public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
     ArrayList<ObjPhieuNhapHang> listPNH = new ArrayList<>();
@@ -34,11 +34,11 @@ public class FormNhapHang extends javax.swing.JFrame {
     ObjPhieuNhapHang ObjPNH = new ObjPhieuNhapHang();
     ModPhieuNhapHang ModPN = new ModPhieuNhapHang();
     ModChiTietPNH ModCTPN = new ModChiTietPNH();
-    CtrlLapPhieuNhapHang CtrlLPNH = new CtrlLapPhieuNhapHang();
+    CtrlQuanLiPhieuNhap CtrlQLPN = new CtrlQuanLiPhieuNhap();
     /**
      * Creates new form FormNhapHang
      */
-    public FormNhapHang() {
+    public FormQuanLiPhieuNhap() {
         initComponents();
         setLocationRelativeTo(null);
         
@@ -904,7 +904,7 @@ public class FormNhapHang extends javax.swing.JFrame {
     private void jTbDSPNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSPNMouseClicked
         // TODO add your handling code here:
         Binding();
-        HienThiCTPN(CtrlLPNH.LayCTPN(jtxtMaPN.getText()));
+        HienThiCTPN(CtrlQLPN.LayCTPN(jtxtMaPN.getText()));
     }//GEN-LAST:event_jTbDSPNMouseClicked
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
@@ -943,7 +943,7 @@ public class FormNhapHang extends javax.swing.JFrame {
             System.out.println("Ngoại lệ tại FormNhapHang.HienThiPN: "+ex.getMessage());
         }
         finally{
-            CtrlLPNH.CloseConnection();
+            CtrlQLPN.CloseConnection();
         }
         jTbDSPN.changeSelection(0,0,false,false);
     }
@@ -968,7 +968,7 @@ public class FormNhapHang extends javax.swing.JFrame {
             System.out.println("Ngoại lệ tại FormNhapHang.HienThiCTPN: "+ex.getMessage());
         }
         finally{
-            CtrlLPNH.CloseConnection();
+            CtrlQLPN.CloseConnection();
         }
         jTbDSPN.changeSelection(0,0,false,false);
     }
@@ -991,9 +991,9 @@ public class FormNhapHang extends javax.swing.JFrame {
     }
     
     public void FormLoad(){
-        HienThiPN(CtrlLPNH.LayDSPhieuNhap());
+        HienThiPN(CtrlQLPN.LayDSPhieuNhap());
         Binding();
-        HienThiCTPN(CtrlLPNH.LayCTPN(jtxtMaPN.getText()));
+        HienThiCTPN(CtrlQLPN.LayCTPN(jtxtMaPN.getText()));
         
     }
     
@@ -1026,20 +1026,23 @@ public class FormNhapHang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormNhapHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiPhieuNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormNhapHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiPhieuNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormNhapHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiPhieuNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormNhapHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormQuanLiPhieuNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormNhapHang().setVisible(true);
+                new FormQuanLiPhieuNhap().setVisible(true);
             }
         });
     }
