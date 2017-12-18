@@ -4,6 +4,8 @@ import Edit.Edit;
 import Object.ObjKhachHang;
 import Object.ObjPhieuThu;
 import java.awt.Color;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -108,17 +110,17 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jBtnTimKiem = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jBtnXemPhieuIn = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
+        jlblIn = new javax.swing.JLabel();
         jBtnThem = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
+        jlblThem = new javax.swing.JLabel();
         jBtnXoa = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
+        jlblXoa = new javax.swing.JLabel();
         jBtnSua = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
+        jlblSua = new javax.swing.JLabel();
         jBtnLuu = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
+        jlblLuu = new javax.swing.JLabel();
         jBtnHuy = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
+        jlblHuy = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jDCTuNgay = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
@@ -303,8 +305,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             }
         });
 
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Print_60px_1.png"))); // NOI18N
+        jlblIn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jlblIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Print_60px_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnXemPhieuInLayout = new javax.swing.GroupLayout(jBtnXemPhieuIn);
         jBtnXemPhieuIn.setLayout(jBtnXemPhieuInLayout);
@@ -312,18 +314,21 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jBtnXemPhieuInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnXemPhieuInLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblIn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jBtnXemPhieuInLayout.setVerticalGroup(
             jBtnXemPhieuInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addComponent(jlblIn, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
         getContentPane().add(jBtnXemPhieuIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 640, 120, 70));
 
         jBtnThem.setBackground(new java.awt.Color(204, 204, 204));
         jBtnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThemMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThemMouseEntered(evt);
             }
@@ -338,8 +343,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             }
         });
 
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Plus_Math_55px.png"))); // NOI18N
+        jlblThem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Plus_Math_55px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnThemLayout = new javax.swing.GroupLayout(jBtnThem);
         jBtnThem.setLayout(jBtnThemLayout);
@@ -347,12 +352,12 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jBtnThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnThemLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblThem, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jBtnThemLayout.setVerticalGroup(
             jBtnThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addComponent(jlblThem, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
         getContentPane().add(jBtnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 640, 120, 70));
@@ -373,8 +378,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             }
         });
 
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Subtract_55px.png"))); // NOI18N
+        jlblXoa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Subtract_55px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnXoaLayout = new javax.swing.GroupLayout(jBtnXoa);
         jBtnXoa.setLayout(jBtnXoaLayout);
@@ -382,13 +387,13 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jBtnXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnXoaLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jBtnXoaLayout.setVerticalGroup(
             jBtnXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnXoaLayout.createSequentialGroup()
-                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -410,8 +415,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             }
         });
 
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Edit_48px_1.png"))); // NOI18N
+        jlblSua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Edit_48px_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnSuaLayout = new javax.swing.GroupLayout(jBtnSua);
         jBtnSua.setLayout(jBtnSuaLayout);
@@ -419,13 +424,13 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jBtnSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnSuaLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblSua, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jBtnSuaLayout.setVerticalGroup(
             jBtnSuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnSuaLayout.createSequentialGroup()
-                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblSua, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -447,8 +452,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             }
         });
 
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Save_55px.png"))); // NOI18N
+        jlblLuu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Save_55px.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnLuuLayout = new javax.swing.GroupLayout(jBtnLuu);
         jBtnLuu.setLayout(jBtnLuuLayout);
@@ -456,13 +461,13 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jBtnLuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnLuuLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jBtnLuuLayout.setVerticalGroup(
             jBtnLuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnLuuLayout.createSequentialGroup()
-                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -484,8 +489,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             }
         });
 
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Reply_Arrow_64px_1.png"))); // NOI18N
+        jlblHuy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlblHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Reply_Arrow_64px_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jBtnHuyLayout = new javax.swing.GroupLayout(jBtnHuy);
         jBtnHuy.setLayout(jBtnHuyLayout);
@@ -493,13 +498,13 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             jBtnHuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnHuyLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jBtnHuyLayout.setVerticalGroup(
             jBtnHuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnHuyLayout.createSequentialGroup()
-                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlblHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -610,6 +615,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
             },
             new String [] {
+<<<<<<< HEAD
                 "Mã phiếu thu", "Tên khách hàng", "Số tiền thu", "Ngày thu"
             }
         ));
@@ -617,6 +623,27 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jTbDSPT.setRowHeight(25);
         jTbDSPT.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jTbDSPT.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+=======
+                "Mã phiếu thu", "Tên khách hàng", "Tổng tiền thu", "Ngày thu"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTbDSPT.getTableHeader().setReorderingAllowed(false);
+>>>>>>> origin/master
         jScrDSPT.setViewportView(jTbDSPT);
 
         getContentPane().add(jScrDSPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 285, 810, 340));
@@ -737,6 +764,11 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jCbbTenKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCbbTenKH.setFocusable(false);
+        jCbbTenKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCbbTenKHMouseClicked(evt);
+            }
+        });
 
         jtxtDiaChi.setColumns(20);
         jtxtDiaChi.setRows(5);
@@ -836,7 +868,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         try{
             while(rs.next()){
                 ObjPhieuThu itemPT;
-                itemPT=new ObjPhieuThu(rs.getString("MaPT"), rs.getInt("TongTienThu"),rs.getDate("NgayThu"),rs.getString("TenKH"), rs.getString("MaKH"),rs.getString("DiaChi"),rs.getString("SDT"));
+                itemPT=new ObjPhieuThu(rs.getString("MaPT"), rs.getString("TenKH"), rs.getInt("TongTienThu"),rs.getDate("NgayThu"), rs.getString("MaKH"),rs.getString("DiaChi"),rs.getString("SDT"),rs.getString("LyDoThu"));
                 listPT.add(itemPT);
                 Vector v =new Vector();
                 v.add(itemPT.getMaPT());
@@ -857,18 +889,22 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     public void LoadCbbKH(){
         listCbbKH.clear();
         jCbbTenKH.removeAllItems();
-        jCbbTenKH.addItem("---Chọn khách hàng---");
+        jCbbTenKH.addItem("---Chọn khách hàng---");  
         listCbbKH.add(new ObjKhachHang());
         ResultSet rs= CtrlPT.LayDanhSachKhachHang();
         try{
             while(rs.next()){
-                ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"));
+                ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"),rs.getString("SDT"));
                 jCbbTenKH.addItem(itemKH.getTenKH());
                 listCbbKH.add(itemKH);
+                jtxtMaKH.setText(itemKH.getMaKH());
+                jtxtDiaChi.setText(itemKH.getDiaChi());
+                jtxtSDT.setText(itemKH.getSDT());
+                
             }
         }catch(SQLException ex){
             System.out.println("Ngoại lệ tại FormPhieuThu.LoadCbbKH: "+ex.getMessage());
-        }
+        }    
         finally{
             CtrlPT.CloseConnection();
         }
@@ -891,6 +927,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     }
     
     public void Binding(){
+        EnableComponent(false);
         TableModel model =jTbDSPT.getModel();
         try{
             int viewRow = jTbDSPT.getSelectedRow();
@@ -899,6 +936,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                 jtxtMaPT.setText(listPT.get(modelRow).getMaPT());
                 jDCNgayLap.setDate(listPT.get(modelRow).getNgayThu());
                 jtxtSoTienThu.setText(String.format("%,d",listPT.get(modelRow).getTongTienThu()));
+                jCbbTenKH.addItem(listPT.get(modelRow).getTenKH());
                 jtxtLyDoThu.setText(listPT.get(modelRow).getLyDoThu());
                 jtxtMaKH.setText(listPT.get(modelRow).getMaKH());
                 jtxtDiaChi.setText(listPT.get(modelRow).getDiaChi());
@@ -908,6 +946,23 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         catch(Exception ex){
             System.out.println("Ngoại lệ tại FormPhieuThu.Binding: "+ex.getMessage());
         }
+    }
+    
+    private void EnableComponent(boolean Active) {
+        jBtnLuu.setEnabled(Active);
+        jlblLuu.setEnabled(Active);
+        jBtnHuy.setEnabled(Active);
+        jlblHuy.setEnabled(Active);
+        jtxtMaKH.setEnabled(Active);
+        jCbbTenKH.setEnabled(!Active);
+        jtxtSDT.setEnabled(Active);
+        jtxtDiaChi.setEnabled(Active);
+        jBtnThem.setEnabled(!Active);
+        jlblThem.setEnabled(!Active);
+        jBtnXoa.setEnabled(!Active);
+        jlblXoa.setEnabled(!Active);
+        jBtnSua.setEnabled(!Active);
+        jlblSua.setEnabled(!Active);
     }
     
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
@@ -1119,6 +1174,35 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         setColor(jBtnHuy);
     }//GEN-LAST:event_jBtnHuyMouseReleased
 
+    private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
+        // TODO add your handling code here:
+        if(jBtnThem.isEnabled()){
+           // jtxt
+        }
+    }//GEN-LAST:event_jBtnThemMouseClicked
+
+    private void jCbbTenKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCbbTenKHMouseClicked
+        // TODO add your handling code here:
+        listCbbKH.add(new ObjKhachHang());
+        ResultSet rs= CtrlPT.LayDanhSachKhachHang();
+        try{
+            while(rs.next()){
+                ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"),rs.getString("SDT"));
+                jCbbTenKH.addItem(itemKH.getTenKH());
+                listCbbKH.add(itemKH);
+                jtxtMaKH.setText(itemKH.getMaKH());
+                jtxtDiaChi.setText(itemKH.getDiaChi());
+                jtxtSDT.setText(itemKH.getSDT());
+                
+            }
+        }catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormPhieuThu.LoadCbbKH: "+ex.getMessage());
+        }    
+        finally{
+            CtrlPT.CloseConnection();
+        }
+    }//GEN-LAST:event_jCbbTenKHMouseClicked
+
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
@@ -1195,13 +1279,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1221,6 +1299,12 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTbDSPT;
+    private javax.swing.JLabel jlblHuy;
+    private javax.swing.JLabel jlblIn;
+    private javax.swing.JLabel jlblLuu;
+    private javax.swing.JLabel jlblSua;
+    private javax.swing.JLabel jlblThem;
+    private javax.swing.JLabel jlblXoa;
     private javax.swing.JTextArea jtxtDiaChi;
     private javax.swing.JTextArea jtxtLyDoThu;
     private javax.swing.JTextField jtxtMaKH;
