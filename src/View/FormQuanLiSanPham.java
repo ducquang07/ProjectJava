@@ -684,7 +684,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 50, 540, 590));
 
-        jTbDSSP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTbDSSP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jTbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -694,6 +694,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             }
         ));
         jTbDSSP.setRowHeight(25);
+        jTbDSSP.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jTbDSSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSSP.getTableHeader().setReorderingAllowed(false);
         jTbDSSP.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -702,6 +703,12 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             }
         });
         jScrDSSP.setViewportView(jTbDSSP);
+        if (jTbDSSP.getColumnModel().getColumnCount() > 0) {
+            jTbDSSP.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTbDSSP.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTbDSSP.getColumnModel().getColumn(2).setPreferredWidth(200);
+            jTbDSSP.getColumnModel().getColumn(3).setPreferredWidth(100);
+        }
 
         getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 295, 770, 420));
 

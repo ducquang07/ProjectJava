@@ -604,14 +604,19 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 820, 180));
 
+        jTbDSPT.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jTbDSPT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã phiếu thu", "Tên khách hàng", "Số tiền thu", "Ngày thu"
             }
         ));
+        jTbDSPT.setFocusable(false);
+        jTbDSPT.setRowHeight(25);
+        jTbDSPT.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSPT.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrDSPT.setViewportView(jTbDSPT);
 
         getContentPane().add(jScrDSPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 285, 810, 340));
