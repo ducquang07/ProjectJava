@@ -51,6 +51,9 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         
         editFrm.MakeTransparentTable(jScrDSHDchuagiao, jTbDSHDchuagiao);
         editFrm.MakeTransparentTable(jScrDSHDdagiao, jTbDSHDdagiao);
+        
+        jtxtDiaChi.setLineWrap(true);
+        
         FormLoad();
     }
 
@@ -233,7 +236,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jlblLamMoiCG, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnLamMoichuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 190, 120, 65));
+        getContentPane().add(jBtnLamMoichuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 190, 120, 65));
 
         jBtnTimKiemHDchuagiao.setBackground(new java.awt.Color(153, 153, 153));
         jBtnTimKiemHDchuagiao.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -272,7 +275,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jlblTimKiemCG, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnTimKiemHDchuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 190, 120, 65));
+        getContentPane().add(jBtnTimKiemHDchuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 190, 120, 65));
 
         jBtnLamMoidagiao.setBackground(new java.awt.Color(153, 153, 153));
         jBtnLamMoidagiao.setPreferredSize(new java.awt.Dimension(105, 50));
@@ -311,7 +314,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jlblLamMoiDG, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnLamMoidagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 190, 120, 65));
+        getContentPane().add(jBtnLamMoidagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1121, 190, 120, 65));
 
         jBtnTimKiemHDdagiao.setBackground(new java.awt.Color(153, 153, 153));
         jBtnTimKiemHDdagiao.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -350,7 +353,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
             .addComponent(jlblTimKiemDG, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnTimKiemHDdagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 190, 120, 65));
+        getContentPane().add(jBtnTimKiemHDdagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(989, 190, 120, 65));
 
         jBtnXemchitiet.setBackground(new java.awt.Color(153, 153, 153));
         jBtnXemchitiet.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -480,7 +483,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
         jScrDSHDchuagiao.setWheelScrollingEnabled(false);
 
-        jTbDSHDchuagiao.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        jTbDSHDchuagiao.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jTbDSHDchuagiao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -489,8 +492,11 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
                 "Số hóa đơn", "Ngày đặt", "Ngày giao dự kiến", "Tình trạng"
             }
         ));
+        jTbDSHDchuagiao.setFocusable(false);
+        jTbDSHDchuagiao.setRowHeight(25);
         jTbDSHDchuagiao.setSelectionBackground(new java.awt.Color(218, 223, 225));
         jTbDSHDchuagiao.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSHDchuagiao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSHDchuagiao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSHDchuagiaoMouseClicked(evt);
@@ -498,7 +504,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         });
         jScrDSHDchuagiao.setViewportView(jTbDSHDchuagiao);
 
-        getContentPane().add(jScrDSHDchuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 313, 420, 388));
+        getContentPane().add(jScrDSHDchuagiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 313, 420, 389));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -538,7 +544,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 280, 430, 427));
 
-        jTbDSHDdagiao.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
+        jTbDSHDdagiao.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jTbDSHDdagiao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -547,8 +553,11 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
                 "Số hóa đơn", "Ngày đặt", "Ngày giao dự kiến", "Tình trạng"
             }
         ));
+        jTbDSHDdagiao.setFocusable(false);
+        jTbDSHDdagiao.setRowHeight(25);
         jTbDSHDdagiao.setSelectionBackground(new java.awt.Color(218, 223, 225));
         jTbDSHDdagiao.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSHDdagiao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSHDdagiao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSHDdagiaoMouseClicked(evt);
@@ -614,7 +623,11 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
         jLabel13.setText("Ngày giao dự kiến:");
 
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
         jtxtDiaChi.setColumns(20);
+        jtxtDiaChi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtDiaChi.setRows(5);
         jScrollPane3.setViewportView(jtxtDiaChi);
 

@@ -684,7 +684,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 50, 540, 590));
 
-        jTbDSSP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTbDSSP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jTbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -694,6 +694,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             }
         ));
         jTbDSSP.setRowHeight(25);
+        jTbDSSP.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jTbDSSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSSP.getTableHeader().setReorderingAllowed(false);
         jTbDSSP.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -702,6 +703,12 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             }
         });
         jScrDSSP.setViewportView(jTbDSSP);
+        if (jTbDSSP.getColumnModel().getColumnCount() > 0) {
+            jTbDSSP.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTbDSSP.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTbDSSP.getColumnModel().getColumn(2).setPreferredWidth(200);
+            jTbDSSP.getColumnModel().getColumn(3).setPreferredWidth(100);
+        }
 
         getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 295, 770, 420));
 
@@ -1064,7 +1071,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
         if(jBtnXoa.isEnabled()){
-            //ObjSP = new ObjSanPham(jTextField2.getText(),jTextField1.getText(),jTextField3.toString(),(int)Double.parseDouble(jTextField4.getText()),(int)Double.parseDouble(jTextField5.getText()),jTextField6.getText(),jComboBox1.toString(),jComboBox2.toString(),jTextField8.getText(),(double)Double.parseDouble(jTextField7.getText()));
+            ObjSP = new ObjSanPham(jTextField2.getText(),jTextField1.getText());
             int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa sản phẩm \"" + ObjSP.getTenSP() + "\"", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(i==0){
                 try{
@@ -1076,7 +1083,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
                     }
 
                 }catch(Exception e){
-                    JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjSP.getTenLoaiSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Xóa sản phẩm \"" + ObjSP.getTenSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }

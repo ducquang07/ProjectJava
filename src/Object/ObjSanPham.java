@@ -27,6 +27,11 @@ public class ObjSanPham {
 ////////Constructor
     public ObjSanPham() {
     }
+    public ObjSanPham(String MaSP, String TenSP)
+    {
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+    }
     public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, int GiaLe, int GiaSi, String DVT, int SoLuong, String MaNCC, double LoiNhuanBien, String MoTa) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;

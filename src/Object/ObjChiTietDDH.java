@@ -14,6 +14,7 @@ import java.util.Date;
 public class ObjChiTietDDH {
     private String MaDDH;
     private String MaSP;
+    private String TenSP;
     private int SoLuong;
     private String MaNCC;
     private String TenNCC;
@@ -29,6 +30,15 @@ public class ObjChiTietDDH {
         this.MaSP = MaSP;
         this.SoLuong = SoLuong;
     }
+
+    public ObjChiTietDDH(String MaDDH, String MaSP, String TenSP, int SoLuong) {
+        this.MaDDH = MaDDH;
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.SoLuong = SoLuong;
+    }
+    
+    
     public ObjChiTietDDH(String MaDDH, String MaSP, int SoLuong, String MaNCC, String TenNCC, Date NgayDatHang, String TrangThai)
     {
         this.MaDDH = MaDDH;
@@ -39,6 +49,11 @@ public class ObjChiTietDDH {
         this.NgayDatHang = NgayDatHang;
         this.TrangThai = TrangThai;
     }
+
+    public String getTenSP() {
+        return TenSP;
+    }
+    
     public String getMaDDH()
     {
         return MaDDH;
@@ -76,6 +91,27 @@ public class ObjChiTietDDH {
     {
         this.MaDDH = MaSP;
     }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
+
+    public void setMaNCC(String MaNCC) {
+        this.MaNCC = MaNCC;
+    }
+
+    public void setTenNCC(String TenNCC) {
+        this.TenNCC = TenNCC;
+    }
+
+    public void setNgayDatHang(Date NgayDatHang) {
+        this.NgayDatHang = NgayDatHang;
+    }
+
+    public void setTrangThai(String TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+    
     public void setSoLuong(int SoLuong)
     {
         this.SoLuong = SoLuong;

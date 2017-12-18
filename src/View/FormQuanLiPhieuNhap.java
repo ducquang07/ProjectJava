@@ -356,6 +356,9 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
         jBtnThem.setBackground(new java.awt.Color(204, 204, 204));
         jBtnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThemMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThemMouseEntered(evt);
             }
@@ -924,6 +927,12 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 }
             }
     }//GEN-LAST:event_jBtnXoaMouseClicked
+
+    private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
+        // TODO add your handling code here:
+        FormLapPhieuNhap frmPN = new FormLapPhieuNhap(1);
+        frmPN.setVisible(true);
+    }//GEN-LAST:event_jBtnThemMouseClicked
 
     public void HienThiPN(ResultSet rs){
         listPNH.clear();
