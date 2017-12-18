@@ -641,6 +641,37 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 820, 180));
 
+<<<<<<< HEAD
+=======
+        jTbDSPT.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã phiếu thu", "Tên khách hàng", "Tổng tiền thu", "Ngày thu"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTbDSPT.getTableHeader().setReorderingAllowed(false);
+        jScrDSPT.setViewportView(jTbDSPT);
+
+        getContentPane().add(jScrDSPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 285, 810, 340));
+
+>>>>>>> origin/master
         jPanel10.setBackground(new java.awt.Color(204, 204, 204));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
