@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="undecorated" type="boolean" value="true"/>
@@ -642,22 +642,12 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="jTbDSPT">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Palatino Linotype" size="12" style="1"/>
-            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
-<<<<<<< HEAD
-                <Column editable="true" title="M&#xe3; phi&#x1ebf;u thu" type="java.lang.Object"/>
-                <Column editable="true" title="T&#xea;n kh&#xe1;ch h&#xe0;ng" type="java.lang.Object"/>
-                <Column editable="true" title="S&#x1ed1; ti&#x1ec1;n thu" type="java.lang.Object"/>
-                <Column editable="true" title="Ng&#xe0;y thu" type="java.lang.Object"/>
-=======
                 <Column editable="false" title="M&#xe3; phi&#x1ebf;u thu" type="java.lang.String"/>
                 <Column editable="false" title="T&#xea;n kh&#xe1;ch h&#xe0;ng" type="java.lang.String"/>
                 <Column editable="false" title="T&#x1ed5;ng ti&#x1ec1;n thu" type="java.lang.Integer"/>
                 <Column editable="false" title="Ng&#xe0;y thu" type="java.lang.Object"/>
->>>>>>> origin/master
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -683,14 +673,6 @@
                   <Renderer/>
                 </Column>
               </TableColumnModel>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
-            <Property name="rowHeight" type="int" value="25"/>
-            <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="ff" type="rgb"/>
-            </Property>
-            <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
-              <JTableSelectionModel selectionMode="0"/>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
