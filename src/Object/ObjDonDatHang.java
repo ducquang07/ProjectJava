@@ -13,13 +13,24 @@ import java.util.Date;
 public class ObjDonDatHang {
     
     private String MaDDH;
+    private String MaPN;
     private String MaNCC;
+    private String TenNCC;
     private Date NgayDatHang;
+    private Date NgayNhap;
     private String TrangThai; 
 
     //Constructor
     public ObjDonDatHang()
     {
+    }
+
+    public ObjDonDatHang(String MaDDH, String MaNCC, String TenNCC, Date NgayDatHang, String TrangThai) {
+        this.MaDDH = MaDDH;
+        this.MaNCC = MaNCC;
+        this.TenNCC = TenNCC;
+        this.NgayDatHang = NgayDatHang;
+        this.TrangThai = TrangThai;
     }
 
     public ObjDonDatHang(String MaDDH, String MaNCC, Date NgayDatHang, String TrangThai)
@@ -29,11 +40,40 @@ public class ObjDonDatHang {
         this.NgayDatHang = NgayDatHang;
         this.TrangThai = TrangThai;
     }
+
+    public ObjDonDatHang(String MaDDH, String MaPN, String TenNCC, Date NgayDatHang, Date NgayNhap) {
+        this.MaDDH = MaDDH;
+        this.MaPN = MaPN;
+        this.TenNCC = TenNCC;
+        this.NgayDatHang = NgayDatHang;
+        this.NgayNhap = NgayNhap;
+    }
+
+    public ObjDonDatHang(String MaDDH, String MaPN, String MaNCC, String TenNCC, Date NgayDatHang, String TrangThai) {
+        this.MaDDH = MaDDH;
+        this.MaPN = MaPN;
+        this.MaNCC = MaNCC;
+        this.TenNCC = TenNCC;
+        this.NgayDatHang = NgayDatHang;
+        this.TrangThai = TrangThai;
+    }
     
     //Get
     
-    public String getMaDDH()
+    public Date getNgayNhap()
     {
+        return NgayNhap;
+    }
+
+    public String getMaPN() {
+        return MaPN;
+    }
+
+    public String getTenNCC() {
+        return TenNCC;
+    }
+
+    public String getMaDDH() {
         return MaDDH;
     }
     public String getMaNCC()
@@ -51,8 +91,20 @@ public class ObjDonDatHang {
     
     //Set
     
-    public void setMaDDH(String MaDDH)
+    public void setNgayNhap(Date NgayNhap)
     {
+        this.NgayNhap = NgayNhap;
+    }
+
+    public void setMaPN(String MaPN) {
+        this.MaPN = MaPN;
+    }
+
+    public void setTenNCC(String TenNCC) {
+        this.TenNCC = TenNCC;
+    }
+
+    public void setMaDDH(String MaDDH) {
         this.MaDDH = MaDDH;
     }
     public void setMaNCC(String MaNCC)

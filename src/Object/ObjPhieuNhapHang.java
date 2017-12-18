@@ -17,6 +17,7 @@ public class ObjPhieuNhapHang {
     private String MaDDH;
     private String MaNCC;
     private String TenNCC;
+    
 
     public ObjPhieuNhapHang() {
     }
