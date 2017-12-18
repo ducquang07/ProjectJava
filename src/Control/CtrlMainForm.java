@@ -6,19 +6,18 @@
 package Control;
 
 import Connect.Connect;
-import Model.ModNhaCungCap;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.naming.spi.DirStateFactory;
 
 /**
  *
- * @author Coldblood
+ * @author ThaiNguyen
  */
-public class CtrlLapDonDatHang {
+public class CtrlMainForm {
     Connect DB = new Connect();
     
-    public ResultSet LayDanhSachNhaCungCap(){
-        ModNhaCungCap modNCC=new ModNhaCungCap();
-        return modNCC.GetALL();
+    public ResultSet LayThongTinUser(String User,String Pass){
+        String SQL="Select * from TAIKHOAN where TenDangNhap='"+User+"' and MatKhau='"+Pass+"'";
+        return DB.GetData(SQL);
     }
 }

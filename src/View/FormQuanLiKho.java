@@ -648,7 +648,7 @@ public class FormQuanLiKho extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtn4MouseClicked
 
     private void jBtn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn5MouseClicked
-        FormNhapHang frmQLNH=new FormNhapHang();
+        FormQuanLiPhieuNhap frmQLNH=new FormQuanLiPhieuNhap();
         frmQLNH.setVisible(true);
     }//GEN-LAST:event_jBtn5MouseClicked
 

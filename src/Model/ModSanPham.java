@@ -84,7 +84,7 @@ public class ModSanPham extends Model{
                stmDB.executeUpdate(SQL);
            }
        } catch (SQLException ex) {
-            System.out.println("Ngoại lệ tại ModSamPham.Update: "+ex.getMessage());
+            System.out.println("Ngoại lệ tại ModSanPham.Update: "+ex.getMessage());
        }
        finally{
            DB.CloseDB();

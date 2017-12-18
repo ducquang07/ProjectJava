@@ -12,7 +12,7 @@ import java.sql.ResultSet;
  *
  * @author DucQuang
  */
-public class CtrlLapPhieuNhapHang {
+public class CtrlQuanLiPhieuNhap {
     Connect DB=new Connect();
     public ResultSet LayDSPhieuNhap(){
         String SQL="Select PN.MaPN, PN.NgayNhap, PN.MaDDH, NCC.MaNCC, NCC.TenNCC from PHIEUNHAP PN, DONDATHANG DDH, NHACUNGCAP NCC where PN.MaDDH=DDH.MaDDH and DDH.MaNCC=NCC.MaNCC";

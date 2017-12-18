@@ -27,7 +27,6 @@ public class ObjSanPham {
 ////////Constructor
     public ObjSanPham() {
     }
-
     public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, int GiaLe, int GiaSi, String DVT, int SoLuong, String MaNCC, double LoiNhuanBien, String MoTa) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
@@ -53,8 +52,21 @@ public class ObjSanPham {
         this.MaNCC = MaNCC;
         this.TenNCC = TenNCC;
     }
-
-    
+    public ObjSanPham(String MaSP, String TenSP, String MaLoaiSP, String TenLoaiSP, int GiaLe, int GiaSi, String DVT, int SoLuong, String MaNCC, String TenNCC, String MoTa, double LoiNhuanBien) {
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.MaLoaiSP = MaLoaiSP;
+        this.TenLoaiSP = TenLoaiSP;
+        this.GiaLe = GiaLe;
+        this.GiaSi=GiaSi;
+        this.DVT = DVT;
+        this.SoLuong = SoLuong;
+        this.MaNCC = MaNCC;
+        this.TenNCC = TenNCC;
+        this.MoTa = MoTa;
+        this.LoiNhuanBien = LoiNhuanBien;
+    }
+ 
 
     
     //////Get

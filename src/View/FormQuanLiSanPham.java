@@ -4,9 +4,19 @@
  * and open the template in the editor.
  */
 package View;
+import Control.CtrlQuanLiSanPham;
 import Edit.Edit;
+import Model.ModSanPham;
+import Object.ObjSanPham;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -15,6 +25,13 @@ import javax.swing.JPanel;
 public class FormQuanLiSanPham extends javax.swing.JFrame {
 
     Edit editFrm=new Edit();
+    ArrayList<ObjSanPham> ListSP = new ArrayList<>();
+    ObjSanPham ObjSP = new ObjSanPham();
+    CtrlQuanLiSanPham CtrlQLSP = new CtrlQuanLiSanPham();
+    ModSanPham ModSP = new ModSanPham();
+    ArrayList<String> ListComboboxNCC = new ArrayList();
+    ArrayList<String> ListComboboxLoaiSP = new ArrayList();
+    private int flag=0;
     /**
      * Creates new form FormQuanLiSanPham
      */
@@ -33,6 +50,99 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         editFrm.MakeTransparentButton(ListButton);
         
         editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
+        LoadForm();
+    }
+    public void HienThiDanhSachSanPham(ResultSet rs){
+        ListSP.clear();
+        DefaultTableModel model;
+        model=(DefaultTableModel) jTbDSSP.getModel();
+        model.getDataVector().removeAllElements(); 
+        try{
+            while(rs.next()){
+                ObjSanPham itemSP;
+                itemSP =new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"),rs.getString("TenLoaiSP"),(int) Double.parseDouble(rs.getString("GiaLe")),(int) Double.parseDouble(rs.getString("GiaSi")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"),rs.getString("MoTa"),(double) Double.parseDouble(rs.getString("LoiNhuanBien")));
+                ListSP.add(itemSP);
+                Vector v = new Vector();
+                v.add(itemSP.getMaSP());
+                v.add(itemSP.getTenSP());
+                v.add(itemSP.getTenNCC());
+                v.add(itemSP.getTenLoaiSP());
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.HienThiDanhSachDonDatHang: "+ex.getMessage());
+        }
+        finally{
+            CtrlQLSP.CloseConnection();
+        }
+        jTbDSSP.changeSelection(0,0,false,false);
+    }
+    public void LoadComboboxNhaCungCap(){
+        ListComboboxNCC.clear();
+        jComboBox2.removeAllItems();
+        jComboBox2.addItem("---Chọn nhà cung cấp---");
+        ListComboboxNCC.add("");
+        ResultSet rs=CtrlQLSP.LayDanhSachNhaCungCap();
+        try{
+            while(rs.next()){
+                jComboBox2.addItem(rs.getString("TenNCC"));
+                ListComboboxNCC.add(rs.getString("MaNCC"));
+            }
+        }
+        catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormQuanLiSanPham.LoadComboboxNhaCungCap: "+ex.getMessage());
+        }
+        finally{
+            CtrlQLSP.CloseConnection();
+        }
+    }
+    public void LoadComboboxLoaiSP(){
+        ListComboboxLoaiSP.clear();
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("---Chọn loại sản phẩm---");
+        ListComboboxLoaiSP.add("");
+        ResultSet rs=CtrlQLSP.LayDanhSachLoaiSanPham();
+        try{
+            while(rs.next()){
+                jComboBox1.addItem(rs.getString("TenLoaiSP"));
+                ListComboboxLoaiSP.add(rs.getString("MaLoaiSP"));
+            }
+        }
+        catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormQuanLiSanPham.LoadComboboxLoaiSP: "+ex.getMessage());
+        }
+        finally{
+            CtrlQLSP.CloseConnection();
+        }
+    }
+    public void Binding(){
+        TableModel model =jTbDSSP.getModel();
+        try{
+            int viewRow = jTbDSSP.getSelectedRow();
+            int modelRow= jTbDSSP.convertRowIndexToModel(viewRow);
+             if(viewRow>-1){
+                jTextField2.setText(ListSP.get(modelRow).getMaSP());
+                jTextField1.setText(ListSP.get(modelRow).getTenSP());
+                jTextField3.setText(String.format("%,d",ListSP.get(modelRow).getGiaSi()));
+                jTextField4.setText(String.format("%,d",ListSP.get(modelRow).getGiaLe()));   
+                jTextField5.setText(String.format("%,d",ListSP.get(modelRow).getSoLuong()));
+                jTextField6.setText(ListSP.get(modelRow).getDVT());
+                jTextField7.setText(String.format("%,f",ListSP.get(modelRow).getLoiNhuanBien()));
+                jTextField8.setText(ListSP.get(modelRow).getMoTa());
+                jComboBox2.setSelectedItem(ListSP.get(modelRow).getTenNCC());
+                jComboBox1.setSelectedItem(ListSP.get(modelRow).getTenLoaiSP());
+             }
+        }
+        catch(Exception ex){
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.Binding: "+ex.getMessage());
+        }
+    }
+    public void LoadForm()
+    {
+        HienThiDanhSachSanPham(CtrlQLSP.LayDSSanPham());
+        Binding();
+        LoadComboboxNhaCungCap();
+        LoadComboboxLoaiSP();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -223,6 +333,9 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         jBtnThem.setBackground(new java.awt.Color(204, 204, 204));
         jBtnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThemMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThemMouseEntered(evt);
             }
@@ -258,6 +371,9 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         jBtnXoa.setBackground(new java.awt.Color(204, 204, 204));
         jBtnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXoaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnXoaMouseEntered(evt);
             }
@@ -568,14 +684,23 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 50, 540, 590));
 
+        jTbDSSP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã sản phẩm", "Tên sản phẩm", "Nhà sản xuất", "Loại sản phẩm"
             }
         ));
+        jTbDSSP.setRowHeight(25);
+        jTbDSSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTbDSSP.getTableHeader().setReorderingAllowed(false);
+        jTbDSSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbDSSPMouseClicked(evt);
+            }
+        });
         jScrDSSP.setViewportView(jTbDSSP);
 
         getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 295, 770, 420));
@@ -720,6 +845,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -912,6 +1038,49 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTbDSSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSSPMouseClicked
+        // TODO add your handling code here:
+        if(jTbDSSP.getSelectedRow()>=0)
+            Binding();
+    }//GEN-LAST:event_jTbDSSPMouseClicked
+
+    private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
+        if(jBtnThem.isEnabled()){
+            jTextField2.setText(CtrlQLSP.LayMaSP());
+            jTextField1.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");   
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jComboBox2.setSelectedIndex(0);
+            jComboBox1.setSelectedIndex(0);
+            
+            flag=1;
+        }                 // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnThemMouseClicked
+
+    private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
+        if(jBtnXoa.isEnabled()){
+            //ObjSP = new ObjSanPham(jTextField2.getText(),jTextField1.getText(),jTextField3.toString(),(int)Double.parseDouble(jTextField4.getText()),(int)Double.parseDouble(jTextField5.getText()),jTextField6.getText(),jComboBox1.toString(),jComboBox2.toString(),jTextField8.getText(),(double)Double.parseDouble(jTextField7.getText()));
+            int i = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa sản phẩm \"" + ObjSP.getTenSP() + "\"", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(i==0){
+                try{
+                if(ModSP.Delete(ObjSP.getMaSP()))
+                    {
+                        //EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Xóa sản phẩm \"" + ObjSP.getTenSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        HienThiDanhSachSanPham(CtrlQLSP.LayDSSanPham());
+                    }
+
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(this, "Xóa loại sản phẩm \"" + ObjSP.getTenLoaiSP() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jBtnXoaMouseClicked
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
