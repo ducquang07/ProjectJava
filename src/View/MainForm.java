@@ -26,7 +26,7 @@ public class MainForm extends javax.swing.JFrame {
      * Creates new form MainForm
      */
 
-    private ObjTaiKhoan User = new ObjTaiKhoan();
+    private ObjTaiKhoan User = new ObjTaiKhoan("15520783","123456");
     CtrlMainForm ctrlMainFrm = new CtrlMainForm();
 
     public MainForm(ObjTaiKhoan objTK) {
@@ -79,6 +79,7 @@ public class MainForm extends javax.swing.JFrame {
         jBtnKhohang.setBackground(new Color(236, 236, 236, 50));
         jBtnKetoan.setBackground(new Color(236, 236, 236, 50));
         jBtn7.setBackground(new Color(236, 236, 236, 50));
+        PhanQuyenUser();
     }
 
     public void setColor(JPanel pn) {
