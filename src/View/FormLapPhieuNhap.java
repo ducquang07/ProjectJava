@@ -60,8 +60,6 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBtnBack = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
         jBtnThem = new javax.swing.JPanel();
         jlblThem = new javax.swing.JLabel();
         jBtnXoa = new javax.swing.JPanel();
@@ -70,12 +68,12 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         jlbLuu = new javax.swing.JLabel();
         jBtnXemPhieuIn = new javax.swing.JPanel();
         jlbIn = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTbDSDDH = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTbDSSPNH = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTbDSSP = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTbDSDDH = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -111,46 +109,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jBtnBack.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnBackMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBtnBackMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBtnBackMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jBtnBackMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jBtnBackMouseReleased(evt);
-            }
-        });
-
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Left_40px.png"))); // NOI18N
-
-        javax.swing.GroupLayout jBtnBackLayout = new javax.swing.GroupLayout(jBtnBack);
-        jBtnBack.setLayout(jBtnBackLayout);
-        jBtnBackLayout.setHorizontalGroup(
-            jBtnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnBackLayout.createSequentialGroup()
-                .addComponent(jLabel21)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jBtnBackLayout.setVerticalGroup(
-            jBtnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnBackLayout.createSequentialGroup()
-                .addComponent(jLabel21)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
         jBtnThem.setBackground(new java.awt.Color(153, 153, 153));
         jBtnThem.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -311,23 +270,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
 
         getContentPane().add(jBtnXemPhieuIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 640, 260, 70));
 
-<<<<<<< HEAD
         jTbDSSPNH.setModel(new javax.swing.table.DefaultTableModel(
-=======
-        jTbDSDDH.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã đơn đặt hàng", "Ngày đặt hàng"
-            }
-        ));
-        jScrollPane2.setViewportView(jTbDSDDH);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 95, 410, 250));
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
->>>>>>> origin/master
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -340,7 +283,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTbDSSPNH);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(815, 95, 530, 530));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 150, 520, 470));
 
         jTbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -357,7 +300,6 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTbDSSP);
 
-<<<<<<< HEAD
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 425, 410, 280));
 
         jTbDSDDH.setModel(new javax.swing.table.DefaultTableModel(
@@ -376,9 +318,6 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTbDSDDH);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 147, 410, 230));
-=======
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 400, 410, 305));
->>>>>>> origin/master
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -447,21 +386,12 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-<<<<<<< HEAD
                     .addComponent(jtxtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-=======
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
->>>>>>> origin/master
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-<<<<<<< HEAD
                         .addGap(19, 19, 19)))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -472,20 +402,9 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jtxtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
-=======
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39))))
->>>>>>> origin/master
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 365, 350, 270));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 350, 245));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -552,7 +471,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPnTracuuHDchuagiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtxtMaPN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -571,7 +490,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 350, 290));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 350, 270));
 
         jPanel6.setBackground(new java.awt.Color(153, 153, 153));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -597,7 +516,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
 
         jPanel6.add(jPnDanhSachSanPhamDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, -1));
 
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 365, 420, 345));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 420, 320));
 
         jPanel5.setBackground(new java.awt.Color(153, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -623,7 +542,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
 
         jPanel5.add(jPnDanhSachDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 420, 290));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 420, 270));
 
         jPanel9.setBackground(new java.awt.Color(153, 153, 153));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -644,12 +563,12 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
-        jPanel9.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+        jPanel9.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 540, 570));
+        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, 540, 520));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         jLabel11.setText("jLabel11");
@@ -844,7 +763,6 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         setColor(jBtnXemPhieuIn);
     }//GEN-LAST:event_jBtnXemPhieuInMouseReleased
 
-<<<<<<< HEAD
     private void jTbDSDDHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSDDHMouseClicked
         // TODO add your handling code here:
         BindingDDH();
@@ -858,33 +776,6 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         BindingSP();
     }//GEN-LAST:event_jTbDSSPMouseClicked
-=======
-    private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
-        // TODO add your handling code here:
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_jBtnBackMouseClicked
-
-    private void jBtnBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseEntered
-        // TODO add your handling code here:
-        setColor(jBtnBack);
-    }//GEN-LAST:event_jBtnBackMouseEntered
-
-    private void jBtnBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseExited
-        // TODO add your handling code here:
-        resetColor(jBtnBack);
-    }//GEN-LAST:event_jBtnBackMouseExited
-
-    private void jBtnBackMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMousePressed
-        // TODO add your handling code here:
-        resetColor(jBtnBack);
-    }//GEN-LAST:event_jBtnBackMousePressed
-
-    private void jBtnBackMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseReleased
-        // TODO add your handling code here:
-        setColor(jBtnBack);
-    }//GEN-LAST:event_jBtnBackMouseReleased
->>>>>>> origin/master
 
     public void HienThiDSDDH(ResultSet rs){
         listDDH.clear();
@@ -929,7 +820,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                 model.addRow(v);
             }
         } catch (SQLException ex) {
-            System.out.println("Ngoại lệ tại FormLapPhieuNhapHang.HienThiDSDDH: "+ex.getMessage());
+            System.out.println("Ngoại lệ tại FormLapPhieuNhapHang.HienThiDSSP: "+ex.getMessage());
         }
         finally{
             CtrlLPN.CloseConnection();
@@ -1046,7 +937,6 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jBtnBack;
     private javax.swing.JPanel jBtnLuu;
     private javax.swing.JPanel jBtnThem;
     private javax.swing.JPanel jBtnXemPhieuIn;
@@ -1058,7 +948,6 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
