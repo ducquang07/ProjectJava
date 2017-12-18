@@ -908,20 +908,17 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
             if(flag==1){ 
                 ObjKH = new ObjKhachHang(jtxtMaKH.getText(), jtxtTenKH.getText(), jtxtSDT.getText(), jtxtDiaChi.getText(), jtxtEmail.getText());
                 if (!ObjKH.getMaKH().equals("")) {
-                    if (!ObjKH.getTenKH().equals("")) {
-                        if(!ObjKH.getSDT().equals("")||!ObjKH.getDiaChi().equals("")||!ObjKH.getEmail().equals("")) {
-                            try {
-                                if (ModKH.Insert(ObjKH)) {
-                                    EnableComponent(false);
-                                    JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH() + "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                                    HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
-                                }
-                            } catch (Exception e) {
-                                JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                    if (!ObjKH.getTenKH().equals("")) {              
+                        try {
+                            if (ModKH.Insert(ObjKH)) {
+                                EnableComponent(false);
+                                JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH() + "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
                             }
-                        }else{
-                            JOptionPane.showMessageDialog(this, "Vui lòng nhập một trong ba thông tin liên lạc" , "Thông báo", JOptionPane.ERROR_MESSAGE);
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, "Thêm khách hàng \"" + ObjKH.getTenKH() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                         }
+
                     }else{
                         JOptionPane.showMessageDialog(this, "Vui lòng nhập tên khách hàng", "Thông báo", JOptionPane.ERROR_MESSAGE);
                     }
@@ -932,20 +929,17 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
             }else if(flag==2){
                 ObjKH = new ObjKhachHang(jtxtMaKH.getText(), jtxtTenKH.getText(), jtxtSDT.getText(), jtxtDiaChi.getText(), jtxtEmail.getText());
                 if (!ObjKH.getMaKH().equals("")) {
-                    if (!ObjKH.getTenKH().equals("")) {
-                        if(!ObjKH.getSDT().equals("")||!ObjKH.getDiaChi().equals("")||!ObjKH.getEmail().equals("")) {
-                            try {
-                                if (ModKH.Update(ObjKH)) {
-                                    EnableComponent(false);
-                                    JOptionPane.showMessageDialog(this, "Cập nhật khách hàng \"" + ObjKH.getTenKH() + "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                                    HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
-                                }
-                            } catch (Exception e) {
-                                JOptionPane.showMessageDialog(this, "Cập nhật khách hàng \"" + ObjKH.getTenKH() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                    if (!ObjKH.getTenKH().equals("")) {                       
+                        try {
+                            if (ModKH.Update(ObjKH)) {
+                                EnableComponent(false);
+                                JOptionPane.showMessageDialog(this, "Cập nhật khách hàng \"" + ObjKH.getTenKH() + "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                HienThiDanhSachKhachHang(CtrlKH.LayDanhSachKhachHang());
                             }
-                        }else{
-                            JOptionPane.showMessageDialog(this, "Vui lòng nhập một trong ba thông tin liên lạc" , "Thông báo", JOptionPane.ERROR_MESSAGE);
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, "Cập nhật khách hàng \"" + ObjKH.getTenKH() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                         }
+
                     }else{
                         JOptionPane.showMessageDialog(this, "Vui lòng nhập tên khách hàng", "Thông báo", JOptionPane.ERROR_MESSAGE);
                     }

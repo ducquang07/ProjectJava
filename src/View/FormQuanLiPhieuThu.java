@@ -1,6 +1,7 @@
 package View;
 import Control.CtrlPhieuThu;
 import Edit.Edit;
+import Model.ModPhieuThu;
 import Object.ObjKhachHang;
 import Object.ObjPhieuThu;
 import java.awt.Color;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +36,10 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     ArrayList<ObjKhachHang> listCbbKH= new ArrayList<>();
     CtrlPhieuThu CtrlPT = new CtrlPhieuThu();
     ObjKhachHang objKH=new ObjKhachHang();
+    ObjPhieuThu objPT=new ObjPhieuThu();
+    ModPhieuThu modPT=new ModPhieuThu();
+            
+    private int flag=0;
     /**
      * Creates new form frmQuanLiPhieuThu
      */
@@ -438,6 +444,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jBtnLuu.setBackground(new java.awt.Color(204, 204, 204));
         jBtnLuu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnLuuMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnLuuMouseEntered(evt);
             }
@@ -475,6 +484,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jBtnHuy.setBackground(new java.awt.Color(204, 204, 204));
         jBtnHuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnHuyMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnHuyMouseEntered(evt);
             }
@@ -880,23 +892,39 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jCbbTenKH.removeAllItems();
         jCbbTenKH.addItem("---Chọn khách hàng---");  
         listCbbKH.add(new ObjKhachHang());
-        ResultSet rs= CtrlPT.LayDanhSachKhachHang();
         try{
+            ResultSet rs= CtrlPT.LayDanhSachKhachHang();
             while(rs.next()){
                 ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"),rs.getString("SDT"));
-                jCbbTenKH.addItem(itemKH.getTenKH());
                 listCbbKH.add(itemKH);
-                jtxtMaKH.setText(itemKH.getMaKH());
-                jtxtDiaChi.setText(itemKH.getDiaChi());
-                jtxtSDT.setText(itemKH.getSDT());
-                
+                String str=rs.getString("TenKH");
+                jCbbTenKH.addItem(str);
+                if(str==objKH.getTenKH()){
+                    jtxtDiaChi.setText(itemKH.getDiaChi());
+                }
             }
-        }catch(SQLException ex){
-            System.out.println("Ngoại lệ tại FormPhieuThu.LoadCbbKH: "+ex.getMessage());
-        }    
-        finally{
-            CtrlPT.CloseConnection();
+            
+        }catch (SQLException ex){
+            
         }
+            
+        
+//        try{
+//            while(rs.next()){
+//                ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"),rs.getString("SDT"));
+//                jCbbTenKH.addItem(itemKH.getTenKH());
+//                listCbbKH.add(itemKH);
+//                jtxtMaKH.setText(itemKH.getMaKH());
+//                jtxtDiaChi.setText(itemKH.getDiaChi());
+//                jtxtSDT.setText(itemKH.getSDT());
+//                
+//            }
+//        }catch(SQLException ex){
+//            System.out.println("Ngoại lệ tại FormPhieuThu.LoadCbbKH: "+ex.getMessage());
+//        }    
+//        finally{
+//            CtrlPT.CloseConnection();
+//        }
     }
     
     public void ReloadForm(){
@@ -943,7 +971,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jBtnHuy.setEnabled(Active);
         jlblHuy.setEnabled(Active);
         jtxtMaKH.setEnabled(Active);
-        jCbbTenKH.setEnabled(!Active);
+        jCbbTenKH.setEnabled(Active);
         jtxtSDT.setEnabled(Active);
         jtxtDiaChi.setEnabled(Active);
         jBtnThem.setEnabled(!Active);
@@ -1166,19 +1194,25 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
         // TODO add your handling code here:
         if(jBtnThem.isEnabled()){
-           // jtxt
+           jtxtMaPT.setText(CtrlPT.TaoMaPT());
+           jDCNgayLap.setDate(new Date());
+           jtxtSoTienThu.setText("");
+           jtxtLyDoThu.setText("");
+           EnableComponent(true);
+           flag=1;
         }
     }//GEN-LAST:event_jBtnThemMouseClicked
 
     private void jCbbTenKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCbbTenKHMouseClicked
         // TODO add your handling code here:
+        listCbbKH.clear();
         listCbbKH.add(new ObjKhachHang());
         ResultSet rs= CtrlPT.LayDanhSachKhachHang();
         try{
             while(rs.next()){
                 ObjKhachHang itemKH =new ObjKhachHang(rs.getString("TenKH"),rs.getString("MaKH"), rs.getString("DiaChi"),rs.getString("SDT"));
-                jCbbTenKH.addItem(itemKH.getTenKH());
-                listCbbKH.add(itemKH);
+                //jCbbTenKH.addItem(itemKH.getTenKH());
+               // listCbbKH.add(itemKH);
                 jtxtMaKH.setText(itemKH.getMaKH());
                 jtxtDiaChi.setText(itemKH.getDiaChi());
                 jtxtSDT.setText(itemKH.getSDT());
@@ -1192,6 +1226,42 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCbbTenKHMouseClicked
 
+    private void jBtnHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnHuyMouseClicked
+        // TODO add your handling code here:
+        if(jBtnHuy.isEnabled()){
+           jtxtMaPT.setText("");
+           jDCNgayLap.setDate(new Date());
+           jtxtSoTienThu.setText("");
+           jtxtLyDoThu.setText("");
+           EnableComponent(false);
+           flag=1;
+        }
+    }//GEN-LAST:event_jBtnHuyMouseClicked
+
+    private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
+        // TODO add your handling code here:
+        if(jBtnLuu.isEnabled()){
+            if(flag==1){
+                int i=Integer.parseInt(jtxtSoTienThu.getText());
+                objKH = new ObjKhachHang(jtxtMaKH.getText(), jCbbTenKH.getSelectedItem().toString(), jtxtSDT.getText(), jtxtDiaChi.getText());
+                objPT= new ObjPhieuThu(jtxtMaPT.getText(),jDCNgayLap.getDate(),i,jtxtLyDoThu.getText());
+                if(!objPT.getMaPT().equals("")){
+                    if(!objKH.getTenKH().equals("")){
+                        try{
+                            if(modPT.Insert(objPT)){
+                                EnableComponent(false);
+                                JOptionPane.showMessageDialog(this, "Thêm phiếu thu \"" + objPT.getMaPT()+ "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
+                            }
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, "Thêm phiếu thu \"" + objPT.getMaPT()+ "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jBtnLuuMouseClicked
+    
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);

@@ -35,7 +35,7 @@ public class ObjPhieuThu {
         this.DiaChi=DiaChi;
         this.SDT=SDT;
     }
-    public ObjPhieuThu(String MaPT, String LyDoThu , int TongTienThu, Date NgayThu,String MaKH ){
+    public ObjPhieuThu(String MaPT, Date NgayThu, int TongTienThu, String LyDoThu ){
         this.MaPT=MaPT;
         this.LyDoThu=LyDoThu;
         this.TongTienThu=TongTienThu;
