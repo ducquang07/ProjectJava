@@ -8,6 +8,7 @@ package View;
 import Control.CtrlDangNhap;
 import Object.ObjTaiKhoan;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -49,7 +50,6 @@ public class FormDangNhap extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -83,13 +83,22 @@ public class FormDangNhap extends javax.swing.JFrame {
         jtxtUser.setForeground(new java.awt.Color(255, 255, 255));
         jtxtUser.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtxtUser.setText("Tên đăng nhập...");
-        jtxtUser.setToolTipText("");
         jtxtUser.setBorder(null);
         jtxtUser.setFocusable(false);
         jtxtUser.setOpaque(false);
+        jtxtUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxtUserFocusGained(evt);
+            }
+        });
         jtxtUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jtxtUserMousePressed(evt);
+            }
+        });
+        jtxtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtUserKeyPressed(evt);
             }
         });
         getContentPane().add(jtxtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 230, 30));
@@ -102,13 +111,24 @@ public class FormDangNhap extends javax.swing.JFrame {
         jtxtPass.setEchoChar('\u0000');
         jtxtPass.setFocusable(false);
         jtxtPass.setOpaque(false);
+        jtxtPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxtPassFocusGained(evt);
+            }
+        });
         jtxtPass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jtxtPassMousePressed(evt);
             }
         });
+        jtxtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtPassKeyPressed(evt);
+            }
+        });
         getContentPane().add(jtxtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 230, 30));
 
+        jBtnDangNhap.setBackground(new java.awt.Color(0, 0, 0));
         jBtnDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnDangNhapMouseClicked(evt);
@@ -139,8 +159,9 @@ public class FormDangNhap extends javax.swing.JFrame {
 
         getContentPane().add(jBtnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 100, 30));
 
-        jPanel2.setBackground(new java.awt.Color(236, 236, 236));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setFocusable(false);
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel2MouseDragged(evt);
@@ -165,8 +186,6 @@ public class FormDangNhap extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel17);
         jLabel17.setBounds(887, 11, 29, 33);
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 20, 0, 0);
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,6 +246,8 @@ public class FormDangNhap extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 20, 30));
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -242,6 +263,7 @@ public class FormDangNhap extends javax.swing.JFrame {
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-374074.jpeg"))); // NOI18N
+        jLabel18.setFocusable(false);
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 610));
 
@@ -319,7 +341,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         else if(CtrlDN.KiemTraDangNhap(jtxtUser.getText(),jtxtPass.getText())) {
             JOptionPane.showMessageDialog(null,"Đăng nhập thành công.","Thông báo",JOptionPane.INFORMATION_MESSAGE);
             itemTK=new ObjTaiKhoan(jtxtUser.getText(),jtxtPass.getText());
-            MainForm MainFrm = new MainForm();
+            MainForm MainFrm = new MainForm(itemTK);
             MainFrm.setVisible(true);
             setVisible(false);
             dispose();
@@ -328,6 +350,33 @@ public class FormDangNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Tên đăng nhập hoặc mật khẩu không hợp lệ","Thông báo",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtnDangNhapMouseClicked
+
+    private void jtxtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtUserKeyPressed
+        // TODO add your handling code here:
+        jtxtPass.setFocusable(true);
+
+    }//GEN-LAST:event_jtxtUserKeyPressed
+
+    private void jtxtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtPassFocusGained
+        // TODO add your handling code here:
+        if(jtxtPass.getText().equals("Mật khẩu...")) jtxtPass.setText("");
+        jtxtPass.requestFocus();
+        jtxtPass.setEchoChar('\u2022');
+    }//GEN-LAST:event_jtxtPassFocusGained
+
+    private void jtxtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtPassKeyPressed
+        // TODO add your handling code here:
+        jtxtUser.setFocusable(true);
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jBtnDangNhapMouseClicked(null);
+    }//GEN-LAST:event_jtxtPassKeyPressed
+
+    private void jtxtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtUserFocusGained
+        // TODO add your handling code here:
+        if(jtxtUser.getText().equals("Tên đăng nhập...")) jtxtUser.setText("");
+        jtxtUser.requestFocus();
+    }//GEN-LAST:event_jtxtUserFocusGained
+    
     public void setColor(JPanel pn){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
         pn.setBackground(new Color(60,209,127,50));
@@ -348,7 +397,7 @@ public class FormDangNhap extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -378,7 +427,6 @@ public class FormDangNhap extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jBtnClose;
     private javax.swing.JPanel jBtnDangNhap;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
