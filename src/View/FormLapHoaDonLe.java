@@ -1281,8 +1281,9 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             for(int i = 0 ;i<Model.getRowCount();i++){
                 if(Model.getValueAt(i,0).toString().equals(itemGioHang.getMaSP())){
                     exist=true;
+                    int SoLuongTon = CtrlHDL.LaySoLuongSanPham(itemGioHang.getMaSP(), jtxtSoHDL.getText());
                     int SL =itemGioHang.getSoLuong()+Integer.parseInt(Model.getValueAt(i,3).toString());
-                    if(SL<=listSP.get(modelRow).getSoLuong()){
+                    if(SL<=listSP.get(modelRow).getSoLuong()||SL<=SoLuongTon){
                           int ThanhTien = SL*Integer.parseInt(Model.getValueAt(i,4).toString().replace(",",""));
                           Model.setValueAt(SL,i,3);
                           Model.setValueAt(String.format("%,d",ThanhTien),i,5);
@@ -1291,7 +1292,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                           break;
                     }
                     else {
-                          JOptionPane.showMessageDialog(this,"Số lượng không đủ.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                          JOptionPane.showMessageDialog(this,"Số lượng không đủ. Chỉ còn lại "+SoLuongTon, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                           break;
                     }
                 }
