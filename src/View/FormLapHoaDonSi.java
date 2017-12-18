@@ -81,7 +81,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
        LoadForm();
     }
 
-    public FormLapHoaDonSi(String SoHDS,String TenKH,ArrayList<ObjChiTietHDS> ListCT,Date NgayLap){
+    public FormLapHoaDonSi(String SoHDS,String  TenKH,ArrayList<ObjChiTietHDS> ListCT,Date NgayLap){
         initComponents();
         this.setLocationRelativeTo(null);
         

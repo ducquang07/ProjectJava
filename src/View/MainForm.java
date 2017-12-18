@@ -5,7 +5,14 @@
  */
 package View;
 
+import Control.CtrlDangNhap;
+import Control.CtrlMainForm;
+import Object.ObjTaiKhoan;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -13,45 +20,81 @@ import javax.swing.JPanel;
  * @author ThaiNguyen
  */
 public class MainForm extends javax.swing.JFrame {
-    
-    int xx,yy;
+
+    int xx, yy;
     /**
      * Creates new form MainForm
      */
-    public MainForm() {
+
+    private ObjTaiKhoan User = new ObjTaiKhoan();
+    CtrlMainForm ctrlMainFrm = new CtrlMainForm();
+
+    public MainForm(ObjTaiKhoan objTK) {
         initComponents();
         setLocationRelativeTo(null);
-        
-        jPanel1.setBackground(new Color(0,0,0,80));
-        
+
+        jPanel1.setBackground(new Color(0, 0, 0, 80));
+
         jPnHome.setVisible(false);
-        
-        jPnHome.setBackground(new Color(236,236,236,50));
-        
-        jBtnTaoTK.setBackground(new Color(236,236,236,50));
-        jBtnDangxuat.setBackground(new Color(236,236,236,50));
-        jBtnDoiMK.setBackground(new Color(236,236,236,50));
-        jBtnThongtin.setBackground(new Color(236,236,236,50));
-        
-        jBtnThietlap.setBackground(new Color(236,236,236,50));
-        jBtnNguoidung.setBackground(new Color(236,236,236,50));  
-        jBtnThongke.setBackground(new Color(236,236,236,50));  
-        jBtnBanhang.setBackground(new Color(236,236,236,50));  
-        jBtnKhohang.setBackground(new Color(236,236,236,50));  
-        jBtnKetoan.setBackground(new Color(236,236,236,50));  
-        jBtn7.setBackground(new Color(236,236,236,50));
+
+        jPnHome.setBackground(new Color(236, 236, 236, 50));
+
+        jBtnTaoTK.setBackground(new Color(236, 236, 236, 50));
+        jbtnDangXuat.setBackground(new Color(236, 236, 236, 50));
+        jBtnDoiMK.setBackground(new Color(236, 236, 236, 50));
+        jBtnThongtin.setBackground(new Color(236, 236, 236, 50));
+
+        jBtnThietlap.setBackground(new Color(236, 236, 236, 50));
+        jBtnNguoidung.setBackground(new Color(236, 236, 236, 50));
+        jBtnThongke.setBackground(new Color(236, 236, 236, 50));
+        jBtnBanhang.setBackground(new Color(236, 236, 236, 50));
+        jBtnKhohang.setBackground(new Color(236, 236, 236, 50));
+        jBtnKetoan.setBackground(new Color(236, 236, 236, 50));
+        jBtn7.setBackground(new Color(236, 236, 236, 50));
+
+        User.setTenDangNhap(objTK.getTenDangNhap());
+        User.setMatKhau(objTK.getMatKhau());
+        PhanQuyenUser();
     }
-    
-    public void setColor(JPanel pn){
-        pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
-        pn.setBackground(new Color(60,209,127,50));
+
+    private MainForm() {
+        initComponents();
+        setLocationRelativeTo(null);
+
+        jPanel1.setBackground(new Color(0, 0, 0, 80));
+
+        jPnHome.setVisible(false);
+
+        jPnHome.setBackground(new Color(236, 236, 236, 50));
+
+        jBtnTaoTK.setBackground(new Color(236, 236, 236, 50));
+        jbtnDangXuat.setBackground(new Color(236, 236, 236, 50));
+        jBtnDoiMK.setBackground(new Color(236, 236, 236, 50));
+        jBtnThongtin.setBackground(new Color(236, 236, 236, 50));
+
+        jBtnThietlap.setBackground(new Color(236, 236, 236, 50));
+        jBtnNguoidung.setBackground(new Color(236, 236, 236, 50));
+        jBtnThongke.setBackground(new Color(236, 236, 236, 50));
+        jBtnBanhang.setBackground(new Color(236, 236, 236, 50));
+        jBtnKhohang.setBackground(new Color(236, 236, 236, 50));
+        jBtnKetoan.setBackground(new Color(236, 236, 236, 50));
+        jBtn7.setBackground(new Color(236, 236, 236, 50));
     }
-    public void resetColor(JPanel pn){   
-        pn.setSize(pn.getWidth()-1, pn.getHeight()-1);
-        pn.setBackground(new Color(236,236,236,50));
+
+    public void setColor(JPanel pn) {
+        if (pn.isEnabled()) {
+            pn.setSize(pn.getWidth() + 1, pn.getHeight() + 1);
+            pn.setBackground(new Color(60, 209, 127, 50));
+        }
     }
-    
-    
+
+    public void resetColor(JPanel pn) {
+        if (pn.isEnabled()) {
+            pn.setSize(pn.getWidth() - 1, pn.getHeight() - 1);
+            pn.setBackground(new Color(236, 236, 236, 50));
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,23 +106,23 @@ public class MainForm extends javax.swing.JFrame {
 
         jBtnClose = new javax.swing.JLabel();
         jBtnBanhang = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jlbIconBanHang = new javax.swing.JLabel();
+        jlbBanHang = new javax.swing.JLabel();
         jBtnThongke = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        jlbIconThongKe = new javax.swing.JLabel();
+        jlbThongKe = new javax.swing.JLabel();
         jBtnKhohang = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        jlbIconKhoHang = new javax.swing.JLabel();
+        jlbKhoHang = new javax.swing.JLabel();
         jBtnNguoidung = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        jlbIconNguoiDung = new javax.swing.JLabel();
+        jlbNguoiDung = new javax.swing.JLabel();
         jBtnKetoan = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        jlbIconKeToan = new javax.swing.JLabel();
+        jlbKeToan = new javax.swing.JLabel();
         jBtnThietlap = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        jlbIconThietLap = new javax.swing.JLabel();
+        jlbThietLap = new javax.swing.JLabel();
         jBtn7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -88,14 +131,15 @@ public class MainForm extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jPnHome = new javax.swing.JPanel();
         jBtnTaoTK = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jBtnDangxuat = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jlbTaoTK = new javax.swing.JLabel();
+        jbtnDangXuat = new javax.swing.JPanel();
+        jlbDangXuat = new javax.swing.JLabel();
         jBtnDoiMK = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        jlbDoiMK = new javax.swing.JLabel();
         jBtnThongtin = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        jlbThongTin = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jlbThonTinUser = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,6 +158,7 @@ public class MainForm extends javax.swing.JFrame {
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 20, 30));
 
         jBtnBanhang.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnBanhang.setEnabled(false);
         jBtnBanhang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnBanhangMouseClicked(evt);
@@ -133,19 +178,22 @@ public class MainForm extends javax.swing.JFrame {
         });
         jBtnBanhang.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Shopping_Cart_64px_3.png"))); // NOI18N
-        jBtnBanhang.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 60, 60));
+        jlbIconBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIconBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Shopping_Cart_64px_3.png"))); // NOI18N
+        jlbIconBanHang.setEnabled(false);
+        jBtnBanhang.add(jlbIconBanHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 60, 60));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Bán hàng");
-        jBtnBanhang.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
+        jlbBanHang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbBanHang.setForeground(new java.awt.Color(255, 255, 255));
+        jlbBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbBanHang.setText("Bán hàng");
+        jlbBanHang.setEnabled(false);
+        jBtnBanhang.add(jlbBanHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
 
         getContentPane().add(jBtnBanhang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 180, 120));
 
         jBtnThongke.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnThongke.setEnabled(false);
         jBtnThongke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnThongkeMouseClicked(evt);
@@ -165,19 +213,22 @@ public class MainForm extends javax.swing.JFrame {
         });
         jBtnThongke.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Statistics_64px.png"))); // NOI18N
-        jBtnThongke.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 60, 60));
+        jlbIconThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIconThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Statistics_64px.png"))); // NOI18N
+        jlbIconThongKe.setEnabled(false);
+        jBtnThongke.add(jlbIconThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 60, 60));
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("Thống kê");
-        jBtnThongke.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
+        jlbThongKe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbThongKe.setForeground(new java.awt.Color(255, 255, 255));
+        jlbThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbThongKe.setText("Thống kê");
+        jlbThongKe.setEnabled(false);
+        jBtnThongke.add(jlbThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
 
         getContentPane().add(jBtnThongke, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 180, 120));
 
         jBtnKhohang.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnKhohang.setEnabled(false);
         jBtnKhohang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnKhohangMouseClicked(evt);
@@ -197,19 +248,22 @@ public class MainForm extends javax.swing.JFrame {
         });
         jBtnKhohang.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Warehouse_64px.png"))); // NOI18N
-        jBtnKhohang.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 21, 70, 60));
+        jlbIconKhoHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIconKhoHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Warehouse_64px.png"))); // NOI18N
+        jlbIconKhoHang.setEnabled(false);
+        jBtnKhohang.add(jlbIconKhoHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 21, 70, 60));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("Kho hàng");
-        jBtnKhohang.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
+        jlbKhoHang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbKhoHang.setForeground(new java.awt.Color(255, 255, 255));
+        jlbKhoHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbKhoHang.setText("Kho hàng");
+        jlbKhoHang.setEnabled(false);
+        jBtnKhohang.add(jlbKhoHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
 
         getContentPane().add(jBtnKhohang, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 180, 120));
 
         jBtnNguoidung.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnNguoidung.setEnabled(false);
         jBtnNguoidung.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnNguoidungMouseEntered(evt);
@@ -226,19 +280,22 @@ public class MainForm extends javax.swing.JFrame {
         });
         jBtnNguoidung.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_User_64px.png"))); // NOI18N
-        jBtnNguoidung.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 20, 70, 56));
+        jlbIconNguoiDung.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIconNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_User_64px.png"))); // NOI18N
+        jlbIconNguoiDung.setEnabled(false);
+        jBtnNguoidung.add(jlbIconNguoiDung, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 20, 70, 56));
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Người dùng");
-        jBtnNguoidung.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
+        jlbNguoiDung.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbNguoiDung.setForeground(new java.awt.Color(255, 255, 255));
+        jlbNguoiDung.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbNguoiDung.setText("Người dùng");
+        jlbNguoiDung.setEnabled(false);
+        jBtnNguoidung.add(jlbNguoiDung, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
 
         getContentPane().add(jBtnNguoidung, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 180, 120));
 
         jBtnKetoan.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnKetoan.setEnabled(false);
         jBtnKetoan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnKetoanMouseClicked(evt);
@@ -258,19 +315,22 @@ public class MainForm extends javax.swing.JFrame {
         });
         jBtnKetoan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Coins_64px.png"))); // NOI18N
-        jBtnKetoan.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 80, 60));
+        jlbIconKeToan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIconKeToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Coins_64px.png"))); // NOI18N
+        jlbIconKeToan.setEnabled(false);
+        jBtnKetoan.add(jlbIconKeToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 80, 60));
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Kế toán");
-        jBtnKetoan.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
+        jlbKeToan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbKeToan.setForeground(new java.awt.Color(255, 255, 255));
+        jlbKeToan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbKeToan.setText("Kế toán");
+        jlbKeToan.setEnabled(false);
+        jBtnKetoan.add(jlbKeToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
 
         getContentPane().add(jBtnKetoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 180, 120));
 
         jBtnThietlap.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnThietlap.setEnabled(false);
         jBtnThietlap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThietlapMouseEntered(evt);
@@ -287,15 +347,17 @@ public class MainForm extends javax.swing.JFrame {
         });
         jBtnThietlap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Settings_64px.png"))); // NOI18N
-        jBtnThietlap.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 20, -1, 60));
+        jlbIconThietLap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIconThietLap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Settings_64px.png"))); // NOI18N
+        jlbIconThietLap.setEnabled(false);
+        jBtnThietlap.add(jlbIconThietLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 20, -1, 60));
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Thiết lập");
-        jBtnThietlap.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
+        jlbThietLap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jlbThietLap.setForeground(new java.awt.Color(255, 255, 255));
+        jlbThietLap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbThietLap.setText("Thiết lập");
+        jlbThietLap.setEnabled(false);
+        jBtnThietlap.add(jlbThietLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, -1));
 
         getContentPane().add(jBtnThietlap, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 180, 120));
 
@@ -376,9 +438,10 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Tạo tài khoản");
+        jlbTaoTK.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlbTaoTK.setForeground(new java.awt.Color(255, 255, 255));
+        jlbTaoTK.setText("Tạo tài khoản");
+        jlbTaoTK.setEnabled(false);
 
         javax.swing.GroupLayout jBtnTaoTKLayout = new javax.swing.GroupLayout(jBtnTaoTK);
         jBtnTaoTK.setLayout(jBtnTaoTKLayout);
@@ -386,57 +449,52 @@ public class MainForm extends javax.swing.JFrame {
             jBtnTaoTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnTaoTKLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
+                .addComponent(jlbTaoTK)
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         jBtnTaoTKLayout.setVerticalGroup(
             jBtnTaoTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBtnTaoTKLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(11, 11, 11))
+            .addComponent(jlbTaoTK, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         jPnHome.add(jBtnTaoTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 38));
 
-        jBtnDangxuat.setBackground(new java.awt.Color(0, 0, 0));
-        jBtnDangxuat.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbtnDangXuat.setBackground(new java.awt.Color(0, 0, 0));
+        jbtnDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBtnDangxuatMouseEntered(evt);
+                jbtnDangXuatMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBtnDangxuatMouseExited(evt);
+                jbtnDangXuatMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jBtnDangxuatMousePressed(evt);
+                jbtnDangXuatMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jBtnDangxuatMouseReleased(evt);
+                jbtnDangXuatMouseReleased(evt);
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Đăng xuất");
+        jlbDangXuat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlbDangXuat.setForeground(new java.awt.Color(255, 255, 255));
+        jlbDangXuat.setText("Đăng xuất");
+        jlbDangXuat.setEnabled(false);
 
-        javax.swing.GroupLayout jBtnDangxuatLayout = new javax.swing.GroupLayout(jBtnDangxuat);
-        jBtnDangxuat.setLayout(jBtnDangxuatLayout);
-        jBtnDangxuatLayout.setHorizontalGroup(
-            jBtnDangxuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnDangxuatLayout.createSequentialGroup()
+        javax.swing.GroupLayout jbtnDangXuatLayout = new javax.swing.GroupLayout(jbtnDangXuat);
+        jbtnDangXuat.setLayout(jbtnDangXuatLayout);
+        jbtnDangXuatLayout.setHorizontalGroup(
+            jbtnDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jbtnDangXuatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
+                .addComponent(jlbDangXuat)
                 .addContainerGap(114, Short.MAX_VALUE))
         );
-        jBtnDangxuatLayout.setVerticalGroup(
-            jBtnDangxuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnDangxuatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addContainerGap(12, Short.MAX_VALUE))
+        jbtnDangXuatLayout.setVerticalGroup(
+            jbtnDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlbDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
-        jPnHome.add(jBtnDangxuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 180, 38));
+        jPnHome.add(jbtnDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 180, 38));
 
         jBtnDoiMK.setBackground(new java.awt.Color(102, 102, 102));
         jBtnDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -454,9 +512,10 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Đổi mật khẩu");
+        jlbDoiMK.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlbDoiMK.setForeground(new java.awt.Color(255, 255, 255));
+        jlbDoiMK.setText("Đổi mật khẩu");
+        jlbDoiMK.setEnabled(false);
 
         javax.swing.GroupLayout jBtnDoiMKLayout = new javax.swing.GroupLayout(jBtnDoiMK);
         jBtnDoiMK.setLayout(jBtnDoiMKLayout);
@@ -464,15 +523,12 @@ public class MainForm extends javax.swing.JFrame {
             jBtnDoiMKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnDoiMKLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addComponent(jlbDoiMK)
                 .addContainerGap(98, Short.MAX_VALUE))
         );
         jBtnDoiMKLayout.setVerticalGroup(
             jBtnDoiMKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnDoiMKLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addComponent(jlbDoiMK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         jPnHome.add(jBtnDoiMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, 180, 38));
@@ -493,9 +549,10 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Thông tin");
+        jlbThongTin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlbThongTin.setForeground(new java.awt.Color(255, 255, 255));
+        jlbThongTin.setText("Thông tin");
+        jlbThongTin.setEnabled(false);
 
         javax.swing.GroupLayout jBtnThongtinLayout = new javax.swing.GroupLayout(jBtnThongtin);
         jBtnThongtin.setLayout(jBtnThongtinLayout);
@@ -503,22 +560,26 @@ public class MainForm extends javax.swing.JFrame {
             jBtnThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnThongtinLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12)
+                .addComponent(jlbThongTin)
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         jBtnThongtinLayout.setVerticalGroup(
             jBtnThongtinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnThongtinLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addComponent(jlbThongTin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         jPnHome.add(jBtnThongtin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 76, 180, 38));
 
         getContentPane().add(jPnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 79, 180, 160));
 
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbThonTinUser.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jlbThonTinUser.setForeground(new java.awt.Color(255, 255, 255));
+        jlbThonTinUser.setText("User :");
+        jPanel1.add(jlbThonTinUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 340, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 630));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo.jpg"))); // NOI18N
@@ -543,6 +604,90 @@ public class MainForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void PhanQuyenUser() {
+        try {
+            ResultSet rs = ctrlMainFrm.LayThongTinUser(User.getTenDangNhap(), User.getMatKhau());
+            if (rs.next()) {
+                User.setTen(rs.getString("Ten"));
+                User.setPhanLoai(rs.getString("PhanLoai"));
+                jlbThonTinUser.setText("User : "+rs.getString("Ten")+" - "+rs.getString("PhanLoai"));
+                if (User.getPhanLoai().equals("Quản lý bán hàng")) {
+                    SetQuanLiBanHang();
+                }
+                else if (User.getPhanLoai().equals("Quản lý kho")){
+                    SetQuanLiKho();
+                }
+                else if (User.getPhanLoai().equals("Quản lý kế toán")){
+                    SetQuanLiKeToan();
+                }
+                else if (User.getPhanLoai().equals("Quản lý")){
+                    SetQuanLi();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void SetQuanLi() {
+        SetQuanLiBanHang();
+        SetQuanLiKeToan();
+        SetQuanLiKho();
+        jBtnNguoidung.setEnabled(true);
+        jlbIconNguoiDung.setEnabled(true);
+        jlbNguoiDung.setEnabled(true);
+        jBtnThietlap.setEnabled(true);
+        jlbIconThietLap.setEnabled(true);
+        jlbThietLap.setEnabled(true);
+        jBtnTaoTK.setEnabled(true);
+        jlbTaoTK.setEnabled(true);
+    }
+
+    public void SetQuanLiBanHang() {
+        jBtnBanhang.setEnabled(true);
+        jlbIconBanHang.setEnabled(true);
+        jlbBanHang.setEnabled(true);
+        jBtnDoiMK.setEnabled(true);
+        jlbDoiMK.setEnabled(true);
+        jbtnDangXuat.setEnabled(true);
+        jlbDangXuat.setEnabled(true);
+        jBtnThongke.setEnabled(true);
+        jlbIconThongKe.setEnabled(true);
+        jlbThongKe.setEnabled(true);
+        jBtnThongtin.setEnabled(true);
+        jlbThongTin.setEnabled(true);
+    }
+    
+    public void SetQuanLiKho(){
+        jBtnKhohang.setEnabled(true);
+        jlbIconKhoHang.setEnabled(true);
+        jlbKhoHang.setEnabled(true);
+        jBtnDoiMK.setEnabled(true);
+        jlbDoiMK.setEnabled(true);
+        jbtnDangXuat.setEnabled(true);
+        jlbDangXuat.setEnabled(true);
+        jBtnThongke.setEnabled(true);
+        jlbIconThongKe.setEnabled(true);
+        jlbThongKe.setEnabled(true);
+        jBtnThongtin.setEnabled(true);
+        jlbThongTin.setEnabled(true);
+    }
+    
+    public void SetQuanLiKeToan(){
+        jBtnKetoan.setEnabled(true);
+        jlbIconKeToan.setEnabled(true);
+        jlbKeToan.setEnabled(true);
+        jBtnDoiMK.setEnabled(true);
+        jlbDoiMK.setEnabled(true);
+        jbtnDangXuat.setEnabled(true);
+        jlbDangXuat.setEnabled(true);
+        jBtnThongke.setEnabled(true);
+        jlbIconThongKe.setEnabled(true);
+        jlbThongKe.setEnabled(true);
+        jBtnThongtin.setEnabled(true);
+        jlbThongTin.setEnabled(true);
+    }
+
     private void jBtnBanhangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBanhangMouseEntered
         // TODO add your handling code here:
         setColor(jBtnBanhang);
@@ -561,7 +706,7 @@ public class MainForm extends javax.swing.JFrame {
     private void jBtnKhohangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnKhohangMouseExited
         // TODO add your handling code here:
         resetColor(jBtnKhohang);
-        
+
     }//GEN-LAST:event_jBtnKhohangMouseExited
 
     private void jBtnKetoanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnKetoanMouseEntered
@@ -606,15 +751,15 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
-        xx=evt.getX();
-        yy=evt.getY();
+        xx = evt.getX();
+        yy = evt.getY();
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
         // TODO add your handling code here:
-        int x= evt.getXOnScreen();
-        int y= evt.getYOnScreen();
-        this.setLocation(x-xx, y-yy);
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
     }//GEN-LAST:event_jLabel1MouseDragged
 
     private void jBtnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCloseMouseClicked
@@ -641,8 +786,8 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jBtnBanhangMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBanhangMouseReleased
         // TODO add your handling code here:
-        if(jBtnBanhang.getBackground().equals(new Color(236,236,236,50))){
-        setColor(jBtnBanhang);
+        if (jBtnBanhang.getBackground().equals(new Color(236, 236, 236, 50))) {
+            setColor(jBtnBanhang);
         }
     }//GEN-LAST:event_jBtnBanhangMouseReleased
 
@@ -712,26 +857,34 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jBtnBanhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBanhangMouseClicked
         // TODO add your handling code here:
-        FormQuanLiBanHang frmQLBH= new FormQuanLiBanHang();
-        frmQLBH.setVisible(true);
+        if (jBtnBanhang.isEnabled()) {
+            FormQuanLiBanHang frmQLBH = new FormQuanLiBanHang();
+            frmQLBH.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnBanhangMouseClicked
 
     private void jBtnKhohangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnKhohangMouseClicked
         // TODO add your handling code here:
-        FormQuanLiKho frmQLK = new FormQuanLiKho();
-        frmQLK.setVisible(true);
+        if (jBtnKhohang.isEnabled()) {
+            FormQuanLiKho frmQLK = new FormQuanLiKho();
+            frmQLK.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnKhohangMouseClicked
 
     private void jBtnKetoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnKetoanMouseClicked
         // TODO add your handling code here:
-        FormQuanLiKeToan frmQLKT = new FormQuanLiKeToan();
-        frmQLKT.setVisible(true);
+        if (jBtnKetoan.isEnabled()) {
+            FormQuanLiKeToan frmQLKT = new FormQuanLiKeToan();
+            frmQLKT.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnKetoanMouseClicked
 
     private void jBtnThongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongkeMouseClicked
         // TODO add your handling code here:
-        FormQuanLiThongKe frmQLTK  = new FormQuanLiThongKe();
-        frmQLTK.setVisible(true);
+        if (jBtnThongke.isEnabled()) {
+            FormQuanLiThongKe frmQLTK = new FormQuanLiThongKe();
+            frmQLTK.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnThongkeMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -759,15 +912,15 @@ public class MainForm extends javax.swing.JFrame {
         resetColor(jBtnDoiMK);
     }//GEN-LAST:event_jBtnDoiMKMouseExited
 
-    private void jBtnDangxuatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDangxuatMouseEntered
+    private void jbtnDangXuatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnDangXuatMouseEntered
         // TODO add your handling code here:
-        setColor(jBtnDangxuat);
-    }//GEN-LAST:event_jBtnDangxuatMouseEntered
+        setColor(jbtnDangXuat);
+    }//GEN-LAST:event_jbtnDangXuatMouseEntered
 
-    private void jBtnDangxuatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDangxuatMouseExited
+    private void jbtnDangXuatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnDangXuatMouseExited
         // TODO add your handling code here:
-        resetColor(jBtnDangxuat);
-    }//GEN-LAST:event_jBtnDangxuatMouseExited
+        resetColor(jbtnDangXuat);
+    }//GEN-LAST:event_jbtnDangXuatMouseExited
 
     private void jBtnThongtinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongtinMouseEntered
         // TODO add your handling code here:
@@ -781,10 +934,11 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jBtn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn7MouseClicked
         // TODO add your handling code here:
-        if(jPnHome.isVisible())
+        if (jPnHome.isVisible()) {
             jPnHome.setVisible(false);
-        else
+        } else {
             jPnHome.setVisible(true);
+        }
     }//GEN-LAST:event_jBtn7MouseClicked
 
     private void jBtnTaoTKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTaoTKMousePressed
@@ -817,23 +971,24 @@ public class MainForm extends javax.swing.JFrame {
         setColor(jBtnThongtin);
     }//GEN-LAST:event_jBtnThongtinMouseReleased
 
-    private void jBtnDangxuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDangxuatMousePressed
+    private void jbtnDangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnDangXuatMousePressed
         // TODO add your handling code here:
-        resetColor(jBtnDangxuat);
-    }//GEN-LAST:event_jBtnDangxuatMousePressed
+        resetColor(jbtnDangXuat);
+    }//GEN-LAST:event_jbtnDangXuatMousePressed
 
-    private void jBtnDangxuatMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDangxuatMouseReleased
+    private void jbtnDangXuatMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnDangXuatMouseReleased
         // TODO add your handling code here:
-        setColor(jBtnDangxuat);
-    }//GEN-LAST:event_jBtnDangxuatMouseReleased
+        setColor(jbtnDangXuat);
+    }//GEN-LAST:event_jbtnDangXuatMouseReleased
 
     private void jBtnTaoTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTaoTKMouseClicked
         // TODO add your handling code here:
-        FormDangKi frmDangKi = new FormDangKi();
-        frmDangKi.setVisible(true);
+        if (jlbTaoTK.isEnabled()) {
+            FormDangKi frmDangKi = new FormDangKi();
+            frmDangKi.setVisible(true);
+        }
     }//GEN-LAST:event_jBtnTaoTKMouseClicked
 
-    
     /**
      * @param args the command line arguments
      */
@@ -880,7 +1035,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jBtn7;
     private javax.swing.JPanel jBtnBanhang;
     private javax.swing.JLabel jBtnClose;
-    private javax.swing.JPanel jBtnDangxuat;
     private javax.swing.JPanel jBtnDoiMK;
     private javax.swing.JPanel jBtnKetoan;
     private javax.swing.JPanel jBtnKhohang;
@@ -890,28 +1044,30 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnThongke;
     private javax.swing.JPanel jBtnThongtin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPnHome;
+    private javax.swing.JPanel jbtnDangXuat;
+    private javax.swing.JLabel jlbBanHang;
+    private javax.swing.JLabel jlbDangXuat;
+    private javax.swing.JLabel jlbDoiMK;
+    private javax.swing.JLabel jlbIconBanHang;
+    private javax.swing.JLabel jlbIconKeToan;
+    private javax.swing.JLabel jlbIconKhoHang;
+    private javax.swing.JLabel jlbIconNguoiDung;
+    private javax.swing.JLabel jlbIconThietLap;
+    private javax.swing.JLabel jlbIconThongKe;
+    private javax.swing.JLabel jlbKeToan;
+    private javax.swing.JLabel jlbKhoHang;
+    private javax.swing.JLabel jlbNguoiDung;
+    private javax.swing.JLabel jlbTaoTK;
+    private javax.swing.JLabel jlbThietLap;
+    private javax.swing.JLabel jlbThonTinUser;
+    private javax.swing.JLabel jlbThongKe;
+    private javax.swing.JLabel jlbThongTin;
     // End of variables declaration//GEN-END:variables
 }

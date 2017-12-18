@@ -542,6 +542,9 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         jBtnThem.setBackground(new java.awt.Color(204, 204, 204));
         jBtnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThemMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThemMouseEntered(evt);
             }
@@ -822,6 +825,11 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 "Mã đơn đặt hàng", "Mã sản phẩm", "Số lượng"
             }
         ));
+        jTbCTDDH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbCTDDHMouseClicked(evt);
+            }
+        });
         jScrCTDDH.setViewportView(jTbCTDDH);
 
         getContentPane().add(jScrCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 290, 760, 340));
@@ -871,10 +879,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         Binding();
         
     }
-    private void jTbCTDDHMouseClicked(java.awt.event.MouseEvent evt) {
-        if (jTbCTDDH.isEnabled())
-            Binding();
-    }     
+  
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
@@ -955,16 +960,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnTimKiem);
     }//GEN-LAST:event_jBtnTimKiemMouseReleased
-    private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {
-        if(jBtnThem.isEnabled()){
-            jTextField2.setText(CtrlCTDDH.LayMaDDH());
-            jTextField3.setText("");
-            jTextField5.setText("");
-            jDateChooser3.setDate(new Date());
-            EnableComponent(true);
-            flag=1;
-        }
-    }           
+  
     private void jBtnThemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseEntered
         // TODO add your handling code here:
         setColor(jBtnThem);
@@ -1090,6 +1086,21 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         setColor(jBtnXemPhieuIn);
     }//GEN-LAST:event_jBtnXemPhieuInMouseReleased
 
+    private void jTbCTDDHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbCTDDHMouseClicked
+        // TODO add your handling code here:
+        if(jTbCTDDH.getSelectedRow()>=0)
+            Binding();
+    }//GEN-LAST:event_jTbCTDDHMouseClicked
+
+    private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
+        if (jBtnThem.isEnabled()){
+            jTextField2.setText(CtrlCTDDH.LayMaDDH());
+            jTextField3.setText("");
+            jTextField5.setText("");
+            jDateChooser3.setDate(new Date());
+// TODO add your handling code here:
+    }//GEN-LAST:event_jBtnThemMouseClicked
+}
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);

@@ -80,6 +80,7 @@ public class FormQuanLiKeToan extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 20, 30));
 
+        jBtn1.setBackground(new java.awt.Color(153, 153, 153));
         jBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn1MouseClicked(evt);
@@ -110,6 +111,7 @@ public class FormQuanLiKeToan extends javax.swing.JFrame {
 
         getContentPane().add(jBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 120));
 
+        jBtn2.setBackground(new java.awt.Color(153, 153, 153));
         jBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtn2MouseClicked(evt);
