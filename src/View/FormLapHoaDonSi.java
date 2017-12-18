@@ -42,7 +42,6 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
     ArrayList<ObjKhachHang>listComboboxKH=new ArrayList<>();
     ArrayList<ObjChiTietHDS>ListGioHang = new ArrayList<>();
     CtrlLapHoaDonSi CtrlHDS = new CtrlLapHoaDonSi();
-    ArrayList<Integer> ListSoLuongTon = new ArrayList<>();
     FormDuyetHoaDonSi frmDuyetHDS;
     /**
      * Creates new form FormLapHoaDonLe
@@ -1053,7 +1052,6 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
     public void ReloadForm(){
         HienThiDanhSachSanPham(CtrlHDS.LayDanhSachSanPham());
         ListGioHang.clear();
-        ListSoLuongTon.clear();
         LoadComboboxLoaiSP();
         LoadComboboxNhaCungCap();
         jtxtTimKiem.setText("");
@@ -1302,8 +1300,9 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
             for(int i = 0 ;i<Model.getRowCount();i++){
                 if(Model.getValueAt(i,0).toString().equals(itemGioHang.getMaSP())){
                     exist=true;
+                    int SoLuongTon = CtrlHDS.LaySoLuongSanPham(itemGioHang.getMaSP(), jtxtSoHDS.getText());
                     int SL =itemGioHang.getSoLuong()+Integer.parseInt(Model.getValueAt(i,3).toString());
-                    if(SL<=listSP.get(modelRow).getSoLuong()){
+                    if(SL<=listSP.get(modelRow).getSoLuong()||SL<=SoLuongTon){
                           int ThanhTien = SL*Integer.parseInt(Model.getValueAt(i,4).toString().replace(",",""));
                           Model.setValueAt(SL,i,3);
                           Model.setValueAt(String.format("%,d",ThanhTien),i,5);
@@ -1312,14 +1311,13 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
                           break;
                     }
                     else {
-                          JOptionPane.showMessageDialog(this,"Số lượng không đủ.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                          JOptionPane.showMessageDialog(this,"Số lượng không đủ. Chỉ còn lại "+SoLuongTon, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                           break;
                     }
                 }
             }
             if(!exist){
                 ListGioHang.add(itemGioHang);
-                ListSoLuongTon.add(listSP.get(modelRow).getSoLuong());
                 Vector v = new Vector();
                 v.add(itemGioHang.getMaSP());
                 v.add(itemGioHang.getTenSP());
@@ -1391,25 +1389,16 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
             int soluongcu = Integer.parseInt(Model.getValueAt(modelRow, 3).toString());
             int dongia = Integer.parseInt(Model.getValueAt(modelRow, 4).toString().replace(",", ""));
             String inputdialog = JOptionPane.showInputDialog(this, "Nhập số lượng:", "");
-            int soluongtonkho = CtrlHDS.LaySoLuongSanPham(Model.getValueAt(modelRow, 0).toString());
+            int soluongtonkho = CtrlHDS.LaySoLuongSanPham(Model.getValueAt(modelRow, 0).toString(), jtxtSoHDS.getText());
             if (inputdialog != null) {
                 try {
                     int SL = Integer.parseInt(inputdialog);
                     if (!inputdialog.equals("0")) {
-                        if (!ChinhSua) {
-                            if (SL <= soluongtonkho) {
-                                Model.setValueAt(SL, modelRow, 3);
-                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + soluongtonkho + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                            }
+                        if (SL <= soluongtonkho) {
+                            Model.setValueAt(SL, modelRow, 3);
+                            Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
                         } else {
-                            if (SL <= soluongtonkho + soluongcu) {
-                                Model.setValueAt(SL, modelRow, 3);
-                                Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + (soluongtonkho + soluongcu) + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                            }
+                            JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + soluongtonkho + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                         }
                     } else {
                         jBtnXoaMouseClicked(null);
