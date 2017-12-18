@@ -66,7 +66,7 @@ public class ObjSanPham {
         this.MoTa = MoTa;
         this.LoiNhuanBien = LoiNhuanBien;
     }
-    
+ 
 
     
     //////Get
