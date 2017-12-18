@@ -26,6 +26,11 @@ public class ObjTaiKhoan {
         this.Ten = Ten;
         this.PhanLoai = PhanLoai;
     }
+
+    public ObjTaiKhoan(String TenDangNhap, String MatKhau) {
+        this.TenDangNhap = TenDangNhap;
+        this.MatKhau = MatKhau;
+    }
     
     //Get
 
