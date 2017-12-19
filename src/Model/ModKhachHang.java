@@ -75,7 +75,8 @@ public class ModKhachHang extends Model{
 
     public boolean Update(ObjKhachHang TbKhachHang) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String SQL="Update KHACHHANG set TenKH=N'" + TbKhachHang.getTenKH()+
+        String SQL="Update KHACHHANG set MaKH='"+ TbKhachHang.getMaKH()+
+                                        "',TenKH=N'" + TbKhachHang.getTenKH()+
                                         "',SDT='" + TbKhachHang.getSDT()+
                                         "',DiaChi=N'" + TbKhachHang.getDiaChi()+
                                         "',Email='"+ TbKhachHang.getEmail()+
@@ -83,9 +84,9 @@ public class ModKhachHang extends Model{
                                         "' where MaKH='" +TbKhachHang.getMaKH()+"';";
         try{
             if(DB.Connected()){
-                stmDB=(com.mysql.jdbc.Statement) (Statement) DB.getConDB().createStatement();
-                stmDB.executeUpdate(SQL);
-                DB.CloseDB();
+                pstmt=DB.getConDB().prepareStatement(SQL);
+                pstmt.executeUpdate(SQL);
+                
             }
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModKhachHang.Update: "+ex.getMessage());

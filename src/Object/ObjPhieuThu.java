@@ -25,6 +25,15 @@ public class ObjPhieuThu {
         
     }
     
+    public ObjPhieuThu(String MaPT, Date NgayThu, int TongTienThu, String LyDoThu, String MaKH)
+    {
+        this.MaPT=MaPT;
+        this.NgayThu=NgayThu;
+        this.TongTienThu=TongTienThu;
+        this.LyDoThu=LyDoThu;
+        this.MaKH=MaKH;
+    }
+    
     public ObjPhieuThu(String MaPT, String TenKH, int TongTienThu, Date NgayThu,String MaKH, String DiaChi, String SDT, String LyDoThu ){
         this.MaPT=MaPT;
         this.LyDoThu=LyDoThu;
@@ -35,7 +44,7 @@ public class ObjPhieuThu {
         this.DiaChi=DiaChi;
         this.SDT=SDT;
     }
-    public ObjPhieuThu(String MaPT, String LyDoThu , int TongTienThu, Date NgayThu,String MaKH ){
+    public ObjPhieuThu(String MaPT, String LyDoThu, int TongTienThu, Date NgayThu,String MaKH ){
         this.MaPT=MaPT;
         this.LyDoThu=LyDoThu;
         this.TongTienThu=TongTienThu;

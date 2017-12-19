@@ -61,4 +61,32 @@ public class ObjPhieuChi {
         return NoCuaDaiLy;
     }
     
+    public void setMaPC(String MaPC){
+        this.MaPC=MaPC;
+    }
+    public void setTongTienChi(String TongTienChi){
+        this.TongTienChi=TongTienChi;
+    }
+    public void setNgayChi(Date NgayChi){
+        this.NgayChi=NgayChi;
+    }
+    public void setLyDoChi(String LyDoChi){
+        this.LyDoChi=LyDoChi;
+    }
+    public void setMaNCC(String MaNCC){
+        this.MaNCC=MaNCC;
+    }
+    public void setTenNCC(String TenNCC){
+        this.TenNCC=TenNCC;
+    }
+    public void setSDT(String SDT){
+        this.SDT=SDT;
+    }public void setDiaChi(String DiaChi){
+        this.DiaChi=DiaChi;
+    }
+    public void setNoCuaDaiLy(String NoCuaDaiLy){
+        this.NoCuaDaiLy=NoCuaDaiLy;
+    }
+    
+    
 }

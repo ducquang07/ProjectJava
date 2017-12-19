@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
  */
 public class ModPhieuThu extends Model{
     private PreparedStatement pstmt;
-    SimpleDateFormat dt=new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+    SimpleDateFormat dt=new SimpleDateFormat("yyyy/MM/dd");
     
     public ModPhieuThu(){
         DB=new Connect();
@@ -48,6 +48,7 @@ public class ModPhieuThu extends Model{
                 pstmt.setString(3, Integer.toString(TbPT.getTongTienThu()));
                 pstmt.setString(4, dt.format(TbPT.getNgayThu()));
                 pstmt.setString(5, TbPT.getMaKH());
+                pstmt.executeUpdate();
             }
         }catch(SQLException ex){
             System.out.println("Ngoại lệ tại ModPhieuThu.Insert:"+ex.getMessage());
@@ -63,7 +64,7 @@ public class ModPhieuThu extends Model{
     public boolean Update(ObjPhieuThu TbPT){
         String SQL="UPDATE PHIEUTHU set MaPT='"+TbPT.getMaPT()+
                                             "',LyDoThu='"+TbPT.getLyDoThu()+
-                                            "',TongTienThu='"+TbPT.getTongTienThu()+
+                                            "',TongTienThu='"+Integer.toString(TbPT.getTongTienThu())+
                                             "',NgayThu='"+dt.format(TbPT.getNgayThu())+
                                             "',MaKH='"+TbPT.getMaKH()+
                                             "' where MaPT='"+TbPT.getMaPT()+"'";

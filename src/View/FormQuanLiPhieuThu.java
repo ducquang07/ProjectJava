@@ -10,7 +10,9 @@ import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+
 import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -407,6 +409,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jBtnSua.setBackground(new java.awt.Color(204, 204, 204));
         jBtnSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnSuaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnSuaMouseEntered(evt);
             }
@@ -863,7 +868,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         Binding();
         jDCNgayLap.setDate(new Date());
         jDCTuNgay.setDate(new Date());
-        jDCDenNgay.setDate(new Date());
+        jDCDenNgay.setDate(new Date()); 
         CtrlPT.CloseConnection();
         EnableComponent(true);
     }
@@ -871,6 +876,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     public void HienThiDanhSachPhieuThu(ResultSet rs){
         listPT.clear();
         DefaultTableModel model;
+        Calendar cal = Calendar.getInstance();
+
         model=(DefaultTableModel) jTbDSPT.getModel();
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
@@ -958,6 +965,12 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jCbbTenKH.setEnabled(!Active);
         jtxtSDT.setEnabled(!Active);
         jtxtDiaChi.setEnabled(!Active);
+        
+        jtxtSoTienThu.setEnabled(!Active);
+        jtxtLyDoThu.setEnabled(!Active);
+        jtxtMaPT.setEnabled(!Active);
+        jDCNgayLap.setEnabled(!Active);
+        
         jBtnThem.setEnabled(Active);
         jlblThem.setEnabled(Active);
         jBtnXoa.setEnabled(Active);
@@ -1218,34 +1231,62 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
            jDCNgayLap.setDate(new Date());
            jtxtSoTienThu.setText("");
            jtxtLyDoThu.setText("");
-           EnableComponent(false);
+           EnableComponent(true);
            flag=1;
         }
     }//GEN-LAST:event_jBtnHuyMouseClicked
 
     private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
         // TODO add your handling code here:
-//        if(jBtnLuu.isEnabled()){
-//            if(flag==1){
-//                int i=Integer.parseInt(jtxtSoTienThu.getText());
-//                objKH = new ObjKhachHang(jtxtMaKH.getText(), jCbbTenKH.getSelectedItem().toString(), jtxtSDT.getText(), jtxtDiaChi.getText());
-//                objPT= new ObjPhieuThu(jtxtMaPT.getText(),jDCNgayLap.getDate(),i,jtxtLyDoThu.getText());
-//                if(!objPT.getMaPT().equals("")){
-//                    if(!objKH.getTenKH().equals("")){
-//                        try{
-//                            if(modPT.Insert(objPT)){
-//                                EnableComponent(false);
-//                                JOptionPane.showMessageDialog(this, "Thêm phiếu thu \"" + objPT.getMaPT()+ "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                                HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
-//                            }
-//                        }catch(Exception e){
-//                            JOptionPane.showMessageDialog(this, "Thêm phiếu thu \"" + objPT.getMaPT()+ "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        if(jBtnLuu.isEnabled()){
+            if(flag==1){
+                int i=Integer.parseInt(jtxtSoTienThu.getText().replace(",",""));
+                objKH = new ObjKhachHang(jtxtMaKH.getText(), jCbbTenKH.getSelectedItem().toString(), jtxtSDT.getText(), jtxtDiaChi.getText());
+                objPT= new ObjPhieuThu(jtxtMaPT.getText(),jtxtLyDoThu.getText(), i,jDCNgayLap.getDate(),jtxtMaKH.getText());
+                if(!objPT.getMaPT().equals("")){
+                    if(!objKH.getMaKH().equals("")){
+                        try{
+                            if(modPT.Insert(objPT)){
+                                EnableComponent(false);
+                                JOptionPane.showMessageDialog(this, "Thêm phiếu thu \"" + objPT.getMaPT()+ "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
+                            }
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, "Thêm phiếu thu \"" + objPT.getMaPT()+ "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+                flag=0;
+            }
+            else if(flag==2){
+                int i=Integer.parseInt(jtxtSoTienThu.getText().replace(",",""));
+                objKH = new ObjKhachHang(jtxtMaKH.getText(), jCbbTenKH.getSelectedItem().toString(), jtxtSDT.getText(), jtxtDiaChi.getText());
+                objPT= new ObjPhieuThu(jtxtMaPT.getText(),jtxtLyDoThu.getText(), i,jDCNgayLap.getDate(),jtxtMaKH.getText());
+                if(!objKH.getMaKH().equals("")){
+                    if(!objPT.getMaPT().equals("")){
+                        try{
+                            if(modPT.Update(objPT)){
+                                EnableComponent(false);
+                                JOptionPane.showMessageDialog(this, "Sửa phiếu thu \"" + objPT.getMaPT()+ "\" thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                                HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
+                            }
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, "Sửa phiếu thu \"" + objPT.getMaPT()+ "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+                flag=0;
+            }
+        }
     }//GEN-LAST:event_jBtnLuuMouseClicked
+
+    private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
+        // TODO add your handling code here:
+        if(jBtnSua.isEnabled()){
+            EnableComponent(false);
+            flag=2;
+        }
+    }//GEN-LAST:event_jBtnSuaMouseClicked
     
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
