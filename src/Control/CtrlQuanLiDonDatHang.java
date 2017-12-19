@@ -20,12 +20,16 @@ public class CtrlQuanLiDonDatHang {
     Connect DB=new Connect();
     SimpleDateFormat dt1 = new SimpleDateFormat("yyyy/MM/dd");
     public ResultSet LayDSDonDatHang(){
-        String SQL="Select DDH.MaDDH, DDH.MaNCC, DDH.NgayDatHang,DDH.TrangThai,CTDH.MaSP, CTDH.SoLuong from DONDATHANG DDH, CTDDH CTDH where DDH.MaDDH=CTDH.MaDDH";
+        String SQL="Select DDH.MaDDH, DDH.MaNCC, DDH.NgayDatHang, DDH.TrangThai, NCC.TenNCC from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC";
         return DB.GetData(SQL);
     }
 
     public boolean CloseConnection(){
         return DB.CloseDB();
+    }
+    public ResultSet LayThongTinChiTietDDH(String MaDDH){
+        String SQL="Select CT.*,SP.TenSP from CTDDH CT,SANPHAM SP where SP.MaSP=CT.MaSP and CT.MaDDH='"+MaDDH+"'";
+        return DB.GetData(SQL);
     }
     
     public ResultSet SearchDonDHByTrangThai(String TrangT){

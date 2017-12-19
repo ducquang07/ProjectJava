@@ -98,6 +98,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jtxtDiaChi.setLineWrap(true);
         jlbChuaGiao.setVisible(false);
         jlbDaGiao.setVisible(false);
+        
         LoadForm();
 
     }
