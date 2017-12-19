@@ -20,8 +20,10 @@ import Model.ModChiTietDDH;
 import Object.ObjSanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -46,6 +48,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         ArrayList<String> ListComboboxTT = new ArrayList<>();
         ArrayList<ObjChiTietDDH> listCTDDH = new ArrayList<>();
         private int flag=0;
+        SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy      hh:mm:ss a");
         
     public FormQuanLiDonDatHang() {
         initComponents();
@@ -64,26 +67,18 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         
         editFrm.MakeTransparentTable(jScrCTDDH, jTbCTDDH);
         editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn trạng thái đơn hàng---", "Da dat", "Khong thanh cong", "Thanh cong" }));
-        jComboBox1.setFocusable(false);
+        ((DefaultTableCellRenderer) jTbDSDDH.getDefaultRenderer(Object.class)).setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        
+        jtxtTenNCC.setLineWrap(true);
         LoadForm();
     }
-    public void EnableComponent(boolean Active){
-    
-        jBtnLuu.setEnabled(Active);
-        jLabel23.setEnabled(Active);
-        jBtnHuy.setEnabled(Active);
-        jLabel24.setEnabled(Active);
-        jTextField2.setEnabled(Active);
-        jTextField3.setEnabled(Active);
-        jTextField5.setEnabled(Active);
-        jDateChooser3.setEnabled(Active);
-        jBtnThem.setEnabled(!Active);
-        jLabel19.setEnabled(!Active);
-        jBtnXoa.setEnabled(!Active);
-        jLabel20.setEnabled(!Active);
-        jBtnSua.setEnabled(!Active);
-        jLabel22.setEnabled(!Active);
+    public void SetVisibleButton(boolean active){
+        jBtnThem.setVisible(active);
+        jBtnXoa.setVisible(active);
+        jBtnSua.setVisible(active);
+        jBtnLuu.setVisible(!active);
+        jBtnHuy.setVisible(!active);
+        
     }
     public void LoadComboboxNhaCungCap(){
         ListComboboxNCC.clear();
@@ -109,61 +104,62 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         DefaultTableModel model;
         model=(DefaultTableModel) jTbDSDDH.getModel();
         model.getDataVector().removeAllElements(); 
+        model.fireTableDataChanged();
         try{
             while(rs.next()){
-                ObjDonDatHang itemDDH;
-                itemDDH =new ObjDonDatHang(rs.getString("MaDDH"),rs.getString("MaNCC"),rs.getDate("NgayDatHang"),rs.getString("TrangThai"));
+                ObjDonDatHang itemDDH =new ObjDonDatHang(rs.getString("MaDDH"),rs.getString("MaNCC"), rs.getString("TenNCC"), rs.getTimestamp("NgayDatHang"), rs.getString("TrangThai"));
                 listDDH.add(itemDDH);
                 Vector v = new Vector();
                 v.add(itemDDH.getMaDDH());
-                v.add(itemDDH.getMaNCC());
-                v.add(itemDDH.getNgayDatHang());
-                v.add(itemDDH.getTrangThai());   
+                v.add(dt.format(itemDDH.getNgayDatHang()));
                 model.addRow(v);
             }
+            jTbDSDDH.changeSelection(0,0,false,false);
+            Binding();
+            HienThiDanhSachChiTietDDH(jtxtMaDDH.getText());
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.HienThiDanhSachDonDatHang: "+ex.getMessage());
         }
         finally{
             CtrlDDH.CloseConnection();
         }
-        jTbDSDDH.changeSelection(0,0,false,false);
     }
-    public void HienThiDanhSachChiTietDDH(ResultSet rs){
+    public void HienThiDanhSachChiTietDDH(String MaDDH){
         listCTDDH.clear();
         DefaultTableModel model;
         model=(DefaultTableModel) jTbCTDDH.getModel();
         model.getDataVector().removeAllElements(); 
+        model.fireTableDataChanged();
         try{
+            ResultSet rs=CtrlDDH.LayThongTinChiTietDDH(MaDDH);
             while(rs.next()){
                 ObjChiTietDDH itemCTDDH;
-                itemCTDDH =new ObjChiTietDDH(rs.getString("MaDDH"),rs.getString("MaSP"),(int)Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"),rs.getDate("NgayDatHang"),rs.getString("TrangThai"));
+                itemCTDDH =new ObjChiTietDDH(rs.getString("MaDDH"),rs.getString("MaSP"),rs.getString("TenSP"),Integer.parseInt(rs.getString("SoLuong")));
                 listCTDDH.add(itemCTDDH);
                 Vector v = new Vector();
-                v.add(itemCTDDH.getMaDDH());
                 v.add(itemCTDDH.getMaSP());
+                v.add(itemCTDDH.getTenSP());
                 v.add(itemCTDDH.getSoLuong());
                 model.addRow(v);
             }
-        } catch (SQLException ex) {
+            
+        } catch (Exception ex) {
             System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.HienThiDanhSachChiTietDDH: "+ex.getMessage());
         }
         finally{
-            CtrlCTDDH.CloseConnection();
+            CtrlDDH.CloseConnection();
         }
-        jTbCTDDH.changeSelection(0,0,false,false);
     }
     public void Binding(){
-        TableModel model =jTbCTDDH.getModel();
-        try{
-            int viewRow = jTbCTDDH.getSelectedRow();
-            int modelRow= jTbCTDDH.convertRowIndexToModel(viewRow);
-             if(viewRow>-1){
-                jTextField2.setText(listCTDDH.get(modelRow).getMaDDH());
-                jTextField3.setText(listCTDDH.get(modelRow).getMaNCC());
-                jDateChooser3.setDate(listCTDDH.get(modelRow).getNgayDatHang());
-                jTextField5.setText(listCTDDH.get(modelRow).getTenNCC());   
-             }
+        try {
+            DefaultTableModel model =(DefaultTableModel) jTbDSDDH.getModel();
+            int viewRow = jTbDSDDH.getSelectedRow();
+            int modelRow = jTbDSDDH.convertRowIndexToModel(viewRow);
+            jtxtMaDDH.setText(listDDH.get(modelRow).getMaDDH());
+            jtxtMaNCC.setText(listDDH.get(modelRow).getMaNCC());
+            jDateNgayDH.setDate(listDDH.get(modelRow).getNgayDatHang());
+            jtxtTenNCC.setText(listDDH.get(modelRow).getTenNCC());
+            jLbTrangThai.setText(listDDH.get(modelRow).getTrangThai());
         }
         catch(Exception ex){
             System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.Binding: "+ex.getMessage());
@@ -196,6 +192,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jBtnThem = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
+        jLbTrangThai = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -215,18 +212,18 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jPnDSDDH = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        jtxtMaDDH = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDateNgayDH = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtxtMaNCC = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         jPnThongtinDDH = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxtTenNCC = new javax.swing.JTextArea();
         jScrCTDDH = new javax.swing.JScrollPane();
         jTbCTDDH = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -578,6 +575,10 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         getContentPane().add(jBtnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 643, 120, 70));
 
+        jLbTrangThai.setBackground(new java.awt.Color(204, 204, 204));
+        jLbTrangThai.setText("            ");
+        getContentPane().add(jLbTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 196, 80, -1));
+
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setText("Từ ngày : ");
@@ -595,6 +596,10 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jComboBox2.setFocusable(false);
 
         jLabel7.setText("Mã đặt hàng :");
+
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+
+        jDateChooser2.setDateFormatString("dd/MM/yyyy");
 
         jPnTracuuDDH.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -670,20 +675,38 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 54, 560, 310));
 
+        jTbDSDDH.setAutoCreateRowSorter(true);
+        jTbDSDDH.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jTbDSDDH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã đơn đặt hàng", "Mã nhà cung cấp", "Ngày đặt hàng", "Trạng thái"
+                "Mã đơn đặt hàng", "Ngày đặt hàng"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTbDSDDH.setFocusable(false);
+        jTbDSDDH.setRowHeight(25);
+        jTbDSDDH.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSDDH.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTbDSDDH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbDSDDHMouseClicked(evt);
             }
         });
         jScrDSDDH.setViewportView(jTbDSDDH);
@@ -720,22 +743,18 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(204, 204, 204));
         jPanel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
+        jtxtMaDDH.setEditable(false);
+
         jLabel10.setText("Ngày đặt hàng :");
+
+        jDateNgayDH.setDateFormatString("dd/MM/yyyy");
+        jDateNgayDH.setEnabled(false);
 
         jLabel11.setText("Trạng thái :");
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 73, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-
         jLabel12.setText("Mã nhà cung cấp :");
+
+        jtxtMaNCC.setEditable(false);
 
         jLabel13.setText("Tên nhà cung cấp :");
 
@@ -763,6 +782,15 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jtxtTenNCC.setEditable(false);
+        jtxtTenNCC.setColumns(20);
+        jtxtTenNCC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jtxtTenNCC.setRows(5);
+        jScrollPane1.setViewportView(jtxtTenNCC);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -776,19 +804,20 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateNgayDH, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtMaDDH, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(22, 22, 22)))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,39 +827,55 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2)
+                        .addComponent(jtxtMaDDH)
                         .addComponent(jLabel12)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtxtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateNgayDH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 54, 770, 190));
 
+        jTbCTDDH.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jTbCTDDH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã đơn đặt hàng", "Mã sản phẩm", "Số lượng"
+                "Mã sản phẩm", "Tên sản phẩm", "Số lượng"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTbCTDDH.setFocusable(false);
+        jTbCTDDH.setRowHeight(25);
+        jTbCTDDH.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbCTDDH.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbCTDDH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbCTDDHMouseClicked(evt);
             }
         });
         jScrCTDDH.setViewportView(jTbCTDDH);
+        if (jTbCTDDH.getColumnModel().getColumnCount() > 0) {
+            jTbCTDDH.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTbCTDDH.getColumnModel().getColumn(2).setPreferredWidth(100);
+        }
 
         getContentPane().add(jScrCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 290, 760, 340));
 
@@ -873,11 +918,11 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     public void LoadForm(){
+        jDateChooser1.setDate(new Date());
+        jDateChooser2.setDate(new Date());
         HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
-        HienThiDanhSachChiTietDDH(CtrlCTDDH.LayDSCTDDH());
         LoadComboboxNhaCungCap();   
-        Binding();
-        
+        SetVisibleButton(true);
     }
   
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
@@ -913,6 +958,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jDateChooser1.setDate(new Date());
         jDateChooser2.setDate(new Date());
         jComboBox1.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
+        Binding();
         
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
@@ -937,8 +984,25 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnLamMoiMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-       
-         HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByNhaCC(ListComboboxNCC.get(jComboBox2.getSelectedIndex()).toString()));
+            try
+        {
+            if(jTextField1.getText().equals(""))
+            {
+                HienThiDanhSachDonDatHang(CtrlDDH.Search(jDateChooser1.getDate(), jDateChooser2.getDate(),jComboBox2.getSelectedItem().toString(),jComboBox1.getSelectedItem().toString()));
+                Binding();
+                HienThiDanhSachDonDatHang(CtrlDDH.Search1(jDateChooser1.getDate(), jDateChooser2.getDate(),jComboBox2.getSelectedItem().toString()));
+                Binding();
+                HienThiDanhSachDonDatHang(CtrlDDH.Search2(jDateChooser1.getDate(), jDateChooser2.getDate()));
+                Binding();
+            }
+            else{
+                HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByMaDDH(jTextField1.getText()));
+              Binding();
+            }
+        }catch(Exception e){
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.TimKiem: "+e.getMessage());
+        }  
+        
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -1088,19 +1152,22 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
     private void jTbCTDDHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbCTDDHMouseClicked
         // TODO add your handling code here:
-        if(jTbCTDDH.getSelectedRow()>=0)
+        if(jTbCTDDH.getSelectedRow()>=0 && jTbCTDDH.isEnabled())
             Binding();
     }//GEN-LAST:event_jTbCTDDHMouseClicked
 
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
-        if (jBtnThem.isEnabled()){
-            jTextField2.setText(CtrlCTDDH.LayMaDDH());
-            jTextField3.setText("");
-            jTextField5.setText("");
-            jDateChooser3.setDate(new Date());
-// TODO add your handling code here:
+    
     }//GEN-LAST:event_jBtnThemMouseClicked
-}
+
+    private void jTbDSDDHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSDDHMouseClicked
+        // TODO add your handling code here:
+        if(jTbDSDDH.getSelectedRow()>=0){
+            Binding();
+            HienThiDanhSachChiTietDDH(jtxtMaDDH.getText());
+        }
+    }//GEN-LAST:event_jTbDSDDHMouseClicked
+
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
@@ -1169,7 +1236,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateNgayDH;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1194,11 +1261,11 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLbTrangThai;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPnCTDDH;
     private javax.swing.JPanel jPnDSDDH;
@@ -1206,11 +1273,12 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPnTracuuDDH;
     private javax.swing.JScrollPane jScrCTDDH;
     private javax.swing.JScrollPane jScrDSDDH;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTbCTDDH;
     private javax.swing.JTable jTbDSDDH;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jtxtMaDDH;
+    private javax.swing.JTextField jtxtMaNCC;
+    private javax.swing.JTextArea jtxtTenNCC;
     // End of variables declaration//GEN-END:variables
 }

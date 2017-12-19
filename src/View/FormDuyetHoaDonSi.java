@@ -650,7 +650,6 @@ public class FormDuyetHoaDonSi extends javax.swing.JFrame {
     private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
         // TODO add your handling code here:
         if (!ChinhSua) {
-            boolean check = true;
             ObjHDS = new ObjHoaDonSi(jtxtSoHDS.getText(), jtxtMaKH.getText(), jDateNgayLap.getDate(), jDateNgayGiao.getDate(), Integer.parseInt(jtxtTongTien.getText().replace(",", "")), "");
             if (jRadBtnDaGiao.isSelected()) {
                 ObjHDS.setTinhTrangGiaoHang("Đã giao");
@@ -661,12 +660,7 @@ public class FormDuyetHoaDonSi extends javax.swing.JFrame {
                 try {
                     if (modHDS.Insert(ObjHDS)) {
                         for (int i = 0; i < ListCTHDS.size(); i++) {
-                            try {
-                                if (!modCTHDS.Insert(ListCTHDS.get(i))) {
-                                    check = false;
-
-                                }
-                            } catch (Exception ex) {
+                            if (!modCTHDS.Insert(ListCTHDS.get(i))) {
                                 JOptionPane.showMessageDialog(this, "Sản phẩm có mã " + ListCTHDS.get(i).getMaSP() + " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                             }
                         }
@@ -683,7 +677,6 @@ public class FormDuyetHoaDonSi extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Vui lòng chọn khách hàng.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
         } else {
-            boolean check = true;
             ObjHDS = new ObjHoaDonSi(jtxtSoHDS.getText(), jtxtMaKH.getText(), jDateNgayLap.getDate(), jDateNgayGiao.getDate(), Integer.parseInt(jtxtTongTien.getText().replace(",", "")), "");
             if (jRadBtnDaGiao.isSelected()) {
                 ObjHDS.setTinhTrangGiaoHang("Đã giao");
@@ -695,7 +688,6 @@ public class FormDuyetHoaDonSi extends javax.swing.JFrame {
                     if (modHDS.Update(ObjHDS) && modCTHDS.Delete(ObjHDS.getSoHDS())) {
                         for (int i = 0; i < ListCTHDS.size(); i++) {
                             if (!modCTHDS.Insert(ListCTHDS.get(i))) {
-                                check = false;
                                 JOptionPane.showMessageDialog(this, "Sản phẩm có mã " + ListCTHDS.get(i).getMaSP() + " cập nhật không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                             }
                         }

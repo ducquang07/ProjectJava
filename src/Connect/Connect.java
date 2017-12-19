@@ -23,7 +23,7 @@ public class Connect {
     private ResultSet rsDB=null;
     
 
-    private final String servername="localhost";//"closer2.heliohost.org:3306";// 
+    private final String servername= "localhost";//"closer2.heliohost.org:3306";//
     private final String databasename="closer_quanlicuahangson";//"closer2_quanlicuahangson";//
     private final String username="root";//"closer2";//
     private final String password="";//"Bo4quyennang";//

@@ -691,15 +691,39 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnBackMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-        
-        if(jtxtTimTheoMaPhieuNhap.equals(""))
+        try
         {
-            System.out.println(jdtcTuNgay.getDate());
-            HienThiPN(CtrlQLPN.SearchByTenNCC(jdtcTuNgay.getDate(), jdtcDenNgay.getDate(),jcbbTimTheoNhaCungCap.getSelectedItem().toString()));
-        }
-        else{
-            HienThiPN(CtrlQLPN.Search(jdtcTuNgay.getDate(), jdtcDenNgay.getDate(),jcbbTimTheoNhaCungCap.getSelectedItem().toString(), jtxtMaPN.getText()));
-        }
+            listCTPNH.clear();
+            DefaultTableModel model = (DefaultTableModel) jTbCTPN.getModel();
+            model.getDataVector().removeAllElements();
+            Vector v = new Vector();
+                    v.add("");
+                    v.add("");
+                    v.add("");
+                    v.add("");
+            model.addRow(v);
+            Resetfield();
+            if(jtxtTimTheoMaPhieuNhap.getText().equals(""))
+            {
+                if(HienThiPN(CtrlQLPN.SearchByTenNCC(jdtcTuNgay.getDate(), jdtcDenNgay.getDate(),jcbbTimTheoNhaCungCap.getSelectedItem().toString())))
+                {
+                    Binding();
+                    HienThiCTPN(CtrlQLPN.LayCTPN(jtxtMaPN.getText()));
+                    EnableComponent(false);
+                }
+            }
+            else{
+                if(HienThiPN(CtrlQLPN.Search(jdtcTuNgay.getDate(), jdtcDenNgay.getDate(),jcbbTimTheoNhaCungCap.getSelectedItem().toString(), jtxtMaPN.getText())))
+                {
+                    Binding();
+                    HienThiCTPN(CtrlQLPN.LayCTPN(jtxtMaPN.getText()));
+                    EnableComponent(false);
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Ngoại lệ tại FormNhapHang.TimKiem: "+e.getMessage());
+        }  
+        
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -723,18 +747,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnTimKiemMouseReleased
 
     private void jBtnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseClicked
-        // TODO add your handling code here:
-        //        try {
-            //            // TODO add your handling code here:
-            //            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-            //            if(rs.getRow()==0){
-                //                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-                //            }
-            //            displayData(rs);
-            //            Binding();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
+        FormLoad();
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
     private void jBtnLamMoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseEntered
@@ -863,8 +876,11 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
     private void jTbDSPNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbDSPNMouseClicked
         // TODO add your handling code here:
-        Binding();
-        HienThiCTPN(CtrlQLPN.LayCTPN(jtxtMaPN.getText()));
+        if(jTbDSPN.isEnabled())
+        {
+            Binding();
+            HienThiCTPN(CtrlQLPN.LayCTPN(jtxtMaPN.getText()));
+        }
     }//GEN-LAST:event_jTbDSPNMouseClicked
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
@@ -875,7 +891,6 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 try{
                 if(ModPN.Delete(ObjPN))
                     {
-                        //EnableComponent(false);
                         JOptionPane.showMessageDialog(this, "Xóa phiếu nhập hàng \"" + ObjPN.getTenNCC() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                         FormLoad();
                     }
@@ -893,15 +908,18 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
     private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
         // TODO add your handling code here:
-        FormLapPhieuNhap frmPN = new FormLapPhieuNhap(2);
+        FormLapPhieuNhap frmPN = new FormLapPhieuNhap(2,jtxtMaPN.getText());
         frmPN.setVisible(true);
     }//GEN-LAST:event_jBtnSuaMouseClicked
 
-    public void HienThiPN(ResultSet rs){
+    public boolean HienThiPN(ResultSet rs){
+        boolean bool = true;
         listPNH.clear();
         DefaultTableModel model = (DefaultTableModel) jTbDSPN.getModel();
         model.getDataVector().removeAllElements();
         try{
+            int fg=0;
+            jTbDSPN.setEnabled(true);
             while(rs.next()){
                 ObjPhieuNhapHang itemPNH;
                 itemPNH=new ObjPhieuNhapHang(rs.getString("MaPN"),rs.getDate("NgayNhap"),rs.getString("MaDDH"),rs.getString("MaNCC"),rs.getString("TenNCC"));
@@ -910,6 +928,18 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 v.add(itemPNH.getMaPN());
                 v.add(itemPNH.getNgayNhap());
                 model.addRow(v);
+                fg=1;
+            }
+            if(fg==0)//table danh sách phiếu nhập trống 
+            {
+                Vector v = new Vector();
+                    v.add("");
+                    v.add("");
+                    v.add("");
+                    v.add("");
+                    model.addRow(v);//set table chi tiết phiếu nhập trống
+                    bool=false;
+                    jTbDSPN.setEnabled(false);//set table enabled false tránh sự kiện click khi table trống
             }
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormNhapHang.HienThiPN: "+ex.getMessage());
@@ -918,6 +948,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
             CtrlQLPN.CloseConnection();
         }
         jTbDSPN.changeSelection(0,0,false,false);
+        return bool;
     }
     
     public void HienThiCTPN(ResultSet rs){
@@ -936,32 +967,43 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 v.add(itemCTPN.getDonGia());
                 model.addRow(v);
             }
+            
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại FormNhapHang.HienThiCTPN: "+ex.getMessage());
         }
         finally{
             CtrlQLPN.CloseConnection();
         }
-        jTbDSPN.changeSelection(0,0,false,false);
+        jTbCTPN.changeSelection(0,0,false,false);
     }
     
     public void Binding(){
         try{
             int viewRow = jTbDSPN.getSelectedRow();
-            int modelRow= jTbDSPN.convertRowIndexToModel(viewRow);
-             if(viewRow>-1){
+            if(viewRow>-1){
+                  int modelRow= jTbDSPN.convertRowIndexToModel(viewRow);
                   jtxtMaPN.setText(listPNH.get(modelRow).getMaPN());
                   jdtcNgayNhap.setDate(listPNH.get(modelRow).getNgayNhap());
                   jtxtMaDDH.setText(listPNH.get(modelRow).getMaDDH());
                   jtxtMaNCC.setText(listPNH.get(modelRow).getMaNCC());
                   jtxtTenNCC.setText(listPNH.get(modelRow).getTenNCC());
-             }
+             } 
+            if(!jTbDSPN.isEnabled())
+            {
+                  Resetfield();
+            }
         }
         catch(Exception ex){
-            System.out.println("Ngoại lệ tại FormQuanLiNhaCungCap.Binding: "+ex.getMessage());
+            System.out.println("Ngoại lệ tại FormQuanLiPhieuNhap.Binding: "+ex.getMessage());
         }
     }
-    
+    public void Resetfield(){//reset các trường dữ liệu có trên form
+        jtxtMaPN.setText("");
+        jdtcNgayNhap.setDate(null);
+        jtxtMaDDH.setText("");
+        jtxtMaNCC.setText("");
+        jtxtTenNCC.setText("");
+    }
     public void FormLoad(){
         HienThiPN(CtrlQLPN.LayDSPhieuNhap());
         Binding();
@@ -971,6 +1013,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         jdtcTuNgay.setDate(time);
         jdtcDenNgay.setDate(time);
         LoadComBoBox(CtrlQLPN.LayTenNCC());
+        jtxtTimTheoMaPhieuNhap.setText("");
     }
     
     public void LoadComBoBox(ResultSet rs){

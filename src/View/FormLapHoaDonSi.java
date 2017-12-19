@@ -74,7 +74,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
             public void stateChanged(ChangeEvent e) {
                   int dongia = Integer.parseInt(jtxtDonGia.getText().replace(",",""));
                   int soluong = Integer.parseInt(jSpSoLuong.getValue()+"");
-                  jtxtThanhTien.setText(String.valueOf(dongia*soluong));
+                  jtxtThanhTien.setText(String.format("%,d",dongia*soluong));
             }
         });
        jtxtSoHDS.setText(CtrlHDS.LaySoHDS());
@@ -1396,6 +1396,7 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
                     if (!inputdialog.equals("0")) {
                         if (SL <= soluongtonkho) {
                             Model.setValueAt(SL, modelRow, 3);
+                            ListGioHang.get(modelRow).setSoLuong(SL);
                             Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
                         } else {
                             JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + soluongtonkho + ".", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
