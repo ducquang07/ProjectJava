@@ -9,11 +9,15 @@ import Edit.Edit;
 import Model.ModChiTietPNH;
 import Model.ModPhieuNhapHang;
 import Object.ObjChiTietPNH;
+import Object.ObjNhaCungCap;
 import Object.ObjPhieuNhapHang;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -50,11 +54,12 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         JPanel ListTitle[]=new JPanel[]{jPnCTPN,jPnDSPN,jPnThongtinPN,jPnTracuuPN};
         editFrm.MakeTransparentTitle(ListTitle);
         
-        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXemPhieuIn,jBtnXoa};
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXemPhieuIn,jBtnXoa};
         editFrm.MakeTransparentButton(ListButton);
         
         editFrm.MakeTransparentTable(jScrPnCTPN, jTbCTPN);
         editFrm.MakeTransparentTable(jScrPnDSPN, jTbDSPN);
+        FormLoad();
     }
 
     /**
@@ -72,8 +77,6 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jBtnLamMoi = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jBtnLuu = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
         jBtnSua = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jBtnXoa = new javax.swing.JPanel();
@@ -240,45 +243,11 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
         getContentPane().add(jBtnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 220, 120, 65));
 
-        jBtnLuu.setBackground(new java.awt.Color(204, 204, 204));
-        jBtnLuu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBtnLuuMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBtnLuuMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jBtnLuuMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jBtnLuuMouseReleased(evt);
-            }
-        });
-
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Save_55px.png"))); // NOI18N
-
-        javax.swing.GroupLayout jBtnLuuLayout = new javax.swing.GroupLayout(jBtnLuu);
-        jBtnLuu.setLayout(jBtnLuuLayout);
-        jBtnLuuLayout.setHorizontalGroup(
-            jBtnLuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnLuuLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        jBtnLuuLayout.setVerticalGroup(
-            jBtnLuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnLuuLayout.createSequentialGroup()
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jBtnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 645, -1, -1));
-
         jBtnSua.setBackground(new java.awt.Color(204, 204, 204));
         jBtnSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnSuaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnSuaMouseEntered(evt);
             }
@@ -312,7 +281,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jBtnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 645, -1, -1));
+        getContentPane().add(jBtnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 645, -1, -1));
 
         jBtnXoa.setBackground(new java.awt.Color(204, 204, 204));
         jBtnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -352,7 +321,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jBtnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 645, -1, -1));
+        getContentPane().add(jBtnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 645, -1, -1));
 
         jBtnThem.setBackground(new java.awt.Color(204, 204, 204));
         jBtnThem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -390,7 +359,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 645, -1, -1));
+        getContentPane().add(jBtnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 645, -1, -1));
 
         jBtnXemPhieuIn.setBackground(new java.awt.Color(204, 204, 204));
         jBtnXemPhieuIn.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -429,7 +398,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
             .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jBtnXemPhieuIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 645, 120, 70));
+        getContentPane().add(jBtnXemPhieuIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 645, 120, 70));
 
         jBtnHuy.setBackground(new java.awt.Color(204, 204, 204));
         jBtnHuy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -466,7 +435,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jBtnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 645, -1, -1));
+        getContentPane().add(jBtnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 645, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -722,7 +691,15 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnBackMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-
+        
+        if(jtxtTimTheoMaPhieuNhap.equals(""))
+        {
+            System.out.println(jdtcTuNgay.getDate());
+            HienThiPN(CtrlQLPN.SearchByTenNCC(jdtcTuNgay.getDate(), jdtcDenNgay.getDate(),jcbbTimTheoNhaCungCap.getSelectedItem().toString()));
+        }
+        else{
+            HienThiPN(CtrlQLPN.Search(jdtcTuNgay.getDate(), jdtcDenNgay.getDate(),jcbbTimTheoNhaCungCap.getSelectedItem().toString(), jtxtMaPN.getText()));
+        }
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -864,26 +841,6 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         setColor(jBtnSua);
     }//GEN-LAST:event_jBtnSuaMouseReleased
 
-    private void jBtnLuuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseEntered
-        // TODO add your handling code here:
-        setColor(jBtnLuu);
-    }//GEN-LAST:event_jBtnLuuMouseEntered
-
-    private void jBtnLuuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseExited
-        // TODO add your handling code here:
-        resetColor(jBtnLuu);
-    }//GEN-LAST:event_jBtnLuuMouseExited
-
-    private void jBtnLuuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMousePressed
-        // TODO add your handling code here:
-        resetColor(jBtnLuu);
-    }//GEN-LAST:event_jBtnLuuMousePressed
-
-    private void jBtnLuuMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseReleased
-        // TODO add your handling code here:
-        setColor(jBtnLuu);
-    }//GEN-LAST:event_jBtnLuuMouseReleased
-
     private void jBtnHuyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnHuyMouseEntered
         // TODO add your handling code here:
         setColor(jBtnHuy);
@@ -934,6 +891,12 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         frmPN.setVisible(true);
     }//GEN-LAST:event_jBtnThemMouseClicked
 
+    private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
+        // TODO add your handling code here:
+        FormLapPhieuNhap frmPN = new FormLapPhieuNhap(2);
+        frmPN.setVisible(true);
+    }//GEN-LAST:event_jBtnSuaMouseClicked
+
     public void HienThiPN(ResultSet rs){
         listPNH.clear();
         DefaultTableModel model = (DefaultTableModel) jTbDSPN.getModel();
@@ -964,7 +927,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         try{
             while(rs.next()){
                 ObjChiTietPNH itemCTPN;
-                itemCTPN=new ObjChiTietPNH(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaPN"),rs.getInt("SoLuong"),rs.getInt("DonGia"));
+                itemCTPN=new ObjChiTietPNH(rs.getString("MaPN"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getInt("SoLuong"),rs.getInt("DonGia"));
                 listCTPNH.add(itemCTPN);
                 Vector v = new Vector();
                 v.add(itemCTPN.getMaSP());
@@ -1003,7 +966,32 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         HienThiPN(CtrlQLPN.LayDSPhieuNhap());
         Binding();
         HienThiCTPN(CtrlQLPN.LayCTPN(jtxtMaPN.getText()));
-        
+        EnableComponent(false);
+        Date time = new Date();
+        jdtcTuNgay.setDate(time);
+        jdtcDenNgay.setDate(time);
+        LoadComBoBox(CtrlQLPN.LayTenNCC());
+    }
+    
+    public void LoadComBoBox(ResultSet rs){
+        try{
+            while(rs.next()){
+                jcbbTimTheoNhaCungCap.addItem(rs.getString(1));
+            }
+        }catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormNhapHang.LoadComBoBox: "+ex.getMessage());
+        }
+        finally{
+            CtrlQLPN.CloseConnection();
+        }
+    }
+    
+    public void EnableComponent(boolean Active){
+        jtxtMaDDH.setEnabled(Active);
+        jtxtMaNCC.setEnabled(Active);
+        jtxtMaPN.setEnabled(Active);
+        jtxtTenNCC.setEnabled(Active);
+        jdtcNgayNhap.setEnabled(Active);
     }
     
     public void setColor(JPanel pn){
@@ -1060,7 +1048,6 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnBack;
     private javax.swing.JPanel jBtnHuy;
     private javax.swing.JPanel jBtnLamMoi;
-    private javax.swing.JPanel jBtnLuu;
     private javax.swing.JPanel jBtnSua;
     private javax.swing.JPanel jBtnThem;
     private javax.swing.JPanel jBtnTimKiem;
@@ -1080,7 +1067,6 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
