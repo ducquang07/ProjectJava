@@ -635,9 +635,9 @@ public class FormQuanLiKho extends javax.swing.JFrame {
 
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
+        new MainForm((User)).setVisible(true);
         this.setVisible(false);
         this.dispose();
-        new MainForm((User)).setVisible(true);
     }//GEN-LAST:event_jBtnBackMouseClicked
 
     private void jBtnLSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLSPMouseClicked

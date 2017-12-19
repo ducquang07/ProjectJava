@@ -78,7 +78,7 @@ public class FormQuanLiKeToan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -356,9 +356,9 @@ public class FormQuanLiKeToan extends javax.swing.JFrame {
 
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
+        new MainForm((User)).setVisible(true);
         this.setVisible(false);
         this.dispose();
-        new MainForm((User)).setVisible(true);
     }//GEN-LAST:event_jBtnBackMouseClicked
 
     private void jBtnThuTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThuTienMouseClicked

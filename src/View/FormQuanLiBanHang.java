@@ -106,7 +106,7 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -532,9 +532,9 @@ public class FormQuanLiBanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseDragged
 
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
+        new MainForm((User)).setVisible(true);
         this.setVisible(false);
         this.dispose();
-        new MainForm((User)).setVisible(true);
     }//GEN-LAST:event_jBtnBackMouseClicked
 
     private void jBtnDSHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDSHDMouseClicked

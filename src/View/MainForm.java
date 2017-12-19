@@ -152,7 +152,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -885,6 +885,8 @@ public class MainForm extends javax.swing.JFrame {
         if (jBtnKhohang.isEnabled()) {
             FormQuanLiKho frmQLK = new FormQuanLiKho(User);
             frmQLK.setVisible(true);
+            setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_jBtnKhohangMouseClicked
 
