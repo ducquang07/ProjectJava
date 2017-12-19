@@ -37,8 +37,10 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
     ModPhieuNhapHang ModPN = new ModPhieuNhapHang();
     ObjChiTietDDH ObjCTDDH = new ObjChiTietDDH();
     CtrlLapPhieuNhap CtrlLPN = new CtrlLapPhieuNhap();
-    public int flag=0;//1: thêm phiếu nhập; 2: sửa phiếu nhập
-    public int flagtb=1;//0:dữ nguyên;1:xóa
+    private int flag=0;//1: thêm phiếu nhập; 2: sửa phiếu nhập
+    private int flagtb=1;//0:dữ nguyên;1:xóa
+    private String MaPN;
+    
     /**
      * Creates new form FormLapPhieuNhapHang
      */
@@ -52,8 +54,13 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         flag=fg;
         initComponents();
         FormLoad();
-        listDSSPPN.clear();
-        vTable.clear();
+    }
+    
+    public FormLapPhieuNhap(int fg, String Ma) {
+        flag=fg;
+        MaPN=Ma;
+        initComponents();
+        FormLoad();
     }
 
     /**
@@ -639,9 +646,8 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
             model.getDataVector().removeAllElements();
             flagtb=0;
         }
-        ObjChiTietPNH item=new ObjChiTietPNH(jtxtMaPN.getText(),jtxtMaSP.getText(),jtxtTenSP.getText(),Integer.parseInt(jspnSoLuong.getValue().toString()),Integer.parseInt(jtxtDonGia.getText()));
-//        for(ObjChiTietPNH SPPN : listDSSPPN)
-//            if(!SPPN.getMaSP().equals(jtxtMaSP)){
+        if(!jtxtDonGia.getText().equals("")){
+            ObjChiTietPNH item=new ObjChiTietPNH(jtxtMaPN.getText(),jtxtMaSP.getText(),jtxtTenSP.getText(),Integer.parseInt(jspnSoLuong.getValue().toString()),Integer.parseInt(jtxtDonGia.getText()));
                 listDSSPPN.add(item);
                 Vector v = new Vector();
                 v.add(item.getMaSP());
@@ -649,10 +655,11 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                 v.add(item.getSoLuong());
                 v.add(item.getDonGia());
                 model.addRow(v);
-//            }else{
-//                JOptionPane.showMessageDialog(this, "Sản phẫm đãn được nhập ở \"danh sách sản phẩm nhập\" ", "Lỗi", JOptionPane.ERROR_MESSAGE);
-//            }
-        jtxtDonGia.setText("");
+            jtxtDonGia.setText("");
+        }else{
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đơn giá", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jBtnThemMouseClicked
 
     
@@ -680,31 +687,39 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         if(listDSSPPN.isEmpty()){
             JOptionPane.showMessageDialog(this, "Không có sản phẩm nào trong \"danh sách sản phẩm nhập\".", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
-        for(ObjChiTietPNH CTPN : listDSSPPN)
-        {
+        try{
             if(flag==1){//Thêm PN
-                ObjPhieuNhapHang ObjPN = new ObjPhieuNhapHang(jtxtMaPN.getText(), jdtcNgayNhap.getDate(), jtxtMaDDH.getText());
-                ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
-                try{
-                    if(ModPN.Insert(ObjPN)){
-                        if(ModCTPN.Insert(ObjCTPN)){
-                            JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                for(ObjChiTietPNH CTPN : listDSSPPN)
+                {
+                    ObjPhieuNhapHang ObjPN = new ObjPhieuNhapHang(jtxtMaPN.getText(), jdtcNgayNhap.getDate(), jtxtMaDDH.getText());
+                    ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
+                    try{
+                        if(ModPN.Insert(ObjPN)){
+                            if(ModCTPN.Insert(ObjCTPN)){
+                                JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         }
-                    }
-                    }catch(Exception e){
-                        JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
-                    }
-            }else if(flag==2){//Update PN
-//                ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
-//                try{
-//                    if(ModCTPN.Update(ObjLSP)){
-//                            JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                    }
-//                    }catch(Exception e){
-//                        JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
-//                    }
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                        }
+                }}
+            else if(flag==2){//Update PN
+                    ModCTPN.Delete(listDSSPPN.get(0).getMaPN(),listDSSPPN.get(0).getMaSP());
+                    for(ObjChiTietPNH CTPN : listDSSPPN){
+                    ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
+                    try{
+                        if(ModCTPN.Insert(ObjCTPN)){
+                                JOptionPane.showMessageDialog(this, "Cập nhật phiếu nhập \"" + ObjCTPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(this, "Cập nhật phiếu nhập \"" + ObjCTPN.getMaPN() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                        }
                 }
             }
+        }catch(Exception e){
+            System.out.println("Ngoại lệ tại FormLapPhieuNhapHang.Luu: "+e.getMessage());
+        }
+        
     }//GEN-LAST:event_jBtnLuuMouseClicked
 
     private void jBtnLuuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseEntered
@@ -816,6 +831,31 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         jTbDSSP.changeSelection(0,0,false,false);
     }
     
+    public void HienThiDSSPPN(ResultSet rs){
+        listDSSPPN.clear();
+        DefaultTableModel model = (DefaultTableModel) jTbDSSPNH.getModel();
+        model.getDataVector().removeAllElements();
+        try{
+            while(rs.next()){
+                ObjChiTietPNH itemCTPN;
+                itemCTPN=new ObjChiTietPNH(rs.getString("MaPN"),rs.getString("MaSP"),rs.getString("TenSP"),rs.getInt("SoLuong"),rs.getInt("DonGia"));
+                listDSSPPN.add(itemCTPN);
+                Vector v = new Vector();
+                v.add(itemCTPN.getMaSP());
+                v.add(itemCTPN.getTenSP());
+                v.add(itemCTPN.getSoLuong());
+                v.add(itemCTPN.getDonGia());
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại FormLapPhieuNhapHang.HienThiDSSPPN: "+ex.getMessage());
+        }
+        finally{
+            CtrlLPN.CloseConnection();
+        }
+        jTbDSSPNH.changeSelection(0,0,false,false);
+    }
+    
     public void BindingDDH(){
         try{
             if(flag==1){//thêm phiếu nhập
@@ -868,10 +908,11 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
             HienThiDSSP(CtrlLPN.LayDSSP(jtxtMaDDH.getText()));
             BindingSP();
         }else if(flag==2){
-            HienThiDSDDH(CtrlLPN.LayDSDDH());
+            HienThiDSDDH(CtrlLPN.LayDSDDH(MaPN));
             BindingDDH();
             HienThiDSSP(CtrlLPN.LayDSSP(jtxtMaDDH.getText()));
             BindingSP();
+            HienThiDSSPPN(CtrlLPN.LayDSSPN(MaPN));
         }
         
     }

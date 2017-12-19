@@ -49,8 +49,7 @@ public class ModChiTietPNH extends Model{
     }
 
     public boolean Update(ObjChiTietPNH TbChiTietPNH) {
-         String mySQL="Update CTPN set MaSP='" + TbChiTietPNH.getMaSP()+ 
-       "', SoLuong='" + TbChiTietPNH.getSoLuong()+ "', DonGia='" + TbChiTietPNH.getDonGia() + "' where MaPN='"+ TbChiTietPNH.getMaPN()+"';";
+         String mySQL="Update CTPN set SoLuong='" + TbChiTietPNH.getSoLuong()+ "', DonGia='" + TbChiTietPNH.getDonGia() + "' where MaPN='"+ TbChiTietPNH.getMaPN()+"' and MaSP='" + TbChiTietPNH.getMaSP()+ "';";
        try{
            if(DB.Connected()){
                stmDB=(Statement) DB.getConDB().createStatement();
@@ -66,7 +65,20 @@ public class ModChiTietPNH extends Model{
         return true;
        
     }
-    public boolean Delete(ObjChiTietPNH TbChiTietPNH) {
-         return super.Delete(TbChiTietPNH.getMaPN());
+    public boolean Delete(String MaPN, String MaSP) {
+         SQL="Delete from CTPN where MaPN ='"+MaPN+"' and MaSP ='"+MaSP+"'";
+            try {
+                if(DB.Connected()){
+                Statement  stmDB =(Statement)  DB.getConDB().createStatement();
+                stmDB.executeUpdate(SQL);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Ngoại lệ tại Model.Delete: "+ex.getMessage());
+                DB.CloseDB();
+                return false;
+            }finally{
+                DB.CloseDB();
+            }
+            return true;
     }    
 }

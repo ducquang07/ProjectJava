@@ -12,6 +12,8 @@ import com.mysql.jdbc.Statement;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -23,17 +25,18 @@ public class ModPhieuNhapHang extends Model{
     
     public ModPhieuNhapHang() {
         DB=new Connect();
-        Table="PHIEUNHAPHANG";
+        Table="PHIEUNHAP";
         ID="MaPN";
         Name="";
     }
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
     public boolean Insert(ObjPhieuNhapHang TbPhieuNhapHang) {
-         String mySQL="INSERT INTO PHIEUNHAPHANG (MaPN,NgayNhap,MaDDH) VALUES (?, ?, ?);";
+         String mySQL="INSERT INTO PHIEUNHAP (MaPN,NgayNhap,MaDDH) VALUES (?, ?, ?);";
         try{
             if(DB.Connected()){
                 pstmt=DB.getConDB().prepareStatement(mySQL);
                 pstmt.setString(1,TbPhieuNhapHang.getMaPN());
-                pstmt.setDate(2, (Date) TbPhieuNhapHang.getNgayNhap());
+                pstmt.setString(2, df.format(TbPhieuNhapHang.getNgayNhap()));
                 pstmt.setString(3,TbPhieuNhapHang.getMaDDH());
                 pstmt.executeUpdate();
                 DB.CloseDB();
@@ -49,7 +52,7 @@ public class ModPhieuNhapHang extends Model{
     }
 
     public boolean Update(ObjPhieuNhapHang TbPhieuNhapHang) {
-         String mySQL="Update PHIEUNHAPHANG set NgayNhap='" + TbPhieuNhapHang.getNgayNhap()+ 
+         String mySQL="Update PHIEUNHAP set NgayNhap='" + TbPhieuNhapHang.getNgayNhap()+ 
        "', MaDDH='" + TbPhieuNhapHang.getMaDDH() + "' where MaPN='"+ TbPhieuNhapHang.getMaPN()+"';";
        try{
            if(DB.Connected()){

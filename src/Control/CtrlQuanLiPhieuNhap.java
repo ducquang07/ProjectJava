@@ -30,13 +30,11 @@ public class CtrlQuanLiPhieuNhap {
     
     public ResultSet Search(Date TuNgay, Date DenNgay, String TenNCC, String MaPN){
         String SQL="Select PN.MaPN, PN.NgayNhap, PN.MaDDH, NCC.MaNCC, NCC.TenNCC from PHIEUNHAP PN, DONDATHANG DDH, NHACUNGCAP NCC where PN.MaDDH=DDH.MaDDH and DDH.MaNCC=NCC.MaNCC and PN.MaPN= '"+MaPN+"' and NCC.TenNCC=N'"+TenNCC+"' and PN.NgayNhap between '"+df.format(TuNgay)+" 00:00:00'and'"+df.format(DenNgay)+" 23:59:59'";
-        System.out.println(SQL);
         return DB.GetData(SQL);
     }
     
     public ResultSet SearchByTenNCC(Date TuNgay, Date DenNgay, String TenNCC){
         String SQL="Select PN.MaPN, PN.NgayNhap, PN.MaDDH, NCC.MaNCC, NCC.TenNCC from PHIEUNHAP PN, DONDATHANG DDH, NHACUNGCAP NCC where PN.MaDDH=DDH.MaDDH and DDH.MaNCC=NCC.MaNCC and NCC.TenNCC=N'"+TenNCC+"' and PN.NgayNhap between '"+df.format(TuNgay)+" 00:00:00'and'"+df.format(DenNgay)+" 23:59:59'";
-        System.out.println(SQL);
         return DB.GetData(SQL);
     }
     
