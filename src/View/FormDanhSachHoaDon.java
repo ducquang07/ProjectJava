@@ -1147,6 +1147,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jLabel23.setText("Tình trạng giao hàng :");
         jPnThongTinHDS.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 181, 120, -1));
 
+        jDateNgayLapHDS.setDateFormatString("dd/MM/yyyy");
         jDateNgayLapHDS.setEnabled(false);
         jPnThongTinHDS.add(jDateNgayLapHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 71, 190, -1));
 
@@ -1164,6 +1165,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
         jtxtTongTienHDS.setEditable(false);
         jPnThongTinHDS.add(jtxtTongTienHDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 133, 190, -1));
 
+        jDateNgayGiao.setDateFormatString("dd/MM/yyyy");
         jDateNgayGiao.setEnabled(false);
         jPnThongTinHDS.add(jDateNgayGiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 102, 190, -1));
 

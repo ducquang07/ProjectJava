@@ -316,6 +316,8 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
 
         jtxtTongTien.setEditable(false);
 
+        jDateNgayLap.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -538,29 +540,18 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
     private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
         // TODO add your handling code here:
         if (!ChinhSua) {
-            boolean check = true;
             ObjHDL = new ObjHoaDonLe(jtxtSoHDL.getText(), jtxtTenKH.getText(), jDateNgayLap.getDate(), Integer.parseInt(jtxtTongTien.getText().replace(",", "")));
             if (!ObjHDL.getTenKH().equals("")) {
                 try {
                     if (modHDL.Insert(ObjHDL)) {
                         for (int i = 0; i < ListCTHDL.size(); i++) {
-                            try {
-                                if (!modCTHDL.Insert(ListCTHDL.get(i))) {
-                                    check = false;
-                                }
-                            } catch (Exception ex) {
+                            if (!modCTHDL.Insert(ListCTHDL.get(i))) {
                                 JOptionPane.showMessageDialog(this, "Sản phẩm có mã " + ListCTHDL.get(i).getMaSP() + " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                             }
                         }
-                        if (check) {
-                            EnableComponent(false);
-                            JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " lưu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                            LuuThanhCong = true;
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                            modCTHDL.Delete(ObjHDL.getSoHDL());
-                            modHDL.Delete(ObjHDL.getSoHDL());
-                        }
+                        EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " lưu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        LuuThanhCong = true;
                     } else {
                         JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -571,30 +562,18 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập tên khách hàng.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
         } else {
-            boolean check = true;
             ObjHDL = new ObjHoaDonLe(jtxtSoHDL.getText(), jtxtTenKH.getText(), jDateNgayLap.getDate(), Integer.parseInt(jtxtTongTien.getText().replace(",", "")));
             if (!ObjHDL.getTenKH().equals("")) {
                 try {
-                    if (modHDL.Update(ObjHDL)&&modCTHDL.Delete(ObjHDL.getSoHDL())) {
+                    if (modHDL.Update(ObjHDL) && modCTHDL.Delete(ObjHDL.getSoHDL())) {
                         for (int i = 0; i < ListCTHDL.size(); i++) {
-                            try {
-                                if (!modCTHDL.Insert(ListCTHDL.get(i))) {
-                                    check = false;
-
-                                }
-                            } catch (Exception ex) {
+                            if (!modCTHDL.Insert(ListCTHDL.get(i))) {
                                 JOptionPane.showMessageDialog(this, "Sản phẩm có mã " + ListCTHDL.get(i).getMaSP() + " cập nhật không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                             }
                         }
-                        if (check) {
-                            EnableComponent(false);
-                            JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " cập nhật thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                            LuuThanhCong = true;
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " cập nhật không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                            modCTHDL.Delete(ObjHDL.getSoHDL());
-                            modHDL.Delete(ObjHDL.getSoHDL());
-                        }
+                        EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " cập nhật thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        LuuThanhCong = true;
                     } else {
                         JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDL.getSoHDL() + " cập nhật không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     }

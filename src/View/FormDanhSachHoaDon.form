@@ -1416,6 +1416,7 @@
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="jDateNgayLapHDS">
                   <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
@@ -1464,6 +1465,7 @@
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="jDateNgayGiao">
                   <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
