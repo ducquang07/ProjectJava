@@ -933,10 +933,11 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 HienThiDanhSachDonDatHang(CtrlDDH.Search1(jDateChooser1.getDate(), jDateChooser2.getDate(),jComboBox2.getSelectedItem().toString()));
                 Binding();
                 HienThiDanhSachDonDatHang(CtrlDDH.Search2(jDateChooser1.getDate(), jDateChooser2.getDate()));
+                Binding();
             }
             else{
-             //   HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByMaDDH(jTextField1.getText()));
-              //  Binding();
+                HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByMaDDH(jTextField1.getText()));
+              Binding();
             }
         }catch(Exception e){
             System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.TimKiem: "+e.getMessage());
