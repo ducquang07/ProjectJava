@@ -6,6 +6,8 @@
 package View;
 
 import Control.CtrlLapPhieuNhap;
+import Model.ModChiTietPNH;
+import Model.ModPhieuNhapHang;
 import Object.ObjChiTietDDH;
 import Object.ObjChiTietPNH;
 import Object.ObjDonDatHang;
@@ -17,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +33,8 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
     ArrayList<ObjChiTietDDH> listDSSP = new ArrayList<>();
     ArrayList<ObjChiTietPNH> listDSSPPN = new ArrayList<>();
     Vector vTable = new Vector();
+    ModChiTietPNH ModCTPN = new ModChiTietPNH();
+    ModPhieuNhapHang ModPN = new ModPhieuNhapHang();
     ObjChiTietDDH ObjCTDDH = new ObjChiTietDDH();
     CtrlLapPhieuNhap CtrlLPN = new CtrlLapPhieuNhap();
     public int flag=0;//1: thêm phiếu nhập; 2: sửa phiếu nhập
@@ -578,18 +583,33 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
-        // TODO add your handling code here:
-//        String s = jtxtSoHD.getText();
-//        try{
-//            if(ModHDS.UpdateTTGHCG(s))
-//            {
-//                FormLoad();
-//                JOptionPane.showMessageDialog(this, "Xác nhận chưa giao hàng cho hóa đơn có mã \""+ s +"\" thành công.", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(this, "Xác nhận chưa giao hàng cho hóa đơn có mã \""+ s +"\" thất bại. Mã lỗi: "+e.getMessage(), "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
-//        }
-
+        int viewRow = jTbDSSPNH.getSelectedRow();
+        try{
+            listDSSPPN.remove(viewRow);
+            DefaultTableModel model = (DefaultTableModel) jTbDSSPNH.getModel();
+            model.getDataVector().removeAllElements();
+            for(ObjChiTietPNH SPPN : listDSSPPN)
+            {
+                Vector v = new Vector();
+                    v.add(SPPN.getMaSP());
+                    v.add(SPPN.getTenSP());
+                    v.add(SPPN.getSoLuong());
+                    v.add(SPPN.getDonGia());
+                    model.addRow(v);
+            }
+            if(listDSSPPN.isEmpty())
+            {
+                Vector v = new Vector();
+                    v.add("");
+                    v.add("");
+                    v.add("");
+                    v.add("");
+                    model.addRow(v);
+            }
+        }catch(Exception e){
+            System.out.println("Lỗi tại FormLapPhieuNhap.jBtnXoaMouseClicked. Mã:" + e.getMessage());
+        }
+        
     }//GEN-LAST:event_jBtnXoaMouseClicked
 
     private void jBtnXoaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseEntered
@@ -620,15 +640,19 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
             flagtb=0;
         }
         ObjChiTietPNH item=new ObjChiTietPNH(jtxtMaPN.getText(),jtxtMaSP.getText(),jtxtTenSP.getText(),Integer.parseInt(jspnSoLuong.getValue().toString()),Integer.parseInt(jtxtDonGia.getText()));
-        listDSSPPN.add(item);
-        Vector v = new Vector();
-        v.add(item.getMaSP());
-        v.add(item.getTenSP());
-        v.add(item.getSoLuong());
-        v.add(item.getDonGia());
-        model.addRow(v);
-        //jTbDSSPNH.setModel(new DefaultTableModel(v,vTable.size()));
-        //jTbDSSPNH.changeSelection(0,0,false,false);
+//        for(ObjChiTietPNH SPPN : listDSSPPN)
+//            if(!SPPN.getMaSP().equals(jtxtMaSP)){
+                listDSSPPN.add(item);
+                Vector v = new Vector();
+                v.add(item.getMaSP());
+                v.add(item.getTenSP());
+                v.add(item.getSoLuong());
+                v.add(item.getDonGia());
+                model.addRow(v);
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Sản phẫm đãn được nhập ở \"danh sách sản phẩm nhập\" ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+//            }
+        jtxtDonGia.setText("");
     }//GEN-LAST:event_jBtnThemMouseClicked
 
     
@@ -653,70 +677,34 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnThemMouseReleased
 
     private void jBtnLuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseClicked
-        // TODO add your handling code here:
-//        if (!ChinhSua) {
-//            boolean check = true;
-//            ObjHDS = new ObjHoaDonSi(jtxtSoHDS.getText(), jtxtMaKH.getText(), jDateNgayLap.getDate(), jDateNgayGiao.getDate(), Integer.parseInt(jtxtTongTien.getText().replace(",", "")), "");
-//            if (jRadBtnDaGiao.isSelected()) {
-//                ObjHDS.setTinhTrangGiaoHang("Đã giao");
-//            } else {
-//                ObjHDS.setTinhTrangGiaoHang("Chưa giao");
-//            }
-//            if (!ObjHDS.getMaKH().equals("")) {
-//                try {
-//                    if (modHDS.Insert(ObjHDS)) {
-//                        for (int i = 0; i < ListCTHDS.size(); i++) {
-//                            try {
-//                                if (!modCTHDS.Insert(ListCTHDS.get(i))) {
-//                                    check = false;
-//
-//                                }
-//                            } catch (Exception ex) {
-//                                JOptionPane.showMessageDialog(this, "Sản phẩm có mã " + ListCTHDS.get(i).getMaSP() + " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                            }
-//                        }
-//                        EnableComponent(false);
-//                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDS.getSoHDS() + " lưu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                        LuuThanhCong = true;
-//                    } else {
-//                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDS.getSoHDS() + " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        if(listDSSPPN.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Không có sản phẩm nào trong \"danh sách sản phẩm nhập\".", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        for(ObjChiTietPNH CTPN : listDSSPPN)
+        {
+            if(flag==1){//Thêm PN
+                ObjPhieuNhapHang ObjPN = new ObjPhieuNhapHang(jtxtMaPN.getText(), jdtcNgayNhap.getDate(), jtxtMaDDH.getText());
+                ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
+                try{
+                    if(ModPN.Insert(ObjPN)){
+                        if(ModCTPN.Insert(ObjCTPN)){
+                            JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                    }
+            }else if(flag==2){//Update PN
+//                ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
+//                try{
+//                    if(ModCTPN.Update(ObjLSP)){
+//                            JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 //                    }
-//                } catch (Exception ex) {
-//                    System.out.println("Ngoại lệ tại FormDuyetHoaDonSi.jBtnLuuMouseClicked:" + ex.getMessage());
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Vui lòng chọn khách hàng.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        } else {
-//            boolean check = true;
-//            ObjHDS = new ObjHoaDonSi(jtxtSoHDS.getText(), jtxtMaKH.getText(), jDateNgayLap.getDate(), jDateNgayGiao.getDate(), Integer.parseInt(jtxtTongTien.getText().replace(",", "")), "");
-//            if (jRadBtnDaGiao.isSelected()) {
-//                ObjHDS.setTinhTrangGiaoHang("Đã giao");
-//            } else {
-//                ObjHDS.setTinhTrangGiaoHang("Chưa giao");
-//            }
-//            if (!ObjHDS.getMaKH().equals("")) {
-//                try {
-//                    if (modHDS.Update(ObjHDS) && modCTHDS.Delete(ObjHDS.getSoHDS())) {
-//                        for (int i = 0; i < ListCTHDS.size(); i++) {
-//                            if (!modCTHDS.Insert(ListCTHDS.get(i))) {
-//                                check = false;
-//                                JOptionPane.showMessageDialog(this, "Sản phẩm có mã " + ListCTHDS.get(i).getMaSP() + " cập nhật không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                            }
-//                        }
-//                        EnableComponent(false);
-//                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDS.getSoHDS() + " cập nhật thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//                        LuuThanhCong = true;
-//                    } else {
-//                        JOptionPane.showMessageDialog(this, "Hóa đơn " + ObjHDS.getSoHDS() + " cập nhật không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//                    }catch(Exception e){
+//                        JOptionPane.showMessageDialog(this, "Cập nhật loại sản phẩm \"" + ObjLSP.getTenLoaiSP() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
 //                    }
-//                } catch (Exception ex) {
-//                    System.out.println("Ngoại lệ tại FormDuyetHoaDonSi.jBtnLuuMouseClicked:" + ex.getMessage());
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Vui lòng chọn khách hàng.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        }
+                }
+            }
     }//GEN-LAST:event_jBtnLuuMouseClicked
 
     private void jBtnLuuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuMouseEntered

@@ -9,6 +9,7 @@ import Edit.Edit;
 import Model.ModSanPham;
 import Object.ObjSanPham;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         DefaultTableModel model;
         model=(DefaultTableModel) jTbDSSP.getModel();
         model.getDataVector().removeAllElements(); 
+        model.fireTableDataChanged();
         try{
             while(rs.next()){
                 ObjSanPham itemSP;
@@ -1021,6 +1023,12 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         jLabel17.setText("Tìm theo:");
 
+        jtxtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtTimKiemKeyPressed(evt);
+            }
+        });
+
         jPnTracuuSP.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1136,17 +1144,11 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
     private void jBtnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseClicked
         // TODO add your handling code here:
-        //        try {
-            //            // TODO add your handling code here:
-            //            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-            //            if(rs.getRow()==0){
-                //                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-                //            }
-            //            displayData(rs);
-            //            Binding();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
+        jcbbTimTheoLoaiSP.setSelectedIndex(0);
+        jcbbTimTheoNCC.setSelectedIndex(0);
+        jtxtTimKiem.setText("");
+        HienThiDanhSachSanPham(CtrlQLSP.LayDSSanPham());
+        Binding();
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
     private void jBtnLamMoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseEntered
@@ -1171,8 +1173,10 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
 
-        if(jcbbTimtheo.getSelectedIndex()==0){
-        HienThiDanhSachSanPham(CtrlQLSP.SearchByID(jtxtTimKiem.getText(),ListComboboxNCC.get(jcbbTimTheoNCC.getSelectedIndex()),ListComboboxLoaiSP.get(jcbbTimTheoLoaiSP.getSelectedIndex())));
+        if (jcbbTimtheo.getSelectedIndex() == 1) {
+            HienThiDanhSachSanPham(CtrlQLSP.SearchByID(jtxtTimKiem.getText(), ListComboboxNCC.get(jcbbTimTheoNCC.getSelectedIndex()), ListComboboxLoaiSP.get(jcbbTimTheoLoaiSP.getSelectedIndex())));
+        } else {
+            HienThiDanhSachSanPham(CtrlQLSP.SearchByName(jtxtTimKiem.getText(), ListComboboxNCC.get(jcbbTimTheoNCC.getSelectedIndex()), ListComboboxLoaiSP.get(jcbbTimTheoLoaiSP.getSelectedIndex())));
         }
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
@@ -1523,6 +1527,12 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         Edit(true);
         SetVisibleButton(false);
     }//GEN-LAST:event_jBtnSuaMouseClicked
+
+    private void jtxtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtTimKiemKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jBtnTimKiemMouseClicked(null);
+    }//GEN-LAST:event_jtxtTimKiemKeyPressed
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
