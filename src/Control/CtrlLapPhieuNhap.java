@@ -19,17 +19,22 @@ public class CtrlLapPhieuNhap {
         return DB.CloseDB();
     }
     public ResultSet LayDSDDH(){
-        String SQL="Select DDH.MaDDH, DDH.MaNCC, NCC.TenNCC, DDH.NgayDatHang, DDH.TrangThai from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and TrangThai=N'Da dat'";
+        String SQL="Select DDH.MaDDH, DDH.MaNCC, NCC.TenNCC, DDH.NgayDatHang, DDH.TrangThai from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and TrangThai=N'Đã đặt'";
         return DB.GetData(SQL);
     }
     
     public ResultSet LayDSDDH(String MaPN){
-        String SQL="Select PN.MaPN, DDH.MaDDH, DDH.MaNCC, DDH.NgayDatHang, DDH.TrangThai from DONDATHANG DDH, PHIEUNHAP PN where DDH.MaDDH=PN.MaDDH and PN.MaPN='"+MaPN+"'";
+        String SQL="Select PN.MaPN, DDH.MaDDH, DDH.MaNCC, NCC.TenNCC, DDH.NgayDatHang, PN.NgayNhap, DDH.TrangThai from DONDATHANG DDH, PHIEUNHAP PN, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and DDH.MaDDH=PN.MaDDH and PN.MaPN='"+MaPN+"'";
         return DB.GetData(SQL);
     }
     
     public ResultSet LayDSSP(String MaDDH){
         String SQL="Select CT.MaDDH, CT.MaSP, SP.TenSP, CT.SoLuong from CTDDH CT, SANPHAM SP where CT.MaSP=SP.MaSP and CT.MaDDH='"+MaDDH+"'";
+        return DB.GetData(SQL);
+    }
+    
+    public ResultSet LayDSSPN(String MaPN){
+        String SQL="Select CT.MaPN, CT.MaSP, SP.TenSP, CT.SoLuong, CT.DonGia from CTPN CT, SANPHAM SP where CT.MaSP=SP.MaSP and CT.MaPN='"+MaPN+"'";
         return DB.GetData(SQL);
     }
     
