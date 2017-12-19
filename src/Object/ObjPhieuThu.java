@@ -25,6 +25,11 @@ public class ObjPhieuThu {
         
     }
     
+    public ObjPhieuThu(String MaPT){
+        this.MaPT=MaPT;
+        
+    }
+    
     public ObjPhieuThu(String MaPT, Date NgayThu, int TongTienThu, String LyDoThu, String MaKH)
     {
         this.MaPT=MaPT;

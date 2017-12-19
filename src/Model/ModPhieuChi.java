@@ -44,10 +44,9 @@ public class ModPhieuChi extends Model{
                 pstmt=DB.getConDB().prepareStatement(sql);
                 pstmt.setString(1,TbPC.getMaPC());
                 pstmt.setString(2,TbPC.getLyDoChi());
-                pstmt.setString(3,TbPC.getTongTienChi());
-                pstmt.setString(4,dt.format(TbPC.getNgayChi()));
-                
-                pstmt.setString(6,TbPC.getMaNCC());
+                pstmt.setString(3,Integer.toString(TbPC.getTongTienChi()));
+                pstmt.setString(4,dt.format(TbPC.getNgayChi()));               
+                pstmt.setString(5,TbPC.getMaNCC());
                 pstmt.executeUpdate();
             }
         } catch (SQLException ex) {

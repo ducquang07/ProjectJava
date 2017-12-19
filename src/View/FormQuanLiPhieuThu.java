@@ -372,6 +372,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
         jBtnXoa.setBackground(new java.awt.Color(204, 204, 204));
         jBtnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXoaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnXoaMouseEntered(evt);
             }
@@ -1006,7 +1009,11 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnBackMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-
+        if(jtxtTimtheoKH.getText().equals(""))
+        {
+            HienThiDanhSachPhieuThu(CtrlPT.Search(jDCTuNgay.getDate(),jDCDenNgay.getDate(),jtxtTimtheoKH.getText()));
+            Binding();
+        }
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -1031,17 +1038,14 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
 
     private void jBtnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseClicked
         // TODO add your handling code here:
-        //        try {
-            //            // TODO add your handling code here:
-            //            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-            //            if(rs.getRow()==0){
-                //                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-                //            }
-            //            displayData(rs);
-            //            Binding();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
+        HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
+        LoadCbbKH();
+        jtxtTimtheoKH.setText("");
+        jtxtTimtheoMaPT.setText("");
+        jtxtTimtheoLyDoThu.setText("");
+        jDCTuNgay.setDate(new Date());
+        jDCDenNgay.setDate(new Date());
+        Binding();
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
     private void jBtnLamMoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseEntered
@@ -1287,6 +1291,26 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
             flag=2;
         }
     }//GEN-LAST:event_jBtnSuaMouseClicked
+
+    private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
+        // TODO add your handling code here:
+        if(jBtnXoa.isEnabled()){
+            objPT=new ObjPhieuThu(jtxtMaPT.getText());
+            int i= JOptionPane.showConfirmDialog(this, "Bạn muốn xóa phiếu thu \""+ objPT.getMaPT()+ "\"", "Xác nhận", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(i==0){
+                try{
+                    if(modPT.Delete(objPT.getMaPT()))
+                    {
+                        EnableComponent(false);
+                        JOptionPane.showMessageDialog(this, "Xóa phiếu thu \"" + objPT.getMaPT()+ "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE );
+                        HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
+                    }
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(this, "Xóa phiếu thu \"" + objPT.getMaPT()+ "\" thất bại. Mã lỗi: " + ex.getMessage(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jBtnXoaMouseClicked
     
     public void setColor(JPanel pn){
         if(pn.isEnabled()){

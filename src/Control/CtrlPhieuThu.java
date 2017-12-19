@@ -8,6 +8,8 @@ package Control;
 import Connect.Connect;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -15,6 +17,7 @@ import java.sql.SQLException;
  */
 public class CtrlPhieuThu {
     Connect DB=new Connect();
+    SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
     public ResultSet LayDanhSachPhieuThu(){
         String SQL="Select PT.MaPT,PT.LyDoThu,PT.TongTienThu,PT.NgayThu,KH.TenKH, KH.DiaChi,KH.SDT, KH.MaKH from PHIEUTHU PT, KHACHHANG KH where PT.MaKH=KH.MaKH;";
         return DB.GetData(SQL);           
@@ -29,6 +32,10 @@ public class CtrlPhieuThu {
         if(!LyDoThu.equals("")) SQL+= " and PT.LyDoThu like '%"+LyDoThu+"%'";
         if(!MaPT.equals("")) SQL+=" and PT.MaPT like '%"+MaPT+"%'";
         return DB.GetData(SQL);
+    }
+    public ResultSet Search(Date tungay, Date denngay, String TenKH){
+        String sql="Select PT.MaPT, PT.TongTienThu, PT.NgayThu, KH.TenKH from PHIEUTHU PT, KHACHHANG KH where PT.MaKH=KH.MaKH and KH.TenKH like '%"+TenKH+"%' and PT.NgayThu between ('"+dt.format(tungay)+"00:00:00') and ('"+dt.format(denngay)+" 23:59:59')";
+        return DB.GetData(sql);
     }
     
     public String TaoMaPT(){

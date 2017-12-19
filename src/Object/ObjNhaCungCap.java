@@ -29,6 +29,13 @@ public class ObjNhaCungCap {
         this.Email = Email;
     }
 
+    public ObjNhaCungCap(String MaNCC, String TenNCC, String SDT, String DiaChi){
+        this.MaNCC=MaNCC;
+        this.TenNCC=TenNCC;
+        this.SDT = SDT;
+        this.DiaChi = DiaChi;
+    }
+    
     public ObjNhaCungCap(String TenNCC) {
         this.TenNCC = TenNCC;
     }

@@ -39,7 +39,7 @@ public class CtrlPhieuChi {
      public String TaoMaPC(){
         String ID="PC0001";
         ResultSet rs=null;
-        String SQL="Select * from PHIEUCHI order by SoHDS DESC limit 1";
+        String SQL="Select * from PHIEUCHI order by MaPC DESC limit 1";
         try{
             rs=DB.GetData(SQL);
             if(rs.next()){
