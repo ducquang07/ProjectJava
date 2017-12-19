@@ -22,6 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -64,26 +65,17 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         
         editFrm.MakeTransparentTable(jScrCTDDH, jTbCTDDH);
         editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn trạng thái đơn hàng---", "Da dat", "Khong thanh cong", "Thanh cong" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Chọn trạng thái đơn hàng---", "Đã đặt", "Đã nhận"}));
         jComboBox1.setFocusable(false);
         LoadForm();
     }
-    public void EnableComponent(boolean Active){
-    
-        jBtnLuu.setEnabled(Active);
-        jLabel23.setEnabled(Active);
-        jBtnHuy.setEnabled(Active);
-        jLabel24.setEnabled(Active);
-        jTextField2.setEnabled(Active);
-        jTextField3.setEnabled(Active);
-        jTextField5.setEnabled(Active);
-        jDateChooser3.setEnabled(Active);
-        jBtnThem.setEnabled(!Active);
-        jLabel19.setEnabled(!Active);
-        jBtnXoa.setEnabled(!Active);
-        jLabel20.setEnabled(!Active);
-        jBtnSua.setEnabled(!Active);
-        jLabel22.setEnabled(!Active);
+    public void SetVisibleButton(boolean active){
+        jBtnThem.setVisible(active);
+        jBtnXoa.setVisible(active);
+        jBtnSua.setVisible(active);
+        jBtnLuu.setVisible(!active);
+        jBtnHuy.setVisible(!active);
+        
     }
     public void LoadComboboxNhaCungCap(){
         ListComboboxNCC.clear();
@@ -162,7 +154,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 jTextField2.setText(listCTDDH.get(modelRow).getMaDDH());
                 jTextField3.setText(listCTDDH.get(modelRow).getMaNCC());
                 jDateChooser3.setDate(listCTDDH.get(modelRow).getNgayDatHang());
-                jTextField5.setText(listCTDDH.get(modelRow).getTenNCC());   
+                jTextField5.setText(listCTDDH.get(modelRow).getTenNCC()); 
+                jTextField4.setText(listCTDDH.get(modelRow).getTrangThai());
              }
         }
         catch(Exception ex){
@@ -219,7 +212,6 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -227,6 +219,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jPnThongtinDDH = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jScrCTDDH = new javax.swing.JScrollPane();
         jTbCTDDH = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -724,17 +717,6 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         jLabel11.setText("Trạng thái :");
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 73, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
-        );
-
         jLabel12.setText("Mã nhà cung cấp :");
 
         jLabel13.setText("Tên nhà cung cấp :");
@@ -763,6 +745,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTextField4.setText("jTextField4");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -775,10 +759,10 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
                 .addGap(2, 2, 2)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -809,9 +793,9 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 27, Short.MAX_VALUE))
         );
 
@@ -877,6 +861,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         HienThiDanhSachChiTietDDH(CtrlCTDDH.LayDSCTDDH());
         LoadComboboxNhaCungCap();   
         Binding();
+        SetVisibleButton(true);
         
     }
   
@@ -913,6 +898,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jDateChooser1.setDate(new Date());
         jDateChooser2.setDate(new Date());
         jComboBox1.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
+        Binding();
         
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
@@ -937,8 +924,24 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnLamMoiMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-       
-         HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByNhaCC(ListComboboxNCC.get(jComboBox2.getSelectedIndex()).toString()));
+            try
+        {
+            if(jTextField1.getText().equals(""))
+            {
+                HienThiDanhSachDonDatHang(CtrlDDH.Search(jDateChooser1.getDate(), jDateChooser2.getDate(),jComboBox2.getSelectedItem().toString(),jComboBox1.getSelectedItem().toString()));
+                Binding();
+                HienThiDanhSachDonDatHang(CtrlDDH.Search1(jDateChooser1.getDate(), jDateChooser2.getDate(),jComboBox2.getSelectedItem().toString()));
+                Binding();
+                HienThiDanhSachDonDatHang(CtrlDDH.Search2(jDateChooser1.getDate(), jDateChooser2.getDate()));
+            }
+            else{
+             //   HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByMaDDH(jTextField1.getText()));
+              //  Binding();
+            }
+        }catch(Exception e){
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.TimKiem: "+e.getMessage());
+        }  
+        
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -1088,19 +1091,14 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
     private void jTbCTDDHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbCTDDHMouseClicked
         // TODO add your handling code here:
-        if(jTbCTDDH.getSelectedRow()>=0)
+        if(jTbCTDDH.getSelectedRow()>=0 && jTbCTDDH.isEnabled())
             Binding();
     }//GEN-LAST:event_jTbCTDDHMouseClicked
 
     private void jBtnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThemMouseClicked
-        if (jBtnThem.isEnabled()){
-            jTextField2.setText(CtrlCTDDH.LayMaDDH());
-            jTextField3.setText("");
-            jTextField5.setText("");
-            jDateChooser3.setDate(new Date());
-// TODO add your handling code here:
+    
     }//GEN-LAST:event_jBtnThemMouseClicked
-}
+
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
@@ -1198,7 +1196,6 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPnCTDDH;
     private javax.swing.JPanel jPnDSDDH;
@@ -1211,6 +1208,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
