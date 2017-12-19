@@ -305,8 +305,8 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             jBtnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnTimKiemLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel12)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jBtnTimKiemLayout.setVerticalGroup(
             jBtnTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -664,10 +664,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jtxtDonGia.setEditable(false);
         jtxtDonGia.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jtxtDonGiaInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jPanel7.add(jtxtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 178, -1));
