@@ -33,21 +33,22 @@ import javax.swing.table.TableModel;
  */
 public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
-    Edit editFrm=new Edit();
-        ArrayList<ObjDonDatHang> listDDH = new ArrayList<>();
-        ArrayList<ObjSanPham> listSP = new ArrayList<>();
-        ObjDonDatHang ObjDDH = new ObjDonDatHang();
-        ModDonDatHang ModDDH = new ModDonDatHang();
-        CtrlQuanLiDonDatHang CtrlDDH = new CtrlQuanLiDonDatHang();
-        ObjChiTietDDH ObjCTDDH = new ObjChiTietDDH();
-        ModChiTietDDH ModCTDDH = new ModChiTietDDH();
-        CtrlLapDonDatHang CtrlLapDDH = new CtrlLapDonDatHang();
-        ArrayList<String> ListComboboxNCC = new ArrayList<>();
-        ArrayList<String> ListComboboxTT = new ArrayList<>();
-        ArrayList<ObjChiTietDDH> listCTDDH = new ArrayList<>();
-        private int flag=0;
-        SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy      hh:mm:ss a");
-        
+
+    Edit editFrm = new Edit();
+    ArrayList<ObjDonDatHang> listDDH = new ArrayList<>();
+    ArrayList<ObjSanPham> listSP = new ArrayList<>();
+    ObjDonDatHang ObjDDH = new ObjDonDatHang();
+    ModDonDatHang ModDDH = new ModDonDatHang();
+    CtrlQuanLiDonDatHang CtrlDDH = new CtrlQuanLiDonDatHang();
+    ObjChiTietDDH ObjCTDDH = new ObjChiTietDDH();
+    ModChiTietDDH ModCTDDH = new ModChiTietDDH();
+    CtrlLapDonDatHang CtrlLapDDH = new CtrlLapDonDatHang();
+    ArrayList<String> ListComboboxNCC = new ArrayList<>();
+    ArrayList<String> ListComboboxTT = new ArrayList<>();
+    ArrayList<ObjChiTietDDH> listCTDDH = new ArrayList<>();
+    private int flag = 0;
+    SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy      hh:mm:ss a");
+
     public FormQuanLiDonDatHang() {
         initComponents();
         setLocationRelativeTo(null);
@@ -70,6 +71,9 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jtxtTenNCC.setLineWrap(true);
         LoadForm();
     }
+    
+
+    
     public void SetVisibleButton(boolean active){
         jBtnThem.setVisible(active);
         jBtnXoa.setVisible(active);
@@ -423,6 +427,9 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         jBtnXoa.setBackground(new java.awt.Color(204, 204, 204));
         jBtnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXoaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnXoaMouseEntered(evt);
             }
@@ -458,6 +465,9 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         jBtnSua.setBackground(new java.awt.Color(204, 204, 204));
         jBtnSua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnSuaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnSuaMouseEntered(evt);
             }
@@ -496,26 +506,37 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         getContentPane().add(jLbTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 233, 80, -1));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Từ ngày : ");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 48, -1, 20));
 
         jLabel3.setText("Đến ngày :");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 48, -1, 20));
 
         jLabel4.setText("Trạng thái :");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 84, -1, 16));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa nhận hàng", "Đã nhận hàng" }));
         jComboBox1.setFocusable(false);
+        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 82, 332, -1));
 
         jLabel5.setText("Nhà cung cấp :");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 116, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setFocusable(false);
+        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 113, 332, -1));
 
         jLabel7.setText("Mã đặt hàng :");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 147, -1, -1));
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 144, 332, -1));
 
         jDateChooser1.setDateFormatString("dd/MM/yyyy");
+        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 48, 116, -1));
 
         jDateChooser2.setDateFormatString("dd/MM/yyyy");
+        jPanel4.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 48, 116, -1));
 
         jPnTracuuDDH.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -539,65 +560,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPnTracuuDDH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
-                                .addGap(26, 26, 26))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel7)
-                        .addGap(15, 15, 15)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPnTracuuDDH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
+        jPanel4.add(jPnTracuuDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 54, 560, 240));
 
@@ -655,36 +618,45 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
             .addGroup(jPnDSDDHLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addContainerGap(435, Short.MAX_VALUE))
+                .addContainerGap(395, Short.MAX_VALUE))
         );
         jPnDSDDHLayout.setVerticalGroup(
             jPnDSDDHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel5.add(jPnDSDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel5.add(jPnDSDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, -1));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 304, 560, 410));
 
         jPanel7.setBackground(new java.awt.Color(204, 204, 204));
         jPanel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jtxtMaDDH.setEditable(false);
+        jPanel7.add(jtxtMaDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 87, 165, -1));
 
         jLabel10.setText("Ngày đặt hàng :");
+        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 130, -1, 20));
 
         jDateNgayDH.setDateFormatString("dd/MM/yyyy");
         jDateNgayDH.setEnabled(false);
+        jPanel7.add(jDateNgayDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 167, -1));
 
         jLabel11.setText("Trạng thái :");
+        jPanel7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 173, -1, 28));
 
         jLabel12.setText("Mã nhà cung cấp :");
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 90, -1, -1));
 
         jtxtMaNCC.setEditable(false);
+        jPanel7.add(jtxtMaNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 87, 257, -1));
 
         jLabel13.setText("Tên nhà cung cấp :");
+        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 130, -1, 20));
 
         jLabel9.setText("Mã đơn đặt hàng :");
+        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 87, 113, 20));
 
         jPnThongtinDDH.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -708,6 +680,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel7.add(jPnThongtinDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -717,60 +691,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jtxtTenNCC.setRows(5);
         jScrollPane1.setViewportView(jtxtTenNCC);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPnThongtinDDH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateNgayDH, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxtMaDDH, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(22, 22, 22)))
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtxtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jPnThongtinDDH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtxtMaDDH, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateNgayDH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jtxtMaNCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
+        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 130, 257, 53));
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 54, 770, 240));
 
@@ -828,7 +749,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
             .addGroup(jPnCTDDHLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel18)
-                .addContainerGap(623, Short.MAX_VALUE))
+                .addContainerGap(543, Short.MAX_VALUE))
         );
         jPnCTDDHLayout.setVerticalGroup(
             jPnCTDDHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -837,7 +758,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel9.add(jPnCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 30));
+        jPanel9.add(jPnCTDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 30));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 303, 690, 410));
 
@@ -848,6 +769,7 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
     public void LoadForm(){
         jDateChooser1.setDate(new Date());
         jDateChooser2.setDate(new Date());
@@ -855,6 +777,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         LoadComboboxNhaCungCap();   
         SetVisibleButton(true);
     }
+    
+
   
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
@@ -1061,6 +985,38 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
             HienThiDanhSachChiTietDDH(jtxtMaDDH.getText());
         }
     }//GEN-LAST:event_jTbDSDDHMouseClicked
+
+    private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xóa?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
+        if (dialogButton == JOptionPane.YES_OPTION) {
+                if (ModDDH.Delete(jtxtMaDDH.getText()) && ModCTDDH.Delete(jtxtMaDDH.getText())) {
+                    JOptionPane.showMessageDialog(this, "Đơn đặt hàng " + jtxtMaDDH.getText() + " đã xóa thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
+                } else {
+                    JOptionPane.showMessageDialog(this, "Đơn đặt hàng " + jtxtMaDDH.getText() + " xóa không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+    }//GEN-LAST:event_jBtnXoaMouseClicked
+
+    private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
+        // TODO add your handling code here:
+        if (jTbDSDDH.getSelectedRow() >= 0) {
+            DefaultTableModel model = (DefaultTableModel) jTbDSDDH.getModel();
+            int viewRow = jTbDSDDH.getSelectedRow();
+            int modelRow = jTbDSDDH.convertRowIndexToModel(viewRow);
+            if (listDDH.get(modelRow).getTrangThai().equals("Chưa nhận")) {
+                FormLapDonDatHang frmLapDDH = new FormLapDonDatHang(listDDH.get(modelRow), listCTDDH);
+                frmLapDDH.ChinhSua = true;
+                frmLapDDH.setVisible(true);
+                setVisible(true);
+                dispose();
+            } 
+            else {
+                JOptionPane.showMessageDialog(this, "Đơn đặt hàng đã nhận hàng không thể chỉnh sửa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jBtnSuaMouseClicked
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
