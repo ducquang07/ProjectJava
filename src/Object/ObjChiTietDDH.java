@@ -20,6 +20,7 @@ public class ObjChiTietDDH {
     private String TenNCC;
     private Date NgayDatHang;
     private String TrangThai;
+    private String DVT;
     
     public ObjChiTietDDH()
     {
@@ -37,6 +38,14 @@ public class ObjChiTietDDH {
         this.TenSP = TenSP;
         this.SoLuong = SoLuong;
     }
+
+    public ObjChiTietDDH(String MaDDH,String MaSP, String TenSP, int SoLuong, String DVT) {
+        this.MaDDH=MaDDH;
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.SoLuong = SoLuong;
+        this.DVT = DVT;
+    }
     
     
     public ObjChiTietDDH(String MaDDH, String MaSP, int SoLuong, String MaNCC, String TenNCC, Date NgayDatHang, String TrangThai)
@@ -50,6 +59,8 @@ public class ObjChiTietDDH {
         this.TrangThai = TrangThai;
     }
 
+    
+    //Get
     public String getTenSP() {
         return TenSP;
     }
@@ -82,7 +93,13 @@ public class ObjChiTietDDH {
     {
         return NgayDatHang;
     }
-            
+
+    public String getDVT() {
+        return DVT;
+    }
+    
+    
+    //Set
     public void setMaDDH(String MaDDH)
     {
         this.MaDDH = MaDDH;

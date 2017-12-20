@@ -51,16 +51,16 @@ public class Connect {
     }
     
     public boolean CloseDB(){
-        try{
-            if(!conDB.isClosed()){
+        if (conDB != null) {
+            try {
                 conDB.close();
+                return true;
+            } catch (SQLException ex) {
+                System.out.println("Ngoại lệ tại Connect.Closed :" + ex.getMessage());
+                return false;
             }
         }
-        catch(SQLException ex){
-            System.out.println("Ngoại lệ tại Connect.Closed :"+ex.getMessage());
-            return false;
-        }
-        return true;
+        return false;
     }
     
     public ResultSet GetData(String SQL){

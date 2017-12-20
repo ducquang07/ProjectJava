@@ -1140,7 +1140,6 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
         // TODO add your handling code here
-        TableModel model =jtbGioHang.getModel();
         DefaultTableModel Model=(DefaultTableModel) jtbGioHang.getModel() ;
         try{
         int viewRow = jtbGioHang.getSelectedRow();
