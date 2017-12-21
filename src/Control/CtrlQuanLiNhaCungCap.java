@@ -45,9 +45,10 @@ public class CtrlQuanLiNhaCungCap {
     }
     
     public ResultSet SearchNCCByID(String MaNCC){
-        String mySQL="Select MaNCC, TenNCC, SDT, DiaChi, Email from NHACUNGCAP where MaNCC like '%"+MaNCC+"%'";
+        String mySQL="Select MaNCC, TenNCC, SDT, DiaChi, Email from NHACUNGCAP where MaNCC = '"+MaNCC+"'";
         return DB.GetData(mySQL);
     }
+    
     
     public ResultSet SearchNCCByName(String TenNCC){
         String mySQL="Select MaNCC, TenNCC, SDT, DiaChi, Email from NHACUNGCAP where TenNCC like '%"+TenNCC+"%'";

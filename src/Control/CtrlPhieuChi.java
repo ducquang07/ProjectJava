@@ -8,6 +8,8 @@ package Control;
 import Connect.Connect;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -15,6 +17,7 @@ import java.sql.SQLException;
  */
 public class CtrlPhieuChi {
     Connect DB=new Connect();
+    SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
     public ResultSet LayDanhSachNCC(){
         String sql="Select * from NHACUNGCAP";
         return DB.GetData(sql);
@@ -24,17 +27,27 @@ public class CtrlPhieuChi {
          return DB.GetData(sql);
      }
      
-     public ResultSet SearchPhieuChiByID(String MaPC, String MaNCC){
+     public ResultSet SearchPhieuChiByID(String MaPC){
          String sql="Select PC.MaPC, PC.LyDoChi, PC.TongTienChi, PC.NgayChi, PC.MaNCC, NCC.TenNCC"
                  +" from PHIEUCHI PC, NHACUNGCAP NCC WHERE PC.MaNCC=NCC.MaNCC and PC.MaPC like '%"+MaPC+"%'";
          return DB.GetData(sql);
      }
      
-     public ResultSet SearchPhieuChiByNameNCC(String MaPC, String TenNCC){
+     public ResultSet SearchPhieuChiByNameNCC(String TenNCC){
          String sql="Select PC.MaPC, PC.LyDoChi, PC.TongTienChi, PC.NgayChi, PC.MaNCC, NCC.TenNCC"
                  +" from PHIEUCHI PC, NHACUNGCAP NCC WHERE PC.MaNCC=NCC.MaNCC and NCC.TenNCC like '%"+TenNCC+"%'";
          return DB.GetData(sql);
      }
+     public ResultSet SearchPhieuChiByIDNCC(String MaNCC){
+         String sql="Select PC.MaPC, PC.LyDoChi, PC.TongTienChi, PC.NgayChi, PC.MaNCC, NCC.TenNCC"
+                 +" from PHIEUCHI PC, NHACUNGCAP NCC WHERE PC.MaNCC=NCC.MaNCC and NCC.MaNCC like '%"+MaNCC+"%'";
+         return DB.GetData(sql);
+     }
+     
+     public ResultSet SearchTheoNgay(Date tungay, Date denngay){
+        String sql="SELECT * FROM PHIEUCHI,NHACUNGCAP WHERE PHIEUCHI.MaNCC=NHACUNGCAP.MaNCC AND PHIEUCHI.NgayChi BETWEEN '"+dt.format(tungay)+"' and '"+dt.format(denngay)+"'";
+        return DB.GetData(sql);
+    }
      
      public String TaoMaPC(){
         String ID="PC0001";

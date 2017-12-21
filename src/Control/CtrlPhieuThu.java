@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class CtrlPhieuThu {
     Connect DB=new Connect();
-    SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
     public ResultSet LayDanhSachPhieuThu(){
         String SQL="Select PT.MaPT,PT.LyDoThu,PT.TongTienThu,PT.NgayThu,KH.TenKH, KH.DiaChi,KH.SDT, KH.MaKH from PHIEUTHU PT, KHACHHANG KH where PT.MaKH=KH.MaKH;";
         return DB.GetData(SQL);           
@@ -34,9 +34,19 @@ public class CtrlPhieuThu {
         return DB.GetData(SQL);
     }
     public ResultSet Search(Date tungay, Date denngay, String TenKH){
-        String sql="Select PT.MaPT, PT.TongTienThu, PT.NgayThu, KH.TenKH from PHIEUTHU PT, KHACHHANG KH where PT.MaKH=KH.MaKH and KH.TenKH like '%"+TenKH+"%' and PT.NgayThu between ('"+dt.format(tungay)+"00:00:00') and ('"+dt.format(denngay)+" 23:59:59')";
+        String sql="SELECT * FROM PHIEUTHU,KHACHHANG WHERE PHIEUTHU.MaKH=KHACHHANG.MaKH AND TenKH like '%"+TenKH+"%' AND PHIEUTHU.NgayThu BETWEEN '"+dt.format(tungay)+"' and '"+dt.format(denngay)+"'";
         return DB.GetData(sql);
     }
+    
+    public ResultSet SearchTheoNgay(Date tungay, Date denngay){
+        String sql="SELECT * FROM PHIEUTHU,KHACHHANG WHERE PHIEUTHU.MaKH=KHACHHANG.MaKH AND PHIEUTHU.NgayThu BETWEEN '"+dt.format(tungay)+"' and '"+dt.format(denngay)+"'";
+        return DB.GetData(sql);
+    }
+    public ResultSet SearchTheoText(String TenKH, String MaPT, String LyDoThu){
+        String sql="SELECT * FROM PHIEUTHU,KHACHHANG WHERE PHIEUTHU.MaKH=KHACHHANG.MaKH AND TenKH like '%"+TenKH+"%' AND MaPT like '%"+MaPT+"%' AND LyDoThu like '%"+LyDoThu+"%'";
+        return DB.GetData(sql);
+    }
+    
     
     public String TaoMaPT(){
         String ID="PT0001";
