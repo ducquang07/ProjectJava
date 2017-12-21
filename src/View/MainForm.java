@@ -403,12 +403,12 @@ public class MainForm extends javax.swing.JFrame {
         jlbUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Chevron_Up_20px_1.png"))); // NOI18N
         jBtn7.add(jlbUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 11, 23, 38));
 
-        jlbThonTinChucVu.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jlbThonTinChucVu.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jlbThonTinChucVu.setForeground(new java.awt.Color(255, 255, 255));
         jlbThonTinChucVu.setText("Chức vụ :");
         jBtn7.add(jlbThonTinChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 35, 194, -1));
 
-        jlbThonTinUser.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jlbThonTinUser.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jlbThonTinUser.setForeground(new java.awt.Color(255, 255, 255));
         jlbThonTinUser.setText("Người dùng :");
         jBtn7.add(jlbThonTinUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 15, 194, -1));

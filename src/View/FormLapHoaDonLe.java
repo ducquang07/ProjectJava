@@ -101,13 +101,6 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         editFrm.MakeTransparentTable(jScrGioHang, jtbGioHang);
         editFrm.MakeTransparentTable(jScrDSSP, jtbDSSP); 
         
-//        jtbGioHang.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//            @Override
-//            public void valueChanged(ListSelectionEvent e) {
-//                jtxtTongTien.setText(String.format("%,d",TinhTongTienGioHang()));
-//            }
-//        });
-        
         jSpSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -1140,7 +1133,6 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
     private void jBtnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaMouseClicked
         // TODO add your handling code here
-        TableModel model =jtbGioHang.getModel();
         DefaultTableModel Model=(DefaultTableModel) jtbGioHang.getModel() ;
         try{
         int viewRow = jtbGioHang.getSelectedRow();

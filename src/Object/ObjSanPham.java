@@ -71,9 +71,15 @@ public class ObjSanPham {
         this.MoTa = MoTa;
         this.LoiNhuanBien = LoiNhuanBien;
     }
- 
 
-    
+    public ObjSanPham(String MaSP, String TenSP, String TenLoaiSP, String DVT, int SoLuong) {
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.TenLoaiSP = TenLoaiSP;
+        this.DVT = DVT;
+        this.SoLuong = SoLuong;
+    }
+
     //////Get
     public String getMaSP() {
         return MaSP;
