@@ -619,7 +619,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Title 4"
+                "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"
             }
         ));
         jTbCTPN.setSelectionBackground(new java.awt.Color(218, 223, 225));
