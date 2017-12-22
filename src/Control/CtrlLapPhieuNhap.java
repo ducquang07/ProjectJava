@@ -19,7 +19,7 @@ public class CtrlLapPhieuNhap {
         return DB.CloseDB();
     }
     public ResultSet LayDSDDH(){
-        String SQL="Select DDH.MaDDH, DDH.MaNCC, NCC.TenNCC, DDH.NgayDatHang, DDH.TrangThai from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and TrangThai=N'Đã đặt'";
+        String SQL="Select DDH.MaDDH, DDH.MaNCC, NCC.TenNCC, DDH.NgayDatHang, DDH.TrangThai from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and TrangThai=N'Chưa nhận'";
         return DB.GetData(SQL);
     }
     
