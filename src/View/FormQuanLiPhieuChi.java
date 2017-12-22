@@ -752,10 +752,12 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         });
 
         jtxtTenNCC.setColumns(20);
+        jtxtTenNCC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtTenNCC.setRows(5);
         jScrollPane6.setViewportView(jtxtTenNCC);
 
         jtxtDiaChi.setColumns(20);
+        jtxtDiaChi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtDiaChi.setRows(5);
         jScrollPane7.setViewportView(jtxtDiaChi);
 
@@ -843,6 +845,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 440, 500, -1));
 
+        jTbDSNCC.setAutoCreateRowSorter(true);
         jTbDSNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -854,11 +857,22 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        jTbDSNCC.setFocusable(false);
+        jTbDSNCC.setRowHeight(25);
+        jTbDSNCC.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSNCC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSNCC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSNCCMouseClicked(evt);
@@ -868,6 +882,10 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             }
         });
         jScrDSNCC.setViewportView(jTbDSNCC);
+        if (jTbDSNCC.getColumnModel().getColumnCount() > 0) {
+            jTbDSNCC.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTbDSNCC.getColumnModel().getColumn(1).setPreferredWidth(300);
+        }
 
         getContentPane().add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 215, 490, 210));
 
@@ -993,6 +1011,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 60, 500, 370));
 
+        jTbDSPC.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jTbDSPC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1004,11 +1023,21 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        jTbDSPC.setFocusable(false);
+        jTbDSPC.setRowHeight(25);
+        jTbDSPC.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jTbDSPC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSPCMouseClicked(evt);

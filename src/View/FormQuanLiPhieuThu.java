@@ -776,6 +776,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jLabel5.setText("Số điện thoại :");
 
         jtxtDiaChi.setColumns(20);
+        jtxtDiaChi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtDiaChi.setRows(5);
         jScrollPane4.setViewportView(jtxtDiaChi);
 
