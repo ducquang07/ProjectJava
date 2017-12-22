@@ -9,6 +9,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,6 +41,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     ObjKhachHang objKH=new ObjKhachHang();
     ObjPhieuThu objPT=new ObjPhieuThu();
     ModPhieuThu modPT=new ModPhieuThu();
+    SimpleDateFormat dt=new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
             
     private int flag=0;
     /**
@@ -879,8 +881,6 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     public void HienThiDanhSachPhieuThu(ResultSet rs){
         listPT.clear();
         DefaultTableModel model;
-        Calendar cal = Calendar.getInstance();
-
         model=(DefaultTableModel) jTbDSPT.getModel();
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
@@ -892,8 +892,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
                 Vector v =new Vector();
                 v.add(itemPT.getMaPT());
                 v.add(itemPT.getTenKH());
-                v.add(itemPT.getTongTienThu());
+                v.add(String.format("%,d",itemPT.getTongTienThu()));
                 v.add(itemPT.getNgayThu());
+                //v.add(dt.format(itemPT.getNgayThu()));
                 model.addRow(v);
             }            
         }catch (SQLException ex){
