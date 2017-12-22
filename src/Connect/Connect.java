@@ -23,11 +23,16 @@ public class Connect {
     private ResultSet rsDB=null;
     
 
-    private final String servername= "localhost";//"closer2.heliohost.org:3306";//
-    private final String databasename="closer_quanlicuahangson";//"closer2_quanlicuahangson";//
-    private final String username="root";//"closer2";//
-    private final String password="";//"Bo4quyennang";//
+//    private final String servername= "closer2.heliohost.org:3306";//
+//    private final String databasename="closer2_quanlicuahangson";//
+//    private final String username="closer2";//
+//    private final String password="Bo4quyennang";//
 
+    private final String servername= "localhost";//
+    private final String databasename="closer_quanlicuahangson";//
+    private final String username="root";//
+    private final String password="";//
+    
     private String url="";
 
     public Connection getConDB() {
@@ -76,10 +81,10 @@ public class Connect {
         return rs;
     }
     
-     public static void main(String args[]) { 
-         Connect cn = new Connect();
-         if(cn.Connected())
-             System.out.println("Connected");
-     }
+//     public static void main(String args[]) { 
+//         Connect cn = new Connect();
+//         if(cn.Connected())
+//             System.out.println("Connected");
+//     }
 
 }

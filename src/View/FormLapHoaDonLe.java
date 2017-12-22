@@ -1077,6 +1077,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         else
             HienThiDanhSachSanPham(CtrlHDL.SearchSanPhamByID(jtxtTimKiem.getText(),listComboboxLSP.get(jCbbLoaiSP.getSelectedIndex()).toString(),listComboboxNCC.get(jCbbTenNCC.getSelectedIndex()).toString()));   
         Binding();
+        CtrlHDL.CloseConnection();
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered

@@ -57,6 +57,19 @@ public class CtrlQuanLiDonDatHang {
         String mySQL="Select DDH.MaDDH, DDH.NgayDatHang, DDH.TrangThai, NCC.MaNCC, NCC.TenNCC from NHACUNGCAP NCC, DONDATHANG DDH where NCC.MaNCC = DDH.MaNCC and DDH.NgayDatHang between ('"+dt1.format(tungay)+"00:00:00') and ('"+dt1.format(denngay)+" 23:59:59')";
         return DB.GetData(mySQL);
     }
+     
+    public ResultSet TimKiemDDH(String MaDDH,String MaNCC,String TinhTrang,Date tungay,Date denngay){
+        try{
+           String SQL="Select DDH.MaDDH, DDH.MaNCC, DDH.NgayDatHang, DDH.TrangThai, NCC.TenNCC from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and DDH.MaDDH like '%"+MaDDH+"%' and DDH.MaNCC like '%"+MaNCC+"%' and DDH.TrangThai='"+TinhTrang+"' and NgayDat between ('"+dt1.format(tungay)+"') and ('"+dt1.format(denngay)+"  23:59:59')";
+           return DB.GetData(SQL);
+        }
+        catch(Exception ex){
+           System.out.println("Ngoại lệ tại CtrlDanhSachHoaDon.TimKiemHDL:"+ex.getMessage());
+        }
+        return null;
+    } 
+     
+     
     public ResultSet LayDanhSachNhaCungCap(){
         ModNhaCungCap modNCC=new ModNhaCungCap();
         return modNCC.GetALL();

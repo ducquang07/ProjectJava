@@ -58,6 +58,7 @@ public class ObjDonDatHang {
         this.TrangThai = TrangThai;
     }
     
+    
     //Get
     
     public Date getNgayNhap()

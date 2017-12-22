@@ -659,6 +659,9 @@ public class MainForm extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally{
+            ctrlMainFrm.CloseConnection();
+        }
     }
 
     public void SetQuanLi() {
@@ -1078,7 +1081,7 @@ public class MainForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainForm().setVisible(true);
+                new FormDangNhap().setVisible(true);
             }
         });
     }
