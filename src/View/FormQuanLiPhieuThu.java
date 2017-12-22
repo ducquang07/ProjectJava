@@ -869,9 +869,9 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         HienThiDanhSachPhieuThu(CtrlPT.LayDanhSachPhieuThu());
         LoadCbbKH();
         Binding();
-        jDCNgayLap.setDate(new Date());
-        jDCTuNgay.setDate(new Date());
-        jDCDenNgay.setDate(new Date()); 
+        jDCNgayLap.setDateFormatString("yyyy/MM/dd hh:mm:ss");
+        jDCTuNgay.setDateFormatString("yyyy/MM/dd hh:mm:ss");
+        jDCDenNgay.setDateFormatString("yyyy/MM/dd hh:mm:ss");
         CtrlPT.CloseConnection();
         EnableComponent(true);
     }
@@ -934,7 +934,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jtxtTimtheoMaPT.setText("");
         jTbDSPT.removeAll();
         jtxtMaPT.setText(CtrlPT.TaoMaPT());
-        jDCNgayLap.setDate(new Date());
+        jDCNgayLap.setDateFormatString("yyyy/MM/dd hh:mm:ss");
         DefaultTableModel model;
         model=(DefaultTableModel) jTbDSPT.getModel();
         model.getDataVector().removeAllElements(); 
@@ -1009,13 +1009,45 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnBackMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-        if(jtxtTimtheoKH.getText().equals(""))
-        {
-            HienThiDanhSachPhieuThu(CtrlPT.Search(jDCTuNgay.getDate(),jDCDenNgay.getDate(),jtxtTimtheoKH.getText()));
-            Binding();
+        try{
+            listPT.clear();
+            DefaultTableModel model = (DefaultTableModel) jTbDSPT.getModel();
+            model.getDataVector().removeAllElements();
+            Vector v = new Vector();
+                    v.add("");
+                    v.add("");
+                    v.add("");
+                    v.add("");
+            model.addRow(v);
+            Resetfield();
+            if(!(jDCTuNgay.getDate()==null && jDCDenNgay.getDate()==null)){
+                if(!jtxtTimtheoKH.getText().equals(""))
+                {
+                    HienThiDanhSachPhieuThu(CtrlPT.Search(jDCTuNgay.getDate(),jDCDenNgay.getDate(),jtxtTimtheoKH.getText()));
+                    Binding();
+                }
+                else{
+                    HienThiDanhSachPhieuThu(CtrlPT.SearchTheoNgay(jDCTuNgay.getDate(),jDCDenNgay.getDate()));
+                    Binding();
+                }             
+            }
+            else{
+                HienThiDanhSachPhieuThu(CtrlPT.SearchTheoText(jtxtTimtheoKH.getText(),jtxtTimtheoMaPT.getText(),jtxtTimtheoLyDoThu.getText()));
+                Binding();
+            }
+        }catch(Exception e){
+            System.out.println("Ngoại lệ tại FormPhieuThu.TimKiem: "+e.getMessage());
         }
+        
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
+    public void Resetfield(){ //reset các trường dữ liệu có trên form
+        jtxtMaPT.setText("");
+        jDCNgayLap.setDate(null);
+        jtxtSoTienThu.setText("");
+        jtxtLyDoThu.setText("");
+        jCbbTenKH.setSelectedIndex(0);
+    }
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
         // TODO add your handling code here:
         setColor(jBtnTimKiem);
@@ -1043,8 +1075,8 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jtxtTimtheoKH.setText("");
         jtxtTimtheoMaPT.setText("");
         jtxtTimtheoLyDoThu.setText("");
-        jDCTuNgay.setDate(new Date());
-        jDCDenNgay.setDate(new Date());
+        jDCTuNgay.setDate(null);
+        jDCDenNgay.setDate(null);
         Binding();
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
@@ -1232,7 +1264,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(jBtnHuy.isEnabled()){
            jtxtMaPT.setText("");
-           jDCNgayLap.setDate(new Date());
+           jDCNgayLap.setDateFormatString("yyyy/MM/dd hh:mm:ss");
            jtxtSoTienThu.setText("");
            jtxtLyDoThu.setText("");
            EnableComponent(true);

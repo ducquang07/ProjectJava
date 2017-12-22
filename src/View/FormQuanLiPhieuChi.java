@@ -189,6 +189,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         jBtnTimKiemNCC = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jCB1 = new javax.swing.JCheckBox();
         jScrDSPC = new javax.swing.JScrollPane();
         jTbDSPC = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -873,10 +874,10 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jtxtTimNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 290, 30));
+        jPanel1.add(jtxtTimNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 290, 30));
 
         jLabel18.setText("Từ khóa :");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 49, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 49, -1));
 
         jPnDSNCC.setBackground(new java.awt.Color(0, 204, 204));
         jPnDSNCC.setPreferredSize(new java.awt.Dimension(500, 34));
@@ -931,7 +932,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             .addGroup(jBtnLamMoiNCCLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jBtnLamMoiNCCLayout.setVerticalGroup(
             jBtnLamMoiNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -986,6 +987,9 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
+
+        jCB1.setText("Tìm theo Mã NCC");
+        jPanel1.add(jCB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 60, 500, 370));
 
@@ -1149,6 +1153,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             jtxtTongTienChi.setText(String.format("%,d", listPC.get(modelRow).getTongTienChi()));
             jtxtMaNCC2.setText(listPC.get(modelRow).getMaNCC());
             jtxtLyDoChi.setText(listPC.get(modelRow).getLyDoChi());
+            jtxtTienNoNCC.setText(listPC.get(modelRow).getNoCuaDaiLy());
         }catch (Exception ex) {
             System.out.println("Ngoại lệ tại FormPhieuChi.Binding: " + ex.getMessage());
         }
@@ -1220,9 +1225,36 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnBackMouseReleased
 
     private void jBtnTimKiemNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemNCCMouseClicked
-
+        try{
+            listNCC.clear();
+            DefaultTableModel model = (DefaultTableModel) jTbDSNCC.getModel();
+            model.getDataVector().removeAllElements();
+            Vector v = new Vector();
+                    v.add("");
+                    v.add("");
+            model.addRow(v);
+            Resetfield();
+            
+            if(jCB1.isSelected()){
+                HienThiDanhSachNCC(CtrlNCC.SearchNCCByID(jtxtTimNCC.getText()));
+            }
+            else HienThiDanhSachNCC(CtrlNCC.SearchNCCByName(jtxtTimNCC.getText()));
+            
+        }catch(Exception e){
+            System.out.println("Ngoại lệ tại FormPhieuChi.TimKiem: "+e.getMessage());
+        }
     }//GEN-LAST:event_jBtnTimKiemNCCMouseClicked
 
+        
+
+    public void Resetfield() { //reset các trường dữ liệu có trên form
+        jtxtMaNCC.setText("");
+        jtxtTenNCC.setText("");
+        jtxtSDT.setText("");
+        jtxtDiaChi.setText("");
+        jtxtTienNoNCC.setText("");
+    }
+        
     private void jBtnTimKiemNCCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemNCCMouseEntered
         // TODO add your handling code here:
         setColor(jBtnTimKiemNCC);
@@ -1245,17 +1277,9 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
     private void jBtnLamMoiNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiNCCMouseClicked
         // TODO add your handling code here:
-        //        try {
-            //            // TODO add your handling code here:
-            //            ResultSet rs =BSP.searchByPropertiesWithFulltext(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-            //            if(rs.getRow()==0){
-                //                rs =BSP.searchByPropertiesNormal(jtxtTimKiemMaSP.getText(),jtxtTimKiemTenSP.getText(),jCbbLoaiSP.getSelectedItem().toString());
-                //            }
-            //            displayData(rs);
-            //            Binding();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(FrmQuanLiSanPham.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
+        HienThiDanhSachNCC(CtrlNCC.LayDSNhaCungCap());
+        jtxtTimNCC.setText("");       
+        Binding2();
     }//GEN-LAST:event_jBtnLamMoiNCCMouseClicked
 
     private void jBtnLamMoiNCCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiNCCMouseEntered
@@ -1284,6 +1308,35 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
     private void jBtnTimKiemPCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemPCMouseClicked
         // TODO add your handling code here:
+        try{
+            listPC.clear();
+            DefaultTableModel model = (DefaultTableModel) jTbDSPC.getModel();
+            model.getDataVector().removeAllElements();
+            Vector v = new Vector();
+                    v.add("");
+                    v.add("");
+                    v.add("");
+                    v.add("");
+            model.addRow(v);
+            Resetfield();
+           
+            if (jcbbTimTheo.getSelectedItem().toString() == "Mã phiếu chi") {
+                HienThiDanhSachPhieuChi(CtrlPC.SearchPhieuChiByID(jtxtTimKiem.getText()));
+                Binding1();
+            }
+            else if(jcbbTimTheo.getSelectedItem().toString() == "Mã nhà cung cấp")
+            {
+                HienThiDanhSachPhieuChi(CtrlPC.SearchPhieuChiByIDNCC(jtxtTimKiem.getText()));
+                Binding1();
+            }
+            else{
+                HienThiDanhSachPhieuChi(CtrlPC.SearchTheoNgay(jDCTuNgay.getDate(),jDCDenNgay.getDate()));
+                Binding1();
+            }
+        }catch(Exception e){
+            System.out.println("Ngoại lệ tại FormPhieuThu.TimKiem: "+e.getMessage());
+        }
+        
     }//GEN-LAST:event_jBtnTimKiemPCMouseClicked
 
     private void jBtnTimKiemPCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemPCMouseEntered
@@ -1308,7 +1361,13 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
     private void jBtnLamMoiPCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiPCMouseClicked
         // TODO add your handling code here:
+        HienThiDanhSachPhieuChi(CtrlPC.LayDanhSachPC());
         
+        jtxtTimKiem.setText("");
+        
+        jDCTuNgay.setDate(null);
+        jDCDenNgay.setDate(null);
+        Binding1();
     }//GEN-LAST:event_jBtnLamMoiPCMouseClicked
 
     private void jBtnLamMoiPCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiPCMouseEntered
@@ -1654,6 +1713,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnXemPhieuIn;
     private javax.swing.JPanel jBtnXoa;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCB1;
     private com.toedter.calendar.JDateChooser jDCDenNgay;
     private com.toedter.calendar.JDateChooser jDCNgayChi;
     private com.toedter.calendar.JDateChooser jDCTuNgay;

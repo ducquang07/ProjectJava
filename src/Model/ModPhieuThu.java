@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
  */
 public class ModPhieuThu extends Model{
     private PreparedStatement pstmt;
-    SimpleDateFormat dt=new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat dt=new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
     
     public ModPhieuThu(){
         DB=new Connect();
