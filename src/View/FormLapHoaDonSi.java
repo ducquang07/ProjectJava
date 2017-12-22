@@ -957,7 +957,6 @@ public class FormLapHoaDonSi extends javax.swing.JFrame {
         Binding();
         jDateNgayLap.setDate(new Date());
         jSpSoLuong.setValue(1);
-        CtrlHDS.CloseConnection();
     }
     
     public void HienThiDanhSachSanPham(ResultSet rs){

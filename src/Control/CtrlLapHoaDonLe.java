@@ -69,6 +69,9 @@ public class CtrlLapHoaDonLe {
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại CtrlLapHoaDonLe.LaySoHDL:"+ex.getMessage());
         }
+        finally{
+            DB.CloseDB();
+        }
         return ID;
     }
     
@@ -90,6 +93,9 @@ public class CtrlLapHoaDonLe {
             if(rs.next()) return SoLuong+Integer.parseInt(rs.getString("SoLuong"));
         } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại CtrlLapHoaDonLe.LaySoLuongSanPham:"+ex.getMessage());
+        }
+        finally{
+            DB.CloseDB();
         }
         return 0;
     }

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/MainForm.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Object/ObjNhaCungCap.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Model/ModPhieuThu.java</file>
@@ -17,6 +18,14 @@
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/FormQuanLiPhieuThu.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/FormLapPhieuNhap.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Control/CtrlLapPhieuNhap.java</file>
+=======
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/View/FormDangNhap.java</file>
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Control/CtrlQuanLiDonDatHang.java</file>
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/View/FormLapHoaDonSi.java</file>
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Connect/Connect.java</file>
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/View/FormQuanLiDonDatHang.java</file>
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Control/CtrlDanhSachHoaDon.java</file>
+>>>>>>> origin/master
         </group>
     </open-files>
 </project-private>

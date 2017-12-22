@@ -33,4 +33,8 @@ public class CtrlDangNhap {
         }
         return false;
     }
+    
+    public boolean CloseConnection(){
+        return DB.CloseDB();
+    }
 }

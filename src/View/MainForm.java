@@ -659,6 +659,9 @@ public class MainForm extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally{
+            ctrlMainFrm.CloseConnection();
+        }
     }
 
     public void SetQuanLi() {

@@ -339,7 +339,6 @@ public class FormDangNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Tên đăng nhập và mật khẩu không được để trống.","Thông báo",JOptionPane.WARNING_MESSAGE);
         }
         else if(CtrlDN.KiemTraDangNhap(jtxtUser.getText(),jtxtPass.getText())) {
-            JOptionPane.showMessageDialog(null,"Đăng nhập thành công.","Thông báo",JOptionPane.INFORMATION_MESSAGE);
             itemTK=new ObjTaiKhoan(jtxtUser.getText(),jtxtPass.getText());
             MainForm MainFrm = new MainForm(itemTK);
             MainFrm.setVisible(true);
@@ -349,6 +348,7 @@ public class FormDangNhap extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null,"Tên đăng nhập hoặc mật khẩu không hợp lệ","Thông báo",JOptionPane.ERROR_MESSAGE);
         }
+        CtrlDN.CloseConnection();
     }//GEN-LAST:event_jBtnDangNhapMouseClicked
 
     private void jtxtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtUserKeyPressed

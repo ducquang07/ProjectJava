@@ -20,4 +20,8 @@ public class CtrlMainForm {
         String SQL="Select * from TAIKHOAN where TenDangNhap='"+User+"' and MatKhau='"+Pass+"'";
         return DB.GetData(SQL);
     }
+    
+    public boolean CloseConnection(){
+        return DB.CloseDB();
+    }
 }
