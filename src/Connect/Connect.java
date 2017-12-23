@@ -31,7 +31,7 @@ public class Connect {
 
 
     private final String servername= "localhost";//
-    private final String databasename="closer2_quanlicuahangson";//
+    private final String databasename="closer_quanlicuahangson";//
     private final String username="root";//
     private final String password="";//
     

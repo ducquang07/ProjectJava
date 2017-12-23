@@ -965,7 +965,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         try{
             while(rs.next()){
                 ObjSanPham itemSP;
-                itemSP=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"),rs.getString("TenLoaiSP"),(int) Double.parseDouble(rs.getString("GiaLe")),(int) Double.parseDouble(rs.getString("GiaSi")),rs.getString("DVT"), (int) Double.parseDouble(rs.getString("SoLuong")),rs.getString("MaNCC"),rs.getString("TenNCC"));
+                itemSP=new ObjSanPham(rs.getString("MaSP"),rs.getString("TenSP"),rs.getString("MaLoaiSP"),rs.getString("TenLoaiSP"),rs.getInt("GiaLe"),rs.getInt("GiaSi"),rs.getString("DVT"), rs.getInt("SoLuong"),rs.getString("MaNCC"),rs.getString("TenNCC"));
                 listSP.add(itemSP);
                 Vector v = new Vector();
                 v.add(itemSP.getMaSP());

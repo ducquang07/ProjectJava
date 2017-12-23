@@ -51,6 +51,50 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         initComponents();
         FormLoad();
         setLocationRelativeTo(null);
+         JPanel ListPanel[]=new JPanel[]{jPanel3,jPanel4,jPanel5,jPanel6,jPanel9};
+        editFrm.MakeTransparentPanel(ListPanel);
+        
+        JPanel ListTitle[]=new JPanel[]{jPnDSDDH,jPnDSNH,jPnDSSPDH,jPnThongTinPN,jPnThongTinSP};
+        editFrm.MakeTransparentTitle(ListTitle);
+        
+        JPanel ListButton[]=new JPanel[]{jBtnLuu,jBtnThem,jBtnXemPhieuIn,jBtnXoa,jBtnBack};
+        editFrm.MakeTransparentButton(ListButton);
+        
+        editFrm.MakeTransparentTable(jScrDSNH, jTbDSSPNH);
+        editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
+        editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
+        
+        jtxtTenSP.setLineWrap(true);
+    }
+    
+    public FormLapPhieuNhap(int fg) {
+        flag=fg;
+        initComponents();
+        setLocationRelativeTo(null);
+        JPanel ListPanel[]=new JPanel[]{jPanel3,jPanel4,jPanel5,jPanel6,jPanel9};
+        editFrm.MakeTransparentPanel(ListPanel);
+        
+        JPanel ListTitle[]=new JPanel[]{jPnDSDDH,jPnDSNH,jPnDSSPDH,jPnThongTinPN,jPnThongTinSP};
+        editFrm.MakeTransparentTitle(ListTitle);
+        
+        JPanel ListButton[]=new JPanel[]{jBtnLuu,jBtnThem,jBtnXemPhieuIn,jBtnXoa,jBtnBack};
+        editFrm.MakeTransparentButton(ListButton);
+        
+        editFrm.MakeTransparentTable(jScrDSNH, jTbDSSPNH);
+        editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
+        editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
+        jtxtTenSP.setLineWrap(true);
+        
+        FormLoad();
+        
+        
+    }
+    
+    public FormLapPhieuNhap(int fg, String Ma) {
+        flag=fg;
+        MaPN=Ma;
+        initComponents();
+        FormLoad();
         setLocationRelativeTo(null);
          JPanel ListPanel[]=new JPanel[]{jPanel3,jPanel4,jPanel5,jPanel6,jPanel9};
         editFrm.MakeTransparentPanel(ListPanel);
@@ -64,32 +108,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         editFrm.MakeTransparentTable(jScrDSNH, jTbDSSPNH);
         editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
         editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
-    }
-    
-    public FormLapPhieuNhap(int fg) {
-        flag=fg;
-        initComponents();
-        FormLoad();
-    }
-    
-    public FormLapPhieuNhap(int fg, String Ma) {
-        flag=fg;
-        MaPN=Ma;
-        initComponents();
-        FormLoad();
-        
-        JPanel ListPanel[]=new JPanel[]{jPanel3,jPanel4,jPanel5,jPanel6,jPanel9};
-        editFrm.MakeTransparentPanel(ListPanel);
-        
-        JPanel ListTitle[]=new JPanel[]{jPnDSDDH,jPnDSNH,jPnDSSPDH,jPnThongTinPN,jPnThongTinSP};
-        editFrm.MakeTransparentTitle(ListTitle);
-        
-        JPanel ListButton[]=new JPanel[]{jBtnLuu,jBtnThem,jBtnXemPhieuIn,jBtnXoa,jBtnBack};
-        editFrm.MakeTransparentButton(ListButton);
-        
-        editFrm.MakeTransparentTable(jScrDSNH, jTbDSSPNH);
-        editFrm.MakeTransparentTable(jScrDSDDH, jTbDSDDH);
-        editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
+        jtxtTenSP.setLineWrap(true);
     }
 
     /**
@@ -352,6 +371,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
 
         getContentPane().add(jBtnXemPhieuIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 590, 260, 70));
 
+        jTbDSSPNH.setFont(new java.awt.Font("Palatino Linotype", 1, 13)); // NOI18N
         jTbDSSPNH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -363,10 +383,15 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"
             }
         ));
+        jTbDSSPNH.setFocusable(false);
+        jTbDSSPNH.setRowHeight(25);
+        jTbDSSPNH.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSSPNH.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrDSNH.setViewportView(jTbDSSPNH);
 
         getContentPane().add(jScrDSNH, new org.netbeans.lib.awtextra.AbsoluteConstraints(815, 95, 530, 480));
 
+        jTbDSSP.setFont(new java.awt.Font("Palatino Linotype", 1, 13)); // NOI18N
         jTbDSSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -375,6 +400,10 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lượng"
             }
         ));
+        jTbDSSP.setFocusable(false);
+        jTbDSSP.setRowHeight(25);
+        jTbDSSP.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSSPMouseClicked(evt);
@@ -384,6 +413,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
 
         getContentPane().add(jScrDSSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 375, 410, 280));
 
+        jTbDSDDH.setFont(new java.awt.Font("Palatino Linotype", 1, 13)); // NOI18N
         jTbDSDDH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -392,6 +422,10 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
                 "Mã đơn đặt hàng", "Ngày đặt hàng"
             }
         ));
+        jTbDSDDH.setFocusable(false);
+        jTbDSDDH.setRowHeight(25);
+        jTbDSDDH.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSDDH.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSDDH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSDDHMouseClicked(evt);
@@ -412,6 +446,7 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         jLabel9.setText("Đơn giá:");
 
         jtxtTenSP.setColumns(20);
+        jtxtTenSP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtTenSP.setRows(5);
         jScrollPane4.setViewportView(jtxtTenSP);
 

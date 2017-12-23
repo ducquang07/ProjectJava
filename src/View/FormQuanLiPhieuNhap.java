@@ -904,12 +904,16 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         FormLapPhieuNhap frmPN = new FormLapPhieuNhap(1);
         frmPN.setVisible(true);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jBtnThemMouseClicked
 
     private void jBtnSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnSuaMouseClicked
         // TODO add your handling code here:
         FormLapPhieuNhap frmPN = new FormLapPhieuNhap(2,jtxtMaPN.getText());
         frmPN.setVisible(true);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jBtnSuaMouseClicked
 
     public boolean HienThiPN(ResultSet rs){
