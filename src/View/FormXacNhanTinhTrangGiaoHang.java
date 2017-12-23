@@ -772,6 +772,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         });
 
         jcbbTimTheoDG.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số hóa đơn", "Tên khách hàng" }));
+        jcbbTimTheoDG.setFocusable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -838,6 +839,7 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         });
 
         jcbbTimTheoCG.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số hóa đơn", "Tên khách hàng" }));
+        jcbbTimTheoCG.setFocusable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

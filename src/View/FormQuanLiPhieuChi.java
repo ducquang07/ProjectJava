@@ -846,6 +846,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 440, 500, -1));
 
         jTbDSNCC.setAutoCreateRowSorter(true);
+        jTbDSNCC.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jTbDSNCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

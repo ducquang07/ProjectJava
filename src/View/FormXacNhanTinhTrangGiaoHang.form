@@ -1103,6 +1103,7 @@
                 <StringItem index="1" value="T&#xea;n kh&#xe1;ch h&#xe0;ng"/>
               </StringArray>
             </Property>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1221,6 +1222,7 @@
                 <StringItem index="1" value="T&#xea;n kh&#xe1;ch h&#xe0;ng"/>
               </StringArray>
             </Property>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
