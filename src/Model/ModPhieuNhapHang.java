@@ -70,6 +70,19 @@ public class ModPhieuNhapHang extends Model{
        
     }
     public boolean Delete(ObjPhieuNhapHang TbPhieuNhapHang) {
+         SQL="Delete from CTPN where MaPN ='"+TbPhieuNhapHang.getMaPN()+"'";
+            try {
+                if(DB.Connected()){
+                Statement  stmDB =(Statement)  DB.getConDB().createStatement();
+                stmDB.executeUpdate(SQL);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Ngoại lệ tại ModCTPN.Delete: "+ex.getMessage());
+                DB.CloseDB();
+                return false;
+            }finally{
+                DB.CloseDB();
+            }
          return super.Delete(TbPhieuNhapHang.getMaPN());
     }
     
