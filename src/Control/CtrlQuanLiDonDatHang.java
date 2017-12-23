@@ -27,40 +27,16 @@ public class CtrlQuanLiDonDatHang {
     public boolean CloseConnection(){
         return DB.CloseDB();
     }
+    
     public ResultSet LayThongTinChiTietDDH(String MaDDH){
         String SQL="Select CT.*,SP.TenSP from CTDDH CT,SANPHAM SP where SP.MaSP=CT.MaSP and CT.MaDDH='"+MaDDH+"'";
         return DB.GetData(SQL);
     }
     
-    public ResultSet SearchDonDHByTrangThai(String TrangT){
-        String mySQL="Select * from DONDATHANG where TrangThai like '%"+TrangT+"%'";
-        return DB.GetData(mySQL);
-    }
-    public ResultSet SearchDonDHByMaDDH(String MaDDH)
-    {
-        String mySQL="Select * from DONDATHANG where MaDDH like '%"+MaDDH+"%'";
-        return DB.GetData(mySQL);
-    }  
-    public ResultSet Search(Date tungay, Date denngay,String TenNCC, String TrangThai)
-    {
-        String mySQL="Select DDH.MaDDH, DDH.NgayDatHang, DDH.TrangThai, NCC.MaNCC, NCC.TenNCC from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC = NCC.MaNCC and NCC.TenNCC = '"+TenNCC+"' and DDH.TrangThai = '"+TrangThai+"' and DDH.NgayDatHang between ('"+dt1.format(tungay)+"00:00:00') and ('"+dt1.format(denngay)+" 23:59:59')";
-        return DB.GetData(mySQL);
-    }
-    
-    public ResultSet Search1(Date tungay, Date denngay, String TenNCC)
-    {
-        String mySQL="Select DDH.MaDDH, DDH.NgayDatHang, DDH.TrangThai, NCC.MaNCC, NCC.TenNCC from NHACUNGCAP NCC, DONDATHANG DDH where NCC.MaNCC = DDH.MaNCC and NCC.TenNCC = '"+TenNCC+"' and DDH.NgayDatHang between ('"+dt1.format(tungay)+"00:00:00') and ('"+dt1.format(denngay)+" 23:59:59')";
-        return DB.GetData(mySQL);
-    }
-     public ResultSet Search2(Date tungay, Date denngay)
-    {
-        String mySQL="Select DDH.MaDDH, DDH.NgayDatHang, DDH.TrangThai, NCC.MaNCC, NCC.TenNCC from NHACUNGCAP NCC, DONDATHANG DDH where NCC.MaNCC = DDH.MaNCC and DDH.NgayDatHang between ('"+dt1.format(tungay)+"00:00:00') and ('"+dt1.format(denngay)+" 23:59:59')";
-        return DB.GetData(mySQL);
-    }
      
-    public ResultSet TimKiemDDH(String MaDDH,String MaNCC,String TinhTrang,Date tungay,Date denngay){
+    public ResultSet TimKiemDDHByMaDDH(String MaDDH,String MaNCC,String TinhTrang,Date tungay,Date denngay){
         try{
-           String SQL="Select DDH.MaDDH, DDH.MaNCC, DDH.NgayDatHang, DDH.TrangThai, NCC.TenNCC from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and DDH.MaDDH like '%"+MaDDH+"%' and DDH.MaNCC like '%"+MaNCC+"%' and DDH.TrangThai='"+TinhTrang+"' and NgayDat between ('"+dt1.format(tungay)+"') and ('"+dt1.format(denngay)+"  23:59:59')";
+           String SQL="Select DDH.MaDDH, DDH.MaNCC, DDH.NgayDatHang, DDH.TrangThai, NCC.TenNCC from DONDATHANG DDH, NHACUNGCAP NCC where DDH.MaNCC=NCC.MaNCC and DDH.MaDDH like '%"+MaDDH+"%' and DDH.MaNCC like '%"+MaNCC+"%' and DDH.TrangThai like '%"+TinhTrang+"%' and DDH.NgayDatHang between ('"+dt1.format(tungay)+"') and ('"+dt1.format(denngay)+"  23:59:59')";
            return DB.GetData(SQL);
         }
         catch(Exception ex){

@@ -134,7 +134,7 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jcbbTimtheo = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        jtxtTimkiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPnTimKiem = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -578,13 +578,18 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         getContentPane().add(jBtnChinhSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("Tìm theo :");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 51, -1, -1));
 
         jcbbTimtheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên sản phẩm", "Mã sản phẩm" }));
         jcbbTimtheo.setFocusable(false);
+        jPanel4.add(jcbbTimtheo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 48, 232, -1));
+        jPanel4.add(jtxtTimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 86, 350, -1));
 
         jLabel8.setText("Từ tìm kiếm :");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 89, -1, -1));
 
         jPnTimKiem.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -605,41 +610,7 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(31, 31, 31)
-                        .addComponent(jcbbTimtheo, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel4))
-                    .addComponent(jcbbTimtheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel8))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
+        jPanel4.add(jPnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 510, 190));
 
@@ -692,6 +663,8 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
 
         jLabel5.setText("Tên sản phẩm :");
 
+        jtxtTenSP.setEditable(false);
+
         jLabel6.setText("Số lượng :");
 
         jPnThongTinCTNH.setBackground(new java.awt.Color(0, 204, 204));
@@ -703,10 +676,10 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         jPnThongTinCTNH.setLayout(jPnThongTinCTNHLayout);
         jPnThongTinCTNHLayout.setHorizontalGroup(
             jPnThongTinCTNHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnThongTinCTNHLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnThongTinCTNHLayout.createSequentialGroup()
+                .addContainerGap(315, Short.MAX_VALUE)
                 .addComponent(jLabel11)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPnThongTinCTNHLayout.setVerticalGroup(
             jPnThongTinCTNHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -714,6 +687,8 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         );
 
         jLabel17.setText("Loại sản phẩm :");
+
+        jtxtLoaiSP.setEditable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -949,9 +924,7 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         }
     }
     
-    public void HienThiDanhSachSanPhamNCC(String MaNCC){
-        ResultSet rs=null;
-        rs=CtrlLapDDH.LayDanhSachSanPhamNCC(listComboboxNCC.get(jcbbNhaCungCap.getSelectedIndex()));
+    public void HienThiDanhSachSanPhamNCC(ResultSet rs){
         try{
             listSanPhamNCC.clear();
              DefaultTableModel model = (DefaultTableModel) jtbDSSP.getModel();
@@ -1003,7 +976,7 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         jtxtMaNCC.setText("");
         jtxtMaDDH.setText(CtrlLapDDH.LayMaDDH());
         DefaultTableModel model;
-        HienThiDanhSachSanPhamNCC(jtxtMaNCC.getText());
+        HienThiDanhSachSanPhamNCC(CtrlLapDDH.LayDanhSachSanPhamNCC(listComboboxNCC.get(jcbbNhaCungCap.getSelectedIndex())));
         model=(DefaultTableModel) jTbDSDH.getModel();
         model.getDataVector().removeAllElements(); 
         model.fireTableDataChanged();
@@ -1038,11 +1011,11 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
         // TODO add your handling code here:
-//        if(jCbbTimTheo.getSelectedIndex()==0)
-//        HienThiDanhSachSanPham(CtrlHDL.SearchSanPhamByName(jtxtTimKiem.getText(),listComboboxLSP.get(jCbbLoaiSP.getSelectedIndex()).toString(),listComboboxNCC.get(jCbbTenNCC.getSelectedIndex()).toString()));
-//        else
-//        HienThiDanhSachSanPham(CtrlHDL.SearchSanPhamByID(jtxtTimKiem.getText(),listComboboxLSP.get(jCbbLoaiSP.getSelectedIndex()).toString(),listComboboxNCC.get(jCbbTenNCC.getSelectedIndex()).toString()));
-//        Binding();
+        if(jcbbTimtheo.getSelectedIndex()==0)
+        HienThiDanhSachSanPhamNCC(CtrlLapDDH.SearchSanPhamByName(jtxtTimkiem.getText(),jtxtMaNCC.getText()));
+        else
+        HienThiDanhSachSanPhamNCC(CtrlLapDDH.SearchSanPhamByName(jtxtTimkiem.getText(),jtxtMaNCC.getText()));
+        Binding();
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -1067,10 +1040,9 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
 
     private void jBtnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseClicked
         // TODO add your handling code here:
-//        HienThiDanhSachSanPham(CtrlHDL.LayDanhSachSanPham());
-//        LoadComboboxLoaiSP();
-//        LoadComboboxNhaCungCap();
-//        jtxtTimKiem.setText("");
+        HienThiDanhSachSanPhamNCC(CtrlLapDDH.LayDanhSachSanPhamNCC(jtxtMaNCC.getText()));
+        jcbbTimtheo.setSelectedIndex(0);
+        jtxtTimkiem.setText("");
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
 
     private void jBtnLamMoiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseEntered
@@ -1289,7 +1261,7 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
             listCTDDH.clear();
             if(jcbbNhaCungCap.getSelectedIndex()>0){
                 jtxtMaNCC.setText(listComboboxNCC.get(jcbbNhaCungCap.getSelectedIndex()));
-                HienThiDanhSachSanPhamNCC(jtxtMaNCC.getText());
+                HienThiDanhSachSanPhamNCC(CtrlLapDDH.LayDanhSachSanPhamNCC(listComboboxNCC.get(jcbbNhaCungCap.getSelectedIndex())));
             }
             else jtxtMaNCC.setText("");
         }
@@ -1488,7 +1460,6 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrDSSP;
     private javax.swing.JSpinner jSpSoLuong;
     private javax.swing.JTable jTbDSDH;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel jbtnDuyetDonHang;
     private javax.swing.JComboBox<String> jcbbNhaCungCap;
     private javax.swing.JComboBox<String> jcbbTimtheo;
@@ -1499,5 +1470,6 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtMaDDH;
     private javax.swing.JTextField jtxtMaNCC;
     private javax.swing.JTextField jtxtTenSP;
+    private javax.swing.JTextField jtxtTimkiem;
     // End of variables declaration//GEN-END:variables
 }

@@ -517,7 +517,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 550, 240));
 
-        jTbDSPN.setFont(new java.awt.Font("Palatino Linotype", 0, 11)); // NOI18N
+        jTbDSPN.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jTbDSPN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -526,8 +526,11 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 "Mã phiếu nhập", "Ngày nhập hàng"
             }
         ));
+        jTbDSPN.setFocusable(false);
+        jTbDSPN.setRowHeight(25);
         jTbDSPN.setSelectionBackground(new java.awt.Color(218, 223, 225));
         jTbDSPN.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSPN.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTbDSPN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSPNMouseClicked(evt);
@@ -586,6 +589,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 81, -1, 20));
 
         jtxtTenNCC.setColumns(20);
+        jtxtTenNCC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtTenNCC.setRows(5);
         jScrollPane2.setViewportView(jtxtTenNCC);
 
@@ -614,6 +618,7 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 770, 170));
 
+        jTbCTPN.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jTbCTPN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -622,8 +627,11 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"
             }
         ));
+        jTbCTPN.setFocusable(false);
+        jTbCTPN.setRowHeight(25);
         jTbCTPN.setSelectionBackground(new java.awt.Color(218, 223, 225));
         jTbCTPN.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbCTPN.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrPnCTPN.setViewportView(jTbCTPN);
 
         getContentPane().add(jScrPnCTPN, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 275, 760, 355));

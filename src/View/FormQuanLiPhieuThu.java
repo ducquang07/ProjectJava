@@ -698,6 +698,7 @@ public class FormQuanLiPhieuThu extends javax.swing.JFrame {
         jLabel9.setText("Lý do thu :");
 
         jtxtLyDoThu.setColumns(20);
+        jtxtLyDoThu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtLyDoThu.setRows(5);
         jScrollPane3.setViewportView(jtxtLyDoThu);
 

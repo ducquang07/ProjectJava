@@ -26,19 +26,17 @@ public class CtrlLapDonDatHang {
     
     public ResultSet SearchSanPhamByID(String MaSP,String MaLSP,String MaNCC){
         String SQL="Select SP.MaSP,SP.TenSP,SP.DVT,SP.GiaLe,SP.GiaSi,SP.SoLuong,SP.MaLoaiSP,SP.MaNCC,LSP.TenLoaiSP,NCC.TenNCC "
-                +" from SANPHAM SP,LOAISANPHAM LSP,NHACUNGCAP NCC where SP.MaLoaiSP=LSP.MaLoaiSP and SP.MaNCC=NCC.MaNCC"
-                +" and SP.MaSP like '%"+MaSP+"%'";
-        if(!MaLSP.equals("")) SQL+=" and SP.MaLoaiSP ='"+MaLSP+"'";
-        if(!MaNCC.equals("")) SQL+=" and SP.MaNCC='"+MaNCC+"'";
+                + "from SANPHAM SP,LOAISANPHAM LSP,NHACUNGCAP NCC where SP.MaLoaiSP=LSP.MaLoaiSP and SP.MaNCC=NCC.MaNCC"
+                +" and SP.MaSP like '%"+MaSP+"%' and SP.MaNCC='"+MaNCC+"'";
+        //if(!MaNCC.equals("")) SQL+=" and SP.MaNCC='"+MaNCC+"'";
         return DB.GetData(SQL);
     }
     
-    public ResultSet SearchSanPhamByName(String TenSP,String MaLSP,String MaNCC){
+    public ResultSet SearchSanPhamByName(String TenSP,String MaNCC){
         String SQL="Select SP.MaSP,SP.TenSP,SP.DVT,SP.GiaLe,SP.GiaSi,SP.SoLuong,SP.MaLoaiSP,SP.MaNCC,LSP.TenLoaiSP,NCC.TenNCC "
-                +" from SANPHAM SP,LOAISANPHAM LSP,NHACUNGCAP NCC where SP.MaLoaiSP=LSP.MaLoaiSP and SP.MaNCC=NCC.MaNCC"
-                +" and SP.TenSP like '%"+TenSP+"%'";
-        if(!MaLSP.equals("")) SQL+=" and SP.MaLoaiSP ='"+MaLSP+"'";
-        if(!MaNCC.equals("")) SQL+=" and SP.MaNCC='"+MaNCC+"'";
+                + "from SANPHAM SP,LOAISANPHAM LSP,NHACUNGCAP NCC where SP.MaLoaiSP=LSP.MaLoaiSP and SP.MaNCC=NCC.MaNCC"
+                +" and SP.TenSP like '%"+TenSP+"%' and SP.MaNCC='"+MaNCC+"'";
+        //if(!MaNCC.equals("")) SQL+=" and SP.MaNCC='"+MaNCC+"'";
         return DB.GetData(SQL);
     }
     

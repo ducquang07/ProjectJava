@@ -774,6 +774,7 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
         jDateNgayLapHDL.setDateFormatString("dd/MM/yyyy");
         jDateNgayLapHDL.setEnabled(false);
+        jDateNgayLapHDL.setOpaque(false);
 
         jtxtTongTienHDL.setEditable(false);
 

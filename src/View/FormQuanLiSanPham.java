@@ -51,6 +51,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         editFrm.MakeTransparentButton(ListButton);
         
         editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
+        jtxtMoTa.setLineWrap(true);
         LoadForm();
     }
     public void HienThiDanhSachSanPham(ResultSet rs){
@@ -207,12 +208,13 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jtxtLoiNhuanBien = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jtxtMoTa = new javax.swing.JTextField();
         jPnThongtinSP = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jtxtGiaLe = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxtMoTa = new javax.swing.JTextArea();
         jScrDSSP = new javax.swing.JScrollPane();
         jTbDSSP = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -797,8 +799,6 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         jLabel13.setText("Mô tả");
 
-        jtxtMoTa.setEditable(false);
-
         jPnThongtinSP.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -832,6 +832,14 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("VND");
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jtxtMoTa.setColumns(20);
+        jtxtMoTa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jtxtMoTa.setRows(5);
+        jScrollPane1.setViewportView(jtxtMoTa);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -868,14 +876,13 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
                             .addComponent(jLabel12)
                             .addComponent(jLabel13))
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtxtDVT, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtxtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcbbPhanLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jcbbNCC, 0, 356, Short.MAX_VALUE)
-                                .addComponent(jtxtLoiNhuanBien)))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtxtDVT, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbbPhanLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbbNCC, 0, 356, Short.MAX_VALUE)
+                            .addComponent(jtxtLoiNhuanBien)
+                            .addComponent(jScrollPane1))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -895,7 +902,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
                     .addComponent(jtxtGiaSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jtxtGiaLe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -923,8 +930,8 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 50, 540, 590));
@@ -1643,6 +1650,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
     private javax.swing.JPanel jPnThongtinSP;
     private javax.swing.JPanel jPnTracuuSP;
     private javax.swing.JScrollPane jScrDSSP;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTbDSSP;
     private javax.swing.JComboBox<String> jcbbNCC;
     private javax.swing.JComboBox<String> jcbbPhanLoai;
@@ -1654,7 +1662,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtGiaSi;
     private javax.swing.JTextField jtxtLoiNhuanBien;
     private javax.swing.JTextField jtxtMaSP;
-    private javax.swing.JTextField jtxtMoTa;
+    private javax.swing.JTextArea jtxtMoTa;
     private javax.swing.JTextField jtxtSoLuong;
     private javax.swing.JTextField jtxtTenSP;
     private javax.swing.JTextField jtxtTimKiem;

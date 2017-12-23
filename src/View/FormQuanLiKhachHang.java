@@ -558,8 +558,10 @@ public class FormQuanLiKhachHang extends javax.swing.JFrame {
         jLabel9.setText("Email :");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         jtxtDiaChi.setColumns(20);
+        jtxtDiaChi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtDiaChi.setRows(5);
         jScrollPane1.setViewportView(jtxtDiaChi);
 

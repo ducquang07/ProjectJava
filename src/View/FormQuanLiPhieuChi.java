@@ -57,57 +57,16 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         
         JPanel ListButton[] = new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoiNCC,jBtnLamMoiPC,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiemNCC,jBtnTimKiemPC,jBtnXemPhieuIn,jBtnXoa};
         editFrm.MakeTransparentButton(ListButton);
+        
+        jtxtLyDoChi.setLineWrap(true);
+        jtxtTenNCC.setLineWrap(true);
+        jtxtDiaChi.setLineWrap(true);
  
         editFrm.MakeTransparentTable(jScrDSPC, jTbDSPC);
         editFrm.MakeTransparentTable(jScrDSNCC, jTbDSNCC);
         LoadForm();
     }
-    public FormQuanLiPhieuChi(String MaPC, String TenNCC, Date NgayChi){
-        initComponents();
-        setLocationRelativeTo(null);
-        
-        jPanel9.setBackground(new Color(0,0,0,0));
-        
-        JPanel ListPanel[]=new JPanel[]{jPanel1,jPanel4,jPanel5,jPanel6,jPanel8};
-        editFrm.MakeTransparentPanel(ListPanel);
-                
-        JPanel ListTitle[]=new JPanel[]{jPnDSNCC,jPnDSPC,jPnThongtinNCC,jPnThongtinPC,jPnTracuuPC};
-        editFrm.MakeTransparentTitle(ListTitle);
-        
-        JPanel ListButton[] = new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoiNCC,jBtnLamMoiPC,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiemNCC,jBtnTimKiemPC,jBtnXemPhieuIn,jBtnXoa};
-        editFrm.MakeTransparentButton(ListButton);
- 
-        editFrm.MakeTransparentTable(jScrDSPC, jTbDSPC);
-        editFrm.MakeTransparentTable(jScrDSNCC, jTbDSNCC);
-        LoadForm();
-        jDCNgayChi.setDate(NgayChi);
-        try{
-            DefaultTableModel Model = (DefaultTableModel) jTbDSPC.getModel();
-            for(int i =0; i<listPC.size();i++){
-                this.listPC.add(listPC.get(i));
-                Vector v = new Vector();
-                v.add(listPC.get(i).getNgayChi());
-                v.add(listPC.get(i).getMaPC());
-                v.add(listPC.get(i).getMaNCC());
-                Model.addRow(v);
-            } 
-        }catch(Exception ex){
-            System.out.println("Ngoại lệ tại FormPhieuChi():"+ex.getMessage());
-        }
-        
-        try{
-            DefaultTableModel Model = (DefaultTableModel) jTbDSNCC.getModel();
-            for(int i =0; i<listNCC.size();i++){
-                this.listNCC.add(listNCC.get(i));
-                Vector v = new Vector();
-                v.add(listNCC.get(i).getMaNCC());
-                v.add(listNCC.get(i).getTenNCC());
-                Model.addRow(v);
-            } 
-        }catch(Exception ex){
-            System.out.println("Ngoại lệ tại FormPhieuChi():"+ex.getMessage());
-        }
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,6 +94,11 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jBtnSua = new javax.swing.JPanel();
         jlblSua = new javax.swing.JLabel();
+        jBtnTimKiemNCC = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jBtnLamMoiNCC = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jCB1 = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -184,12 +148,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jPnDSNCC = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jBtnLamMoiNCC = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        jBtnTimKiemNCC = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jCB1 = new javax.swing.JCheckBox();
         jScrDSPC = new javax.swing.JScrollPane();
         jTbDSPC = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -552,6 +511,89 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
         getContentPane().add(jBtnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 650, 120, -1));
 
+        jBtnTimKiemNCC.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnTimKiemNCC.setPreferredSize(new java.awt.Dimension(102, 50));
+        jBtnTimKiemNCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemNCCMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemNCCMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemNCCMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemNCCMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnTimKiemNCCMouseReleased(evt);
+            }
+        });
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Search_27px_1.png"))); // NOI18N
+
+        javax.swing.GroupLayout jBtnTimKiemNCCLayout = new javax.swing.GroupLayout(jBtnTimKiemNCC);
+        jBtnTimKiemNCC.setLayout(jBtnTimKiemNCCLayout);
+        jBtnTimKiemNCCLayout.setHorizontalGroup(
+            jBtnTimKiemNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnTimKiemNCCLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        jBtnTimKiemNCCLayout.setVerticalGroup(
+            jBtnTimKiemNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jBtnTimKiemNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 135, 120, 30));
+
+        jBtnLamMoiNCC.setBackground(new java.awt.Color(153, 153, 153));
+        jBtnLamMoiNCC.setPreferredSize(new java.awt.Dimension(105, 50));
+        jBtnLamMoiNCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnLamMoiNCCMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnLamMoiNCCMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnLamMoiNCCMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnLamMoiNCCMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnLamMoiNCCMouseReleased(evt);
+            }
+        });
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Refresh_27px_1.png"))); // NOI18N
+
+        javax.swing.GroupLayout jBtnLamMoiNCCLayout = new javax.swing.GroupLayout(jBtnLamMoiNCC);
+        jBtnLamMoiNCC.setLayout(jBtnLamMoiNCCLayout);
+        jBtnLamMoiNCCLayout.setHorizontalGroup(
+            jBtnLamMoiNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnLamMoiNCCLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        jBtnLamMoiNCCLayout.setVerticalGroup(
+            jBtnLamMoiNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jBtnLamMoiNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 135, 120, 30));
+
+        jCB1.setText("Tìm theo Mã NCC");
+        jCB1.setFocusable(false);
+        jCB1.setOpaque(false);
+        getContentPane().add(jCB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 100, 110, 30));
+
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel7.setText("Từ ngày :");
@@ -649,6 +691,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         jLabel15.setText("Lý do :");
 
         jtxtLyDoChi.setColumns(20);
+        jtxtLyDoChi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jtxtLyDoChi.setRows(5);
         jScrollPane8.setViewportView(jtxtLyDoChi);
 
@@ -888,7 +931,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             jTbDSNCC.getColumnModel().getColumn(1).setPreferredWidth(300);
         }
 
-        getContentPane().add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 215, 490, 210));
+        getContentPane().add(jScrDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 175, 490, 220));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -921,94 +964,13 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
 
         jPanel1.add(jPnDSNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jBtnLamMoiNCC.setBackground(new java.awt.Color(153, 153, 153));
-        jBtnLamMoiNCC.setPreferredSize(new java.awt.Dimension(105, 50));
-        jBtnLamMoiNCC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnLamMoiNCCMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBtnLamMoiNCCMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBtnLamMoiNCCMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jBtnLamMoiNCCMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jBtnLamMoiNCCMouseReleased(evt);
-            }
-        });
-
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Refresh_27px_1.png"))); // NOI18N
-
-        javax.swing.GroupLayout jBtnLamMoiNCCLayout = new javax.swing.GroupLayout(jBtnLamMoiNCC);
-        jBtnLamMoiNCC.setLayout(jBtnLamMoiNCCLayout);
-        jBtnLamMoiNCCLayout.setHorizontalGroup(
-            jBtnLamMoiNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnLamMoiNCCLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        jBtnLamMoiNCCLayout.setVerticalGroup(
-            jBtnLamMoiNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jBtnLamMoiNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 120, 30));
-
-        jBtnTimKiemNCC.setBackground(new java.awt.Color(153, 153, 153));
-        jBtnTimKiemNCC.setPreferredSize(new java.awt.Dimension(102, 50));
-        jBtnTimKiemNCC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnTimKiemNCCMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBtnTimKiemNCCMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBtnTimKiemNCCMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jBtnTimKiemNCCMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jBtnTimKiemNCCMouseReleased(evt);
-            }
-        });
-
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Search_27px_1.png"))); // NOI18N
-
-        javax.swing.GroupLayout jBtnTimKiemNCCLayout = new javax.swing.GroupLayout(jBtnTimKiemNCC);
-        jBtnTimKiemNCC.setLayout(jBtnTimKiemNCCLayout);
-        jBtnTimKiemNCCLayout.setHorizontalGroup(
-            jBtnTimKiemNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnTimKiemNCCLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        jBtnTimKiemNCCLayout.setVerticalGroup(
-            jBtnTimKiemNCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jBtnTimKiemNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 120, 30));
-
         jButton1.setText("Chọn");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
-
-        jCB1.setText("Tìm theo Mã NCC");
-        jPanel1.add(jCB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 340, 60, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 60, 500, 370));
 

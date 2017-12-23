@@ -44,7 +44,6 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     ModChiTietDDH ModCTDDH = new ModChiTietDDH();
     CtrlLapDonDatHang CtrlLapDDH = new CtrlLapDonDatHang();
     ArrayList<String> ListComboboxNCC = new ArrayList<>();
-    ArrayList<String> ListComboboxTT = new ArrayList<>();
     ArrayList<ObjChiTietDDH> listCTDDH = new ArrayList<>();
     private int flag = 0;
     SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy      hh:mm:ss a");
@@ -82,13 +81,13 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }
     public void LoadComboboxNhaCungCap(){
         ListComboboxNCC.clear();
-        jComboBox2.removeAllItems();
-        jComboBox2.addItem("---Chọn nhà cung cấp---");
+        jcbbNCC.removeAllItems();
+        jcbbNCC.addItem("---Chọn nhà cung cấp---");
         ListComboboxNCC.add("");
         ResultSet rs=CtrlDDH.LayDanhSachNhaCungCap();
         try{
             while(rs.next()){
-                jComboBox2.addItem(rs.getString("TenNCC"));
+                jcbbNCC.addItem(rs.getString("TenNCC"));
                 ListComboboxNCC.add(rs.getString("MaNCC"));
             }
         }
@@ -193,13 +192,13 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCbbTrangThai = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jcbbNCC = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jtxtTimKiemMaDDH = new javax.swing.JTextField();
+        jDateTuNgay = new com.toedter.calendar.JDateChooser();
+        jDateDenNgay = new com.toedter.calendar.JDateChooser();
         jPnTracuuDDH = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrDSDDH = new javax.swing.JScrollPane();
@@ -517,26 +516,26 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
         jLabel4.setText("Trạng thái :");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 84, -1, 16));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa nhận hàng", "Đã nhận hàng" }));
-        jComboBox1.setFocusable(false);
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 82, 332, -1));
+        jCbbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa nhận", "Đã nhận" }));
+        jCbbTrangThai.setFocusable(false);
+        jPanel4.add(jCbbTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 82, 332, -1));
 
         jLabel5.setText("Nhà cung cấp :");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 116, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setFocusable(false);
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 113, 332, -1));
+        jcbbNCC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbbNCC.setFocusable(false);
+        jPanel4.add(jcbbNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 113, 332, -1));
 
         jLabel7.setText("Mã đặt hàng :");
         jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 147, -1, -1));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 144, 332, -1));
+        jPanel4.add(jtxtTimKiemMaDDH, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 144, 332, -1));
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
-        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 48, 116, -1));
+        jDateTuNgay.setDateFormatString("dd/MM/yyyy");
+        jPanel4.add(jDateTuNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 48, 116, -1));
 
-        jDateChooser2.setDateFormatString("dd/MM/yyyy");
-        jPanel4.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 48, 116, -1));
+        jDateDenNgay.setDateFormatString("dd/MM/yyyy");
+        jPanel4.add(jDateDenNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 48, 116, -1));
 
         jPnTracuuDDH.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -771,8 +770,8 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     public void LoadForm(){
-        jDateChooser1.setDate(new Date());
-        jDateChooser2.setDate(new Date());
+        jDateTuNgay.setDate(new Date());
+        jDateDenNgay.setDate(new Date());
         HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
         LoadComboboxNhaCungCap();   
         SetVisibleButton(true);
@@ -809,11 +808,11 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private void jBtnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLamMoiMouseClicked
         HienThiDanhSachDonDatHang(CtrlDDH.LayDSDonDatHang());
         LoadComboboxNhaCungCap();
-        jTextField1.setText("");
-        jDateChooser1.setDate(new Date());
-        jDateChooser2.setDate(new Date());
-        jComboBox1.setSelectedIndex(0);
-        jComboBox2.setSelectedIndex(0);
+        jtxtTimKiemMaDDH.setText("");
+        jDateTuNgay.setDate(new Date());
+        jDateDenNgay.setDate(new Date());
+        jCbbTrangThai.setSelectedIndex(0);
+        jcbbNCC.setSelectedIndex(0);
         Binding();
         
     }//GEN-LAST:event_jBtnLamMoiMouseClicked
@@ -839,25 +838,18 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnLamMoiMouseReleased
 
     private void jBtnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseClicked
-            try
-        {
-            if(jTextField1.getText().equals(""))
-            {
-                HienThiDanhSachDonDatHang(CtrlDDH.Search(jDateChooser1.getDate(), jDateChooser2.getDate(),jComboBox2.getSelectedItem().toString(),jComboBox1.getSelectedItem().toString()));
-                Binding();
-                HienThiDanhSachDonDatHang(CtrlDDH.Search1(jDateChooser1.getDate(), jDateChooser2.getDate(),jComboBox2.getSelectedItem().toString()));
-                Binding();
-                HienThiDanhSachDonDatHang(CtrlDDH.Search2(jDateChooser1.getDate(), jDateChooser2.getDate()));
-                Binding();
+        try {
+            String status = "";
+            if (jCbbTrangThai.getSelectedIndex() != 0) {
+                status = jCbbTrangThai.getSelectedItem().toString();
             }
-            else{
-                HienThiDanhSachDonDatHang(CtrlDDH.SearchDonDHByMaDDH(jTextField1.getText()));
-              Binding();
-            }
-        }catch(Exception e){
-            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.TimKiem: "+e.getMessage());
-        }  
-        
+            HienThiDanhSachDonDatHang(CtrlDDH.TimKiemDDHByMaDDH(jtxtTimKiemMaDDH.getText(), ListComboboxNCC.get(jcbbNCC.getSelectedIndex()), status, jDateTuNgay.getDate(), jDateDenNgay.getDate()));
+            Binding();
+            HienThiDanhSachChiTietDDH(jtxtMaDDH.getText());
+        } catch (Exception e) {
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.TimKiem: " + e.getMessage());
+        }
+
     }//GEN-LAST:event_jBtnTimKiemMouseClicked
 
     private void jBtnTimKiemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTimKiemMouseEntered
@@ -1080,11 +1072,10 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnTimKiem;
     private javax.swing.JPanel jBtnXemPhieuIn;
     private javax.swing.JPanel jBtnXoa;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JComboBox<String> jCbbTrangThai;
+    private com.toedter.calendar.JDateChooser jDateDenNgay;
     private com.toedter.calendar.JDateChooser jDateNgayDH;
+    private com.toedter.calendar.JDateChooser jDateTuNgay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1122,9 +1113,10 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTbCTDDH;
     private javax.swing.JTable jTbDSDDH;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> jcbbNCC;
     private javax.swing.JTextField jtxtMaDDH;
     private javax.swing.JTextField jtxtMaNCC;
     private javax.swing.JTextArea jtxtTenNCC;
+    private javax.swing.JTextField jtxtTimKiemMaDDH;
     // End of variables declaration//GEN-END:variables
 }
