@@ -1137,7 +1137,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
         try{
             while(rs.next()){
                 ObjNhaCungCap itemNCC;
-                itemNCC=new ObjNhaCungCap(rs.getString("MaNCC"), rs.getString("TenNCC"),rs.getString("SDT"), rs.getString("DiaChi"));
+                itemNCC=new ObjNhaCungCap(rs.getString("MaNCC"), rs.getString("TenNCC"),rs.getString("SDT"), rs.getString("DiaChi"), rs.getString("Email"), rs.getInt("NoCuaDaiLy"));
                 listNCC.add(itemNCC);
                 Vector v =new Vector();
                 v.add(itemNCC.getMaNCC());
@@ -1182,7 +1182,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             jtxtTongTienChi.setText(String.format("%,d", listPC.get(modelRow).getTongTienChi()));
             jtxtMaNCC2.setText(listPC.get(modelRow).getMaNCC());
             jtxtLyDoChi.setText(listPC.get(modelRow).getLyDoChi());
-            jtxtTienNoNCC.setText(listPC.get(modelRow).getNoCuaDaiLy());
+            
         }catch (Exception ex) {
             System.out.println("Ngoại lệ tại FormPhieuChi.Binding: " + ex.getMessage());
         }
@@ -1197,6 +1197,7 @@ public class FormQuanLiPhieuChi extends javax.swing.JFrame {
             jtxtTenNCC.setText(listNCC.get(modelRow).getTenNCC());
             jtxtDiaChi.setText(listNCC.get(modelRow).getDiaChi());
             jtxtSDT.setText(listNCC.get(modelRow).getSDT());
+            jtxtTienNoNCC.setText(String.valueOf(listNCC.get(modelRow).getNoCuaDaiLy()));
             
         }catch (Exception ex) {
             System.out.println("Ngoại lệ tại FormPhieuChi.Binding: " + ex.getMessage());

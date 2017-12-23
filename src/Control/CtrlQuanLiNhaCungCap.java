@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class CtrlQuanLiNhaCungCap {
     Connect DB=new Connect();
     public ResultSet LayDSNhaCungCap(){
-        String SQL="Select MaNCC, TenNCC, SDT, DiaChi, Email from NHACUNGCAP";
+        String SQL="Select * from NHACUNGCAP";
         return DB.GetData(SQL);
     }
     
