@@ -146,6 +146,14 @@ public class FormChiTietHoaDonSi extends javax.swing.JFrame {
         jTbCTHD.setSelectionBackground(new java.awt.Color(218, 223, 225));
         jTbCTHD.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jScrCTHD.setViewportView(jTbCTHD);
+        if (jTbCTHD.getColumnModel().getColumnCount() > 0) {
+            jTbCTHD.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTbCTHD.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTbCTHD.getColumnModel().getColumn(2).setPreferredWidth(50);
+            jTbCTHD.getColumnModel().getColumn(3).setPreferredWidth(50);
+            jTbCTHD.getColumnModel().getColumn(4).setPreferredWidth(100);
+            jTbCTHD.getColumnModel().getColumn(5).setPreferredWidth(100);
+        }
 
         getContentPane().add(jScrCTHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 97, 750, 305));
 
