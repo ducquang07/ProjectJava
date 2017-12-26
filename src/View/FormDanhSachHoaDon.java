@@ -5,6 +5,7 @@
  */
 package View;
 
+import Connect.Connect;
 import Control.CtrlDanhSachHoaDon;
 import Edit.Edit;
 import Model.ModChiTietHDL;
@@ -17,11 +18,14 @@ import Object.ObjChiTietHDL;
 import Object.ObjChiTietHDS;
 import Object.ObjKhachHang;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +38,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRStyle;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -1422,7 +1430,22 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
 
     private void jBtnXemPhieuInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseClicked
         // TODO add your handling code here:
-
+        try {
+            // TODO add your handling code here:
+            Connect con = new Connect();
+            con.Connected();
+            InputStream is = new FileInputStream("src/Report/ReportHoaDonLe.jasper");
+            Hashtable hash = new Hashtable();
+            if (jTabbedPane1.getSelectedIndex() == 0) {
+                hash.put("SoHDL", jtxtSoHDL.getText());
+            }
+            
+            JasperPrint print = JasperFillManager.fillReport(is, hash, con.getConDB());
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormDanhSachHoaDon.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jBtnXemPhieuInMouseClicked
 
     private void jBtnXemPhieuInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseEntered
