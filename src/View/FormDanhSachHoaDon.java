@@ -1431,15 +1431,19 @@ public class FormDanhSachHoaDon extends javax.swing.JFrame {
     private void jBtnXemPhieuInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseClicked
         // TODO add your handling code here:
         try {
-            // TODO add your handling code here:
             Connect con = new Connect();
             con.Connected();
-            InputStream is = new FileInputStream("src/Report/ReportHoaDonLe.jasper");
             Hashtable hash = new Hashtable();
+            InputStream is = null;
             if (jTabbedPane1.getSelectedIndex() == 0) {
-                hash.put("SoHDL", jtxtSoHDL.getText());
+            // TODO add your handling code here: 
+            is = new FileInputStream("src/Report/ReportHoaDonLe.jasper");
+            hash.put("SoHDL", jtxtSoHDL.getText());
             }
-            
+            else{
+            is = new FileInputStream("src/Report/ReportHoaDonSi.jasper");
+            hash.put("SoHDS", jtxtSoHDS.getText());
+            }
             JasperPrint print = JasperFillManager.fillReport(is, hash, con.getConDB());
             JasperViewer.viewReport(print, false);
         } catch (Exception ex) {

@@ -398,7 +398,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1391,6 +1391,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                         if (SL <= soluongtonkho) {
                             Model.setValueAt(SL, modelRow, 3);
                             ListGioHang.get(modelRow).setSoLuong(SL);
+                            ListGioHang.get(modelRow).setThanhTien(dongia * SL);
                             Model.setValueAt(String.format("%,d", dongia * SL), modelRow, 5);
                         } else {
                             JOptionPane.showMessageDialog(this, "Số lượng không đủ.Hiện chỉ còn " + soluongtonkho + " thôi à.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -1398,7 +1399,7 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
                     } else {
                         jBtnXoaMouseClicked(null);
                     }
-                    jtxtTongTien.setText(String.format("%,d", TinhTongTienGioHang()));
+                    jtxtTongTien.setText(String.format("%,d",TinhTongTienGioHang()));
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(this, "Số lượng nhập không hợp lệ", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 }
