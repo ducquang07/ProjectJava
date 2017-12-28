@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="phieunhap" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e19d60fd-d42e-4799-86ef-ff5607480eaa">
-	<property name="ireport.zoom" value="1.5"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="phieunhap" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e19d60fd-d42e-4799-86ef-ff5607480eaa">
+	<property name="ireport.zoom" value="1.6757443455841452"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="97"/>
 	<parameter name="MaPN" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -170,10 +170,13 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Đơn giá]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="26" width="555" height="1" uuid="06167f68-1b68-49ff-b434-595ac5367279"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="30" splitType="Stretch">
+		<band height="18" splitType="Stretch">
 			<textField>
 				<reportElement x="36" y="1" width="69" height="16" uuid="1a9da276-0605-4882-918d-5014c678c4e9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -208,9 +211,6 @@ WHERE
 				<reportElement x="0" y="17" width="555" height="1" uuid="3f3e5caf-54f9-42ec-9653-20e6703213e5">
 					<property name="net.sf.jasperreports.export.pdf.tag.td" value="full"/>
 				</reportElement>
-			</line>
-			<line>
-				<reportElement x="0" y="0" width="555" height="1" uuid="06167f68-1b68-49ff-b434-595ac5367279"/>
 			</line>
 			<line>
 				<reportElement x="472" y="-16" width="1" height="33" uuid="707ad34d-d5e4-4f90-a388-5b1e8c7d0867"/>
