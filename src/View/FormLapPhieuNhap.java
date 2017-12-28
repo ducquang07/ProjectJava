@@ -793,32 +793,36 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         }
         try{
             if(flag==1){//Thêm PN
-                for(ObjChiTietPNH CTPN : listDSSPPN)
+                ObjPhieuNhapHang ObjPN = new ObjPhieuNhapHang(jtxtMaPN.getText(), jdtcNgayNhap.getDate(), jtxtMaDDH.getText());
+                if(ModPN.Insert(ObjPN))
                 {
-                    ObjPhieuNhapHang ObjPN = new ObjPhieuNhapHang(jtxtMaPN.getText(), jdtcNgayNhap.getDate(), jtxtMaDDH.getText());
+                    for(ObjChiTietPNH CTPN : listDSSPPN)
+                {
                     ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
                     try{
-                        if(ModPN.Insert(ObjPN)){
                             if(ModCTPN.Insert(ObjCTPN)){
-                                JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                             }
-                        }
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                         }
-                }}
+                }
+                }
+                    JOptionPane.showMessageDialog(this, "Thêm phiếu nhập \"" + ObjPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                }
             else if(flag==2){//Update PN
-                    ModCTPN.Delete(listDSSPPN.get(0).getMaPN(),listDSSPPN.get(0).getMaSP());
+                    ModCTPN.Delete(listDSSPPN.get(0).getMaPN());
                     for(ObjChiTietPNH CTPN : listDSSPPN){
                     ObjChiTietPNH ObjCTPN = new ObjChiTietPNH(jtxtMaPN.getText(), CTPN.getMaSP(), CTPN.getSoLuong(), CTPN.getDonGia());
                     try{
                         if(ModCTPN.Insert(ObjCTPN)){
-                                JOptionPane.showMessageDialog(this, "Cập nhật phiếu nhập \"" + ObjCTPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                         }
                         }catch(Exception e){
                             JOptionPane.showMessageDialog(this, "Cập nhật phiếu nhập \"" + ObjCTPN.getMaPN() + "\" thất bại. Mã: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                         }
                 }
+                    JOptionPane.showMessageDialog(this, "Cập nhật phiếu nhập \"" + listDSSPPN.get(0).getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
             }
         }catch(Exception e){
             System.out.println("Ngoại lệ tại FormLapPhieuNhapHang.Luu: "+e.getMessage());

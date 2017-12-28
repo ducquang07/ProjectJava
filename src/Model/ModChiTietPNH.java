@@ -65,8 +65,8 @@ public class ModChiTietPNH extends Model{
         return true;
        
     }
-    public boolean Delete(String MaPN, String MaSP) {
-         SQL="Delete from CTPN where MaPN ='"+MaPN+"' and MaSP ='"+MaSP+"'";
+    public boolean Delete(String MaPN) {
+         SQL="Delete from CTPN where MaPN ='"+MaPN+"'";
             try {
                 if(DB.Connected()){
                 Statement  stmDB =(Statement)  DB.getConDB().createStatement();

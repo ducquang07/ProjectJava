@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e19d60fd-d42e-4799-86ef-ff5607480eaa">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     phieunhap.`MaPN` AS phieunhap_MaPN,
+     phieunhap.`NgayNhap` AS phieunhap_NgayNhap,
+     sanpham.`TenSP` AS sanpham_TenSP,
+     sanpham.`DVT` AS sanpham_DVT,
+     nhacungcap.`MaNCC` AS nhacungcap_MaNCC,
+     nhacungcap.`TenNCC` AS nhacungcap_TenNCC,
+     nhacungcap.`SDT` AS nhacungcap_SDT,
+     nhacungcap.`DiaChi` AS nhacungcap_DiaChi,
+     nhacungcap.`Email` AS nhacungcap_Email,
+     dondathang.`MaDDH` AS dondathang_MaDDH,
+     dondathang.`NgayDatHang` AS dondathang_NgayDatHang,
+     ctpn.`MaSP` AS ctpn_MaSP,
+     ctpn.`SoLuong` AS ctpn_SoLuong,
+     ctpn.`DonGia` AS ctpn_DonGia
+FROM
+     `nhacungcap` nhacungcap INNER JOIN `sanpham` sanpham ON nhacungcap.`MaNCC` = sanpham.`MaNCC`
+     INNER JOIN `dondathang` dondathang ON nhacungcap.`MaNCC` = dondathang.`MaNCC`
+     INNER JOIN `phieunhap` phieunhap ON dondathang.`MaDDH` = phieunhap.`MaDDH`
+     INNER JOIN `ctpn` ctpn ON phieunhap.`MaPN` = ctpn.`MaPN`
+     AND sanpham.`MaSP` = ctpn.`MaSP`]]>
+	</queryString>
+	<field name="phieunhap_MaPN" class="java.lang.String"/>
+	<field name="phieunhap_NgayNhap" class="java.sql.Timestamp"/>
+	<field name="sanpham_TenSP" class="java.lang.String"/>
+	<field name="sanpham_DVT" class="java.lang.String"/>
+	<field name="nhacungcap_MaNCC" class="java.lang.String"/>
+	<field name="nhacungcap_TenNCC" class="java.lang.String"/>
+	<field name="nhacungcap_SDT" class="java.lang.String"/>
+	<field name="nhacungcap_DiaChi" class="java.lang.String"/>
+	<field name="nhacungcap_Email" class="java.lang.String"/>
+	<field name="dondathang_MaDDH" class="java.lang.String"/>
+	<field name="dondathang_NgayDatHang" class="java.sql.Timestamp"/>
+	<field name="ctpn_MaSP" class="java.lang.String"/>
+	<field name="ctpn_SoLuong" class="java.lang.Integer"/>
+	<field name="ctpn_DonGia" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
