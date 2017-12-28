@@ -42,6 +42,7 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jtxtSoSP = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,15 +65,27 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
                 jBtnXemThongKeMouseReleased(evt);
             }
         });
-        jBtnXemThongKe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_view_40px.png"))); // NOI18N
-        jBtnXemThongKe.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 44, 45));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Xem thống kê");
-        jBtnXemThongKe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 40));
+
+        javax.swing.GroupLayout jBtnXemThongKeLayout = new javax.swing.GroupLayout(jBtnXemThongKe);
+        jBtnXemThongKe.setLayout(jBtnXemThongKeLayout);
+        jBtnXemThongKeLayout.setHorizontalGroup(
+            jBtnXemThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jBtnXemThongKeLayout.createSequentialGroup()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel5))
+        );
+        jBtnXemThongKeLayout.setVerticalGroup(
+            jBtnXemThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         getContentPane().add(jBtnXemThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 160, 150, -1));
 
@@ -101,13 +114,11 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         jBtnBack.setLayout(jBtnBackLayout);
         jBtnBackLayout.setHorizontalGroup(
             jBtnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnBackLayout.createSequentialGroup()
-                .addComponent(jLabel21)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel21)
         );
         jBtnBackLayout.setVerticalGroup(
             jBtnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel21)
         );
 
         getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
@@ -128,7 +139,11 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 137, -1, -1));
         getContentPane().add(jtxtSoSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 134, 177, -1));
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 210));
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnXemThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemThongKeMouseClicked
@@ -161,6 +176,7 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
 
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
+        new FormQuanLiThongKe().setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtnBackMouseClicked
@@ -208,7 +224,7 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -242,6 +258,7 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private com.toedter.calendar.JDateChooser jdtcDenNgay;
     private com.toedter.calendar.JDateChooser jdtcTuNgay;
     private javax.swing.JTextField jtxtSoSP;
