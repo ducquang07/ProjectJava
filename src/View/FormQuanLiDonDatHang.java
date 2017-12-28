@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Connect.Connect;
 import Control.CtrlLapDonDatHang;
 import Edit.Edit;
 import java.awt.Color;
@@ -17,14 +18,20 @@ import java.util.ArrayList;
 import Control.CtrlQuanLiDonDatHang;
 import Model.ModChiTietDDH;
 import Object.ObjSanPham;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -934,7 +941,19 @@ public class FormQuanLiDonDatHang extends javax.swing.JFrame {
 
     private void jBtnXemPhieuInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseClicked
         // TODO add your handling code here:
-
+        try {
+            Connect con = new Connect();
+            con.Connected();
+            Hashtable hash = new Hashtable();
+            InputStream is = null;
+            is = new FileInputStream("src/Report/ReportDonDatHang.jasper");
+            hash.put("MaDDH", jtxtMaDDH.getText());
+            JasperPrint print = JasperFillManager.fillReport(is, hash, con.getConDB());
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jBtnXemPhieuInMouseClicked
 
     private void jBtnXemPhieuInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseEntered
