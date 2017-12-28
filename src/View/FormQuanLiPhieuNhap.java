@@ -786,7 +786,6 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnLamMoiMouseReleased
 
     private void jBtnXemPhieuInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseClicked
-        // TODO add your handling code here:
         try {
             Connect con = new Connect();
             con.Connected();
