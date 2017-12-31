@@ -5,8 +5,18 @@
  */
 package View;
 
+import Connect.Connect;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Hashtable;
 import javax.swing.JPanel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -17,6 +27,7 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
     /**
      * Creates new form FormTKSanPhamBanNhieu
      */
+    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     public FormTKSanPhamBanNhieu() {
         initComponents();
     }
@@ -125,10 +136,14 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
 
         jLabel2.setText("Từ ngày :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 58, -1, 20));
+
+        jdtcTuNgay.setDateFormatString("yyyy/MM/dd");
         getContentPane().add(jdtcTuNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 58, 177, -1));
 
         jLabel3.setText("Đến ngày :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 96, -1, 20));
+
+        jdtcDenNgay.setDateFormatString("yyyy/MM/dd");
         getContentPane().add(jdtcDenNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 96, 177, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -148,10 +163,24 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
 
     private void jBtnXemThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemThongKeMouseClicked
         // TODO add your handling code here:
-        FormLapPhieuNhap frmPN = new FormLapPhieuNhap(1);
-        frmPN.setVisible(true);
-        setVisible(false);
-        dispose();
+        try {
+            Connect con = new Connect();
+            con.Connected();
+            HashMap map = new HashMap();
+            InputStream is = null;
+            is = new FileInputStream("src/Report/ReportSanPhamBanNhieu.jasper");
+//            String tn,dn;
+//            tn=df.format(jdtcTuNgay.getDate());
+//            dn=df.format(jdtcDenNgay.getDate());
+            map.put("TuNgay", jdtcTuNgay.getDate());
+            map.put("DenNgay",jdtcDenNgay.getDate());
+            map.put("SoSP",Integer.parseInt(jtxtSoSP.getText()));
+            JasperPrint print = JasperFillManager.fillReport(is, map, con.getConDB());
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jBtnXemThongKeMouseClicked
 
     private void jBtnXemThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemThongKeMouseEntered
