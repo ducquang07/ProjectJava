@@ -89,6 +89,9 @@ public class FormQuanLiThongKe extends javax.swing.JFrame {
 
         jBtn1.setBackground(new java.awt.Color(204, 204, 204));
         jBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtn1MouseEntered(evt);
             }
@@ -495,6 +498,11 @@ public class FormQuanLiThongKe extends javax.swing.JFrame {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_jBtn5MouseClicked
+
+    private void jBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn1MouseClicked
+        // TODO add your handling code here:
+        new FormThongKeCongNo().setVisible(true);
+    }//GEN-LAST:event_jBtn1MouseClicked
 
     
     /**
