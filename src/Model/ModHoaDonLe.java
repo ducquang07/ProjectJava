@@ -41,7 +41,6 @@ public class ModHoaDonLe extends Model{
 
     public boolean Insert(ObjHoaDonLe TbHDL) {
         String SQL="INSERT INTO HOADONLE (SoHDL,TenKH,NgayLap,TongTien) VALUES (?, ?, ?, ?);";
-        System.out.println("INSERT INTO HOADONLE (SoHDL,TenKH,NgayLap,TongTien) VALUES ('"+TbHDL.getSoHDL()+"','"+TbHDL.getTenKH()+"','"+dt.format(TbHDL.getNgayLap())+"','"+TbHDL.getTongTien()+"'");
         try{
             if(DB.Connected()){
                 pstmt=DB.getConDB().prepareStatement(SQL);

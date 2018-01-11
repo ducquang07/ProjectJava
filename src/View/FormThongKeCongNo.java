@@ -5,9 +5,30 @@
  */
 package View;
 
+import Connect.Connect;
+import Control.CtrlThongKeCongNo;
 import Edit.Edit;
+import Model.ModCongNo;
+import Model.ModKyCongNo;
+import Object.ObjCongNo;
+import Object.ObjHoaDonLe;
+import Object.ObjKyCongNo;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -16,7 +37,14 @@ import javax.swing.JPanel;
 public class FormThongKeCongNo extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
-    
+    CtrlThongKeCongNo ctrlTKCN = new CtrlThongKeCongNo();
+    ModKyCongNo modKCN = new ModKyCongNo();
+    ModCongNo modCN = new ModCongNo();
+    ArrayList<ObjCongNo> ListCongNo = new ArrayList<>();
+    ObjKyCongNo objKCN = new ObjKyCongNo();
+    ArrayList<ObjKyCongNo>ListKCN =new ArrayList<>();
+    SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+    int flag = 0;
     /**
      * Creates new form FormThongKeTonKho
      */
@@ -27,11 +55,61 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         editFrm.MakeTransparentPanel(ListPanel);
         JPanel ListTitle[]=new JPanel[]{jPnDSTonKho,jPnThongketonkho};
         editFrm.MakeTransparentTitle(ListTitle);
-        JPanel ListButton[]=new JPanel[]{jBtnBack1,jBtnLuuKiTonKho,jBtnXemBaoCao,jBtnXoaKiTonKho,jBtnThongKe,jBtnXemKiThongKe};
+        JPanel ListButton[]=new JPanel[]{jBtnBack1,jBtnLuuKiCongNo,jBtnXemBaoCao,jBtnXoaKiCongNo,jBtnThongKe,jBtnXemKiThongKe};
         editFrm.MakeTransparentButton(ListButton);
-        editFrm.MakeTransparentTable(jScrDSTK, jTbDSTK);
+        editFrm.MakeTransparentTable(jScrDSTK, jTbDSCN);
+        LoadForm();
     }
-
+    
+    public void LoadForm(){
+        jDateTuNgay.setDate(new Date());
+        jDateDenNgay.setDate(new Date());
+        LoadComboboxKiCongNo();
+        Enable(true);
+    }
+    
+    public void HienThiDanhSachCongNo(ResultSet rs){
+        ListCongNo.clear();
+        DefaultTableModel model = (DefaultTableModel) jTbDSCN.getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        try {
+            while (rs.next()) {
+                ObjCongNo itemCN = new ObjCongNo(rs.getString("MaKCN"),rs.getString("MaKH"),rs.getString("TenKH"), rs.getInt("SoDuNoDauKi"), rs.getInt("SoNoPhatSinhTrongKi"),rs.getInt("SoTienThuTrongKi"),rs.getInt("SoDuNoCuoiKi"));
+                ListCongNo.add(itemCN);
+                model.addRow(new Object[]{itemCN.getMaKH(),itemCN.getTenKH(),itemCN.getSoDuNoDauKi(),itemCN.getSoNoPhatSinhTrongKi(),itemCN.getSoTienThuTrongKi(),itemCN.getSoDuNoCuoiKi(),itemCN.getSoDuNoCuoiKi()});
+            }
+        } catch (Exception ex) {
+            LoadComboboxKiCongNo();
+        }
+    }
+    
+    public void LoadComboboxKiCongNo(){
+        ListKCN.clear();
+        jcbbKiCongNo.removeAllItems();
+        jcbbKiCongNo.addItem("---Chọn kì công nợ---");
+        ListKCN.add(new ObjKyCongNo());
+        ResultSet rs=ctrlTKCN.LayDanhSachKCN();
+        try{
+            while(rs.next()){
+                ObjKyCongNo itemKCN=new ObjKyCongNo(rs.getString("MaKCN"), rs.getDate("TuNgay"), rs.getDate("DenNgay"));
+                jcbbKiCongNo.addItem(rs.getString("MaKCN")+" : "+dt.format(rs.getDate("TuNgay"))+" - "+dt.format(rs.getDate("DenNgay")));
+                ListKCN.add(itemKCN);
+            }
+        }
+        catch(SQLException ex){
+            System.out.println("Ngoại lệ tại FormThongKeCongNo.LoadComboboxKiCongNo: "+ex.getMessage());
+        }
+    }
+    
+    public void Enable(boolean check){
+        jBtnLuuKiCongNo.setVisible(check);
+        jBtnLuuKiTonKho1.setVisible(!check);
+        jBtnXoaKiCongNo.setVisible(!check);
+        jBtnXoaKiTonKho1.setVisible(check);
+        jBtnXemBaoCao.setVisible(!check);
+        jBtnXemBaoCao1.setVisible(check);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,14 +121,20 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
 
         jBtnBack1 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jBtnLuuKiTonKho = new javax.swing.JPanel();
+        jBtnLuuKiCongNo = new javax.swing.JPanel();
         jlbLuu = new javax.swing.JLabel();
-        jBtnXoaKiTonKho = new javax.swing.JPanel();
+        jBtnLuuKiTonKho1 = new javax.swing.JPanel();
+        jlbLuu1 = new javax.swing.JLabel();
+        jBtnXoaKiCongNo = new javax.swing.JPanel();
         jlbIn1 = new javax.swing.JLabel();
+        jBtnXoaKiTonKho1 = new javax.swing.JPanel();
+        jlbIn3 = new javax.swing.JLabel();
         jBtnXemBaoCao = new javax.swing.JPanel();
         jlbIn2 = new javax.swing.JLabel();
+        jBtnXemBaoCao1 = new javax.swing.JPanel();
+        jlbIn4 = new javax.swing.JLabel();
         jScrDSTK = new javax.swing.JScrollPane();
-        jTbDSTK = new javax.swing.JTable();
+        jTbDSCN = new javax.swing.JTable();
         jBtnThongKe = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jBtnXemKiThongKe = new javax.swing.JPanel();
@@ -61,10 +145,10 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jcbbKiCongNo = new javax.swing.JComboBox<>();
+        jDateTuNgay = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateDenNgay = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jPnDSTonKho = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -112,64 +196,127 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
 
         getContentPane().add(jBtnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
-        jBtnLuuKiTonKho.setBackground(new java.awt.Color(102, 102, 102));
-        jBtnLuuKiTonKho.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBtnLuuKiCongNo.setBackground(new java.awt.Color(102, 102, 102));
+        jBtnLuuKiCongNo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnLuuKiTonKhoMouseClicked(evt);
+                jBtnLuuKiCongNoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBtnLuuKiTonKhoMouseEntered(evt);
+                jBtnLuuKiCongNoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBtnLuuKiTonKhoMouseExited(evt);
+                jBtnLuuKiCongNoMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jBtnLuuKiTonKhoMousePressed(evt);
+                jBtnLuuKiCongNoMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jBtnLuuKiTonKhoMouseReleased(evt);
+                jBtnLuuKiCongNoMouseReleased(evt);
             }
         });
-        jBtnLuuKiTonKho.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jBtnLuuKiCongNo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlbLuu.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jlbLuu.setForeground(new java.awt.Color(255, 255, 255));
         jlbLuu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Save_30px_1.png"))); // NOI18N
         jlbLuu.setText("  Lưu kì công nợ");
-        jBtnLuuKiTonKho.add(jlbLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
+        jBtnLuuKiCongNo.add(jlbLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
 
-        getContentPane().add(jBtnLuuKiTonKho, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 98, 165, 60));
+        getContentPane().add(jBtnLuuKiCongNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 98, 165, 60));
 
-        jBtnXoaKiTonKho.setBackground(new java.awt.Color(102, 102, 102));
-        jBtnXoaKiTonKho.setPreferredSize(new java.awt.Dimension(102, 50));
-        jBtnXoaKiTonKho.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBtnLuuKiTonKho1.setBackground(new java.awt.Color(102, 102, 102));
+        jBtnLuuKiTonKho1.setOpaque(false);
+        jBtnLuuKiTonKho1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnXoaKiTonKhoMouseClicked(evt);
+                jBtnLuuKiTonKho1MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBtnXoaKiTonKhoMouseEntered(evt);
+                jBtnLuuKiTonKho1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBtnXoaKiTonKhoMouseExited(evt);
+                jBtnLuuKiTonKho1MouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jBtnXoaKiTonKhoMousePressed(evt);
+                jBtnLuuKiTonKho1MousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jBtnXoaKiTonKhoMouseReleased(evt);
+                jBtnLuuKiTonKho1MouseReleased(evt);
             }
         });
-        jBtnXoaKiTonKho.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jBtnLuuKiTonKho1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbLuu1.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        jlbLuu1.setForeground(new java.awt.Color(255, 255, 255));
+        jlbLuu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbLuu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Save_30px_1.png"))); // NOI18N
+        jlbLuu1.setText("  Lưu kì công nợ");
+        jlbLuu1.setEnabled(false);
+        jBtnLuuKiTonKho1.add(jlbLuu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
+
+        getContentPane().add(jBtnLuuKiTonKho1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 98, 165, 60));
+
+        jBtnXoaKiCongNo.setBackground(new java.awt.Color(102, 102, 102));
+        jBtnXoaKiCongNo.setPreferredSize(new java.awt.Dimension(102, 50));
+        jBtnXoaKiCongNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiCongNoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiCongNoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiCongNoMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiCongNoMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiCongNoMouseReleased(evt);
+            }
+        });
+        jBtnXoaKiCongNo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlbIn1.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
         jlbIn1.setForeground(new java.awt.Color(255, 255, 255));
         jlbIn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbIn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Trash_40px_1.png"))); // NOI18N
         jlbIn1.setText("Xóa kì công nợ");
-        jBtnXoaKiTonKho.add(jlbIn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
+        jBtnXoaKiCongNo.add(jlbIn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
 
-        getContentPane().add(jBtnXoaKiTonKho, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 98, 165, 60));
+        getContentPane().add(jBtnXoaKiCongNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 98, 165, 60));
+
+        jBtnXoaKiTonKho1.setBackground(new java.awt.Color(102, 102, 102));
+        jBtnXoaKiTonKho1.setOpaque(false);
+        jBtnXoaKiTonKho1.setPreferredSize(new java.awt.Dimension(102, 50));
+        jBtnXoaKiTonKho1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiTonKho1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiTonKho1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiTonKho1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiTonKho1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnXoaKiTonKho1MouseReleased(evt);
+            }
+        });
+        jBtnXoaKiTonKho1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbIn3.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        jlbIn3.setForeground(new java.awt.Color(255, 255, 255));
+        jlbIn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Trash_40px_1.png"))); // NOI18N
+        jlbIn3.setText("Xóa kì công nợ");
+        jlbIn3.setEnabled(false);
+        jBtnXoaKiTonKho1.add(jlbIn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
+
+        getContentPane().add(jBtnXoaKiTonKho1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 98, 165, 60));
 
         jBtnXemBaoCao.setBackground(new java.awt.Color(102, 102, 102));
         jBtnXemBaoCao.setPreferredSize(new java.awt.Dimension(102, 50));
@@ -201,8 +348,40 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
 
         getContentPane().add(jBtnXemBaoCao, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 98, 165, 60));
 
-        jTbDSTK.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
-        jTbDSTK.setModel(new javax.swing.table.DefaultTableModel(
+        jBtnXemBaoCao1.setBackground(new java.awt.Color(102, 102, 102));
+        jBtnXemBaoCao1.setOpaque(false);
+        jBtnXemBaoCao1.setPreferredSize(new java.awt.Dimension(102, 50));
+        jBtnXemBaoCao1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXemBaoCao1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnXemBaoCao1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnXemBaoCao1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnXemBaoCao1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnXemBaoCao1MouseReleased(evt);
+            }
+        });
+        jBtnXemBaoCao1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlbIn4.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        jlbIn4.setForeground(new java.awt.Color(255, 255, 255));
+        jlbIn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Print_45px.png"))); // NOI18N
+        jlbIn4.setText("Xem báo cáo");
+        jlbIn4.setEnabled(false);
+        jBtnXemBaoCao1.add(jlbIn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 40));
+
+        getContentPane().add(jBtnXemBaoCao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 98, 165, 60));
+
+        jTbDSCN.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        jTbDSCN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -218,24 +397,27 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTbDSTK.setFocusable(false);
-        jTbDSTK.setRowHeight(25);
-        jTbDSTK.setSelectionForeground(new java.awt.Color(255, 51, 0));
-        jTbDSTK.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrDSTK.setViewportView(jTbDSTK);
-        if (jTbDSTK.getColumnModel().getColumnCount() > 0) {
-            jTbDSTK.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTbDSTK.getColumnModel().getColumn(1).setPreferredWidth(300);
-            jTbDSTK.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTbDSTK.getColumnModel().getColumn(3).setPreferredWidth(100);
-            jTbDSTK.getColumnModel().getColumn(4).setPreferredWidth(100);
-            jTbDSTK.getColumnModel().getColumn(5).setPreferredWidth(100);
+        jTbDSCN.setFocusable(false);
+        jTbDSCN.setRowHeight(25);
+        jTbDSCN.setSelectionForeground(new java.awt.Color(255, 51, 0));
+        jTbDSCN.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrDSTK.setViewportView(jTbDSCN);
+        if (jTbDSCN.getColumnModel().getColumnCount() > 0) {
+            jTbDSCN.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTbDSCN.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTbDSCN.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTbDSCN.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTbDSCN.getColumnModel().getColumn(4).setPreferredWidth(100);
+            jTbDSCN.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
         getContentPane().add(jScrDSTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 225, 1100, 410));
 
         jBtnThongKe.setBackground(new java.awt.Color(153, 153, 153));
         jBtnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThongKeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThongKeMouseEntered(evt);
             }
@@ -260,6 +442,9 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
 
         jBtnXemKiThongKe.setBackground(new java.awt.Color(153, 153, 153));
         jBtnXemKiThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXemKiThongKeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnXemKiThongKeMouseEntered(evt);
             }
@@ -315,18 +500,18 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         jLabel3.setText("Chọn kì thống kê :");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 90, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setFocusable(false);
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 87, 283, -1));
+        jcbbKiCongNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbbKiCongNo.setFocusable(false);
+        jPanel2.add(jcbbKiCongNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 87, 283, -1));
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
+        jDateTuNgay.setDateFormatString("dd/MM/yyyy");
+        jPanel2.add(jDateTuNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
 
         jLabel6.setText("Từ ngày :");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 51, -1, 20));
 
-        jDateChooser2.setDateFormatString("dd/MM/yyyy");
-        jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 120, -1));
+        jDateDenNgay.setDateFormatString("dd/MM/yyyy");
+        jPanel2.add(jDateDenNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 120, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1110, 130));
 
@@ -391,33 +576,58 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         setColor(jBtnBack1);
     }//GEN-LAST:event_jBtnBack1MouseReleased
 
-    private void jBtnLuuKiTonKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKhoMouseClicked
+    private void jBtnLuuKiCongNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiCongNoMouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jBtnLuuKiTonKhoMouseClicked
+         try{
+            if(modKCN.Insert(objKCN))
+                for(int i=0;i<ListCongNo.size();i++){
+                    ListCongNo.get(i).setMaKCN(objKCN.getMaKCN());
+                    if(!modCN.Insert(ListCongNo.get(i)))
+                        JOptionPane.showMessageDialog(this, "Công nợ khách hàng" + ListCongNo.get(i).getTenKH()+ " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            JOptionPane.showMessageDialog(this, "Kỳ công nợ " + objKCN.getMaKCN()+ " lưu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            LoadComboboxKiCongNo();
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Kỳ công nợ " + objKCN.getMaKCN()+ " lưu không thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jBtnLuuKiCongNoMouseClicked
 
-    private void jBtnLuuKiTonKhoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKhoMouseEntered
+    private void jBtnLuuKiCongNoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiCongNoMouseEntered
         // TODO add your handling code here:
-        setColor(jBtnLuuKiTonKho);
-    }//GEN-LAST:event_jBtnLuuKiTonKhoMouseEntered
+        setColor(jBtnLuuKiCongNo);
+    }//GEN-LAST:event_jBtnLuuKiCongNoMouseEntered
 
-    private void jBtnLuuKiTonKhoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKhoMouseExited
+    private void jBtnLuuKiCongNoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiCongNoMouseExited
         // TODO add your handling code here:
-        resetColor(jBtnLuuKiTonKho);
-    }//GEN-LAST:event_jBtnLuuKiTonKhoMouseExited
+        resetColor(jBtnLuuKiCongNo);
+    }//GEN-LAST:event_jBtnLuuKiCongNoMouseExited
 
-    private void jBtnLuuKiTonKhoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKhoMousePressed
+    private void jBtnLuuKiCongNoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiCongNoMousePressed
         // TODO add your handling code here:
-        resetColor(jBtnLuuKiTonKho);
-    }//GEN-LAST:event_jBtnLuuKiTonKhoMousePressed
+        resetColor(jBtnLuuKiCongNo);
+    }//GEN-LAST:event_jBtnLuuKiCongNoMousePressed
 
-    private void jBtnLuuKiTonKhoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKhoMouseReleased
+    private void jBtnLuuKiCongNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiCongNoMouseReleased
         // TODO add your handling code here:
-        setColor(jBtnLuuKiTonKho);
-    }//GEN-LAST:event_jBtnLuuKiTonKhoMouseReleased
+        setColor(jBtnLuuKiCongNo);
+    }//GEN-LAST:event_jBtnLuuKiCongNoMouseReleased
 
     private void jBtnXemBaoCaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCaoMouseClicked
         // TODO add your handling code here:
+        try {
+            Connect con = new Connect();
+            con.Connected();
+            Hashtable hash = new Hashtable();
+            InputStream is = null;
+            is = new FileInputStream("src/Report/ReportTongHopCongNo.jasper");
+            hash.put("MaKCN", objKCN.getMaKCN());
+            JasperPrint print = JasperFillManager.fillReport(is, hash, con.getConDB());
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormThongKeCongNo.jBtnXemBaoCaoMouseClicked:" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jBtnXemBaoCaoMouseClicked
 
     private void jBtnXemBaoCaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCaoMouseEntered
@@ -442,29 +652,38 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         setColor(jBtnXemBaoCao);
     }//GEN-LAST:event_jBtnXemBaoCaoMouseReleased
 
-    private void jBtnXoaKiTonKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKhoMouseClicked
+    private void jBtnXoaKiCongNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiCongNoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnXoaKiTonKhoMouseClicked
+        int dialogButton = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xóa?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
+        if (dialogButton == JOptionPane.YES_OPTION) {
+            if(modKCN.Delete(objKCN.getMaKCN())&&modCN.Delete(objKCN.getMaKCN())){
+                JOptionPane.showMessageDialog(this, "Xóa thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                HienThiDanhSachCongNo(null); 
+            }
+            else
+                JOptionPane.showMessageDialog(this, "Xóa thất bại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jBtnXoaKiCongNoMouseClicked
 
-    private void jBtnXoaKiTonKhoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKhoMouseEntered
+    private void jBtnXoaKiCongNoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiCongNoMouseEntered
         // TODO add your handling code here:
-        setColor(jBtnXoaKiTonKho);
-    }//GEN-LAST:event_jBtnXoaKiTonKhoMouseEntered
+        setColor(jBtnXoaKiCongNo);
+    }//GEN-LAST:event_jBtnXoaKiCongNoMouseEntered
 
-    private void jBtnXoaKiTonKhoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKhoMouseExited
+    private void jBtnXoaKiCongNoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiCongNoMouseExited
         // TODO add your handling code here:
-        resetColor(jBtnXoaKiTonKho);
-    }//GEN-LAST:event_jBtnXoaKiTonKhoMouseExited
+        resetColor(jBtnXoaKiCongNo);
+    }//GEN-LAST:event_jBtnXoaKiCongNoMouseExited
 
-    private void jBtnXoaKiTonKhoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKhoMousePressed
+    private void jBtnXoaKiCongNoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiCongNoMousePressed
         // TODO add your handling code here:
-        resetColor(jBtnXoaKiTonKho);
-    }//GEN-LAST:event_jBtnXoaKiTonKhoMousePressed
+        resetColor(jBtnXoaKiCongNo);
+    }//GEN-LAST:event_jBtnXoaKiCongNoMousePressed
 
-    private void jBtnXoaKiTonKhoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKhoMouseReleased
+    private void jBtnXoaKiCongNoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiCongNoMouseReleased
         // TODO add your handling code here:
-        setColor(jBtnXoaKiTonKho);
-    }//GEN-LAST:event_jBtnXoaKiTonKhoMouseReleased
+        setColor(jBtnXoaKiCongNo);
+    }//GEN-LAST:event_jBtnXoaKiCongNoMouseReleased
 
     private void jBtnThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongKeMouseEntered
         // TODO add your handling code here:
@@ -505,6 +724,83 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnXemKiThongKe);
     }//GEN-LAST:event_jBtnXemKiThongKeMouseReleased
+
+    private void jBtnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongKeMouseClicked
+        // TODO add your handling code here:
+       objKCN=new ObjKyCongNo(ctrlTKCN.LayMaKCN(),jDateTuNgay.getDate(),jDateDenNgay.getDate());
+       HienThiDanhSachCongNo(ctrlTKCN.LayDSCongNo(jDateTuNgay.getDate(),jDateDenNgay.getDate()));
+       Enable(true);
+       LoadComboboxKiCongNo();
+    }//GEN-LAST:event_jBtnThongKeMouseClicked
+
+    private void jBtnXemKiThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemKiThongKeMouseClicked
+        // TODO add your handling code here:
+        if (jcbbKiCongNo.getSelectedIndex() > 0) {
+            HienThiDanhSachCongNo(ctrlTKCN.LayDSCongNo(ListKCN.get(jcbbKiCongNo.getSelectedIndex()).getMaKCN()));
+            Enable(false);
+            objKCN=new ObjKyCongNo(ListKCN.get(jcbbKiCongNo.getSelectedIndex()).getMaKCN());
+        }
+    }//GEN-LAST:event_jBtnXemKiThongKeMouseClicked
+
+    private void jBtnLuuKiTonKho1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKho1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLuuKiTonKho1MouseClicked
+
+    private void jBtnLuuKiTonKho1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKho1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLuuKiTonKho1MouseEntered
+
+    private void jBtnLuuKiTonKho1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKho1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLuuKiTonKho1MouseExited
+
+    private void jBtnLuuKiTonKho1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKho1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLuuKiTonKho1MousePressed
+
+    private void jBtnLuuKiTonKho1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLuuKiTonKho1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLuuKiTonKho1MouseReleased
+
+    private void jBtnXoaKiTonKho1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKho1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXoaKiTonKho1MouseClicked
+
+    private void jBtnXoaKiTonKho1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKho1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXoaKiTonKho1MouseEntered
+
+    private void jBtnXoaKiTonKho1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKho1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXoaKiTonKho1MouseExited
+
+    private void jBtnXoaKiTonKho1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKho1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXoaKiTonKho1MousePressed
+
+    private void jBtnXoaKiTonKho1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXoaKiTonKho1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXoaKiTonKho1MouseReleased
+
+    private void jBtnXemBaoCao1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCao1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXemBaoCao1MouseClicked
+
+    private void jBtnXemBaoCao1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCao1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXemBaoCao1MouseEntered
+
+    private void jBtnXemBaoCao1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCao1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXemBaoCao1MouseExited
+
+    private void jBtnXemBaoCao1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCao1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXemBaoCao1MousePressed
+
+    private void jBtnXemBaoCao1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCao1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnXemBaoCao1MouseReleased
 
     /**
      * @param args the command line arguments
@@ -558,14 +854,16 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jBtnBack1;
-    private javax.swing.JPanel jBtnLuuKiTonKho;
+    private javax.swing.JPanel jBtnLuuKiCongNo;
+    private javax.swing.JPanel jBtnLuuKiTonKho1;
     private javax.swing.JPanel jBtnThongKe;
     private javax.swing.JPanel jBtnXemBaoCao;
+    private javax.swing.JPanel jBtnXemBaoCao1;
     private javax.swing.JPanel jBtnXemKiThongKe;
-    private javax.swing.JPanel jBtnXoaKiTonKho;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JPanel jBtnXoaKiCongNo;
+    private javax.swing.JPanel jBtnXoaKiTonKho1;
+    private com.toedter.calendar.JDateChooser jDateDenNgay;
+    private com.toedter.calendar.JDateChooser jDateTuNgay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -581,9 +879,13 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
     private javax.swing.JPanel jPnDSTonKho;
     private javax.swing.JPanel jPnThongketonkho;
     private javax.swing.JScrollPane jScrDSTK;
-    private javax.swing.JTable jTbDSTK;
+    private javax.swing.JTable jTbDSCN;
+    private javax.swing.JComboBox<String> jcbbKiCongNo;
     private javax.swing.JLabel jlbIn1;
     private javax.swing.JLabel jlbIn2;
+    private javax.swing.JLabel jlbIn3;
+    private javax.swing.JLabel jlbIn4;
     private javax.swing.JLabel jlbLuu;
+    private javax.swing.JLabel jlbLuu1;
     // End of variables declaration//GEN-END:variables
 }

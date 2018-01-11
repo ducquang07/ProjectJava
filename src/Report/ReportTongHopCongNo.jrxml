@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="648" pageHeight="842" columnWidth="608" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6be85400-b14e-4229-83b7-071edd6dcbd4">
+	<property name="ireport.zoom" value="1.3636363636363642"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MaKCN" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONTEXT}.getId()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     congno.`MaKH` AS congno_MaKH,
+     congno.`SoDuNoDauKi` AS congno_SoDuNoDauKi,
+     congno.`SoNoPhatSinhTrongKi` AS congno_SoNoPhatSinhTrongKi,
+     congno.`SoTienThuTrongKi` AS congno_SoTienThuTrongKi,
+     congno.`SoDuNoCuoiKi` AS congno_SoDuNoCuoiKi,
+     kycongno.`TuNgay` AS kycongno_TuNgay,
+     kycongno.`DenNgay` AS kycongno_DenNgay,
+     khachhang.`TenKH` AS khachhang_TenKH
+FROM
+     `kycongno` kycongno INNER JOIN `congno` congno ON kycongno.`MaKCN` = congno.`MaKCN`
+     INNER JOIN `khachhang` khachhang ON congno.`MaKH` = khachhang.`MaKH`
+Where kycongno.`MaKCN` =$P{MaKCN}]]>
+	</queryString>
+	<field name="congno_MaKH" class="java.lang.String"/>
+	<field name="congno_SoDuNoDauKi" class="java.math.BigDecimal"/>
+	<field name="congno_SoNoPhatSinhTrongKi" class="java.math.BigDecimal"/>
+	<field name="congno_SoTienThuTrongKi" class="java.math.BigDecimal"/>
+	<field name="congno_SoDuNoCuoiKi" class="java.math.BigDecimal"/>
+	<field name="kycongno_TuNgay" class="java.sql.Timestamp"/>
+	<field name="kycongno_DenNgay" class="java.sql.Timestamp"/>
+	<field name="khachhang_TenKH" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement x="320" y="52" width="102" height="20" uuid="30ffed0e-9cd0-4c1b-bcfc-561dab25a041"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kỳ công nợ từ ngày : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="17" width="223" height="35" uuid="c149522f-66a1-4388-b8bd-eea918ac40d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG HỢP CÔNG NỢ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="6" width="67" height="21" uuid="2d8fa28b-e4fe-49b2-9d34-cc924995ed8f"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Palatino Linotype" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cửa hàng sơn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="17" width="129" height="46" uuid="5c13542b-7000-45e0-b24c-ac43c5529793"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Algerian" size="28" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tân An
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="63" width="195" height="55" uuid="8e7abb67-9d97-4087-8cd7-6cf80d739526"/>
+				<text><![CDATA[Địa chỉ : 67 Thủ Khoa Thuân, phường B, TP.Châu Đốc, An Giang
+Điện thoại: 0293635661xx - 029662600xx
+Điện thoại di động: 09195661xx]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="27" width="197" height="36" uuid="07c525a6-0f1c-4a2f-9dd0-4536fdd930d5"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Algerian"/>
+				</textElement>
+				<text><![CDATA[-----------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="52" width="51" height="20" uuid="5e0e8ba3-d42d-4775-943b-7b84c0c48525"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[đến ngày :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="422" y="52" width="54" height="20" uuid="5aabc0bf-bb9a-4f4b-978a-48d76e7eaf11"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kycongno_TuNgay}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="527" y="52" width="56" height="20" uuid="5fe7aa82-05c5-4f2d-b383-df7bfd2fb65e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kycongno_DenNgay}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<line>
+				<reportElement x="88" y="1" width="1" height="18" uuid="d38cfb70-ecae-499f-915a-4bb0a72d80c1"/>
+			</line>
+			<staticText>
+				<reportElement x="513" y="0" width="95" height="20" uuid="683b8610-e8e6-4a82-aaf7-a150da757bfe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Số dư nợ cuối kì   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="0" width="113" height="20" uuid="8b7f7228-3f10-4b11-b15a-7d1f5901def2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Số nợ phát sinh trong kì ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="19" width="608" height="1" uuid="86f4ec59-4eec-4e21-b706-4c6b3be07344"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="608" height="1" uuid="f4560208-025c-4edb-abc7-0dd1f69f4f09"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="89" height="20" uuid="fd287ec9-20e1-4ff2-8cea-37e0012e2db4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[  Mã khách hàng]]></text>
+			</staticText>
+			<line>
+				<reportElement x="608" y="1" width="1" height="18" uuid="63b63b85-d8ed-4de7-a244-639f89678779"/>
+			</line>
+			<line>
+				<reportElement x="224" y="1" width="1" height="18" uuid="b0a2f3c5-3cef-44a5-9c35-118ccd5c63cc"/>
+			</line>
+			<staticText>
+				<reportElement x="225" y="0" width="84" height="20" uuid="5a90cbfd-d911-44e9-a03f-80d9be9d0880"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Số dư nợ đầu kì ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="513" y="1" width="1" height="18" uuid="6064616e-98d9-46af-829d-e56446f0efc0"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="18" uuid="a9a7be24-86d1-4559-99ba-2aaca506a1eb"/>
+			</line>
+			<staticText>
+				<reportElement x="423" y="0" width="91" height="19" uuid="7f0c5a90-9ff8-45df-a35c-274e19562e38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ Số tiền thu trong kì ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="0" width="136" height="20" uuid="901d0ed5-d2d2-45c5-9011-1390ceb78895"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ Tên khách hàng]]></text>
+			</staticText>
+			<line>
+				<reportElement x="309" y="1" width="1" height="18" uuid="17636a78-792d-4aea-b386-37fa2e107de7"/>
+			</line>
+			<line>
+				<reportElement x="422" y="1" width="1" height="18" uuid="dfd746e3-39e8-4c7e-b216-0a8773a2a32c"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="87" height="20" uuid="7d294f65-e798-4bfb-b5b5-a5b4f300e39f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{congno_MaKH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="0" width="135" height="20" uuid="6ef079c1-c42c-40d3-a947-f7ca3a2825e9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{khachhang_TenKH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;(#,##0)">
+				<reportElement x="225" y="0" width="73" height="20" uuid="1700469c-5ddd-4298-ba12-9c3278abb5d2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{congno_SoDuNoDauKi}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;(#,##0)">
+				<reportElement x="310" y="0" width="102" height="20" uuid="61fafde3-7640-4125-b9b0-7113af75e65f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{congno_SoNoPhatSinhTrongKi}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;(#,##0)">
+				<reportElement x="423" y="0" width="80" height="20" uuid="f4f2590c-070c-40ef-b57d-40bbb287f646"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{congno_SoTienThuTrongKi}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;(#,##0)">
+				<reportElement x="514" y="0" width="84" height="20" uuid="e5c97c88-fe53-44aa-b5bd-6f5db4baa54e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{congno_SoDuNoCuoiKi}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="21" width="608" height="1" uuid="cab28626-7714-4b71-8ddd-179626745737"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="608" height="1" uuid="c493f37e-88ce-451f-a45a-73aa64f7a187"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
