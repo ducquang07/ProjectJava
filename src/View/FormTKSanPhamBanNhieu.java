@@ -18,6 +18,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 import Edit.Edit;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -178,19 +179,24 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         }
         else {
             try {
-            Connect con = new Connect();
-            con.Connected();
-            HashMap map = new HashMap();
-            InputStream is = null;
-            is = new FileInputStream("src/Report/ReportSanPhamBanNhieu.jasper");
-//            String tn,dn;
-//            tn=df.format(jdtcTuNgay.getDate());
-//            dn=df.format(jdtcDenNgay.getDate());
-            map.put("TuNgay", jdtcTuNgay.getDate());
-            map.put("DenNgay",jdtcDenNgay.getDate());
-            map.put("SoSP",Integer.parseInt(jtxtSoSP.getText()));
-            JasperPrint print = JasperFillManager.fillReport(is, map, con.getConDB());
-            JasperViewer.viewReport(print, false);
+                Connect con = new Connect();
+                con.Connected();
+                HashMap map = new HashMap();
+                InputStream is = null;
+                is = new FileInputStream("src/Report/ReportSanPhamBanNhieu.jasper");
+                String tn,dn;
+                tn=df.format(jdtcTuNgay.getDate());
+                dn=df.format(jdtcDenNgay.getDate());
+                tn=tn+" 00:00:00";
+                dn=dn+" 23:59:59";
+                Date dtn,ddn;
+                dtn=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(tn);
+                ddn=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(dn);
+                map.put("TuNgay", dtn);
+                map.put("DenNgay",ddn);
+                map.put("SoSP",Integer.parseInt(jtxtSoSP.getText()));
+                JasperPrint print = JasperFillManager.fillReport(is, map, con.getConDB());
+                JasperViewer.viewReport(print, false);
         } catch (Exception ex) {
             System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
             ex.printStackTrace();

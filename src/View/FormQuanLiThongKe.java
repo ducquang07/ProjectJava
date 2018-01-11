@@ -509,7 +509,10 @@ public class FormQuanLiThongKe extends javax.swing.JFrame {
 
     private void jBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn2MouseClicked
         // TODO add your handling code here:
-        new FormThongKeDoanhThu().setVisible(true);
+        FormThongKeDoanhThu frmTKDT = new FormThongKeDoanhThu();
+        frmTKDT.setVisible(true);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jBtn2MouseClicked
 
     
