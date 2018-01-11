@@ -9,36 +9,25 @@ import Connect.Connect;
 import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.Hashtable;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
-import Edit.Edit;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author DucQuang
  */
-public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
+public class FormThongKeDoanhThu extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormTKSanPhamBanNhieu
+     * Creates new form FormThongKeDoanhThu
      */
-    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-    Edit editFrm = new Edit();
-    
-    public FormTKSanPhamBanNhieu() {
+    public FormThongKeDoanhThu() {
         initComponents();
         setLocationRelativeTo(null);
-//        JPanel ListPanel[]=new JPanel[]{jPanel1};
-//        editFrm.MakeTransparentPanel(ListPanel);
-//        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnXemThongKe};
-//        editFrm.MakeTransparentButton(ListButton);
     }
 
     /**
@@ -55,13 +44,11 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jdtcTuNgay = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
-        jdtcDenNgay = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jtxtSoSP = new javax.swing.JTextField();
+        jdtcDenNgay = new com.toedter.calendar.JDateChooser();
+        jdtcTuNgay = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,29 +72,17 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
                 jBtnXemThongKeMouseReleased(evt);
             }
         });
+        jBtnXemThongKe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_view_40px.png"))); // NOI18N
+        jBtnXemThongKe.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 44, 45));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Xem thống kê");
+        jBtnXemThongKe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 40));
 
-        javax.swing.GroupLayout jBtnXemThongKeLayout = new javax.swing.GroupLayout(jBtnXemThongKe);
-        jBtnXemThongKe.setLayout(jBtnXemThongKeLayout);
-        jBtnXemThongKeLayout.setHorizontalGroup(
-            jBtnXemThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBtnXemThongKeLayout.createSequentialGroup()
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel5))
-        );
-        jBtnXemThongKeLayout.setVerticalGroup(
-            jBtnXemThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        getContentPane().add(jBtnXemThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 160, 150, -1));
+        getContentPane().add(jBtnXemThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 140, -1));
 
         jBtnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,75 +101,70 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
                 jBtnBackMouseReleased(evt);
             }
         });
+        jBtnBack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Left_40px.png"))); // NOI18N
+        jBtnBack.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout jBtnBackLayout = new javax.swing.GroupLayout(jBtnBack);
-        jBtnBack.setLayout(jBtnBackLayout);
-        jBtnBackLayout.setHorizontalGroup(
-            jBtnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21)
-        );
-        jBtnBackLayout.setVerticalGroup(
-            jBtnBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21)
-        );
-
-        getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
-
-        jLabel2.setText("Từ ngày :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 58, -1, 20));
-
-        jdtcTuNgay.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(jdtcTuNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 58, 177, -1));
+        getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel3.setText("Đến ngày :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 96, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 95, -1, 20));
 
-        jdtcDenNgay.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(jdtcDenNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 96, 177, -1));
+        jLabel2.setText("Từ ngày :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Chọn thời gian, số sản phẩm thống kê");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 18, -1, -1));
+        jLabel1.setText("Chọn thời gian thống kê doanh thu");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 15, -1, -1));
 
-        jLabel4.setText("Số sản phẩm thu được sau thống kê:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 137, -1, -1));
-        getContentPane().add(jtxtSoSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 134, 177, -1));
+        jdtcDenNgay.setDateFormatString("dd/MM/yyyy");
+        getContentPane().add(jdtcDenNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 95, 210, -1));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 210));
+        jdtcTuNgay.setDateFormatString("dd/MM/yyyy");
+        getContentPane().add(jdtcTuNgay, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 55, 210, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 190));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnXemThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemThongKeMouseClicked
         // TODO add your handling code here:
-        if(jdtcTuNgay.getDate()==null || jdtcDenNgay.getDate()==null || jtxtSoSP.getText()=="")
+        if(jdtcTuNgay.getDate()==null || jdtcDenNgay.getDate()==null)
         {
             JOptionPane.showMessageDialog(this, "Vui Lòng Nhập Đầy Đủ Các Thông Tin", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
         else {
             try {
-            Connect con = new Connect();
-            con.Connected();
-            HashMap map = new HashMap();
-            InputStream is = null;
-            is = new FileInputStream("src/Report/ReportSanPhamBanNhieu.jasper");
-//            String tn,dn;
-//            tn=df.format(jdtcTuNgay.getDate());
-//            dn=df.format(jdtcDenNgay.getDate());
-            map.put("TuNgay", jdtcTuNgay.getDate());
-            map.put("DenNgay",jdtcDenNgay.getDate());
-            map.put("SoSP",Integer.parseInt(jtxtSoSP.getText()));
-            JasperPrint print = JasperFillManager.fillReport(is, map, con.getConDB());
-            JasperViewer.viewReport(print, false);
-        } catch (Exception ex) {
-            System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
-            ex.printStackTrace();
-        }
+                Connect con = new Connect();
+                con.Connected();
+                HashMap map = new HashMap();
+                InputStream is = null;
+                is = new FileInputStream("src/Report/ReportDoanhThu.jasper");
+                //            String tn,dn;
+                //            tn=df.format(jdtcTuNgay.getDate());
+                //            dn=df.format(jdtcDenNgay.getDate());
+                map.put("TuNgay", jdtcTuNgay.getDate());
+                map.put("DenNgay",jdtcDenNgay.getDate());
+                JasperPrint print = JasperFillManager.fillReport(is, map, con.getConDB());
+                JasperViewer.viewReport(print, false);
+            } catch (Exception ex) {
+                System.out.println("Ngoại lệ tại FormQuanLiDonDatHang.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
     }//GEN-LAST:event_jBtnXemThongKeMouseClicked
 
@@ -274,20 +244,20 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormTKSanPhamBanNhieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormThongKeDoanhThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormTKSanPhamBanNhieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormThongKeDoanhThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormTKSanPhamBanNhieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormThongKeDoanhThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormTKSanPhamBanNhieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormThongKeDoanhThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormTKSanPhamBanNhieu().setVisible(true);
+                new FormThongKeDoanhThu().setVisible(true);
             }
         });
     }
@@ -300,11 +270,9 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private com.toedter.calendar.JDateChooser jdtcDenNgay;
     private com.toedter.calendar.JDateChooser jdtcTuNgay;
-    private javax.swing.JTextField jtxtSoSP;
     // End of variables declaration//GEN-END:variables
 }
