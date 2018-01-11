@@ -37,6 +37,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class FormThongKeCongNo extends javax.swing.JFrame {
 
     Edit editFrm = new Edit();
+    int xx, yy;
     CtrlThongKeCongNo ctrlTKCN = new CtrlThongKeCongNo();
     ModKyCongNo modKCN = new ModKyCongNo();
     ModCongNo modCN = new ModCongNo();
@@ -438,7 +439,7 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         jLabel4.setText("Thống kê");
         jBtnThongKe.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 3, 60, -1));
 
-        getContentPane().add(jBtnThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 98, 110, 20));
+        getContentPane().add(jBtnThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 110, 20));
 
         jBtnXemKiThongKe.setBackground(new java.awt.Color(153, 153, 153));
         jBtnXemKiThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -468,6 +469,16 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         getContentPane().add(jBtnXemKiThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 137, 110, 20));
 
         jPanel1.setOpaque(false);
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -656,7 +667,7 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
         // TODO add your handling code here:
         int dialogButton = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xóa?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
         if (dialogButton == JOptionPane.YES_OPTION) {
-            if(modKCN.Delete(objKCN.getMaKCN())&&modCN.Delete(objKCN.getMaKCN())){
+            if(modCN.Delete(objKCN.getMaKCN())&&modKCN.Delete(objKCN.getMaKCN())){
                 JOptionPane.showMessageDialog(this, "Xóa thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 HienThiDanhSachCongNo(null); 
             }
@@ -801,6 +812,19 @@ public class FormThongKeCongNo extends javax.swing.JFrame {
     private void jBtnXemBaoCao1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemBaoCao1MouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnXemBaoCao1MouseReleased
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
