@@ -60,7 +60,7 @@ public class MainForm extends javax.swing.JFrame {
         PhanQuyenUser();
     }
 
-    private MainForm() {
+    MainForm() {
         initComponents();
         setLocationRelativeTo(null);
 
@@ -275,6 +275,9 @@ public class MainForm extends javax.swing.JFrame {
         jBtnNguoidung.setBackground(new java.awt.Color(153, 153, 153));
         jBtnNguoidung.setEnabled(false);
         jBtnNguoidung.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnNguoidungMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnNguoidungMouseEntered(evt);
             }
@@ -1043,6 +1046,14 @@ public class MainForm extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xx, y - yy);
     }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jBtnNguoidungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnNguoidungMouseClicked
+        // TODO add your handling code here:
+        if (jBtnNguoidung.isEnabled()) {
+            FormQuanLiUser frmQLND = new FormQuanLiUser();
+            frmQLND.setVisible(true);
+        }
+    }//GEN-LAST:event_jBtnNguoidungMouseClicked
 
     /**
      * @param args the command line arguments

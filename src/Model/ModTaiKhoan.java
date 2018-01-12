@@ -23,7 +23,7 @@ public class ModTaiKhoan extends Model{
     public ModTaiKhoan() {
         DB=new Connect();
         Table="TAIKHOAN";
-        ID="MaSP";
+        ID="TenDangNhap";
     }
 
     public ResultSet GetALL(){
@@ -75,11 +75,29 @@ public class ModTaiKhoan extends Model{
            }
        } catch (SQLException ex) {
             System.out.println("Ngoại lệ tại ModTaiKhoan.Update: "+ex.getMessage());
+            return false;
        }
        finally{
            DB.CloseDB();
        }
-        return false;
+        return true;
+    }
+    
+    public boolean UpdatePhanQuyen(ObjTaiKhoan TbTaiKhoan) {
+       String SQL="Update TAIKHOAN set PhanLoai='" + TbTaiKhoan.getPhanLoai() + "' where TenDangNhap='"+ TbTaiKhoan.getTenDangNhap()+"';";
+       try{
+           if(DB.Connected()){
+               stmDB=(Statement) DB.getConDB().createStatement();
+               stmDB.executeUpdate(SQL);
+           }
+       } catch (SQLException ex) {
+            System.out.println("Ngoại lệ tại ModTaiKhoan.Update: "+ex.getMessage());
+            return false;
+       }
+       finally{
+           DB.CloseDB();
+       }
+       return true;
     }
     
     

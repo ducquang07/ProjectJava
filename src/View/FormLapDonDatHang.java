@@ -40,7 +40,7 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
 
     boolean ChinhSua=false;
     Edit editFrm = new Edit();
-    
+    int xx, yy;
     ArrayList<String>listComboboxNCC=new ArrayList<>();
     ArrayList<ObjSanPham>listSanPhamNCC = new ArrayList<>();
     ArrayList<ObjChiTietDDH>listCTDDH = new ArrayList<>();
@@ -899,6 +899,16 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 700, 190));
 
         jPanel1.setOpaque(false);
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 728));
 
@@ -956,14 +966,15 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
     
     public void Binding(){
         try {
-            DefaultTableModel Model = (DefaultTableModel) jtbDSSP.getModel();
-            int viewRow = jtbDSSP.getSelectedRow();
-            int modelRow = jtbDSSP.convertRowIndexToModel(viewRow);
-            jtxtTenSP.setText(listSanPhamNCC.get(modelRow).getTenSP());
-            jtxtLoaiSP.setText(listSanPhamNCC.get(modelRow).getTenLoaiSP());
-        }
-        catch(Exception ex){
-            System.out.println("Ngoại lệ tại FormLapDonDatHang.Binding:"+ex.getMessage());
+            if (jtbDSSP.getRowCount() > 0) {
+                DefaultTableModel Model = (DefaultTableModel) jtbDSSP.getModel();
+                int viewRow = jtbDSSP.getSelectedRow();
+                int modelRow = jtbDSSP.convertRowIndexToModel(viewRow);
+                jtxtTenSP.setText(listSanPhamNCC.get(modelRow).getTenSP());
+                jtxtLoaiSP.setText(listSanPhamNCC.get(modelRow).getTenLoaiSP());
+            }
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormLapDonDatHang.Binding:" + ex.getMessage());
         }
     }
     
@@ -1383,6 +1394,19 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnIn);
     }//GEN-LAST:event_jBtnInMouseReleased
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
