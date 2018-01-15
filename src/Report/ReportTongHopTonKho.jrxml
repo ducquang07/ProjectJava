@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="648" pageHeight="842" columnWidth="608" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0d868d1d-7998-41b7-9022-b142ba3efde9">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MaKTK" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONTEXT}.getId()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ctktk.`MaKTK` AS ctktk_MaKTK,
+     ctktk.`MaSP` AS ctktk_MaSP,
+     ctktk.`SoLuongTonDauKi` AS ctktk_SoLuongTonDauKi,
+     ctktk.`SoLuongNhap` AS ctktk_SoLuongNhap,
+     ctktk.`SoLuongXuat` AS ctktk_SoLuongXuat,
+     ctktk.`SoLuongTonCuoiKi` AS ctktk_SoLuongTonCuoiKi,
+     kytonkho.`TuNgay` AS kytonkho_TuNgay,
+     kytonkho.`DenNgay` AS kytonkho_DenNgay,
+     sanpham.`TenSP` AS sanpham_TenSP
+FROM
+     `kytonkho` kytonkho INNER JOIN `ctktk` ctktk ON kytonkho.`MaKTK` = ctktk.`MaKTK`
+     INNER JOIN `sanpham` sanpham ON ctktk.`MaSP` = sanpham.`MaSP`
+Where kytonkho.`MaKTK` =$P{MaKTK}]]>
+	</queryString>
+	<field name="ctktk_MaKTK" class="java.lang.String"/>
+	<field name="ctktk_MaSP" class="java.lang.String"/>
+	<field name="ctktk_SoLuongTonDauKi" class="java.lang.Integer"/>
+	<field name="ctktk_SoLuongNhap" class="java.lang.Integer"/>
+	<field name="ctktk_SoLuongXuat" class="java.lang.Integer"/>
+	<field name="ctktk_SoLuongTonCuoiKi" class="java.lang.Integer"/>
+	<field name="kytonkho_TuNgay" class="java.sql.Timestamp"/>
+	<field name="kytonkho_DenNgay" class="java.sql.Timestamp"/>
+	<field name="sanpham_TenSP" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="133">
+			<staticText>
+				<reportElement x="324" y="53" width="102" height="20" uuid="72f03b4d-922a-4b33-9594-a6f6f21f8150"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kỳ tồn kho từ ngày : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="28" width="197" height="36" uuid="7d4dd844-79aa-4d31-9d33-99134d68ee7c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Algerian"/>
+				</textElement>
+				<text><![CDATA[-----------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="18" width="129" height="46" uuid="5a792f35-3c4c-4851-a40b-037a15bec2cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Algerian" size="28" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tân An
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="7" width="67" height="21" uuid="21957f34-7306-494c-9578-939902b6f11c"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Palatino Linotype" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cửa hàng sơn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="53" width="51" height="20" uuid="f960a34d-49fa-45eb-8185-a14a43bb608b"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[đến ngày :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="18" width="223" height="35" uuid="04fdff8d-7c72-4700-a5a2-b1fcbc747939"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG HỢP TỒN KHO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="64" width="195" height="55" uuid="818f7bea-469c-4af9-9deb-9defb2c92655"/>
+				<text><![CDATA[Địa chỉ : 67 Thủ Khoa Thuân, phường B, TP.Châu Đốc, An Giang
+Điện thoại: 0293635661xx - 029662600xx
+Điện thoại di động: 09195661xx]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="426" y="53" width="54" height="20" uuid="efe3ddb3-9f1c-4b03-9100-a42e8bd16689"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kytonkho_TuNgay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="531" y="53" width="54" height="20" uuid="6e459064-c788-4e65-a953-dd6d5aab9816"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kytonkho_DenNgay}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

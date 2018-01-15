@@ -66,6 +66,7 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBtnXemThongKe.setBackground(new java.awt.Color(204, 204, 204));
@@ -226,7 +227,6 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
 
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
-        new FormQuanLiThongKe().setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtnBackMouseClicked

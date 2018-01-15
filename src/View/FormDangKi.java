@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -25,13 +26,13 @@ public class FormDangKi extends javax.swing.JFrame {
         jPanel1.setBackground(new Color(236,236,236,50));
         jPanel3.setBackground(new Color(0,0,0,80));
         
-        jTextField1.setBackground(new Color(236,236,236,0));
-        jTextField2.setBackground(new Color(236,236,236,0));
-        jPasswordField1.setBackground(new Color(236,236,236,0));
-        jPasswordField1.setEchoChar('\u0000');
-        jPasswordField2.setBackground(new Color(236,236,236,0));
-        jPasswordField2.setEchoChar('\u0000');
-        jPanel2.setBackground(new Color(236,236,236,150));
+        jtxtHoten.setBackground(new Color(236,236,236,0));
+        jtxtTenDangNhap.setBackground(new Color(236,236,236,0));
+        txtPassword.setBackground(new Color(236,236,236,0));
+        txtPassword.setEchoChar('\u0000');
+        txtRePassword.setBackground(new Color(236,236,236,0));
+        txtRePassword.setEchoChar('\u0000');
+        jBtnTaoTK.setBackground(new Color(236,236,236,150));
     }
 
     /**
@@ -46,16 +47,16 @@ public class FormDangKi extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jBtnTaoTK = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        jtxtHoten = new javax.swing.JTextField();
+        jtxtTenDangNhap = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        txtRePassword = new javax.swing.JPasswordField();
+        jRbtnQLKT = new javax.swing.JRadioButton();
+        jRbtnQuanLi = new javax.swing.JRadioButton();
+        jRbtnQLBH = new javax.swing.JRadioButton();
+        jRbtnQLK = new javax.swing.JRadioButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -125,12 +126,15 @@ public class FormDangKi extends javax.swing.JFrame {
 
         getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBtnTaoTK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnTaoTKMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
+                jBtnTaoTKMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
+                jBtnTaoTKMouseExited(evt);
             }
         });
 
@@ -139,113 +143,113 @@ public class FormDangKi extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Tạo tài khoản");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jBtnTaoTKLayout = new javax.swing.GroupLayout(jBtnTaoTK);
+        jBtnTaoTK.setLayout(jBtnTaoTKLayout);
+        jBtnTaoTKLayout.setHorizontalGroup(
+            jBtnTaoTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jBtnTaoTKLayout.setVerticalGroup(
+            jBtnTaoTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 110, 30));
+        getContentPane().add(jBtnTaoTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 110, 30));
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Nhập họ tên...");
-        jTextField1.setBorder(null);
-        jTextField1.setFocusable(false);
-        jTextField1.setOpaque(false);
-        jTextField1.setPreferredSize(new java.awt.Dimension(73, 17));
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtxtHoten.setBackground(new java.awt.Color(204, 204, 204));
+        jtxtHoten.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jtxtHoten.setForeground(new java.awt.Color(255, 255, 255));
+        jtxtHoten.setText("Nhập họ tên...");
+        jtxtHoten.setBorder(null);
+        jtxtHoten.setFocusable(false);
+        jtxtHoten.setOpaque(false);
+        jtxtHoten.setPreferredSize(new java.awt.Dimension(73, 17));
+        jtxtHoten.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField1MousePressed(evt);
+                jtxtHotenMousePressed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 320, 30));
+        getContentPane().add(jtxtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 320, 30));
 
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("Nhập tên đăng nhập...");
-        jTextField2.setBorder(null);
-        jTextField2.setFocusable(false);
-        jTextField2.setOpaque(false);
-        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtxtTenDangNhap.setBackground(new java.awt.Color(204, 204, 204));
+        jtxtTenDangNhap.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jtxtTenDangNhap.setForeground(new java.awt.Color(255, 255, 255));
+        jtxtTenDangNhap.setText("Nhập tên đăng nhập...");
+        jtxtTenDangNhap.setBorder(null);
+        jtxtTenDangNhap.setFocusable(false);
+        jtxtTenDangNhap.setOpaque(false);
+        jtxtTenDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField2MousePressed(evt);
+                jtxtTenDangNhapMousePressed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 320, 30));
+        getContentPane().add(jtxtTenDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 320, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setText("Nhập mật khẩu...");
-        jPasswordField1.setBorder(null);
-        jPasswordField1.setEchoChar('\u0000');
-        jPasswordField1.setFocusable(false);
-        jPasswordField1.setOpaque(false);
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtPassword.setBackground(new java.awt.Color(204, 204, 204));
+        txtPassword.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setText("Nhập mật khẩu...");
+        txtPassword.setBorder(null);
+        txtPassword.setEchoChar('\u0000');
+        txtPassword.setFocusable(false);
+        txtPassword.setOpaque(false);
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPasswordField1MousePressed(evt);
+                txtPasswordMousePressed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 320, 30));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 320, 30));
 
-        jPasswordField2.setBackground(new java.awt.Color(204, 204, 204));
-        jPasswordField2.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField2.setText("Xác nhận mật khẩu");
-        jPasswordField2.setBorder(null);
-        jPasswordField2.setEchoChar('\u0000');
-        jPasswordField2.setFocusable(false);
-        jPasswordField2.setOpaque(false);
-        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtRePassword.setBackground(new java.awt.Color(204, 204, 204));
+        txtRePassword.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        txtRePassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtRePassword.setText("Xác nhận mật khẩu");
+        txtRePassword.setBorder(null);
+        txtRePassword.setEchoChar('\u0000');
+        txtRePassword.setFocusable(false);
+        txtRePassword.setOpaque(false);
+        txtRePassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPasswordField2MousePressed(evt);
+                txtRePasswordMousePressed(evt);
             }
         });
-        getContentPane().add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 320, 30));
+        getContentPane().add(txtRePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 320, 30));
 
-        jRadioButton1.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Quản lí kế toán");
-        jRadioButton1.setFocusable(false);
-        jRadioButton1.setOpaque(false);
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 450, 110, -1));
+        jRbtnQLKT.setBackground(new java.awt.Color(204, 204, 204));
+        buttonGroup1.add(jRbtnQLKT);
+        jRbtnQLKT.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRbtnQLKT.setForeground(new java.awt.Color(255, 255, 255));
+        jRbtnQLKT.setText("Quản lí kế toán");
+        jRbtnQLKT.setFocusable(false);
+        jRbtnQLKT.setOpaque(false);
+        getContentPane().add(jRbtnQLKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 450, 110, -1));
 
-        jRadioButton2.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Quản lí");
-        jRadioButton2.setFocusable(false);
-        jRadioButton2.setOpaque(false);
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 450, -1, -1));
+        jRbtnQuanLi.setBackground(new java.awt.Color(204, 204, 204));
+        buttonGroup1.add(jRbtnQuanLi);
+        jRbtnQuanLi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRbtnQuanLi.setForeground(new java.awt.Color(255, 255, 255));
+        jRbtnQuanLi.setText("Quản lí");
+        jRbtnQuanLi.setFocusable(false);
+        jRbtnQuanLi.setOpaque(false);
+        getContentPane().add(jRbtnQuanLi, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 450, -1, -1));
 
-        jRadioButton3.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Quản lí bán hàng");
-        jRadioButton3.setFocusable(false);
-        jRadioButton3.setOpaque(false);
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 450, -1, -1));
+        jRbtnQLBH.setBackground(new java.awt.Color(204, 204, 204));
+        buttonGroup1.add(jRbtnQLBH);
+        jRbtnQLBH.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRbtnQLBH.setForeground(new java.awt.Color(255, 255, 255));
+        jRbtnQLBH.setText("Quản lí bán hàng");
+        jRbtnQLBH.setFocusable(false);
+        jRbtnQLBH.setOpaque(false);
+        getContentPane().add(jRbtnQLBH, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 450, -1, -1));
 
-        jRadioButton4.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton4.setText("Quản lí kho");
-        jRadioButton4.setFocusable(false);
-        jRadioButton4.setOpaque(false);
-        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
+        jRbtnQLK.setBackground(new java.awt.Color(204, 204, 204));
+        buttonGroup1.add(jRbtnQLK);
+        jRbtnQLK.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRbtnQLK.setForeground(new java.awt.Color(255, 255, 255));
+        jRbtnQLK.setText("Quản lí kho");
+        jRbtnQLK.setFocusable(false);
+        jRbtnQLK.setOpaque(false);
+        getContentPane().add(jRbtnQLK, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/navigation.png"))); // NOI18N
@@ -330,42 +334,42 @@ public class FormDangKi extends javax.swing.JFrame {
         pn.setBackground(new Color(236,236,236,150));
     }
     
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+    private void jBtnTaoTKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTaoTKMouseEntered
         // TODO add your handling code here:
-        setColor(jPanel2);
-    }//GEN-LAST:event_jPanel2MouseEntered
+        setColor(jBtnTaoTK);
+    }//GEN-LAST:event_jBtnTaoTKMouseEntered
 
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+    private void jBtnTaoTKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTaoTKMouseExited
         // TODO add your handling code here:
-        resetColor(jPanel2);
-    }//GEN-LAST:event_jPanel2MouseExited
+        resetColor(jBtnTaoTK);
+    }//GEN-LAST:event_jBtnTaoTKMouseExited
 
-    private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
+    private void jtxtHotenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtHotenMousePressed
         // TODO add your handling code here:
-        if(!jTextField1.isFocusable()){
-        jTextField1.setFocusable(true);
-        jTextField1.setText("");
-        jTextField1.requestFocus();
+        if(!jtxtHoten.isFocusable()){
+        jtxtHoten.setFocusable(true);
+        jtxtHoten.setText("");
+        jtxtHoten.requestFocus();
         }
-    }//GEN-LAST:event_jTextField1MousePressed
+    }//GEN-LAST:event_jtxtHotenMousePressed
 
-    private void jTextField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MousePressed
+    private void jtxtTenDangNhapMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtTenDangNhapMousePressed
         // TODO add your handling code here:
-        if(!jTextField2.isFocusable()){
-        jTextField2.setFocusable(true);
-        jTextField2.setText("");
-        jTextField2.requestFocus();
+        if(!jtxtTenDangNhap.isFocusable()){
+        jtxtTenDangNhap.setFocusable(true);
+        jtxtTenDangNhap.setText("");
+        jtxtTenDangNhap.requestFocus();
         }
-    }//GEN-LAST:event_jTextField2MousePressed
+    }//GEN-LAST:event_jtxtTenDangNhapMousePressed
 
-    private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
+    private void txtPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMousePressed
         // TODO add your handling code here:
-        if(!jPasswordField1.isFocusable()){
-        jPasswordField1.setFocusable(true);
-        jPasswordField1.setText("");
-        jPasswordField1.requestFocus();
-        jPasswordField1.setEchoChar('\u2022');}
-    }//GEN-LAST:event_jPasswordField1MousePressed
+        if(!txtPassword.isFocusable()){
+        txtPassword.setFocusable(true);
+        txtPassword.setText("");
+        txtPassword.requestFocus();
+        txtPassword.setEchoChar('\u2022');}
+    }//GEN-LAST:event_txtPasswordMousePressed
     
     int xx,yy;
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
@@ -382,14 +386,14 @@ public class FormDangKi extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formMousePressed
 
-    private void jPasswordField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MousePressed
+    private void txtRePasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRePasswordMousePressed
         // TODO add your handling code here:
-        if(!jPasswordField2.isFocusable()){
-        jPasswordField2.setFocusable(true);
-        jPasswordField2.setText("");
-        jPasswordField2.requestFocus();
-        jPasswordField2.setEchoChar('\u2022');}
-    }//GEN-LAST:event_jPasswordField2MousePressed
+        if(!txtRePassword.isFocusable()){
+        txtRePassword.setFocusable(true);
+        txtRePassword.setText("");
+        txtRePassword.requestFocus();
+        txtRePassword.setEchoChar('\u2022');}
+    }//GEN-LAST:event_txtRePasswordMousePressed
 
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
@@ -418,6 +422,16 @@ public class FormDangKi extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnBack);
     }//GEN-LAST:event_jBtnBackMouseReleased
+
+    private void jBtnTaoTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTaoTKMouseClicked
+        // TODO add your handling code here:
+        if(!jtxtHoten.getText().equals("")&&!jtxtTenDangNhap.getText().equals("")&&!txtPassword.getText().equals("")&&!txtRePassword.getText().equals(""))
+        {
+            if(jtxtHoten.getText().equals("Nhập họ tên...")||jtxtTenDangNhap.getText().equals("Nhập tên đăng nhập...")||txtPassword.getText().equals("Nhập mật khẩu...")||txtRePassword.getText().equals("Xác nhận mật khẩu..."))
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jBtnTaoTKMouseClicked
 
     /**
      * @param args the command line arguments
@@ -472,6 +486,7 @@ public class FormDangKi extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jBtnBack;
+    private javax.swing.JPanel jBtnTaoTK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -487,19 +502,18 @@ public class FormDangKi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRbtnQLBH;
+    private javax.swing.JRadioButton jRbtnQLK;
+    private javax.swing.JRadioButton jRbtnQLKT;
+    private javax.swing.JRadioButton jRbtnQuanLi;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jtxtHoten;
+    private javax.swing.JTextField jtxtTenDangNhap;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtRePassword;
     // End of variables declaration//GEN-END:variables
 }

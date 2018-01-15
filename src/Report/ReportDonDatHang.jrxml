@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80b5a7b4-5f76-40a6-9eb7-4701548db508">
+	<property name="ireport.zoom" value="3.890613690150007"/>
+	<property name="ireport.x" value="1588"/>
+	<property name="ireport.y" value="924"/>
+	<parameter name="MaDDH" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{REPORT_CONTEXT}.getId()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dondathang.`NgayDatHang` AS dondathang_NgayDatHang,
+     sanpham.`TenSP` AS sanpham_TenSP,
+     sanpham.`DVT` AS sanpham_DVT,
+     nhacungcap.`TenNCC` AS nhacungcap_TenNCC,
+     nhacungcap.`SDT` AS nhacungcap_SDT,
+     nhacungcap.`DiaChi` AS nhacungcap_DiaChi,
+     ctddh.`SoLuong` AS ctddh_SoLuong,
+     dondathang.`MaDDH` AS dondathang_MaDDH
+FROM
+     `dondathang` dondathang INNER JOIN `ctddh` ctddh ON dondathang.`MaDDH` = ctddh.`MaDDH`
+     INNER JOIN `sanpham` sanpham ON ctddh.`MaSP` = sanpham.`MaSP`
+     INNER JOIN `nhacungcap` nhacungcap ON dondathang.`MaNCC` = nhacungcap.`MaNCC`
+Where 
+     dondathang.`MaDDH`=$P{MaDDH}]]>
+	</queryString>
+	<field name="dondathang_NgayDatHang" class="java.sql.Timestamp"/>
+	<field name="sanpham_TenSP" class="java.lang.String"/>
+	<field name="sanpham_DVT" class="java.lang.String"/>
+	<field name="nhacungcap_TenNCC" class="java.lang.String"/>
+	<field name="nhacungcap_SDT" class="java.lang.String"/>
+	<field name="nhacungcap_DiaChi" class="java.lang.String"/>
+	<field name="ctddh_SoLuong" class="java.lang.Integer"/>
+	<field name="dondathang_MaDDH" class="java.lang.String"/>
+	<variable name="STT" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$V{STT}+1]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="223" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="21" width="129" height="46" uuid="acd8da1a-3889-41ac-90bf-751b5cf7408a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Algerian" size="28" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tân An
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="31" width="197" height="36" uuid="842fcee6-d472-43b3-9f4a-e98fe9e998bd"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Algerian"/>
+				</textElement>
+				<text><![CDATA[-----------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="67" width="195" height="55" uuid="07b3c27b-dda5-443a-8945-50f27068caa9"/>
+				<text><![CDATA[Địa chỉ : 67 Thủ Khoa Thuân, phường B, TP.Châu Đốc, An Giang
+Điện thoại: 0293635661xx - 029662600xx
+Điện thoại di động: 09195661xx]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="21" width="197" height="35" uuid="7bbbba03-7ca4-485d-a1b9-e35c049ca61b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ĐƠN ĐẶT HÀNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="87" width="76" height="20" uuid="2e40c95a-c931-4863-af1d-c7367ba52c8a"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày đặt hàng :     :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="10" width="67" height="21" uuid="7bbb61b4-ce75-4301-8e28-18d09179d1b3"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Palatino Linotype" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cửa hàng sơn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="67" width="76" height="20" uuid="8467b06f-a8a8-4e86-9058-dda43950f78c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã DDH :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="163" width="83" height="25" uuid="87f7635b-cf4f-48ad-8619-5d4953e5ce86"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Số điện thoại  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="149" width="83" height="14" uuid="558bb74b-9c2f-4663-b9c1-90e51c0ee728"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nhà cung cấp :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="188" width="83" height="14" uuid="8f8d1d3c-856e-4cd6-884e-8afd5aa329cb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="149" width="381" height="14" uuid="2e5a5b4a-278c-4d05-af14-4b00d9434769"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nhacungcap_TenNCC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="163" width="381" height="25" uuid="3b22767f-8dc7-41b6-9584-9e01c6a5f392"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nhacungcap_SDT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="188" width="381" height="29" uuid="99fe102f-b9a8-4c49-8ca4-78965f60eab9"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{nhacungcap_DiaChi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="67" width="121" height="20" uuid="fa2a794d-3390-46ef-9b25-f391fa08d55d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dondathang_MaDDH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="412" y="87" width="121" height="20" uuid="5fcca7bf-f41b-4516-9180-b4fadd73e8d7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dondathang_NgayDatHang}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="13" width="355" height="18" uuid="aca91ff9-6be5-411a-8df5-d14d3f77d618"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Tên sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="13" width="73" height="18" uuid="2321aa25-2b80-4a52-adee-79bc0d85481c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Đơn Vị]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="12" width="100" height="20" uuid="3776fbc9-84eb-4855-892d-122415f377e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Số lượng]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="12" width="555" height="1" uuid="64eba2ad-025b-4d95-90d3-c66b1d2ffedc"/>
+			</line>
+			<line>
+				<reportElement x="0" y="31" width="555" height="1" uuid="cdad44e1-f820-40f2-98c4-9284960c374a"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="13" width="27" height="18" uuid="81f0c175-d799-43e8-9f6e-0d28b39e4ae3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[STT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="13" width="1" height="18" uuid="6b20818a-49c0-458f-9457-0748cc816d0d"/>
+			</line>
+			<line>
+				<reportElement x="27" y="13" width="1" height="18" uuid="2b922561-0a37-4eda-94e9-d5e30aeedec7"/>
+			</line>
+			<line>
+				<reportElement x="381" y="13" width="1" height="18" uuid="ce7addfb-afb1-4cc7-b283-35d4b74622ff"/>
+			</line>
+			<line>
+				<reportElement x="455" y="13" width="1" height="18" uuid="13c2f829-18af-4408-bc3a-13e022262fd1"/>
+			</line>
+			<line>
+				<reportElement x="555" y="13" width="1" height="18" uuid="488d2668-245b-4b67-ab97-a89f42517aef"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="45" y="0" width="337" height="18" uuid="59b27cf1-fb2b-4d04-a5d9-28c0934e8d04"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sanpham_TenSP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="0" width="73" height="18" uuid="875f0998-f4f2-439f-80ee-8637675c854d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sanpham_DVT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="b2ce1cf9-abcc-4a71-8ac7-de4ac9658e99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ctddh_SoLuong}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="18" width="555" height="1" uuid="9b98bc7b-994c-468a-809b-e4d82fdcc542"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="27" height="18" uuid="3099567a-f7d6-4387-beca-77638d418143"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{STT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="555" height="1" uuid="5726a3a9-272d-4c71-bdd8-2cb369f4c6e8"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
