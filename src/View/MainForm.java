@@ -575,6 +575,9 @@ public class MainForm extends javax.swing.JFrame {
 
         jBtnThongtin.setBackground(new java.awt.Color(51, 51, 51));
         jBtnThongtin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThongtinMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThongtinMouseEntered(evt);
             }
@@ -1081,6 +1084,14 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBtnDoiMKMouseClicked
 >>>>>>> origin/master
+
+    private void jBtnThongtinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongtinMouseClicked
+        // TODO add your handling code here:
+        if (jlbThongTin.isEnabled()) {
+            FormThongTin frmTT = new FormThongTin();
+            frmTT.setVisible(true);
+        }
+    }//GEN-LAST:event_jBtnThongtinMouseClicked
 
     /**
      * @param args the command line arguments
