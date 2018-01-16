@@ -27,7 +27,7 @@ public class MainForm extends javax.swing.JFrame {
      * Creates new form MainForm
      */
 
-    public ObjTaiKhoan User = new ObjTaiKhoan("15520783","123456");
+    public ObjTaiKhoan User = new ObjTaiKhoan();
     CtrlMainForm ctrlMainFrm = new CtrlMainForm();
 
     public MainForm(ObjTaiKhoan objTK) {
@@ -478,11 +478,11 @@ public class MainForm extends javax.swing.JFrame {
             jBtnTaoTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jBtnTaoTKLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbTaoTK, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                .addComponent(jlbTaoTK, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPnHome.add(jBtnTaoTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 299, 38));
+        jPnHome.add(jBtnTaoTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 299, 40));
 
         jbtnDangXuat.setBackground(new java.awt.Color(0, 0, 0));
         jbtnDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -521,11 +521,11 @@ public class MainForm extends javax.swing.JFrame {
             jbtnDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jbtnDangXuatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                .addComponent(jlbDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPnHome.add(jbtnDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 299, 38));
+        jPnHome.add(jbtnDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 116, 299, 38));
 
         jBtnDoiMK.setBackground(new java.awt.Color(102, 102, 102));
         jBtnDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -565,7 +565,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPnHome.add(jBtnDoiMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, 299, 38));
+        jPnHome.add(jBtnDoiMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 299, 38));
 
         jBtnThongtin.setBackground(new java.awt.Color(51, 51, 51));
         jBtnThongtin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -605,7 +605,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPnHome.add(jBtnThongtin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 76, 299, 38));
+        jPnHome.add(jBtnThongtin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 299, 38));
 
         getContentPane().add(jPnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 79, 299, 160));
 
@@ -1015,8 +1015,10 @@ public class MainForm extends javax.swing.JFrame {
     private void jBtnTaoTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTaoTKMouseClicked
         // TODO add your handling code here:
         if (jlbTaoTK.isEnabled()) {
-            FormDangKi frmDangKi = new FormDangKi();
+            FormDangKi frmDangKi = new FormDangKi(User);
             frmDangKi.setVisible(true);
+            setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_jBtnTaoTKMouseClicked
 

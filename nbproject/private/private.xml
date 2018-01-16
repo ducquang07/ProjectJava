@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Control/CtrlThongKeCongNo.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/View/FormThongKeTonKho.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/View/FormThongKeCongNo.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Control/CtrlThongKeTonKho.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Model/ModCongNo.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Object/ObjKyTonKho.java</file>
-            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/Model/ModChiTietTK.java</file>
+            <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Model/ModTaiKhoan.java</file>
+            <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/MainForm.java</file>
+            <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Object/ObjTaiKhoan.java</file>
+            <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Control/CtrlMainForm.java</file>
+            <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/FormDangNhap.java</file>
+            <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/FormDangKi.java</file>
         </group>
     </open-files>
 </project-private>

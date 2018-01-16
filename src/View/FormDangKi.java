@@ -1,5 +1,7 @@
 package View;
 
+import Model.ModTaiKhoan;
+import Object.ObjTaiKhoan;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,6 +22,25 @@ public class FormDangKi extends javax.swing.JFrame {
      * Creates new form RegisterForm
      */
     int flag=0;
+    ObjTaiKhoan ObjTK = new ObjTaiKhoan();
+    ObjTaiKhoan ObjTK1 = new ObjTaiKhoan();
+    ModTaiKhoan ModTK = new ModTaiKhoan();
+    public FormDangKi(ObjTaiKhoan TK) {
+        initComponents();
+        setLocationRelativeTo(null);
+        jPanel1.setBackground(new Color(236,236,236,50));
+        jPanel3.setBackground(new Color(0,0,0,80));
+        
+        jtxtHoten.setBackground(new Color(236,236,236,0));
+        jtxtTenDangNhap.setBackground(new Color(236,236,236,0));
+        txtPassword.setBackground(new Color(236,236,236,0));
+        txtPassword.setEchoChar('\u0000');
+        txtRePassword.setBackground(new Color(236,236,236,0));
+        txtRePassword.setEchoChar('\u0000');
+        jBtnTaoTK.setBackground(new Color(236,236,236,150));
+        ObjTK1.setMatKhau(TK.getMatKhau());
+        ObjTK1.setTenDangNhap(TK.getTenDangNhap());
+    }
     public FormDangKi() {
         initComponents();
         setLocationRelativeTo(null);
@@ -219,16 +240,16 @@ public class FormDangKi extends javax.swing.JFrame {
         buttonGroup1.add(jRbtnQLKT);
         jRbtnQLKT.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRbtnQLKT.setForeground(new java.awt.Color(255, 255, 255));
-        jRbtnQLKT.setText("Quản lí kế toán");
+        jRbtnQLKT.setText("Quản lý kế toán");
         jRbtnQLKT.setFocusable(false);
         jRbtnQLKT.setOpaque(false);
-        getContentPane().add(jRbtnQLKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 450, 110, -1));
+        getContentPane().add(jRbtnQLKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 450, 120, -1));
 
         jRbtnQuanLi.setBackground(new java.awt.Color(204, 204, 204));
         buttonGroup1.add(jRbtnQuanLi);
         jRbtnQuanLi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRbtnQuanLi.setForeground(new java.awt.Color(255, 255, 255));
-        jRbtnQuanLi.setText("Quản lí");
+        jRbtnQuanLi.setText("Quản lý");
         jRbtnQuanLi.setFocusable(false);
         jRbtnQuanLi.setOpaque(false);
         getContentPane().add(jRbtnQuanLi, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 450, -1, -1));
@@ -237,7 +258,7 @@ public class FormDangKi extends javax.swing.JFrame {
         buttonGroup1.add(jRbtnQLBH);
         jRbtnQLBH.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRbtnQLBH.setForeground(new java.awt.Color(255, 255, 255));
-        jRbtnQLBH.setText("Quản lí bán hàng");
+        jRbtnQLBH.setText("Quản lý bán hàng");
         jRbtnQLBH.setFocusable(false);
         jRbtnQLBH.setOpaque(false);
         getContentPane().add(jRbtnQLBH, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 450, -1, -1));
@@ -246,10 +267,10 @@ public class FormDangKi extends javax.swing.JFrame {
         buttonGroup1.add(jRbtnQLK);
         jRbtnQLK.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRbtnQLK.setForeground(new java.awt.Color(255, 255, 255));
-        jRbtnQLK.setText("Quản lí kho");
+        jRbtnQLK.setText("Quản lý kho");
         jRbtnQLK.setFocusable(false);
         jRbtnQLK.setOpaque(false);
-        getContentPane().add(jRbtnQLK, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
+        getContentPane().add(jRbtnQLK, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 450, 100, -1));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/navigation.png"))); // NOI18N
@@ -398,7 +419,7 @@ public class FormDangKi extends javax.swing.JFrame {
     private void jBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnBackMouseClicked
         // TODO add your handling code here:
         if(flag==1) new FormQuanLiUser().setVisible(true);
-        else new MainForm().setVisible(true);
+        else new MainForm(ObjTK1).setVisible(true);
         this.setVisible(false);
         this.dispose();    
     }//GEN-LAST:event_jBtnBackMouseClicked
@@ -425,10 +446,41 @@ public class FormDangKi extends javax.swing.JFrame {
 
     private void jBtnTaoTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnTaoTKMouseClicked
         // TODO add your handling code here:
+        String phanloai = null;
+        if(jRbtnQuanLi.isSelected())
+        {
+            phanloai=jRbtnQuanLi.getText();
+        }else if(jRbtnQLBH.isSelected())
+        {
+            phanloai=jRbtnQLBH.getText();
+        }else if(jRbtnQLK.isSelected())
+        {
+            phanloai=jRbtnQLK.getText();
+        }else if(jRbtnQLKT.isSelected())
+        {
+            phanloai=jRbtnQLKT.getText();
+        }
+        if(phanloai!=null)
+        {
+            ObjTK = new ObjTaiKhoan(jtxtTenDangNhap.getText(), txtPassword.getText(), jtxtHoten.getText(), phanloai);
+        }else JOptionPane.showMessageDialog(this, "Vui lòng chọn phân loại", "Thông báo", JOptionPane.ERROR_MESSAGE);
         if(!jtxtHoten.getText().equals("")&&!jtxtTenDangNhap.getText().equals("")&&!txtPassword.getText().equals("")&&!txtRePassword.getText().equals(""))
         {
             if(jtxtHoten.getText().equals("Nhập họ tên...")||jtxtTenDangNhap.getText().equals("Nhập tên đăng nhập...")||txtPassword.getText().equals("Nhập mật khẩu...")||txtRePassword.getText().equals("Xác nhận mật khẩu..."))
+            {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                if(txtPassword.getText().equals(txtRePassword.getText()))
+                {
+                    if(ModTK.Insert(ObjTK))
+                    {
+                        JOptionPane.showMessageDialog(this, "Đã đăng kí thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    }else JOptionPane.showMessageDialog(this, "Đăng kí thất bại", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }else 
+                {
+                    JOptionPane.showMessageDialog(this, "Mật khẩu không trùng khớp", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
         else JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jBtnTaoTKMouseClicked
@@ -444,7 +496,7 @@ public class FormDangKi extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
