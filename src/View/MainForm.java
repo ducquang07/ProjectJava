@@ -529,6 +529,9 @@ public class MainForm extends javax.swing.JFrame {
 
         jBtnDoiMK.setBackground(new java.awt.Color(102, 102, 102));
         jBtnDoiMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnDoiMKMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnDoiMKMouseEntered(evt);
             }
@@ -1056,6 +1059,16 @@ public class MainForm extends javax.swing.JFrame {
             frmQLND.setVisible(true);
         }
     }//GEN-LAST:event_jBtnNguoidungMouseClicked
+
+    private void jBtnDoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDoiMKMouseClicked
+        // TODO add your handling code here:
+        if (jlbDoiMK.isEnabled()) {
+            FormDoiMatKhau frmDoiMK = new FormDoiMatKhau(User);
+            frmDoiMK.setVisible(true);
+            setVisible(false);
+            dispose();
+        }
+    }//GEN-LAST:event_jBtnDoiMKMouseClicked
 
     /**
      * @param args the command line arguments
