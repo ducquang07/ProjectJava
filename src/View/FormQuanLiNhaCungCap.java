@@ -672,6 +672,16 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
 
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 50, 780, 650));
 
+        jPanel9.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel9MouseDragged(evt);
+            }
+        });
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel9MousePressed(evt);
+            }
+        });
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 710));
 
@@ -976,6 +986,21 @@ public class FormQuanLiNhaCungCap extends javax.swing.JFrame {
             flag=0;
         }
     }//GEN-LAST:event_jBtnHuyMouseClicked
+
+    int xx,yy;
+    
+    private void jPanel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel9MousePressed
+
+    private void jPanel9MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel9MouseDragged
 
     public void HienThiDSNhaCungCap(ResultSet rs){
         listNCC.clear();

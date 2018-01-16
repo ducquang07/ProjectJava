@@ -825,6 +825,16 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 50, 430, 220));
 
+        jPanel10.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel10MouseDragged(evt);
+            }
+        });
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel10MousePressed(evt);
+            }
+        });
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 720));
 
@@ -1097,6 +1107,21 @@ public class FormXacNhanTinhTrangGiaoHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnXacNhanChuaGiao);
     }//GEN-LAST:event_jBtnXacNhanChuaGiaoMouseReleased
+
+    int xx,yy;
+    
+    private void jPanel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel10MousePressed
+
+    private void jPanel10MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel10MouseDragged
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){

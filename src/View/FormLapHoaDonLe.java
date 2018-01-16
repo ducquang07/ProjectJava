@@ -657,10 +657,10 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
 
         jtxtDonGia.setEditable(false);
         jtxtDonGia.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jtxtDonGiaInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jPanel7.add(jtxtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 178, -1));
@@ -927,6 +927,17 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
         );
 
         getContentPane().add(jBtnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 670, 190, 50));
+
+        jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel5MouseDragged(evt);
+            }
+        });
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel5MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1406,6 +1417,21 @@ public class FormLapHoaDonLe extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jBtnChinhSuaMouseClicked
+
+   
+    
+    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel5MousePressed
+
+    private void jPanel5MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel5MouseDragged
 
 
     public void setColor(JPanel pn){

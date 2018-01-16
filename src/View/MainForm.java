@@ -82,9 +82,9 @@ public class MainForm extends javax.swing.JFrame {
         jBtnKhohang.setBackground(new Color(236, 236, 236, 50));
         jBtnKetoan.setBackground(new Color(236, 236, 236, 50));
         jBtn7.setBackground(new Color(236, 236, 236, 50));
-        
+
         jlbUp.setVisible(false);
-        
+
         PhanQuyenUser();
     }
 
@@ -918,7 +918,7 @@ public class MainForm extends javax.swing.JFrame {
     private void jBtnThongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongkeMouseClicked
         // TODO add your handling code here:
         if (jBtnThongke.isEnabled()) {
-            FormQuanLiThongKe frmQLTK = new FormQuanLiThongKe();
+            FormQuanLiThongKe frmQLTK = new FormQuanLiThongKe(User.getPhanLoai());
             frmQLTK.setVisible(true);
         }
     }//GEN-LAST:event_jBtnThongkeMouseClicked
@@ -1066,14 +1066,14 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBtnNguoidungMouseClicked
 
-<<<<<<< HEAD
+
     private void jBtnThietlapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThietlapMouseClicked
         // TODO add your handling code here:
         if(jBtnThietlap.isEnabled()){
             new FormThietLap().setVisible(true);
         }
     }//GEN-LAST:event_jBtnThietlapMouseClicked
-=======
+
     private void jBtnDoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDoiMKMouseClicked
         // TODO add your handling code here:
         if (jlbDoiMK.isEnabled()) {
@@ -1083,7 +1083,7 @@ public class MainForm extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_jBtnDoiMKMouseClicked
->>>>>>> origin/master
+
 
     private void jBtnThongtinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongtinMouseClicked
         // TODO add your handling code here:

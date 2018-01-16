@@ -165,8 +165,18 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 137, -1, -1));
         getContentPane().add(jtxtSoSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 134, 177, -1));
 
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 210));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 220));
 
         pack();
         setLocationRelativeTo(null);
@@ -250,6 +260,20 @@ public class FormTKSanPhamBanNhieu extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnBack);
     }//GEN-LAST:event_jBtnBackMouseReleased
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    int xx,yy;
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){

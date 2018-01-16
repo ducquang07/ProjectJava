@@ -211,6 +211,7 @@ public class FormDangKi extends javax.swing.JFrame {
         txtPassword.setForeground(new java.awt.Color(255, 255, 255));
         txtPassword.setText("Nhập mật khẩu...");
         txtPassword.setBorder(null);
+        txtPassword.setEchoChar('\u0000');
         txtPassword.setFocusable(false);
         txtPassword.setOpaque(false);
         txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,6 +226,7 @@ public class FormDangKi extends javax.swing.JFrame {
         txtRePassword.setForeground(new java.awt.Color(255, 255, 255));
         txtRePassword.setText("Xác nhận mật khẩu...");
         txtRePassword.setBorder(null);
+        txtRePassword.setEchoChar('\u0000');
         txtRePassword.setFocusable(false);
         txtRePassword.setOpaque(false);
         txtRePassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -333,6 +335,16 @@ public class FormDangKi extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.setFocusable(false);
+        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel3MouseDragged(evt);
+            }
+        });
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel3MousePressed(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 640));
 
@@ -393,15 +405,12 @@ public class FormDangKi extends javax.swing.JFrame {
     int xx,yy;
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x-xx,y-yy);
+        
     }//GEN-LAST:event_formMouseDragged
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         // TODO add your handling code here:
-        xx=evt.getX();
-        yy=evt.getY();
+        
 
     }//GEN-LAST:event_formMousePressed
 
@@ -482,6 +491,19 @@ public class FormDangKi extends javax.swing.JFrame {
         }
         else JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jBtnTaoTKMouseClicked
+
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+        // TODO add your handling code here:
+        xx=evt.getX();
+        yy=evt.getY();
+    }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xx,y-yy);
+    }//GEN-LAST:event_jPanel3MouseDragged
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Connect.Connect;
 import java.awt.Color;
 import javax.swing.JPanel;
 import Edit.Edit;
@@ -15,9 +16,15 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import Model.ModChiTietHDL;
 import Model.ModHoaDonLe;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Date;
+import java.util.Hashtable;
 
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -440,6 +447,16 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 700, 340));
 
         jPanel1.setOpaque(false);
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 420));
 
@@ -492,6 +509,19 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
 
     private void jBtnXemPhieuInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseClicked
         // TODO add your handling code here:
+        try {
+            Connect con = new Connect();
+            con.Connected();
+            Hashtable hash = new Hashtable();
+            InputStream is = null;
+            is = new FileInputStream("src/Report/ReportHoaDonLe.jasper");
+            hash.put("SoHDL", jtxtSoHDL.getText());
+            JasperPrint print = JasperFillManager.fillReport(is, hash, con.getConDB());
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormDueyHoaDonLe.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jBtnXemPhieuInMouseClicked
 
     private void jBtnXemPhieuInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseEntered
@@ -630,6 +660,21 @@ public class FormDuyetHoaDonLe extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_formWindowClosing
+
+    int xx,yy;
+    
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     public void setColor(JPanel pn) {
         if (pn.isEnabled()) {
