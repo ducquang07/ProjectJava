@@ -677,16 +677,16 @@ public class FormLapDonDatHang extends javax.swing.JFrame {
         jPnThongTinCTNH.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setText("Thông tin chi tiết nhập hàng :");
+        jLabel11.setText("Thông tin chi tiết đơn đặt hàng :");
 
         javax.swing.GroupLayout jPnThongTinCTNHLayout = new javax.swing.GroupLayout(jPnThongTinCTNH);
         jPnThongTinCTNH.setLayout(jPnThongTinCTNHLayout);
         jPnThongTinCTNHLayout.setHorizontalGroup(
             jPnThongTinCTNHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnThongTinCTNHLayout.createSequentialGroup()
-                .addContainerGap(315, Short.MAX_VALUE)
-                .addComponent(jLabel11)
-                .addContainerGap())
+                .addContainerGap(297, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         jPnThongTinCTNHLayout.setVerticalGroup(
             jPnThongTinCTNHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
