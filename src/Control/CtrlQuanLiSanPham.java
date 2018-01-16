@@ -25,6 +25,11 @@ public class CtrlQuanLiSanPham {
         return DB.GetData(SQL);
     }
 
+    public ResultSet LayDSSanPhamDuoiMucTon(){
+        String SQL = "Select SP.MaSP,SP.TenSP,SP.DVT,SP.GiaLe,SP.GiaSi,SP.SoLuong,SP.MoTa,SP.LoiNhuanBien, SP.MaLoaiSP,SP.MaNCC,LSP.TenLoaiSP,NCC.TenNCC "
+                + "from SANPHAM SP,LOAISANPHAM LSP,NHACUNGCAP NCC,ThamSo TS where SP.MaLoaiSP=LSP.MaLoaiSP and SP.MaNCC=NCC.MaNCC and SP.SoLuong<TS.SoLuongToiThieu";
+        return DB.GetData(SQL);
+    }
     public boolean CloseConnection() {
         return DB.CloseDB();
     }

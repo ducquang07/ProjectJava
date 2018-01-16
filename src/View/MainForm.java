@@ -345,6 +345,9 @@ public class MainForm extends javax.swing.JFrame {
         jBtnThietlap.setBackground(new java.awt.Color(153, 153, 153));
         jBtnThietlap.setEnabled(false);
         jBtnThietlap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnThietlapMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jBtnThietlapMouseEntered(evt);
             }
@@ -1054,6 +1057,13 @@ public class MainForm extends javax.swing.JFrame {
             frmQLND.setVisible(true);
         }
     }//GEN-LAST:event_jBtnNguoidungMouseClicked
+
+    private void jBtnThietlapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThietlapMouseClicked
+        // TODO add your handling code here:
+        if(jBtnThietlap.isEnabled()){
+            new FormThietLap().setVisible(true);
+        }
+    }//GEN-LAST:event_jBtnThietlapMouseClicked
 
     /**
      * @param args the command line arguments

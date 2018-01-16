@@ -47,7 +47,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         JPanel ListTitle[]=new JPanel[]{jPnDSSP,jPnThongtinSP,jPnTracuuSP};
         editFrm.MakeTransparentTitle(ListTitle);
         
-        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXoa};
+        JPanel ListButton[]=new JPanel[]{jBtnBack,jBtnHuy,jBtnLamMoi,jBtnLuu,jBtnSua,jBtnThem,jBtnTimKiem,jBtnXoa,jBtnXemDSSPDuoiMucTK};
         editFrm.MakeTransparentButton(ListButton);
         
         editFrm.MakeTransparentTable(jScrDSSP, jTbDSSP);
@@ -165,6 +165,8 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         jBtnBack = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
+        jBtnXemDSSPDuoiMucTK = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
         jBtnLamMoi = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jBtnTimKiem = new javax.swing.JPanel();
@@ -273,6 +275,45 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         );
 
         getContentPane().add(jBtnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+
+        jBtnXemDSSPDuoiMucTK.setBackground(new java.awt.Color(204, 204, 204));
+        jBtnXemDSSPDuoiMucTK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnXemDSSPDuoiMucTKMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnXemDSSPDuoiMucTKMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnXemDSSPDuoiMucTKMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jBtnXemDSSPDuoiMucTKMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBtnXemDSSPDuoiMucTKMouseReleased(evt);
+            }
+        });
+
+        jLabel34.setFont(new java.awt.Font("Palatino Linotype", 1, 12)); // NOI18N
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setText("Xem danh sach sản phẩm dưới mức tồn");
+
+        javax.swing.GroupLayout jBtnXemDSSPDuoiMucTKLayout = new javax.swing.GroupLayout(jBtnXemDSSPDuoiMucTK);
+        jBtnXemDSSPDuoiMucTK.setLayout(jBtnXemDSSPDuoiMucTKLayout);
+        jBtnXemDSSPDuoiMucTKLayout.setHorizontalGroup(
+            jBtnXemDSSPDuoiMucTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBtnXemDSSPDuoiMucTKLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        jBtnXemDSSPDuoiMucTKLayout.setVerticalGroup(
+            jBtnXemDSSPDuoiMucTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jBtnXemDSSPDuoiMucTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 250, 260, 40));
 
         jBtnLamMoi.setBackground(new java.awt.Color(153, 153, 153));
         jBtnLamMoi.setPreferredSize(new java.awt.Dimension(105, 50));
@@ -953,10 +994,10 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTbDSSP.setFocusable(false);
         jTbDSSP.setRowHeight(25);
         jTbDSSP.setSelectionForeground(new java.awt.Color(255, 51, 0));
         jTbDSSP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTbDSSP.getTableHeader().setReorderingAllowed(false);
         jTbDSSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTbDSSPMouseClicked(evt);
@@ -986,7 +1027,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             .addGroup(jPnDSSPLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel23)
-                .addContainerGap(640, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         jPnDSSPLayout.setVerticalGroup(
             jPnDSSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1002,7 +1043,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPnDSSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 259, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1541,6 +1582,31 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
             jBtnTimKiemMouseClicked(null);
     }//GEN-LAST:event_jtxtTimKiemKeyPressed
 
+    private void jBtnXemDSSPDuoiMucTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemDSSPDuoiMucTKMouseClicked
+        // TODO add your handling code here:
+        HienThiDanhSachSanPham(CtrlQLSP.LayDSSanPhamDuoiMucTon());
+    }//GEN-LAST:event_jBtnXemDSSPDuoiMucTKMouseClicked
+
+    private void jBtnXemDSSPDuoiMucTKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemDSSPDuoiMucTKMouseEntered
+        // TODO add your handling code here:
+        setColor(jBtnXemDSSPDuoiMucTK);
+    }//GEN-LAST:event_jBtnXemDSSPDuoiMucTKMouseEntered
+
+    private void jBtnXemDSSPDuoiMucTKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemDSSPDuoiMucTKMouseExited
+        // TODO add your handling code here:
+        resetColor(jBtnXemDSSPDuoiMucTK);
+    }//GEN-LAST:event_jBtnXemDSSPDuoiMucTKMouseExited
+
+    private void jBtnXemDSSPDuoiMucTKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemDSSPDuoiMucTKMousePressed
+        // TODO add your handling code here:
+        resetColor(jBtnXemDSSPDuoiMucTK);
+    }//GEN-LAST:event_jBtnXemDSSPDuoiMucTKMousePressed
+
+    private void jBtnXemDSSPDuoiMucTKMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemDSSPDuoiMucTKMouseReleased
+        // TODO add your handling code here:
+        setColor(jBtnXemDSSPDuoiMucTK);
+    }//GEN-LAST:event_jBtnXemDSSPDuoiMucTKMouseReleased
+
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
         pn.setSize(pn.getWidth()+1, pn.getHeight()+1);
@@ -1607,6 +1673,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
     private javax.swing.JPanel jBtnThem;
     private javax.swing.JPanel jBtnThem1;
     private javax.swing.JPanel jBtnTimKiem;
+    private javax.swing.JPanel jBtnXemDSSPDuoiMucTK;
     private javax.swing.JPanel jBtnXoa;
     private javax.swing.JPanel jBtnXoa1;
     private javax.swing.JLabel jLabel1;
@@ -1636,6 +1703,7 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

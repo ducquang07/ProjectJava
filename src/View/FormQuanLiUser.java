@@ -53,9 +53,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
         editFrm.MakeTransparentTable(jScrDSNguoiDung, jtbDSNguoiDung);
 
 
-        JCheckBox check = new JCheckBox();
         JComboBox com = new JComboBox();
-        JButton button = new JButton();
         com.addItem("Quản lý");
         com.addItem("Quản lý bán hàng");
         com.addItem("Quản lý kho");
@@ -86,7 +84,6 @@ public class FormQuanLiUser extends javax.swing.JFrame {
                 }
             }
         });
-        DefaultCellEditor de = new DefaultCellEditor(check);
         DefaultCellEditor de2 = new DefaultCellEditor(com);
         jtbDSNguoiDung.getColumnModel().getColumn(2).setCellEditor(de2);
         HienThiDanhSachNguoiDung(ctrlQLND.LayDanhSachNguoiDung());
