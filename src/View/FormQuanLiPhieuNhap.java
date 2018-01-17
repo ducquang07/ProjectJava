@@ -670,6 +670,16 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 770, 395));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -1, 1367, 731));
 
@@ -918,11 +928,11 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
                 try{
                 if(ModPN.Delete(ObjPN))
                     {
-                        JOptionPane.showMessageDialog(this, "Xóa phiếu nhập hàng \"" + ObjPN.getTenNCC() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Xóa phiếu nhập hàng \"" + ObjPN.getMaPN() + "\" thành công." , "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                         FormLoad();
                     }
                 }catch(Exception e){
-                    JOptionPane.showMessageDialog(this, "Xóa phiếu nhập hàng \"" + ObjPN.getTenNCC() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Xóa phiếu nhập hàng \"" + ObjPN.getMaPN() + "\" thất bại. Mã lỗi: " + e.getMessage(), "Thông báo ", JOptionPane.ERROR_MESSAGE);
                 }
             }
     }//GEN-LAST:event_jBtnXoaMouseClicked
@@ -942,6 +952,21 @@ public class FormQuanLiPhieuNhap extends javax.swing.JFrame {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_jBtnSuaMouseClicked
+
+    int xx,yy;
+    
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     public boolean HienThiPN(ResultSet rs){
         boolean bool = true;

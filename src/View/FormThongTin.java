@@ -116,19 +116,19 @@ public class FormThongTin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 204));
         jLabel2.setText("Thông tin phần mềm");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 260, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 260, 40));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel3.setText("Thiết kế hướng đối tượng với UML   ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel4.setText("2. Nguyễn Thành Thái - 15520783");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel5.setText("3. Đặng Võ Hoài Thanh - 15520797");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo186x150.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 190, 170));
@@ -140,12 +140,12 @@ public class FormThongTin extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel8.setText("1. Phan Đức Quang - 15520692");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 153, 204));
         jLabel9.setText("Giảng viên hướng dẫn");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 290, 40));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 290, 40));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel10.setText("Giảng viên/Thạc sĩ: Mai Xuân Hùng");
@@ -153,13 +153,14 @@ public class FormThongTin extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jLabel11.setText("Phần mềm là kết quả của đồ án Lập Trình Java kết hợp với đồ án    ");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
         jLabel12.setText("Phiên bản 1.0");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 790, 410));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 810, 420));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {

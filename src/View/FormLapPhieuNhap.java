@@ -5,6 +5,7 @@
  */
 package View;
 
+import Connect.Connect;
 import Control.CtrlLapPhieuNhap;
 import Edit.Edit;
 import Model.ModChiTietPNH;
@@ -14,15 +15,21 @@ import Object.ObjChiTietPNH;
 import Object.ObjDonDatHang;
 import Object.ObjPhieuNhapHang;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -688,6 +695,16 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pexels-photo-530024.jpeg"))); // NOI18N
         jLabel11.setText("jLabel11");
+        jLabel11.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel11MouseDragged(evt);
+            }
+        });
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel11MousePressed(evt);
+            }
+        });
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 670));
 
         pack();
@@ -852,6 +869,19 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
 
     private void jBtnXemPhieuInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseClicked
         // TODO add your handling code here:
+        try {
+            Connect con = new Connect();
+            con.Connected();
+            Hashtable hash = new Hashtable();
+            InputStream is = null;
+            is = new FileInputStream("src/Report/ReportPhieuNhap.jasper");
+            hash.put("MaPN", jtxtMaPN.getText());
+            JasperPrint print = JasperFillManager.fillReport(is, hash, con.getConDB());
+            JasperViewer.viewReport(print, false);
+        } catch (Exception ex) {
+            System.out.println("Ngoại lệ tại FormLapPhieuNhap.jBtnXemPhieuInMouseClicked:" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jBtnXemPhieuInMouseClicked
 
     private void jBtnXemPhieuInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnXemPhieuInMouseEntered
@@ -914,6 +944,21 @@ public class FormLapPhieuNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnBack);
     }//GEN-LAST:event_jBtnBackMouseReleased
+
+    int xx,yy;
+    
+    private void jLabel11MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jLabel11MouseDragged
+
+    private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jLabel11MousePressed
 
     public void HienThiDSDDH(ResultSet rs){
         listDDH.clear();

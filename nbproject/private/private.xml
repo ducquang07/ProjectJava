@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/MainForm.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Model/ModTaiKhoan.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/FormDoiMatKhau.java</file>
@@ -15,6 +16,9 @@
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/FormDangKi.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/View/FormThongTin.java</file>
             <file>file:/F:/TAI%20LIEU%20HOC%20TAP%20CHUYEN%20NGANH/JAVA/DoAn/ProjectJava/src/Control/CtrlThongKeTonKho.java</file>
+=======
+            <file>file:/C:/Users/ThaiNguyen/Documents/NetBeansProjects/ProjectJava/src/View/MainForm.java</file>
+>>>>>>> origin/master
         </group>
     </open-files>
 </project-private>

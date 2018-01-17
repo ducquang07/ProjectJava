@@ -1150,6 +1150,16 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 780, 190));
 
+        jPanel9.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel9MouseDragged(evt);
+            }
+        });
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel9MousePressed(evt);
+            }
+        });
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
 
@@ -1606,6 +1616,21 @@ public class FormQuanLiSanPham extends javax.swing.JFrame {
         // TODO add your handling code here:
         setColor(jBtnXemDSSPDuoiMucTK);
     }//GEN-LAST:event_jBtnXemDSSPDuoiMucTKMouseReleased
+
+    int xx,yy;
+    
+    private void jPanel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        yy = evt.getY();
+    }//GEN-LAST:event_jPanel9MousePressed
+
+    private void jPanel9MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
+    }//GEN-LAST:event_jPanel9MouseDragged
 
     public void setColor(JPanel pn){
         if(pn.isEnabled()){
