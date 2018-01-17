@@ -22,7 +22,7 @@ public class CtrlThongKeTonKho {
     Connect DB =new Connect();
     SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
     public ResultSet LayDSTonKho(Date tungay,Date denngay){
-        String SQL="call closer_quanlicuahangson.Proc_TinhTonKho('"+dt.format(tungay)+"','"+dt.format(denngay)+"')";
+        String SQL="call Proc_TinhTonKho('"+dt.format(tungay)+"','"+dt.format(denngay)+"')";
         return DB.GetData(SQL);
     }
     

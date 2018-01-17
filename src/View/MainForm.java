@@ -1066,14 +1066,13 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBtnNguoidungMouseClicked
 
-<<<<<<< HEAD
     private void jBtnThietlapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThietlapMouseClicked
         // TODO add your handling code here:
         if(jBtnThietlap.isEnabled()){
             new FormThietLap().setVisible(true);
         }
     }//GEN-LAST:event_jBtnThietlapMouseClicked
-=======
+
     private void jBtnDoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDoiMKMouseClicked
         // TODO add your handling code here:
         if (jlbDoiMK.isEnabled()) {
@@ -1083,7 +1082,7 @@ public class MainForm extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_jBtnDoiMKMouseClicked
->>>>>>> origin/master
+
 
     private void jBtnThongtinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnThongtinMouseClicked
         // TODO add your handling code here:
